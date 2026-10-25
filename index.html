@@ -692,6 +692,12 @@
   .skill-builds td:nth-child(4){color:#fca5a5}
   .skill-builds th:nth-child(2),.skill-builds th:nth-child(3),.skill-builds th:nth-child(4){text-align:center}
   .gear-blueprint td:nth-child(2){white-space:nowrap}
+  .weapon-stats{margin-top:28px;border:1px solid var(--line);border-radius:10px;background:rgba(15,20,28,.6);padding:0 16px}
+  .weapon-stats summary{cursor:pointer;padding:14px 0;font-weight:700;color:#fff;list-style:none}
+  .weapon-stats summary::-webkit-details-marker{display:none}
+  .weapon-stats summary::before{content:"＋";color:var(--accent);font-family:var(--mono);margin-right:8px}
+  .weapon-stats[open] summary::before{content:"−"}
+  .weapon-stats .filters{margin-top:0}
   .skill-purpose{display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin:0 0 6px;font-size:11px;font-weight:700;line-height:1.55;color:#dbe3ee}
   .skill-purpose span{font:800 8.5px/1.2 var(--mono);letter-spacing:.06em;color:var(--accent);border:1px solid rgba(245,165,36,.3);border-radius:3px;padding:1px 4px}
 
@@ -965,10 +971,7 @@
     <div class="wrap">
       <div class="kicker">Returning Player Guide / 凍った道 2.0</div>
       <h1>復帰レイダーのための<br><span class="accent">ARC Raiders</span> 再入門</h1>
-      <p class="hero-lead">
-        凍った道 2.0で、マップもスキルも進行ルートも変わった。しばらく離れていた人向けに、
-        「最初の1時間でやること」から現在の武器メタまで、海外ソースの引用付きで整理した。
-      </p>
+      <p class="hero-lead">凍った道2.0の変更点を、復帰勢向けに要点だけ整理。</p>
       <div class="hero-meta">
         <span class="tag tag-hot">復帰勢向け</span>
         <span class="tag">情報基準 2026.10.25</span>
@@ -997,10 +1000,7 @@
       <div class="sec-head reveal">
         <div class="sec-kicker">01 / 最初の一歩</div>
         <h2>復帰チェックリスト</h2>
-        <p class="sec-lead">
-          アカウントと装備は残っている。リセットされたのは知識のほうだ。
-          以下の5つをこの順番で進めれば、無駄死にを最小限にできる。
-        </p>
+        <p class="sec-lead">5つをこの順で。無駄死にを減らす。</p>
       </div>
 
       <div class="check-summary reveal">
@@ -1014,10 +1014,7 @@
           <input class="check-input" type="checkbox">
           <div class="check-body">
             <h4><span class="step-num">01</span>スキルツリーを組み直す</h4>
-            <p>
-              スキルツリーは完全リワーク。分岐の中央は2択、終端は3択から2つを選ぶ仕様になった。
-              旧ビルドのまま出撃せず、まずリセットして自分の役割を決める。<a class="ref" href="#src-1">[1]</a><a class="ref" href="#src-5">[5]</a>
-            </p>
+            <p>完全リワーク。中央2択・終端3択から2つ。旧ビルドはリセット。<a class="ref" href="#src-1">[1]</a><a class="ref" href="#src-5">[5]</a></p>
           </div>
         </label>
 
@@ -1025,10 +1022,7 @@
           <input class="check-input" type="checkbox">
           <div class="check-body">
             <h4><span class="step-num">02</span>ペンドラ・パスを解放する</h4>
-            <p>
-              新マップは25ラウンド完了で解放（失敗してもカウント）。解放済みのフレンドとスクワッドすれば即入場できる。
-              新クエストと新ルートの中心なので、まず足を踏み入れる。<a class="ref" href="#src-5">[5]</a><a class="ref" href="#src-2">[2]</a>
-            </p>
+            <p>25ラウンドで解放（失敗もカウント）。解放済みフレンドと即入場可。<a class="ref" href="#src-5">[5]</a><a class="ref" href="#src-2">[2]</a></p>
           </div>
         </label>
 
@@ -1036,10 +1030,7 @@
           <input class="check-input" type="checkbox">
           <div class="check-body">
             <h4><span class="step-num">03</span>前哨基地プロジェクトを開始する</h4>
-            <p>
-              カメラを持ち、ブルーゲートの荒廃した家屋周辺付近にある農家を撮影する。
-              「安全な隠れ家」を完了すると前哨基地と研究ステーションが解放される。<a class="ref" href="#src-1">[1]</a><a class="ref" href="#src-5">[5]</a>
-            </p>
+            <p>ブルーゲートの農家を撮影→「安全な隠れ家」で前哨基地と研究ステーション解放。<a class="ref" href="#src-1">[1]</a><a class="ref" href="#src-5">[5]</a></p>
           </div>
         </label>
 
@@ -1047,10 +1038,7 @@
           <input class="check-input" type="checkbox">
           <div class="check-body">
             <h4><span class="step-num">04</span>研究ステーションで装備を研究する</h4>
-            <p>
-              Grappling Hookは 研究ステーションLv1 + 2,000 研究ポイント + Rope 10。
-              スティレットとバンタムは Lv1 + 3,000 RP + Driver素材。新装備の入口はここ。<a class="ref" href="#src-5">[5]</a><a class="ref" href="#src-8">[8]</a>
-            </p>
+            <p>Grappling Hook: 研究Lv1 + 2,000RP + Rope 10。スティレット/バンタム: Lv1 + 3,000RP + Driver素材。<a class="ref" href="#src-5">[5]</a><a class="ref" href="#src-8">[8]</a></p>
           </div>
         </label>
 
@@ -1058,10 +1046,7 @@
           <input class="check-input" type="checkbox">
           <div class="check-body">
             <h4><span class="step-num">05</span>新敵を覚えてからPvPへ</h4>
-            <p>
-              ブリー・スカルカー・ハイドラは対処法がそれぞれ違う。装備を溶かす前に弱点と間合いを確認する。
-              特にハイドラは「背面」。正面から撃ち合わない。<a class="ref" href="#src-7">[7]</a><a class="ref" href="#src-2">[2]</a>
-            </p>
+            <p>ブリー・スカルカー・ハイドラは対処法が違う。ハイドラは背面。<a class="ref" href="#src-7">[7]</a><a class="ref" href="#src-2">[2]</a></p>
           </div>
         </label>
       </div>
@@ -1070,22 +1055,22 @@
       <div class="timeline reveal">
         <div class="timeline-item">
           <div class="t">00 — 10 min</div>
-          <p>スキルをリセット。カメラをシャニで購入（1,920 Coins）するか、ワークベンチでクラフト。クエストを確認。</p>
+          <p>スキルリセット。カメラ購入/クラフト。クエスト確認。</p>
         </div>
         <div class="timeline-item">
           <div class="t">10 — 30 min</div>
-          <p>無料装備で1戦。射撃・移動・抽出の感覚を思い出す。いきなり高価な装備を持ち込まない。</p>
+          <p>無料装備で1戦。感覚を取り戻す。</p>
         </div>
         <div class="timeline-item">
           <div class="t">30 — 60 min</div>
-          <p>前哨基地プロジェクトを開始。可能ならペンドラ・パスへ入り、新マップの地形と敵の挙動を確認。</p>
+          <p>前哨基地プロジェクト開始。可能ならペンドラへ。</p>
         </div>
       </div>
 
       <div class="callout callout-info reveal">
         <span class="callout-icon">情報</span>
         <div>
-          <p><b>無料週末と割引は終了済み。</b>凍った道直後の10月8日〜12日は無料開放、10月15日までローンチ割引が実施された。現在の価格は各ストアで確認を。プレイヤー数はアップデート直後に一時的に大きく戻っており、マッチングは活発だ。<a class="ref" href="#src-3">[3]</a><a class="ref" href="#src-12">[12]</a></p>
+          <p><b>無料週末と割引は終了。</b>現在価格はストア確認。マッチングは活発。<a class="ref" href="#src-3">[3]</a><a class="ref" href="#src-12">[12]</a></p>
         </div>
       </div>
     </div>
@@ -1097,10 +1082,7 @@
       <div class="sec-head reveal">
         <div class="sec-kicker">02 / 変更点</div>
         <h2>凍った道で変わったこと</h2>
-        <p class="sec-lead">
-          凍った道は「マップ追加」ではない。進行の背骨が入れ替わるアップデートだ。
-          旧知識のまま出撃すると、まず間違えるのがスキルと進行通貨。
-        </p>
+        <p class="sec-lead">マップ追加ではなく、進行の背骨が入れ替わる。旧知識で間違えるのはスキルと進行通貨。</p>
       </div>
 
       <div class="table-wrap reveal">
@@ -1126,7 +1108,7 @@
       <div class="callout callout-warn reveal">
         <span class="callout-icon">注意</span>
         <div>
-          <p><b>クレドはもう手に入らない。</b>報酬ポイントは「現在アクティブなパス」に自動加算される。凍った道 Passを進めるのか、レガシーパスを進めるのかを先に決めること。両方は同時に進められない。<a class="ref" href="#src-1">[1]</a></p>
+          <p><b>クレドは廃止。</b>報酬ポイントはアクティブパスに加算。凍った道Passかレガシーパス、どちらか一方。<a class="ref" href="#src-1">[1]</a></p>
         </div>
       </div>
 
@@ -1166,7 +1148,7 @@
       <div class="callout callout-tip reveal">
         <span class="callout-icon">ヒント</span>
         <div>
-          <p><b>復帰勢が最初に見るべきは「進行通貨」と「スキル」。</b>マップや武器は後から覚えられるが、この2つを旧知識のまま進めると、ポイントの使い先を間違えて作り直しになる。<a class="ref" href="#src-1">[1]</a><a class="ref" href="#src-4">[4]</a></p>
+          <p><b>最初に見るのは進行通貨とスキル。</b>ここを間違えると作り直し。<a class="ref" href="#src-1">[1]</a><a class="ref" href="#src-4">[4]</a></p>
         </div>
       </div>
     </div>
@@ -1178,10 +1160,7 @@
       <div class="sec-head reveal">
         <div class="sec-kicker">03 / 新マップ</div>
         <h2>ペンドラ・パス 攻略</h2>
-        <p class="sec-lead">
-          雪と寒気に閉ざされた旧イタリア人居留地。Rust Beltの山の向こうにある、Exodusの輸送拠点だ。
-          広さよりも「高低差」と「気候」で殺してくるマップ。
-        </p>
+        <p class="sec-lead">雪と寒気の旧イタリア人居留地。高低差と気候が敵。</p>
       </div>
 
       <div class="grid grid-2 reveal">
@@ -1192,7 +1171,7 @@
           <div class="kv"><span>失敗ラウンド</span><b>カウントされる</b></div>
           <div class="kv"><span>最短ルート</span><b>解放済みプレイヤーとスクワッド</b></div>
           <div class="kv"><span>導線クエスト</span><b>スペランザのセレステ</b></div>
-          <p class="small muted" style="margin-top:12px">「Exploring ペンドラ・パス」はセレステから受注。まず彼女のクエストを確認する。<a class="ref" href="#src-5">[5]</a></p>
+          <p class="small muted" style="margin-top:12px">「Exploring ペンドラ・パス」はセレステから。<a class="ref" href="#src-5">[5]</a></p>
         </div>
         <div class="card">
           <div class="card-kicker">Hazards</div>
@@ -1201,7 +1180,7 @@
           <div class="kv"><span>ダイナミックルートゾーン</span><b>エリア価値がレイドごとに変動</b></div>
           <div class="kv"><span>地形</span><b>急斜面・屋根・高所が多い</b></div>
           <div class="kv"><span>主力移動</span><b>Grappling Hook / Scrambling</b></div>
-          <p class="small muted" style="margin-top:12px">ダイナミックルートゾーンは「種類」ではなく「価値」が変わる。ResidentialはResidentialのまま。<a class="ref" href="#src-1">[1]</a><a class="ref" href="#src-3">[3]</a></p>
+          <p class="small muted" style="margin-top:12px">ルートゾーンは種類ではなく価値が変動。<a class="ref" href="#src-1">[1]</a><a class="ref" href="#src-3">[3]</a></p>
         </div>
       </div>
 
@@ -1361,19 +1340,19 @@
         <div class="card">
           <div class="card-kicker">寒波</div>
           <h4>寒波が来たら屋外を捨てる</h4>
-          <p class="small">いつ発生するか分からない。屋外に長く留まらず、常に最寄りのシェルターを把握しておく。高所での戦闘中に来ると立て直しが難しい。</p>
+          <p class="small">予告なし。常に最寄りシェルターを把握。高所戦闘中は危険。</p>
         </div>
         <div class="card">
           <div class="card-kicker">Verticality</div>
           <h4>このマップは「登れるか」で決まる</h4>
-          <p class="small">屋根・崖・足場の上から一方的に撃てる位置が多い。Grappling Hookの研究を最優先にする理由がここにある。2.1.0でペンドラ・パスのフックの引っ掛かりも改善された。<a class="ref" href="#src-8">[8]</a></p>
+          <p class="small">屋根・崖・足場からの射線が多い。Grappling Hook優先。2.1.0で引っ掛かりも改善。<a class="ref" href="#src-8">[8]</a></p>
         </div>
       </div>
 
       <div class="callout callout-info reveal">
         <span class="callout-icon">情報</span>
         <div>
-          <p><b>フリゲートはペンドラ・パス専用ではない。</b>ARC フリゲートは6つの屋外マップ（Dam Battlegrounds、Buried City、Spaceport、The ブルーゲート、Riven Tides、ペンドラ・パス）を巡回するマップ条件。ペンドラ・パスで倒れたエンペラーが落ちていることがストーリーの起点になっているだけだ。<a class="ref" href="#src-10">[10]</a></p>
+          <p><b>フリゲートはペンドラ専用ではない。</b>6つの屋外マップを巡回するマップ条件。<a class="ref" href="#src-10">[10]</a></p>
         </div>
       </div>
     </div>
@@ -1385,10 +1364,7 @@
       <div class="sec-head reveal">
         <div class="sec-kicker">04 / 新システム</div>
         <h2>新システム解説</h2>
-        <p class="sec-lead">
-          復帰勢が最も混乱するのがここ。前哨基地、研究ステーション、増幅、報酬パス。
-          4つの関係を一度でいいので頭に入れておくと、迷子にならない。
-        </p>
+        <p class="sec-lead">前哨基地・研究・増幅・報酬パスの4つだけ。</p>
       </div>
 
       <div class="shot-grid-4 reveal" id="systems-gallery">
@@ -1415,16 +1391,13 @@
         <div class="card">
           <div class="card-kicker">前哨基地</div>
           <h3>拠点が追加された</h3>
-          <p class="small">プロジェクト完了で解放。部屋を増やし、研究ステーションで研究を進める。</p>
+          <p class="small">プロジェクト完了で解放。部屋と研究を進める。</p>
           <p class="small" style="margin:10px 0 0"><a class="text-link" href="#outpost">→ できること・必要素材を見る</a></p>
         </div>
         <div class="card">
           <div class="card-kicker">研究ステーション</div>
           <h3>設計図を「研究」する</h3>
-          <p class="small">
-            研究ポイントと素材を払って設計図をアンロックする。新装備の実質的なゲート。
-            「クラフト台」ではなく「研究台」と覚える。
-          </p>
+          <p class="small">設計図を研究してアンロック。クラフト台ではない。</p>
           <div class="table-wrap" style="margin-top:12px;border-radius:8px">
             <table>
               <thead><tr><th>アンロック</th><th>必要</th></tr></thead>
@@ -1437,43 +1410,39 @@
               </tbody>
             </table>
           </div>
-          <p class="small muted" style="margin-top:10px">フリゲートインダクターは研究ステーションLv4用のLegendary素材。<a class="ref" href="#src-5">[5]</a><a class="ref" href="#src-8">[8]</a><a class="ref" href="#src-10">[10]</a></p>
+          <p class="small muted" style="margin-top:10px">フリゲートインダクターは研究Lv4用。<a class="ref" href="#src-5">[5]</a><a class="ref" href="#src-8">[8]</a><a class="ref" href="#src-10">[10]</a></p>
         </div>
       </div>
 
       <div class="callout callout-warn reveal">
         <span class="callout-icon">注意</span>
         <div>
-          <p><b>「前哨基地＝クラフト拠点」ではない。</b>通常のクラフト・修理はWorkshopのまま。前哨基地の研究ステーションは設計図研究のための別システム。ここを混同すると、素材の使い先を間違える。<a class="ref" href="#src-5">[5]</a></p>
+          <p><b>前哨基地はクラフト拠点ではない。</b>クラフト・修理はワークショップ。研究ステーションは別系統。<a class="ref" href="#src-5">[5]</a></p>
         </div>
       </div>
 
       <!-- 増幅 -->
       <h3 style="margin-top:34px">Weapon 増幅（武器増幅）</h3>
       <div class="card reveal">
-        <p>
-          対応する15武器に「5段階目の品質レベル」を追加するエンドゲームシステム。
-          分岐パスで挙動そのものが変わる。公式が挙げている例は、<b>フルオートのバーレッタ</b>、<b>スコープ付きのレネゲイド</b>、
-          <b>焼夷弾＋64発マガジンのラトラー</b>。<a class="ref" href="#src-2">[2]</a>
-        </p>
+        <p>対応15武器の5段階目。分岐で挙動が変わる。例：フルオートバーレッタ、スコープ付きレネゲイド、焼夷弾ラトラー。<a class="ref" href="#src-2">[2]</a></p>
         <div class="grid grid-3" style="margin-top:14px">
           <div class="loadout">
             <div class="lt">必要条件</div>
             <strong>前哨基地解放</strong>
-            <p>まず安全な隠れ家を完了させる。</p>
+            <p>「安全な隠れ家」完了。</p>
           </div>
           <div class="loadout">
             <div class="lt">必要条件</div>
             <strong>ガンスミスLv4 + 研究ステーションLv4</strong>
-            <p>両方のワークステーションを最大まで上げる。</p>
+            <p>両方Lv4。</p>
           </div>
           <div class="loadout">
             <div class="lt">素材</div>
             <strong>増幅モジュール</strong>
-            <p>フリゲートまたは倒れたエンペラーから入手。Mark I〜V。</p>
+            <p>フリゲート/エンペラー。Mark I〜V。</p>
           </div>
         </div>
-        <p class="small muted" style="margin-top:14px">復帰勢にとっては「今回の目標」ではなく「長期目標」。まずは研究ステーションLv1と通常装備を整えるほうが早い。<a class="ref" href="#src-5">[5]</a><a class="ref" href="#src-10">[10]</a></p>
+        <p class="small muted" style="margin-top:14px">長期目標。まず研究Lv1と通常装備。<a class="ref" href="#src-5">[5]</a><a class="ref" href="#src-10">[10]</a></p>
       </div>
 
       <!-- Skill tree -->
@@ -1482,10 +1451,10 @@
         <div class="card">
           <h4>選び方が変わった</h4>
           <ul class="list-clean">
-            <li><b>分岐の中央</b>：2つのスキルから1つを選ぶ二択。</li>
-            <li><b>分岐の終端</b>：3つから最大2つを選ぶ。</li>
-            <li><b>やり直し</b>：リセットすれば選び直せる。</li>
-            <li><b>狙い</b>：全部取るのではなく、ビルドを尖らせる。</li>
+            <li><b>中央</b>：2択。</li>
+            <li><b>終端</b>：3択から最大2つ。</li>
+            <li><b>リセット</b>可。</li>
+            <li><b>狙い</b>：全部取らず尖らせる。</li>
           </ul>
         </div>
         <div class="card">
@@ -1493,33 +1462,29 @@
           <div class="kv"><span>Fight or Flight</span><b>スタミナ +約25% / Lv</b></div>
           <div class="kv"><span>Stubborn Mule</span><b>スタミナ回復 +約33%</b></div>
           <div class="kv"><span>Back on Your Feet</span><b>回復量 30 → 40</b></div>
-          <p class="small muted" style="margin-top:12px">旧ビルドの感覚で取ると、思ったより効果が薄い／強いことがある。まずリセット。<a class="ref" href="#src-1">[1]</a></p>
+          <p class="small muted" style="margin-top:12px">旧感覚は通用しない。まずリセット。<a class="ref" href="#src-1">[1]</a></p>
         </div>
       </div>
 
       <!-- Reward pass -->
       <h3 style="margin-top:34px">報酬パス / レガシーパス</h3>
       <div class="card reveal">
-        <p>
-          クレドは廃止され、報酬ポイントに一本化された。報酬ポイントは「現在アクティブなパス」に自動で加算される。
-          凍った道 Passは60レベル構成で、FreeトラックとPremiumトラックがある。
-          旧レイダーデッキはレガシーパスに移り、既に解除した報酬は保持される。<a class="ref" href="#src-1">[1]</a>
-        </p>
+        <p>クレド廃止。報酬ポイントはアクティブパスに加算。凍った道Passは60Lv、Free/Premium。旧デッキはレガシーパスへ。<a class="ref" href="#src-1">[1]</a></p>
         <div class="grid grid-3" style="margin-top:14px">
           <div class="loadout">
             <div class="lt">技能</div>
             <strong>イージー / ミディアム / ハード</strong>
-            <p>15 / 25 / 50 報酬ポイント。ウィークリーマイルストーンも加算。</p>
+            <p>15/25/50 RP。週次も加算。</p>
           </div>
           <div class="loadout">
             <div class="lt">週次</div>
             <strong>250 RP × 3</strong>
-            <p>必要進行度は4 / 8 / 12。毎週リセット。</p>
+            <p>進行度4/8/12。毎週リセット。</p>
           </div>
           <div class="loadout">
             <div class="lt">優先</div>
             <strong>まず凍った道 Pass</strong>
-            <p>新アイテムと新コスメが入っている。Legacyは後回しでよい。</p>
+            <p>新アイテム/コスメ。Legacyは後回し。</p>
           </div>
         </div>
       </div>
@@ -1546,7 +1511,7 @@
       <div class="callout callout-tip reveal">
         <span class="callout-icon">ヒント</span>
         <div>
-          <p><b>迷ったらGrappling Hook。</b>安くて20m、修理も「Rope 1 + Cable Stripper 1」で済む。PvPで瞬間的な速度が欲しいときだけSnap Hookに差し替える、という運用が現実的。<a class="ref" href="#src-8">[8]</a></p>
+          <p><b>迷ったらGrappling Hook。</b>安くて20m。PvPはSnap Hook。<a class="ref" href="#src-8">[8]</a></p>
         </div>
       </div>
     </div>
@@ -1558,10 +1523,7 @@
       <div class="sec-head reveal">
         <div class="sec-kicker">05 / スキルツリー</div>
         <h2>おすすめスキルツリー</h2>
-        <p class="sec-lead">
-          2.0でスキルツリーは3系統・48スキルに再構築された。最大76ptをどこに寄せるかで、
-          「漁って帰る」か「撃ち合って勝つ」かが決まる。序盤はサバイバルで漁り、Lv13から移動性に寄せるのが基本。
-        </p>
+        <p class="sec-lead">3系統・48スキル / 最大76pt。序盤サバイバル→Lv13から移動性。</p>
       </div>
 
       <div class="returner-box reveal">
@@ -1570,8 +1532,8 @@
           <b>旧ビルドは使えない。でもポイントは返ってくる。</b>
         </div>
         <div class="returner-grid">
-          <div><span>01</span><p><b>ツリーは2.0で再構築。</b>全48スキル。振ったポイントは全返還される。</p></div>
-          <div><span>02</span><p><b>最初の12ptは固定。</b>漁り→静音→クイックロールの順でOK。</p></div>
+          <div><span>01</span><p><b>ツリーは2.0で再構築。</b>全48スキル。ポイントは全返還。</p></div>
+          <div><span>02</span><p><b>最初の12ptは固定。</b>漁り→静音→クイックロール。</p></div>
           <div><span>03</span><p><b>迷ったら物資集め。</b>調整28 / 移動性31 / サバイバル17。</p></div>
         </div>
       </div>
@@ -1584,13 +1546,13 @@
       </div>
 
       <h3 style="margin-top:30px">最初の12pt</h3>
-      <p class="small muted" style="margin:0 0 10px">Lv1〜12はこの順番。左から振る。数字は投資pt。</p>
+      <p class="small muted" style="margin:0 0 10px">Lv1〜12はこの順。数字は投資pt。</p>
 
       <div class="skill-legend reveal">
         <span class="branch branch-cond"><i></i>調整</span>
         <span class="branch branch-mob"><i></i>移動性</span>
         <span class="branch branch-surv"><i></i>サバイバル</span>
-        <span class="small muted">数字 = 投資ポイント</span>
+        <span class="small muted">数字 = 投資pt</span>
         <span class="small muted"><span class="skill-choice">2択</span> 10pt分岐</span>
         <span class="small muted"><span class="skill-choice">終点</span> 30/40pt</span>
       </div>
@@ -1632,7 +1594,7 @@
         </div>
       </div>
 
-      <p class="skill-note" style="margin:8px 0 0">10ptでクイックロールを選ぶ。サバイバル10ptの2択はクイックロールかマインスイーパー。漁り優先ならクイックロール。<a class="ref" href="#src-20">[20]</a>　アイコン: ARC Raiders Wiki<a class="ref" href="#src-22">[22]</a></p>
+      <p class="skill-note" style="margin:8px 0 0">10ptでクイックロール。漁り優先ならこれ。<a class="ref" href="#src-20">[20]</a><a class="ref" href="#src-22">[22]</a></p>
 
       <figure class="shot reveal" style="margin:18px 0;position:relative">
         <a href="assets/skills/skill-tree-overview.jpg" target="_blank" rel="noopener noreferrer" style="display:block;cursor:zoom-in">
@@ -1650,9 +1612,9 @@
         <div>
           <h3 style="margin-top:0">ノードの見方</h3>
           <ul class="list-clean">
-            <li><b>数字（0/5〜5/5）</b>：そのノードに振ったポイント。5段階のスキルは段階ごとに効果が伸びる。</li>
-            <li><b>菱形</b>：2択・3択の分岐。10 / 30 / 40ptのゲートで開く。</li>
-            <li><b>鍵</b>：前提ノードが未解放。先に手前へ1pt振る。</li>
+            <li><b>数字</b> = 投資段階（0/5〜5/5）。</li>
+            <li><b>菱形</b> = 2択/3択。10/30/40ptで開く。</li>
+            <li><b>鍵</b> = 前提未解放。手前へ1pt。</li>
           </ul>
         </div>
       </div>
@@ -1663,7 +1625,7 @@
         <div><b>40pt</b><span>同じ3択から2つ目</span></div>
       </div>
 
-      <p class="small muted" style="margin:0 0 12px">レベル帯は目安。最大76pt（遠征ボーナス持ちは+15pt）。数字は各スキルへの投資pt。<a class="ref" href="#src-20">[20]</a></p>
+      <p class="small muted" style="margin:0 0 12px">Lv帯は目安。最大76pt（遠征+15pt）。数字は投資pt。<a class="ref" href="#src-20">[20]</a></p>
 
       <div class="skill-levels reveal">
         <div class="skill-level">
@@ -1680,7 +1642,7 @@
               <span class="skill-chip branch-mob"><img class="skill-icon" src="assets/skills/icons/vaults-on-vaults-on-vaults.png" alt="" loading="lazy">跳躍跳躍跳躍 <b>1</b><span class="skill-choice">2択</span></span>
               <span class="skill-chip branch-mob"><img class="skill-icon" src="assets/skills/icons/marathon-runner.png" alt="" loading="lazy">マラソンランナー <b>5</b></span>
             </div>
-            <p class="skill-note">ペンドラ・パスの急斜面・屋根・高低差に対応。10ptで跳躍を選び、登攀と逃走のスタミナを伸ばす。</p>
+            <p class="skill-note">ペンドラの高低差に対応。10ptで跳躍。</p>
           </div>
         </div>
 
@@ -1700,7 +1662,7 @@
               <span class="skill-chip branch-cond"><img class="skill-icon" src="assets/skills/icons/loaded-arms.png" alt="" loading="lazy">武器装填 <b>1</b></span>
               <span class="skill-chip branch-cond"><img class="skill-icon" src="assets/skills/icons/broad-shoulders.png" alt="" loading="lazy">広い肩幅 <b>5</b></span>
             </div>
-            <p class="skill-note">持ち帰り量を底上げ。10ptで運び屋の駆け足を選び、超過重量でも走れるようにする。</p>
+            <p class="skill-note">持ち帰り量を底上げ。10ptで運び屋の駆け足。</p>
           </div>
         </div>
 
@@ -1717,7 +1679,7 @@
               <span class="skill-chip branch-mob"><img class="skill-icon" src="assets/skills/icons/swift-start.png" alt="" loading="lazy">素早いスタート <b>5</b></span>
               <span class="skill-chip branch-mob"><img class="skill-icon" src="assets/skills/icons/sprinting-on-fumes.png" alt="" loading="lazy">死力のダッシュ <b>1</b><span class="skill-choice">終点</span></span>
             </div>
-            <p class="skill-note">移動性30ptに到達。終点は死力のダッシュ。射撃を受けてもスタミナが尽きにくい。</p>
+            <p class="skill-note">移動性30pt。終点は死力のダッシュ。</p>
           </div>
         </div>
 
@@ -1733,7 +1695,7 @@
               <span class="skill-chip branch-surv"><img class="skill-icon" src="assets/skills/icons/traveling-tinkerer.png" alt="" loading="lazy">旅する修理屋 <b>1</b></span>
               <span class="skill-chip branch-surv"><img class="skill-icon" src="assets/skills/icons/looters-luck.png" alt="" loading="lazy">略奪者の幸運 <b>5</b></span>
             </div>
-            <p class="skill-note">鍵・コンテナの開錠速度と、漁りの2倍ドロップを伸ばす。ここでサバイバル17pt。</p>
+            <p class="skill-note">解錠速度と漁り2倍ドロップ。サバイバル17pt。</p>
           </div>
         </div>
 
@@ -1766,12 +1728,12 @@
                 <span class="skill-chip branch-cond"><img class="skill-icon" src="assets/skills/icons/crawl-before-you-walk.png" alt="" loading="lazy">歩く前に這え <b>1</b></span>
               </div>
             </div>
-            <p class="skill-note">残り6ptの使い道。撃ち合いは終点を死力のダッシュ→壁走りに差し替える（同コスト）。</p>
+            <p class="skill-note">残り6pt。撃ち合いは終点を壁走りに差し替え。</p>
           </div>
         </div>
       </div>
 
-      <p class="small muted" style="margin:10px 0 0">※ 前提ノードを飛ばせない箇所は、同系統の安いノードで橋渡しする。10 / 30 / 40ptのゲートは系統ごとに厳守。<a class="ref" href="#src-20">[20]</a></p>
+      <p class="small muted" style="margin:10px 0 0">※ 前提は同系統の安いノードで橋渡し。ゲートは厳守。<a class="ref" href="#src-20">[20]</a></p>
 
       <h3 style="margin-top:32px">完成形ビルド</h3>
       <div class="table-wrap reveal" style="margin-top:12px">
@@ -1791,7 +1753,7 @@
       <div class="callout callout-warn reveal">
         <span class="callout-icon">注意</span>
         <div>
-          <p><b>10 / 30 / 40ptのゲートは系統ごと。</b>別系統に振っても合計ptでは開かない。76ptなら1系統を31ptまで伸ばして終点を1つ取り、残りを別系統に回すのが丸い。40ptまで伸ばすと終点2つ目が取れるが、その分の小スキルを削ることになる。振り直しは2,000コイン/pt。<a class="ref" href="#src-20">[20]</a></p>
+          <p><b>ゲートは系統ごと。</b>76ptなら1系統31ptで終点1つ。振り直し2,000コイン/pt。<a class="ref" href="#src-20">[20]</a></p>
         </div>
       </div>
     </div>
@@ -1803,10 +1765,7 @@
       <div class="sec-head reveal">
         <div class="sec-kicker">06 / 装備</div>
         <h2>普段装備と作り方</h2>
-        <p class="sec-lead">
-          「何を持てばいいか」→「どう作るか」の順で整理。
-          最初はフェロ、ガンスミス2でアンヴィル、ガンスミス3でレネゲイドが現実的な普段装備。
-        </p>
+        <p class="sec-lead">普段はレネゲイド。繋ぎはフェロ。大型ARCはアンヴィル→ハルクラッカー。</p>
       </div>
 
       <div class="returner-box reveal">
@@ -1816,7 +1775,7 @@
         </div>
         <div class="returner-grid">
           <div><span>01</span><p><b>最初</b>フェロ（ガンスミス1・設計図不要）</p></div>
-          <div><span>02</span><p><b>大型ARC前</b>アンヴィル（ガンスミス2・設計図はレイダーコンテナ）</p></div>
+          <div><span>02</span><p><b>大型ARC前</b>アンヴィル（ガンスミス2）</p></div>
           <div><span>03</span><p><b>普段</b>レネゲイド（ガンスミス3・設計図不要・中型弾）</p></div>
         </div>
       </div>
@@ -1826,22 +1785,22 @@
         <div class="loadout">
           <div class="lt">普段 / 黒字重視</div>
           <strong>レネゲイド + ヴェネイター</strong>
-          <p>中型弾中心。レネゲイドはガンスミス3で設計図不要。ヴェネイターは保険のピストル。</p>
+          <p>中型弾中心。設計図不要。</p>
         </div>
         <div class="loadout">
           <div class="lt">最初の繋ぎ</div>
           <strong>フェロ + 拾ったSMG / ピストル</strong>
-          <p>ガンスミス1で作れる。設計図不要。まずはこれでワスプを狩ってガンスミス2へ。</p>
+          <p>ガンスミス1。設計図不要。</p>
         </div>
         <div class="loadout">
           <div class="lt">大型ARC / 素材集め</div>
           <strong>アンヴィル + フェロ</strong>
-          <p>センチネルやバスティオンのコアをアンヴィルで集中。フェロで追撃。遮蔽物必須。</p>
+          <p>装甲コアを集中。遮蔽物必須。</p>
         </div>
         <div class="loadout">
           <div class="lt">フリゲート</div>
           <strong>ベティーナ + ハルクラッカー</strong>
-          <p>大型シールド＋Powered Descender。回復と弾薬は多めに。無料ロードアウト不可。</p>
+          <p>大型シールド＋Powered Descender。回復/弾薬多め。</p>
         </div>
       </div>
 
@@ -1849,28 +1808,28 @@
       <ol class="step-flow reveal">
         <li>
           <h4>設計図を拾う</h4>
-          <p>武器はレイダー系コンテナ、テンペストは住宅系、ヴルカノはFirst Wave Cache、ハルクラッカーはクエスト報酬。設計図が不要な武器もある。</p>
+          <p>レイダー系・住宅系・First Wave Cache・クエスト。</p>
         </li>
         <li>
           <h4>スペランザで「学習して消費」</h4>
-          <p>拾った設計図を学習してレシピを解禁する。設計図は消費される。研究ステーションは増幅・研究の別系統。</p>
+          <p>レシピ解禁。設計図は消費。</p>
         </li>
         <li>
           <h4>ガンスミスを上げる</h4>
-          <p>Lv1→2はワスプドライバー8、Lv2→3はセンチネル発火コア4。Lv4は前哨基地＋エンペラーモジュレーター1。</p>
+          <p>Lv2: ワスプ8。Lv3: センチネル4。Lv4: 前哨基地＋エンペラー1。</p>
         </li>
         <li>
           <h4>素材を集める</h4>
-          <p>基本は金属部品・ゴム部品。中盤は高度な機械部品・銃部品・磁気加速器。大型ARC素材はLv3の壁。</p>
+          <p>基本素材 → 高度な機械部品・銃部品・磁気加速器。</p>
         </li>
         <li>
           <h4>クラフト → 強化</h4>
-          <p>ガンスミスで作成し、同じ武器を素材にLv4まで強化。増幅はガンスミス4＋研究Lv4＋増幅モジュールで長期目標。</p>
+          <p>Lv4まで強化。増幅はガンスミス4＋研究Lv4。</p>
         </li>
       </ol>
 
       <h3 style="margin-top:34px">ワークベンチの上げ順</h3>
-      <p class="small muted" style="margin-bottom:12px">普段装備を優先するなら、ガンスミス→ 装備ベンチ → 医療ラボの順。大型ARC素材が必要になるのはLv3から。<a class="ref" href="#src-13">[13]</a></p>
+      <p class="small muted" style="margin-bottom:12px">優先：ガンスミス → 装備ベンチ → 医療ラボ。大型ARC素材はLv3から。<a class="ref" href="#src-13">[13]</a></p>
       <div class="table-wrap reveal">
         <table>
           <thead>
@@ -1889,7 +1848,7 @@
       </div>
 
       <h3 style="margin-top:34px">大型ARCと必要素材</h3>
-      <p class="small muted" style="margin-bottom:12px">Lv3以降の壁。装甲コアやセルを狙い、アンヴィルで集中砲火。ハルクラッカーはガンスミス3以降の対大型用。</p>
+      <p class="small muted" style="margin-bottom:12px">Lv3以降の壁。装甲コアをアンヴィルで集中。</p>
       <div class="table-wrap reveal">
         <table>
           <thead>
@@ -1905,10 +1864,10 @@
           </tbody>
         </table>
       </div>
-      <p class="small muted" style="margin:8px 0 0">ジュピター／アフェリオンはクイーン／マトリアークのリアクターとイベント設計図が必要なエンドゲーム。普段はレネゲイドで十分。<a class="ref" href="#src-25">[25]</a></p>
+      <p class="small muted" style="margin:8px 0 0">ジュピター/アフェリオンはエンドゲーム。普段はレネゲイドで十分。<a class="ref" href="#src-25">[25]</a></p>
 
       <h3 style="margin-top:34px">設計図の探し方</h3>
-      <p class="small muted" style="margin-bottom:12px">設計図は拾ってスペランザで学習。不要な武器は設計図なしでクラフトできる。<a class="ref" href="#src-24">[24]</a><a class="ref" href="#src-25">[25]</a></p>
+      <p class="small muted" style="margin-bottom:12px">設計図はスペランザで学習。不要な武器は設計図なし。<a class="ref" href="#src-24">[24]</a><a class="ref" href="#src-25">[25]</a></p>
       <div class="table-wrap reveal">
         <table class="gear-blueprint">
           <thead>
@@ -1927,12 +1886,12 @@
         </table>
       </div>
 
-      <p class="small muted" style="margin:8px 0 0">※ 銃部品など一部の素材名は英語名からの訳。ゲーム内表記と違う場合は英語名（Heavy Gun Parts など）で確認。<a class="ref" href="#src-25">[25]</a></p>
+      <p class="small muted" style="margin:8px 0 0">※ 一部素材名は英語名からの訳。<a class="ref" href="#src-25">[25]</a></p>
 
       <div class="callout callout-tip reveal">
         <span class="callout-icon">最短</span>
         <div>
-          <p><b>最短ルート：</b>フェロ → ワスプ8 → ガンスミス2 → アンヴィル（設計図） → センチネル4 → ガンスミス3 → レネゲイド。アンヴィルの設計図がなければ、フェロでセンチネルのコアを狙う。ハルクラッカーはガンスミス3以降でOK。</p>
+          <p><b>最短：</b>フェロ → ワスプ8 → ガンスミス2 → アンヴィル → センチネル4 → ガンスミス3 → レネゲイド。</p>
         </div>
       </div>
     </div>
@@ -2015,7 +1974,7 @@
               <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/arc-alloy.png" alt="" loading="lazy">ARC合金<b>10</b></span>
               <span class="mat mat-craft"><img class="mat-icon" src="assets/materials/advanced-electrical-components.png" alt="" loading="lazy">高度な電気部品<b>3</b></span>
             </div>
-            <p class="small muted" style="margin:9px 0 0">写真はブルーゲートの荒廃した家屋周辺。戦闘は飛行ARC 800 / ブリー 300ダメージ。</p>
+            <p class="small muted" style="margin:9px 0 0">写真はブルーゲートの家屋周辺。戦闘は飛行ARC 800 / ブリー 300。</p>
           </div>
         </div>
 
@@ -2127,7 +2086,7 @@
               <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/emperor-modulator.png" alt="" loading="lazy">エンペラーモジュレーター<b>1</b></span>
               <span class="mat mat-arc">増幅モジュール<b>1+</b></span>
             </div>
-            <p class="small muted" style="margin:9px 0 0">ガンスミスLv4＋研究Lv4＋モジュールで5段階目。研究は5,000 RP/項目。</p>
+            <p class="small muted" style="margin:9px 0 0">ガンスミスLv4＋研究Lv4＋モジュールで5段階目。研究5,000RP/項目。</p>
           </div>
         </div>
 
@@ -2144,7 +2103,7 @@
             <div class="obar"><span class="nm">スカルカーのターゲッター</span><div class="track"><div class="fill" style="width:7%"></div></div><b>5</b></div>
             <div class="obar"><span class="nm">破れた本</span><div class="track"><div class="fill" style="width:7%"></div></div><b>5</b></div>
           </div>
-          <p class="outpost-bars-note">ガンスミスLv4（ラジアルプレス 3 / 磁気加速器 3 / エンペラーモジュレーター 1）は別枠。全素材の内訳は上のチップ参照。</p>
+          <p class="outpost-bars-note">ガンスミスLv4は別枠。素材は上のチップ参照。</p>
         </div>
       </div>
     </div>
@@ -2156,11 +2115,7 @@
       <div class="sec-head reveal">
         <div class="sec-kicker">08 / ワークショップ</div>
         <h2>ワークショップ強化素材</h2>
-        <p class="sec-lead">
-          各ステーションを最大まで上げるのに必要な素材を、レベル別にまとめた。
-          色は「基本素材 / 精製・クラフト素材 / ARC・敵ドロップ / 固有・レア素材」の4分類。
-          同じ素材でも拠点ごとに必要なので、合計は単純加算している。
-        </p>
+        <p class="sec-lead">ステーション別の必要素材。色は素材4分類。</p>
       </div>
 
       <div class="mat-legend reveal">
@@ -2174,7 +2129,7 @@
       <div class="callout callout-tip reveal">
         <span class="callout-icon">無料</span>
         <div>
-          <p><b>ワークベンチは無料。</b>最初からLv1で、1ラウンドプレイすれば使える。アップグレード不要。以下の7ステーションが素材の対象。<a class="ref" href="#src-13">[13]</a></p>
+          <p><b>ワークベンチは無料。</b>Lv1から使用可。<a class="ref" href="#src-13">[13]</a></p>
         </div>
       </div>
 
@@ -2594,20 +2549,18 @@
       <div class="callout callout-tip reveal">
         <span class="callout-icon">優先</span>
         <div>
-          <p><b>集める優先度。</b>まず基本素材の「金属部品 80 / 生地 80 / プラスチック部品 75 / 化学薬品 50 / 厚板 35」。次にARC素材の「ARC合金 18 / ARC回路 10」。固有・レア素材は各ステーションのLv2以降で一気に要求されるので、Lv1を上げた段階で必要分をメモしておくとよい。<a class="ref" href="#src-13">[13]</a></p>
+          <p>優先素材：金属部品80 / 生地80 / プラスチック75 / 化学薬品50 / 厚板35。次にARC合金18 / ARC回路10。<a class="ref" href="#src-13">[13]</a></p>
         </div>
       </div>
 
       <div class="callout callout-warn reveal">
         <span class="callout-icon">メモ</span>
         <div>
-          <p><b>Lv4はガンスミスと研究ステーションのみ。</b>ガンスミスLv4は武器増幅の前提なので、エンドゲームを目指すなら必須。研究ステーションは前哨基地レベルと連動するため、先に前哨基地を上げる必要がある。<a class="ref" href="#src-13">[13]</a><a class="ref" href="#src-1">[1]</a></p>
+          <p>Lv4はガンスミス/研究のみ。増幅はガンスミスLv4が前提。<a class="ref" href="#src-13">[13]</a><a class="ref" href="#src-1">[1]</a></p>
         </div>
       </div>
 
-      <p class="small muted reveal" style="margin-top:12px">
-        素材表はARC Raiders WikiのWorkshopページ（2026年10月10日更新）に準拠。パッチで変更される可能性があるため、ゲーム内の表示も確認してほしい。
-      </p>
+      <p class="small muted reveal" style="margin-top:12px">素材表はARC Raiders Wiki（2026-10-10）準拠。</p>
     </div>
   </section>
 
@@ -2617,10 +2570,7 @@
       <div class="sec-head reveal">
         <div class="sec-kicker">09 / 武器</div>
         <h2>武器メタ・ティア表</h2>
-        <p class="sec-lead">
-          武器は「DPS」より「弾薬代」で選ぶ。毎レイド持ち込めるかどうかが、復帰勢にとっては強さより大事だ。
-          まず弱点の見方、次にティア、最後に役割別の型。
-        </p>
+        <p class="sec-lead">武器は弾薬代で選ぶ。まず弱点、次にティア、最後に役割別。</p>
       </div>
 
             <h3>まず覚える弱点の見方</h3>
@@ -2673,14 +2623,11 @@
         </div>
       </div>
 
-      <p class="small muted reveal" style="margin-top:10px">色分けはコミュニティの一般則。<a class="ref" href="#src-11">[11]</a> 画像はTimesaver.gg / Boosting Factoryより。<a class="ref" href="#src-7">[7]</a><a class="ref" href="#src-10">[10]</a></p>
+      <p class="small muted reveal" style="margin-top:10px">色分けはコミュニティ一般則。画像: Timesaver / Boosting Factory。<a class="ref" href="#src-11">[11]</a><a class="ref" href="#src-7">[7]</a><a class="ref" href="#src-10">[10]</a></p>
 
 
       <h3 style="margin-top:36px">総合ティア表（凍った道対応）</h3>
-      <p class="small muted" style="margin-bottom:14px">
-        PlayerAuctionsの凍った道版（2026年10月9日）を主軸にした総合評価。
-        PvP/PvEの両方、コスト、増幅の伸びしろを含む。画像はFandom Wikiのインスペクト画像。<a class="ref" href="#src-17">[17]</a>
-      </p>
+      <p class="small muted" style="margin-bottom:14px">PlayerAuctions凍った道版（2026-10-09）基準。PvP/PvE・コスト込み。<a class="ref" href="#src-17">[17]</a></p>
       <div class="tier-list reveal" id="weapon-tier">
         <div class="tier-row">
           <div class="tier-badge tier-s">S</div>
@@ -2737,15 +2684,14 @@
       <div class="callout callout-info reveal">
         <span class="callout-icon">メモ</span>
         <div>
-          <p><b>Dは「弱い」ではない。</b>ジュピター、ハルクラッカー、イコライザー、アフェリオンはPvE特化の専門工具。ARCやボス相手では主力になる。ティアは「汎用性とコスト」の評価であって、武器の絶対的な強さではない。<a class="ref" href="#src-9">[9]</a></p>
-          <p><b>ソースで評価が割れる。</b>Timesaverの8月29日版はオスプレーとベティーナをSに置いていたが、凍った道後のPlayerAuctions版はオスプレーをB、ベティーナをA、ハルクラッカーをDに置いている。評価基準（コスト・増幅込みか）の違い。<a class="ref" href="#src-6">[6]</a><a class="ref" href="#src-9">[9]</a></p>
+          <p><b>Dは弱いわけではない。</b>ジュピター/ハルクラッカー/イコライザー/アフェリオンはPvE専門。<a class="ref" href="#src-9">[9]</a></p>
+          <p>ソースで評価が割れる。ティアは目安。<a class="ref" href="#src-6">[6]</a><a class="ref" href="#src-9">[9]</a></p>
         </div>
       </div>
 
-      <h3 style="margin-top:36px">武器ステータス一覧</h3>
-      <p class="small muted" style="margin-bottom:6px">
-        公式武器シート由来の数値。凍った道直前（2026年8月29日更新）のデータのため、バンタムとスティレットは含まれない。
-      </p>
+      <details class="weapon-stats reveal">
+        <summary>武器ステータス一覧（全26武器）</summary>
+      <p class="small muted" style="margin-bottom:6px">公式武器シート（2026-08-29）。バンタム/スティレット未収録。</p>
       <div class="filters" role="group" aria-label="武器カテゴリ絞り込み">
         <button class="filter-btn active" data-filter="all">全て</button>
         <button class="filter-btn" data-filter="ar">アサルト</button>
@@ -2756,7 +2702,7 @@
         <button class="filter-btn" data-filter="pistol">拳銃</button>
         <button class="filter-btn" data-filter="special">特殊</button>
       </div>
-      <div class="table-wrap reveal">
+      <div class="table-wrap">
         <table id="weaponTable">
           <thead>
             <tr>
@@ -2792,44 +2738,45 @@
           </tbody>
         </table>
       </div>
-      <p class="small muted reveal" style="margin-top:8px">出典：Timesaver「Best Weapons Tier List」の武器ステータス表（公式武器データ由来）。<a class="ref" href="#src-6">[6]</a></p>
+      <p class="small muted" style="margin-top:8px">出典：Timesaver 武器ステータス表。<a class="ref" href="#src-6">[6]</a></p>
+      </details>
 
       <h3 style="margin-top:36px">役割別おすすめ構成</h3>
       <div class="loadout-grid reveal">
         <div class="loadout">
           <div class="lt">PvP / 中距離</div>
           <strong>レネゲイド + ヴルカノ + ヴェネイター</strong>
-          <p>全距離をカバーし、ほぼ中型弾で済む。レネゲイドで中距離、ヴルカノで室内、ヴェネイターで止め。</p>
+          <p>全距離。中型弾中心。</p>
         </div>
         <div class="loadout">
           <div class="lt">PvP / 近距離</div>
           <strong>ヴルカノ or ボブキャット + ヴェネイター</strong>
-          <p>建物内や入り組んだ地形向け。ボブキャットは最速連射だが tracked 前提。</p>
+          <p>建物内・近距離向け。</p>
         </div>
         <div class="loadout">
           <div class="lt">PvE / 対ARC</div>
           <strong>ベティーナ + アンヴィル + ハルクラッカー</strong>
-          <p>ベティーナで継続火力、アンヴィルで大ダメージ、ハルクラッカーは装甲に。重装甲相手の答え。</p>
+          <p>ARC装甲にはハルクラッカー。</p>
         </div>
         <div class="loadout">
           <div class="lt">ボス / クイーン＆マトリアーク</div>
           <strong>ハルクラッカー + ベティーナ or フェロ + オスプレー</strong>
-          <p>ハルクラッカーでバースト、ベティーナ/フェロで削り、オスプレーで弱点を遠距離から。</p>
+          <p>ボスはハルクラッカー＋遠距離。</p>
         </div>
         <div class="loadout">
           <div class="lt">低予算 / 再建</div>
           <strong>テンペスト + ヴルカノ + バーレッタ</strong>
-          <p>死んだ後の再建用。安い弾薬で最低限の火力を確保。まず黒字に戻す。</p>
+          <p>再建用。安い弾薬。</p>
         </div>
         <div class="loadout">
           <div class="lt">フリゲート</div>
           <strong>ベティーナ + ハルクラッカー or ジュピター + 大型シールド</strong>
-          <p>中距離PvPと装甲ARCの両対応。詳細は「新敵・フリゲート対策」へ。</p>
+          <p>中距離PvP＋装甲ARC。</p>
         </div>
       </div>
 
       <h3 style="margin-top:36px">弾薬経済</h3>
-      <p class="small muted" style="margin-bottom:10px">上ほど「毎レイド持ち込みやすい」。復帰勢は上から2つで回すのが安全。</p>
+      <p class="small muted" style="margin-bottom:10px">上ほど持ち込みやすい。復帰勢は上2つ。</p>
       <div class="ammo-bars reveal">
         <div class="ammo-bar"><span class="nm">中型</span><div class="track"><div class="fill" style="width:94%"></div></div><span class="cost">安い・汎用</span></div>
         <div class="ammo-bar"><span class="nm">小型</span><div class="track"><div class="fill" style="width:88%"></div></div><span class="cost">最安・SMG向け</span></div>
@@ -2840,7 +2787,7 @@
       <div class="callout callout-tip reveal">
         <span class="callout-icon">原則</span>
         <div>
-          <p><b>「中型主武器1本 + 状況用の重火器1本」</b>で黒字を維持する。大型とLauncherを毎回持ち込むと、勝っても財布が減る。<a class="ref" href="#src-6">[6]</a></p>
+          <p><b>中型1本＋状況用1本</b>で黒字維持。大型/Launcherは時々。<a class="ref" href="#src-6">[6]</a></p>
         </div>
       </div>
 
@@ -2851,7 +2798,7 @@
           <div class="card-body">
             <div class="card-kicker">New / スティレット</div>
             <h4>軽弾のバトルライフル</h4>
-            <p class="small">レネゲイドの序盤代替。安く作れて扱いやすい。連射は速いが、ボタン連打で精度が落ちる。落ち着いて撃つ人向け。<a class="ref" href="#src-2">[2]</a></p>
+            <p class="small">レネゲイドの序盤代替。安くて扱いやすい。<a class="ref" href="#src-2">[2]</a></p>
           </div>
         </article>
         <article class="card card-media">
@@ -2859,7 +2806,7 @@
           <div class="card-body">
             <div class="card-kicker">New / バンタム</div>
             <h4>重弾のスナブノーズリボルバー</h4>
-            <p class="small">ARCにもレイダーにも通る。独特のヒップファイアを持つ。2.0でアンヴィルがBlueに上がったため、Uncommonのハンドキャノン枠として追加された。<a class="ref" href="#src-2">[2]</a><a class="ref" href="#src-1">[1]</a></p>
+            <p class="small">ARC/レイダー両対応。Uncommonハンドキャノン。<a class="ref" href="#src-2">[2]</a><a class="ref" href="#src-1">[1]</a></p>
           </div>
         </article>
       </div>
@@ -2872,10 +2819,7 @@
       <div class="sec-head reveal">
         <div class="sec-kicker">10 / 脅威</div>
         <h2>新敵・フリゲート対策</h2>
-        <p class="sec-lead">
-          新敵は「硬い・速い・動かない」の3種類。それぞれ答えが違う。
-          そしてフリゲートは敵ではなく「場所」だ。乗り込み、内部を攻略し、貨物を降ろす。
-        </p>
+        <p class="sec-lead">新敵は「硬い・速い・動かない」。フリゲートは敵ではなく「場所」。</p>
       </div>
 
       <div class="grid grid-3 reveal">
@@ -2886,11 +2830,11 @@
               <h3 style="margin:0">ブリー</h3>
               <span class="enemy-badge badge-heavy">重装甲</span>
             </div>
-            <p class="small">ペンドラ・パスを徘徊する突進型。四足で一直線に迫り、攻撃を止めない。</p>
+            <p class="small">突進型。一直線に迫る。</p>
             <div class="kv"><span>弱点</span><b>脚 / 攻撃時に開く頭</b></div>
             <div class="kv"><span>対策</span><b>遮蔽物・狭所に引き込む</b></div>
             <div class="kv"><span>報酬</span><b>+500 XP / ブリーのフラグメンター</b></div>
-            <p class="small muted" style="margin-top:10px">正面から撃ち合わない。突進をいなして回復硬直を撃つ。<a class="ref" href="#src-7">[7]</a></p>
+            <p class="small muted" style="margin-top:10px">正面から撃ち合わない。突進後に撃つ。<a class="ref" href="#src-7">[7]</a></p>
           </div>
         </article>
         <article class="card card-media">
@@ -2900,11 +2844,11 @@
               <h3 style="margin:0">スカルカー</h3>
               <span class="enemy-badge badge-light">軽装甲</span>
             </div>
-            <p class="small">視界の端から強襲し、気を逸らすと即離脱する待ち伏せ型。尾に武器を持つ。</p>
+            <p class="small">待ち伏せ型。尾に武器。</p>
             <div class="kv"><span>弱点</span><b>軽装（詳細未確定）</b></div>
             <div class="kv"><span>対策</span><b>見失わない・視線を切らせない</b></div>
             <div class="kv"><span>報酬</span><b>スカルカーのターゲッター（約1,000 Coins）</b></div>
-            <p class="small muted" style="margin-top:10px">吹雪・電磁嵐・砂嵐など低視界で出やすい。1体に集中しすぎると消える。<a class="ref" href="#src-7">[7]</a></p>
+            <p class="small muted" style="margin-top:10px">低視界で出やすい。見失うと離脱。<a class="ref" href="#src-7">[7]</a></p>
           </div>
         </article>
         <article class="card card-media">
@@ -2914,11 +2858,11 @@
               <h3 style="margin:0">ハイドラ</h3>
               <span class="enemy-badge badge-static">固定砲台</span>
             </div>
-            <p class="small">3段積みの固定砲台。フリゲート上と、ペンドラ・パスの倒れたエンペラーを守る。</p>
+            <p class="small">3段固定砲台。フリゲート/エンペラーを守る。</p>
             <div class="kv"><span>弱点</span><b>背面（無装甲）</b></div>
             <div class="kv"><span>対策</span><b>囮・分断・遮蔽物</b></div>
             <div class="kv"><span>報酬</span><b>固有ドロップなし</b></div>
-            <p class="small muted" style="margin-top:10px">正面と側面は重装甲。1人が注意を引き、もう1人が回り込む。ソロは射撃サイクルを待って背面へ。<a class="ref" href="#src-7">[7]</a></p>
+            <p class="small muted" style="margin-top:10px">正面/側面は装甲。囮で背面へ。<a class="ref" href="#src-7">[7]</a></p>
           </div>
         </article>
       </div>
@@ -2926,15 +2870,12 @@
       <div class="callout callout-danger reveal">
         <span class="callout-icon">不具合</span>
         <div>
-          <p><b>ハイドラはカーゴエリアで壁越しに検知・射撃する既知の問題がある</b>（ダメージは通らない）。射撃が見えてもパニックにならず、遮蔽を維持する。カーゴ降下プラットフォームの端での即死は2.1.0で調整済みだが、端には立たない。<a class="ref" href="#src-1">[1]</a><a class="ref" href="#src-10">[10]</a></p>
+          <p>ハイドラはカーゴで壁越し射撃の既知不具合（ダメージなし）。端に立たない。<a class="ref" href="#src-1">[1]</a><a class="ref" href="#src-10">[10]</a></p>
         </div>
       </div>
 
       <h3 style="margin-top:36px">フリゲート攻略</h3>
-      <p class="small muted" style="margin-bottom:14px">
-        マップ条件「ARC フリゲート」でのみ発生する、乗り込み型のPvPvEコンテンツ。
-        無料ロードアウト不可、Raider Hatches無効、通常ルートの物資も減少する。装備を整えてから行く。
-      </p>
+      <p class="small muted" style="margin-bottom:14px">「ARC フリゲート」専用。無料装備不可、Hatches無効、物資減。</p>
 
       <figure class="shot reveal">
         <img src="assets/frigate.jpg" alt="フリゲートレイドの様子" loading="lazy" decoding="async" width="1024" height="576">
@@ -2957,45 +2898,7 @@
         </table>
       </div>
 
-      <h3 style="margin-top:30px">攻略手順</h3>
-      <ol class="step-flow reveal">
-        <li>
-          <h4>マップ条件を確認して出撃</h4>
-          <p>マップ選択画面で「ARC フリゲート」の発生を確認。6つの屋外マップを巡回する。地域サーバーで時間が異なる場合がある。</p>
-        </li>
-        <li>
-          <h4>リクレイマードローンに乗る</h4>
-          <p>船の下を降下してくる円形ドローンに近づき、乗って「Disrupt」。ドローンが船へ戻るので、船体に飛び移る。Grappling HookかSnap Hookがあると楽。</p>
-        </li>
-        <li>
-          <h4>翼部の通路から最初のパワーコアへ</h4>
-          <p>船内は左右がほぼ鏡像。まず「Move Up」リフトの先ではなく、近くの低いルートを進み、露出したパワーコアのオレンジ部分を撃つ。丸いハッチは研究素材（フリゲートインダクター含む）の宝庫。</p>
-        </li>
-        <li>
-          <h4>中央リアクターの3つの制御を同時起動</h4>
-          <p>中央アリーナのハイドラを排除または注意を逸らし、周囲の3つの制御を3人で同時に操作。露出したメインコアを破壊する。上層にも小さなコアが2つある。</p>
-        </li>
-        <li>
-          <h4>黄色ノードを撃って上層へ</h4>
-          <p>可動プラットフォームの横にある黄色ノードを撃つと足場が展開する。1人が制御を保持し、もう1人が次のスイッチへ、という分担が必要な箇所もある。</p>
-        </li>
-        <li>
-          <h4>上層のファイアールームを両方無効化</h4>
-          <p>船の左右にある危険室。警告灯が赤のときは炎と強風で入れない。安全な隙にパネルを破壊し、コアを撃つ。2.1.0以降、ハッチの開口部は燃焼ダメージを与える。</p>
-        </li>
-        <li>
-          <h4>前方の最終コア群を処理</h4>
-          <p>船首側にはハイドラと追加コアがある。左右両方のコアを確認。見落としやすいのが、赤いハッチの下の小部屋にある低層コア。ここを残すとカーゴが開かない。</p>
-        </li>
-        <li>
-          <h4>カーゴプラットフォームを降ろす</h4>
-          <p>プラットフォームの両側にある2つの制御を協力して操作。段階的に降りるので、解除動作を繰り返す。降下中は端に立たない。</p>
-        </li>
-        <li>
-          <h4>カーゴを漁って通常脱出へ</h4>
-          <p>カーゴは約24箇所のルートスポット。降下は脱出ではない。地面に着いたら通常の脱出 Pointへ向かう。早期離脱ならリクレイマードックへ戻る。</p>
-        </li>
-      </ol>
+      
 
             <h3 style="margin-top:34px">実写ルート</h3>
       <p class="small muted" style="margin:0 0 4px">実際の船内の順路。番号順に進む。画像をタップすると拡大。</p>
@@ -3142,8 +3045,8 @@
       <div class="callout callout-warn reveal">
         <span class="callout-icon">注意</span>
         <div>
-          <p><b>フリゲートはPvE限定ではない。</b>他のレイダーも同じ船を目指す。リアクターの制御は一時協力が必要だが、その前後で襲われる。弾薬・回復・帰路を必ず残す。<a class="ref" href="#src-10">[10]</a></p>
-          <p><b>Redirection</b>はフリゲートと同時に追加された新マップ条件。情報がまだ少ないため、遭遇時の挙動はコミュニティの検証待ち。<a class="ref" href="#src-1">[1]</a></p>
+          <p>PvE限定ではない。他レイダーも来る。弾薬/回復/帰路を残す。<a class="ref" href="#src-10">[10]</a></p>
+          <p><b>Redirection</b>は新マップ条件。情報少なめ。<a class="ref" href="#src-1">[1]</a></p>
         </div>
       </div>
     </div>
@@ -3155,10 +3058,7 @@
       <div class="sec-head reveal">
         <div class="sec-kicker">11 / 引用元</div>
         <h2>引用元一覧</h2>
-        <p class="sec-lead">
-          本文中の [n] はこのリストに対応する。数値・仕様は海外の公式・メディア・ガイドサイトのみを参照している。
-          最新の公式パッチノートも合わせて確認してほしい。
-        </p>
+        <p class="sec-lead">本文中の[n]は下記対応。海外ソースのみ。</p>
       </div>
 
       <ol class="sources reveal">
@@ -3292,8 +3192,8 @@
       <div class="callout callout-info reveal" style="margin-top:24px">
         <span class="callout-icon">メモ</span>
         <div>
-          <p><b>引用ポリシー。</b>本文の数値・仕様は、公式パッチノートと英語圏のガイドサイトを突き合わせて掲載している。ティア評価のようにソース間で差が出るものは、その旨を本文に明記した。ゲーム内の最終表示と異なる場合は、ゲーム内および公式パッチノートを優先してほしい。</p>
-          <p><b>画像について。</b>画像はEmbark Studios公式サイトのプロモーション素材、ARC Raiders Wiki（Fandom / ゲーム内マップ）の武器・素材・マップ画像、Timesaver.gg / Boosting Factoryの攻略画像を引用しています。本サイトは非公式のファンガイドであり、画像の権利は各権利者に帰属します。</p>
+          <p>数値は公式・海外ガイドを突き合わせ。評価が割れる場合は本文に明記。</p>
+          <p>画像はEmbark公式、ARC Raiders Wiki、Timesaver、Boosting Factory等。権利は各権利者。</p>
         </div>
       </div>
     </div>
