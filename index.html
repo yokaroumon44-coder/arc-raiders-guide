@@ -1,0 +1,3216 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARC Raiders 復帰勢攻略 | 凍った道 2.0 再入門ガイド</title>
+<meta name="description" content="ARC Raidersに復帰した人向けの攻略ガイド。凍った道 2.0で変わったスキルツリー、ペンドラ・パス、前哨基地、武器メタ、新敵を海外ソースの引用付きで整理。">
+<meta name="theme-color" content="#0a0d12">
+<link rel="canonical" href="https://yokaroumon44-coder.github.io/arc-raiders-guide/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ARC Raiders 復帰勢攻略">
+<meta property="og:title" content="ARC Raiders 復帰勢攻略 | 凍った道 2.0 再入門ガイド">
+<meta property="og:description" content="凍った道 2.0で変わったスキルツリー、ペンドラ・パス、前哨基地、武器メタ、新敵を海外ソースの引用付きで整理。半年ぶりの復帰勢向け。">
+<meta property="og:url" content="https://yokaroumon44-coder.github.io/arc-raiders-guide/">
+<meta property="og:image" content="https://yokaroumon44-coder.github.io/arc-raiders-guide/assets/ogp.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ARC Raiders 復帰勢攻略 凍った道 2.0 再入門ガイド">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ARC Raiders 復帰勢攻略 | 凍った道 2.0 再入門ガイド">
+<meta name="twitter:description" content="凍った道 2.0で変わったスキルツリー、ペンドラ・パス、前哨基地、武器メタ、新敵を海外ソースの引用付きで整理。">
+<meta name="twitter:image" content="https://yokaroumon44-coder.github.io/arc-raiders-guide/assets/ogp.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230a0d12'/><text x='50' y='68' font-size='46' font-family='monospace' font-weight='bold' fill='%23f5a524' text-anchor='middle'>A</text></svg>">
+<link rel="preload" as="image" href="assets/maps/pendola-map.jpg">
+<style>
+  :root{
+    --bg:#0a0d12;
+    --bg-2:#0f141c;
+    --panel:#141b25;
+    --panel-2:#1a2230;
+    --line:#26303f;
+    --line-soft:rgba(38,48,63,.55);
+    --text:#e6eaf0;
+    --muted:#8b97a8;
+    --accent:#f5a524;
+    --accent-2:#38bdf8;
+    --green:#34d399;
+    --danger:#f87171;
+    --tier-s:#fbbf24;
+    --tier-a:#a78bfa;
+    --tier-b:#38bdf8;
+    --tier-c:#94a3b8;
+    --tier-d:#64748b;
+    --sidebar-w:288px;
+    --radius:12px;
+    --font:"Segoe UI","Hiragino Kaku Gothic ProN","Yu Gothic","YuGothic",Meiryo,system-ui,-apple-system,sans-serif;
+    --mono:"Cascadia Code","SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font);
+    font-size:15.5px;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+    background:
+      radial-gradient(900px 520px at 88% -8%, rgba(245,165,36,.11), transparent 62%),
+      radial-gradient(760px 520px at 4% 4%, rgba(56,189,248,.075), transparent 62%),
+      linear-gradient(180deg,#0a0d12 0%,#0a0d12 100%);
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+    background-image:
+      linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
+    background-size:52px 52px;
+    -webkit-mask-image:radial-gradient(circle at 50% 0%,#000 0%,transparent 72%);
+    mask-image:radial-gradient(circle at 50% 0%,#000 0%,transparent 72%);
+  }
+  a{color:var(--accent-2);text-decoration:none}
+  a:hover{text-decoration:underline}
+  img{max-width:100%}
+  ::selection{background:rgba(245,165,36,.28);color:#fff}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+  .scroll-progress{
+    position:fixed;top:0;left:0;height:3px;width:0;z-index:100;
+    background:linear-gradient(90deg,var(--accent),#fb923c);
+    box-shadow:0 0 12px rgba(245,165,36,.5);
+  }
+
+  /* ---------- sidebar ---------- */
+  .sidebar{
+    position:fixed;top:0;left:0;bottom:0;width:var(--sidebar-w);z-index:60;
+    display:flex;flex-direction:column;gap:22px;
+    padding:26px 18px 20px;
+    background:rgba(12,17,24,.94);
+    border-right:1px solid var(--line);
+    -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+    overflow-y:auto;
+  }
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text)}
+  .brand:hover{text-decoration:none}
+  .brand-mark{
+    flex:0 0 50px;width:50px;height:50px;display:grid;place-items:center;
+    font:800 14px/1 var(--mono);letter-spacing:.08em;color:var(--accent);
+    background:rgba(245,165,36,.08);border:1px solid rgba(245,165,36,.55);
+    clip-path:polygon(0 0,100% 0,100% 72%,72% 100%,0 100%);
+  }
+  .brand-text{display:flex;flex-direction:column;line-height:1.25}
+  .brand-text strong{font-size:15px;letter-spacing:.19em}
+  .brand-text small{font:600 9px/1.5 var(--mono);letter-spacing:.18em;color:var(--muted)}
+  .nav{display:flex;flex-direction:column;gap:3px}
+  .nav-label{
+    font:700 9.5px/1 var(--mono);letter-spacing:.22em;color:#5b6676;
+    padding:0 12px;margin-bottom:8px;text-transform:uppercase;
+  }
+  .nav-link{
+    display:flex;align-items:center;gap:11px;
+    padding:9px 12px;border-radius:8px;border-left:2px solid transparent;
+    color:var(--muted);font-size:13.5px;font-weight:600;text-decoration:none;
+    transition:background .18s,color .18s,border-color .18s;
+  }
+  .nav-link:hover{background:rgba(255,255,255,.035);color:var(--text);text-decoration:none}
+  .nav-num{font:700 10.5px/1 var(--mono);color:#566274;letter-spacing:.06em;transition:color .18s}
+  .nav-link.active{
+    color:#fff;border-left-color:var(--accent);
+    background:linear-gradient(90deg,rgba(245,165,36,.14),rgba(245,165,36,.015));
+  }
+  .nav-link.active .nav-num{color:var(--accent)}
+  .sidebar-foot{margin-top:auto;padding:14px 12px 0;border-top:1px solid var(--line)}
+  .sidebar-foot p{margin:0;font:600 9.5px/1.6 var(--mono);letter-spacing:.16em;color:#5b6676;text-transform:uppercase}
+  .sidebar-foot strong{display:block;font:700 14px/1.5 var(--mono);color:var(--text);letter-spacing:.05em;margin:2px 0 6px}
+  .sidebar-foot .tiny{font-size:9.5px;letter-spacing:.06em;color:#4b5666;font-family:var(--font)}
+  .sidebar-note{
+    margin-top:12px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;
+    font-size:11px;line-height:1.7;color:var(--muted);background:rgba(255,255,255,.015);
+  }
+  .sidebar-note b{color:var(--accent);font-weight:700}
+
+  /* ---------- mobile topbar ---------- */
+  .topbar{display:none;position:fixed;top:0;left:0;right:0;height:58px;z-index:70;
+    align-items:center;justify-content:space-between;padding:0 16px;
+    background:rgba(10,13,18,.94);border-bottom:1px solid var(--line);
+    -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  }
+  .brand-sm{display:flex;align-items:baseline;gap:6px;color:#fff;font-weight:800;letter-spacing:.14em;font-size:14px;text-decoration:none}
+  .brand-sm span{color:var(--accent)}
+  .menu-btn{
+    width:42px;height:42px;display:grid;place-items:center;gap:5px;padding:0;
+    background:transparent;border:1px solid var(--line);border-radius:9px;cursor:pointer;
+  }
+  .menu-btn i{display:block;width:17px;height:1.8px;background:var(--text);transition:.2s}
+  .menu-btn[aria-expanded="true"] i:nth-child(1){transform:translateY(6.8px) rotate(45deg)}
+  .menu-btn[aria-expanded="true"] i:nth-child(2){opacity:0}
+  .menu-btn[aria-expanded="true"] i:nth-child(3){transform:translateY(-6.8px) rotate(-45deg)}
+  .overlay{position:fixed;inset:0;z-index:55;background:rgba(0,0,0,.6);opacity:0;pointer-events:none;transition:opacity .2s}
+  .overlay.show{opacity:1;pointer-events:auto}
+
+  /* ---------- layout ---------- */
+  .main{margin-left:var(--sidebar-w)}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 44px}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;padding:86px 0 60px;isolation:isolate}
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:-2;
+    background:url("assets/hero-frozen-trail.jpg") right center/cover no-repeat;
+    opacity:.34;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0%,transparent 28%,#000 76%);
+    mask-image:linear-gradient(90deg,transparent 0%,transparent 28%,#000 76%);
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;z-index:-1;
+    background:linear-gradient(90deg,rgba(10,13,18,.98) 0%,rgba(10,13,18,.86) 44%,rgba(10,13,18,.26) 100%);
+  }
+  .hero .wrap{position:relative;z-index:2}
+  .hero-bg-text{
+    position:absolute;right:-2%;top:-8%;z-index:1;
+    font:900 33vw/1 var(--mono);letter-spacing:-.06em;color:rgba(255,255,255,.028);
+    pointer-events:none;user-select:none;
+  }
+  .kicker{
+    display:inline-flex;align-items:center;gap:10px;
+    font:700 10.5px/1.4 var(--mono);letter-spacing:.24em;color:var(--accent);
+    text-transform:uppercase;margin-bottom:18px;
+  }
+  .kicker::before{content:"";width:26px;height:2px;background:var(--accent)}
+  .hero h1{
+    margin:0;font-size:clamp(34px,4.6vw,58px);line-height:1.24;letter-spacing:.005em;
+    font-weight:800;text-wrap:balance;
+  }
+  .hero h1 .accent{color:var(--accent)}
+  .hero-lead{max-width:720px;margin:20px 0 0;color:#b9c3d1;font-size:16px;line-height:1.95}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+  .tag{
+    display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;
+    font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--muted);
+    border:1px solid var(--line);background:rgba(255,255,255,.018);
+  }
+  .tag-hot{color:#fbbf24;border-color:rgba(245,158,11,.4);background:rgba(245,158,11,.08)}
+  .tag-cyan{color:#7dd3fc;border-color:rgba(56,189,248,.35);background:rgba(56,189,248,.07)}
+  .hero-stats{
+    display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;
+    margin:34px 0 0;background:var(--line);border:1px solid var(--line);
+    border-radius:var(--radius);overflow:hidden;
+  }
+  .hero-stat{background:rgba(15,20,28,.92);padding:16px 18px}
+  .hero-stat strong{display:block;font:800 26px/1.2 var(--mono);color:#fff;letter-spacing:-.02em}
+  .hero-stat strong em{font-style:normal;font-size:13px;color:var(--accent);margin-left:3px}
+  .hero-stat span{display:block;margin-top:4px;font-size:11.5px;color:var(--muted);letter-spacing:.03em}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    padding:11px 20px;border-radius:9px;font-size:14px;font-weight:700;
+    border:1px solid var(--line);color:var(--text);background:transparent;
+    cursor:pointer;text-decoration:none;transition:.18s;
+  }
+  .btn:hover{text-decoration:none}
+  .btn-primary{background:var(--accent);border-color:var(--accent);color:#1c1305}
+  .btn-primary:hover{filter:brightness(1.08);transform:translateY(-1px)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent);background:rgba(245,165,36,.05)}
+  .btn .arrow{font-family:var(--mono);font-weight:800}
+
+  /* ---------- sections ---------- */
+  .section{padding:58px 0;border-top:1px solid rgba(38,48,63,.72);scroll-margin-top:20px}
+  .sec-head{margin-bottom:28px;max-width:820px}
+  .sec-kicker{
+    display:flex;align-items:center;gap:10px;
+    font:700 10.5px/1.4 var(--mono);letter-spacing:.22em;color:var(--accent);
+    text-transform:uppercase;margin-bottom:10px;
+  }
+  .sec-kicker::before{content:"";width:26px;height:2px;background:var(--accent)}
+  .sec-head h2{margin:0 0 10px;font-size:clamp(25px,3vw,36px);line-height:1.35;font-weight:800;letter-spacing:.01em;text-wrap:balance}
+  .sec-lead{margin:0;color:var(--muted);font-size:14.5px;line-height:1.95;max-width:760px}
+  h3{font-size:19px;line-height:1.5;margin:0 0 10px;letter-spacing:.01em}
+  h4{font-size:15px;margin:0 0 6px;letter-spacing:.02em}
+  p{margin:0 0 14px}
+  .muted{color:var(--muted)}
+  .small{font-size:12.5px;line-height:1.8}
+  .mono{font-family:var(--mono)}
+  .accent{color:var(--accent)}
+  .cyan{color:var(--accent-2)}
+  .nowrap{white-space:nowrap}
+
+  .grid{display:grid;gap:16px}
+  .grid > *,.split > *,.shot-grid > *,.shot-grid-4 > *,.loadout-grid > *,.ステーション-grid > *,.total-grid > *{min-width:0}
+  .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .card{
+    position:relative;padding:22px;border:1px solid var(--line);border-radius:var(--radius);
+    background:linear-gradient(180deg,rgba(20,27,37,.92),rgba(15,20,28,.92));
+  }
+  .card:hover{border-color:#334155}
+  .card p:last-child{margin-bottom:0}
+  .card-kicker{font:700 10px/1.4 var(--mono);letter-spacing:.18em;color:var(--accent);text-transform:uppercase;margin-bottom:8px}
+
+  /* ---------- refs ---------- */
+  .ref{
+    display:inline-block;margin-left:2px;padding:0 4px;border-radius:4px;
+    font:700 10px/1.5 var(--mono);color:var(--accent);
+    border:1px solid rgba(245,165,36,.3);background:rgba(245,165,36,.07);
+    vertical-align:1px;text-decoration:none;
+  }
+  .ref:hover{background:rgba(245,165,36,.18);text-decoration:none}
+
+  /* ---------- callout ---------- */
+  .callout{
+    display:flex;gap:13px;margin:22px 0;padding:15px 18px;
+    border:1px solid var(--line);border-left-width:3px;border-radius:10px;
+    font-size:14px;line-height:1.85;background:rgba(255,255,255,.015);
+  }
+  .callout-icon{flex:0 0 auto;font:800 13px/1.6 var(--mono);letter-spacing:.05em}
+  .callout b{color:#fff}
+  .callout p{margin:0}
+  .callout p + p{margin-top:6px}
+  .callout-info{border-left-color:var(--accent-2);background:rgba(56,189,248,.05)}
+  .callout-info .callout-icon{color:var(--accent-2)}
+  .callout-warn{border-left-color:var(--accent);background:rgba(245,165,36,.05)}
+  .callout-warn .callout-icon{color:var(--accent)}
+  .callout-danger{border-left-color:var(--danger);background:rgba(248,113,113,.05)}
+  .callout-danger .callout-icon{color:var(--danger)}
+  .callout-tip{border-left-color:var(--green);background:rgba(52,211,153,.05)}
+  .callout-tip .callout-icon{color:var(--green)}
+
+  /* ---------- checklist ---------- */
+  .check-summary{
+    display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+    padding:18px 20px;margin-bottom:18px;border:1px solid var(--line);border-radius:var(--radius);
+    background:linear-gradient(180deg,rgba(245,165,36,.07),rgba(15,20,28,.92));
+  }
+  .check-summary .label{font-size:13px;font-weight:700;letter-spacing:.04em}
+  .check-summary .count{font:800 20px/1 var(--mono);color:var(--accent);letter-spacing:.02em}
+  .progress-track{flex:1 1 200px;height:8px;border-radius:999px;background:#1b2432;overflow:hidden;min-width:160px}
+  .progress-fill{height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,#f59e0b,#fbbf24);transition:width .35s ease}
+  .check-list{display:flex;flex-direction:column;gap:10px;counter-reset:step}
+  .check-item{
+    display:grid;grid-template-columns:26px 1fr;gap:14px;align-items:start;
+    padding:17px 18px;border:1px solid var(--line);border-radius:var(--radius);
+    background:rgba(15,20,28,.75);cursor:pointer;transition:border-color .18s,background .18s;
+  }
+  .check-item:hover{border-color:#344154;background:rgba(20,27,37,.9)}
+  .check-item.done{border-color:rgba(52,211,153,.35);background:rgba(52,211,153,.035)}
+  .check-input{
+    appearance:none;-webkit-appearance:none;width:23px;height:23px;margin:3px 0 0;
+    border:1.5px solid #3b4759;border-radius:6px;background:rgba(0,0,0,.2);
+    cursor:pointer;position:relative;flex:0 0 auto;transition:.18s;
+  }
+  .check-input:checked{background:var(--accent);border-color:var(--accent)}
+  .check-input:checked::after{
+    content:"";position:absolute;left:7px;top:3px;width:6px;height:11px;
+    border:2px solid #1c1305;border-top:0;border-left:0;transform:rotate(42deg);
+  }
+  .check-body h4{margin:0 0 3px;font-size:15.5px}
+  .check-body h4 .step-num{font:800 11px/1 var(--mono);color:var(--accent);margin-right:8px;letter-spacing:.08em}
+  .check-body p{margin:0;color:#aab5c4;font-size:13.5px;line-height:1.8}
+  .check-item.done .check-body h4{color:#9aa6b6;text-decoration:line-through;text-decoration-color:rgba(52,211,153,.6)}
+
+  .timeline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;margin-top:18px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .timeline-item{background:rgba(15,20,28,.92);padding:18px}
+  .timeline-item .t{font:800 12px/1 var(--mono);color:var(--accent);letter-spacing:.06em;margin-bottom:8px}
+  .timeline-item p{margin:0;font-size:13px;color:#aab5c4;line-height:1.75}
+
+  /* ---------- tables ---------- */
+  .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:rgba(15,20,28,.7)}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  thead th{
+    position:sticky;top:0;z-index:1;background:#151d29;text-align:left;
+    padding:12px 14px;font:700 10.5px/1.4 var(--mono);letter-spacing:.12em;
+    text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line);white-space:nowrap;
+  }
+  tbody td{padding:11px 14px;border-bottom:1px solid var(--line-soft);vertical-align:middle}
+  tbody tr:last-child td{border-bottom:0}
+  tbody tr:hover{background:rgba(245,165,36,.04)}
+  .num{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+  th.num{text-align:right}
+  .w-name{font-weight:700;color:#fff;white-space:nowrap}
+  .cat{display:inline-block;padding:1px 7px;border-radius:5px;font-size:11px;font-weight:600;color:#c7d2e0;background:rgba(255,255,255,.055);white-space:nowrap}
+  .ammo{font:600 11.5px/1.6 var(--mono);color:#9fb0c4;white-space:nowrap}
+  .diff-table{min-width:640px}
+  .diff-table td:first-child{font-weight:700;color:#fff;white-space:nowrap}
+  #weaponTable{min-width:660px}
+  .diff-table td:nth-child(2){color:#7d8898}
+  .diff-table td:nth-child(3){color:#dbe3ee}
+  .diff-table .arrow{color:var(--accent);font-family:var(--mono);margin-right:6px}
+
+  .filters{display:flex;flex-wrap:wrap;gap:7px;margin:18px 0 12px}
+  .filter-btn{
+    padding:6px 13px;border-radius:999px;border:1px solid var(--line);
+    background:transparent;color:var(--muted);font:600 12px/1.5 var(--font);
+    cursor:pointer;transition:.16s;
+  }
+  .filter-btn:hover{color:var(--text);border-color:#3a475b}
+  .filter-btn.active{background:var(--accent);border-color:var(--accent);color:#1c1305;font-weight:700}
+
+  /* ---------- tier list ---------- */
+  .tier-list{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:rgba(15,20,28,.7)}
+  .tier-row{display:grid;grid-template-columns:64px 1fr;gap:16px;align-items:start;padding:15px 18px;border-bottom:1px solid var(--line-soft)}
+  .tier-row:last-child{border-bottom:0}
+  .tier-badge{
+    width:46px;height:46px;display:grid;place-items:center;border-radius:10px;
+    font:800 20px/1 var(--mono);border:1px solid;
+  }
+  .tier-s{color:var(--tier-s);background:rgba(251,191,36,.1);border-color:rgba(251,191,36,.38)}
+  .tier-a{color:var(--tier-a);background:rgba(167,139,250,.1);border-color:rgba(167,139,250,.36)}
+  .tier-b{color:var(--tier-b);background:rgba(56,189,248,.09);border-color:rgba(56,189,248,.34)}
+  .tier-c{color:var(--tier-c);background:rgba(148,163,184,.09);border-color:rgba(148,163,184,.32)}
+  .tier-d{color:var(--tier-d);background:rgba(100,116,139,.1);border-color:rgba(100,116,139,.34)}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;align-items:center}
+  .chip{
+    display:inline-flex;align-items:baseline;gap:7px;padding:5px 10px;border-radius:7px;
+    border:1px solid var(--line);background:rgba(255,255,255,.022);font-size:13px;font-weight:600;
+  }
+  .chip small{font:600 10px/1 var(--mono);color:var(--muted);letter-spacing:.03em}
+  .chip.new{border-color:rgba(56,189,248,.35);background:rgba(56,189,248,.05)}
+  .chip.new::after{content:"NEW";font:800 8.5px/1 var(--mono);color:var(--accent-2);letter-spacing:.06em}
+
+  .weapon-grid{display:flex;flex-wrap:wrap;gap:8px}
+  .weapon-card{
+    display:flex;align-items:center;gap:9px;width:190px;padding:7px 9px;
+    border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.02);
+  }
+  .weapon-thumb{width:74px;height:46px;display:grid;place-items:center;flex:0 0 auto}
+  .weapon-thumb img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 2px 4px rgba(0,0,0,.45))}
+  .weapon-meta{min-width:0;line-height:1.3}
+  .weapon-meta strong{display:block;font-size:12px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .weapon-meta small{display:block;font-size:9px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .weapon-card.new{border-color:rgba(56,189,248,.3);background:rgba(56,189,248,.04)}
+
+  .wp-gallery{display:flex;flex-direction:column;gap:14px;margin-top:14px}
+  .wp-figure{margin:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#0d131b}
+  .wp-frame{position:relative}
+  .wp-frame img{display:block;width:100%;height:auto}
+  .wp-dot{
+    position:absolute;width:18px;height:18px;border:2px solid #fbbf24;border-radius:50%;
+    transform:translate(-50%,-50%);pointer-events:none;
+    box-shadow:0 0 0 3px rgba(251,191,36,.16),0 0 14px rgba(251,191,36,.55);
+  }
+  .wp-dot::after{content:"";position:absolute;inset:4px;border-radius:50%;background:#fbbf24}
+  .wp-dot.armor{border-color:#94a3b8;box-shadow:0 0 0 3px rgba(148,163,184,.14)}
+  .wp-dot.armor::after{background:#94a3b8}
+  .wp-label{
+    position:absolute;transform:translate(-50%,-50%);padding:4px 8px;border-radius:5px;
+    background:rgba(10,13,18,.88);border:1px solid rgba(245,165,36,.38);
+    color:#fff;font-size:10.5px;font-weight:700;white-space:nowrap;line-height:1.5;
+    pointer-events:none;
+  }
+  .wp-label.armor{border-color:rgba(148,163,184,.4);color:#cbd5e1}
+  .wp-label.cyan{border-color:rgba(56,189,248,.4);color:#bae6fd}
+  .wp-legend{
+    display:flex;flex-wrap:wrap;gap:9px 18px;padding:11px 14px;
+    border:1px solid var(--line);border-radius:10px;
+    font-size:11px;color:#c3cddb;background:rgba(15,20,28,.84);
+  }
+  .wp-legend span{display:inline-flex;align-items:center;gap:6px}
+  .wp-legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+  .wp-legend .w{background:#fbbf24}
+  .wp-legend .n{background:#e2e8f0}
+  .wp-legend .a{background:#64748b}
+  .wp-two{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+  .wp-figure figcaption{padding:8px 12px;font-size:10.5px;color:var(--muted);border-top:1px solid var(--line);background:rgba(15,20,28,.84);line-height:1.6}
+  .wp-figure figcaption b{color:#cfd8e4}
+
+  /* ---------- misc components ---------- */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .list-clean{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+  .list-clean li{position:relative;padding-left:18px;font-size:13.5px;color:#b3bece;line-height:1.8}
+  .list-clean li::before{content:"";position:absolute;left:2px;top:11px;width:5px;height:5px;background:var(--accent);border-radius:1px;transform:rotate(45deg)}
+  .list-clean li b{color:#fff}
+  .kv{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px dashed rgba(38,48,63,.8);font-size:13px}
+  .kv:last-child{border-bottom:0}
+  .kv span{color:var(--muted)}
+  .kv b{color:#fff;font-weight:600;text-align:right}
+
+  .enemy-head{display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+  .enemy-badge{display:inline-grid;place-items:center;padding:4px 10px;border-radius:6px;font:800 10px/1.4 var(--mono);letter-spacing:.1em}
+  .badge-heavy{color:#fbbf24;background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.35)}
+  .badge-light{color:#34d399;background:rgba(52,211,153,.09);border:1px solid rgba(52,211,153,.32)}
+  .badge-static{color:#38bdf8;background:rgba(56,189,248,.09);border:1px solid rgba(56,189,248,.32)}
+
+  .step-flow{list-style:none;margin:0;padding:0;counter-reset:flow}
+  .step-flow li{
+    position:relative;padding:0 0 20px 42px;counter-increment:flow;
+  }
+  .step-flow li::before{
+    content:counter(flow,decimal-leading-zero);position:absolute;left:0;top:2px;
+    width:27px;height:27px;display:grid;place-items:center;border-radius:7px;
+    font:800 10.5px/1 var(--mono);color:var(--accent);
+    border:1px solid rgba(245,165,36,.38);background:rgba(245,165,36,.07);
+  }
+  .step-flow li::after{
+    content:"";position:absolute;left:13px;top:33px;bottom:2px;width:1px;background:var(--line);
+  }
+  .step-flow li:last-child{padding-bottom:0}
+  .step-flow li:last-child::after{display:none}
+  .step-flow h4{margin:0 0 3px;font-size:14.5px}
+  .step-flow p{margin:0;font-size:13.5px;color:#aab5c4;line-height:1.8}
+
+  .loadout-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .loadout{border:1px solid var(--line);border-radius:10px;padding:15px 16px;background:rgba(15,20,28,.72)}
+  .loadout .lt{font:700 10px/1.4 var(--mono);letter-spacing:.14em;color:var(--accent);text-transform:uppercase;margin-bottom:8px}
+  .loadout strong{display:block;font-size:14px;color:#fff;margin-bottom:6px}
+  .loadout p{margin:0;font-size:12.5px;color:#a4b0c0;line-height:1.75}
+
+  .ammo-bars{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+  .ammo-bar{display:grid;grid-template-columns:92px 1fr auto;gap:12px;align-items:center;font-size:12.5px}
+  .ammo-bar .nm{font-weight:700;color:#dfe6ef}
+  .ammo-bar .track{height:7px;border-radius:999px;background:#1b2432;overflow:hidden}
+  .ammo-bar .fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent),#fbbf24)}
+  .ammo-bar .cost{font:600 10.5px/1.4 var(--mono);color:var(--muted);letter-spacing:.03em}
+
+  /* ---------- workshop materials ---------- */
+  .mat-legend{
+    display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center;
+    margin:2px 0 18px;padding:13px 16px;border:1px solid var(--line);
+    border-radius:10px;background:rgba(15,20,28,.7);
+  }
+  .legend-item{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:#c3cddb;font-weight:600}
+  .legend-note{margin-left:auto;font-size:11px;color:var(--muted)}
+  .dot{width:9px;height:9px;border-radius:3px;display:inline-block;flex:0 0 auto}
+  .dot-common{background:#94a3b8;box-shadow:0 0 8px rgba(148,163,184,.3)}
+  .dot-craft{background:#22d3ee;box-shadow:0 0 8px rgba(34,211,238,.3)}
+  .dot-arc{background:#f59e0b;box-shadow:0 0 8px rgba(245,158,11,.35)}
+  .dot-rare{background:#a78bfa;box-shadow:0 0 8px rgba(167,139,250,.35)}
+
+  .ステーション-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:18px}
+  .ステーション-card{
+    border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+    background:linear-gradient(180deg,rgba(20,27,37,.94),rgba(15,20,28,.92));
+  }
+  .ステーション-head{
+    display:flex;align-items:center;gap:12px;padding:15px 17px;
+    border-bottom:1px solid var(--line);background:rgba(255,255,255,.018);
+  }
+  .ステーション-mark{
+    width:38px;height:38px;display:grid;place-items:center;border-radius:8px;flex:0 0 auto;
+    font:800 14px/1 var(--mono);color:var(--accent);
+    border:1px solid rgba(245,165,36,.38);background:rgba(245,165,36,.08);
+  }
+  .ステーション-title{flex:1;min-width:0}
+  .ステーション-title h3{margin:0;font-size:16px;line-height:1.4}
+  .ステーション-title p{margin:0;font-size:10.5px;color:var(--muted);line-height:1.5}
+  .ステーション-max{
+    font:700 9px/1.4 var(--mono);letter-spacing:.08em;color:var(--muted);
+    border:1px solid var(--line);border-radius:999px;padding:3px 8px;white-space:nowrap;
+  }
+  .ステーション-card.is-outpost .ステーション-max{color:#c4b5fd;border-color:rgba(167,139,250,.35);background:rgba(167,139,250,.07)}
+  .lvl-list{list-style:none;margin:0;padding:5px 0}
+  .lvl-row{display:grid;grid-template-columns:46px 1fr;gap:10px;padding:11px 17px;border-bottom:1px dashed rgba(38,48,63,.75)}
+  .lvl-row:last-child{border-bottom:0}
+  .lvl-badge{
+    align-self:start;display:inline-grid;place-items:center;padding:3px 0;border-radius:6px;
+    font:800 10.5px/1.4 var(--mono);color:var(--accent);letter-spacing:.04em;
+    border:1px solid rgba(245,165,36,.3);background:rgba(245,165,36,.06);
+  }
+  .lvl-badge.outpost{color:#c4b5fd;border-color:rgba(167,139,250,.35);background:rgba(167,139,250,.07)}
+  .lvl-body{min-width:0}
+  .lvl-note{display:flex;align-items:center;gap:6px;font-size:10px;color:var(--muted);margin-bottom:5px;line-height:1.4}
+  .outpost-tag{
+    font:800 8px/1.2 var(--mono);letter-spacing:.08em;color:#c4b5fd;
+    border:1px solid rgba(167,139,250,.35);border-radius:3px;padding:1px 4px;
+  }
+  .mats{display:flex;flex-wrap:wrap;gap:5px}
+  .mat{
+    display:inline-flex;align-items:center;gap:6px;padding:3px 7px;border-radius:5px;
+    border:1px solid;font-size:11px;line-height:1.5;font-weight:600;
+  }
+  .mat b{font:800 11.5px/1 var(--mono);letter-spacing:.02em}
+  .mat b::before{content:"×";font-weight:600;opacity:.55;margin-right:1px}
+  .mat-icon{width:16px;height:16px;object-fit:contain;flex:0 0 auto;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}
+  .mat-common{color:#c2cfdd;border-color:rgba(148,163,184,.26);background:rgba(148,163,184,.06)}
+  .mat-craft{color:#a5f3fc;border-color:rgba(34,211,238,.26);background:rgba(34,211,238,.055)}
+  .mat-arc{color:#fcd34d;border-color:rgba(245,158,11,.28);background:rgba(245,158,11,.06)}
+  .mat-rare{color:#ddd6fe;border-color:rgba(167,139,250,.28);background:rgba(167,139,250,.06)}
+
+  .total-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .total-card{border:1px solid var(--line);border-radius:10px;padding:15px 17px;background:rgba(15,20,28,.72)}
+  .total-head{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;margin-bottom:10px}
+  .total-head em{font-style:normal;font-size:10px;font-weight:600;color:var(--muted);margin-left:auto}
+  .total-chips{display:flex;flex-wrap:wrap;gap:5px}
+
+  /* ---------- outpost ---------- */
+  .outpost-stats{
+    display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;
+    margin:14px 0 18px;background:var(--line);border:1px solid var(--line);
+    border-radius:10px;overflow:hidden;
+  }
+  .outpost-stats div{background:rgba(15,20,28,.86);padding:11px 10px;text-align:center}
+  .outpost-stats strong{display:block;font:800 20px/1.2 var(--mono);color:#fff}
+  .outpost-stats span{display:block;font-size:10px;color:var(--muted);margin-top:2px}
+
+  .ability-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:16px 0 0}
+  .ability-card{border:1px solid var(--line);border-radius:10px;padding:15px;background:rgba(15,20,28,.7)}
+  .ability-icon{
+    width:42px;height:42px;display:grid;place-items:center;border-radius:9px;
+    border:1px solid rgba(245,165,36,.3);background:rgba(245,165,36,.07);margin-bottom:9px;
+  }
+  .ability-icon svg{width:23px;height:23px;stroke:var(--accent);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .ability-card h4{margin:0 0 3px;font-size:14px}
+  .ability-card p{margin:0;font-size:11px;line-height:1.65;color:var(--muted)}
+
+  .phase-card{border:1px solid var(--line);border-radius:12px;background:rgba(15,20,28,.72);overflow:hidden}
+  .phase-head{display:flex;align-items:center;gap:12px;padding:13px 17px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.018)}
+  .phase-num{
+    width:30px;height:30px;display:grid;place-items:center;border-radius:7px;flex:0 0 auto;
+    font:800 10px/1 var(--mono);color:var(--accent);
+    border:1px solid rgba(245,165,36,.35);background:rgba(245,165,36,.07);
+  }
+  .phase-head h3{margin:0;font-size:16px;line-height:1.4}
+  .phase-head p{margin:0;font-size:10px;color:var(--muted);line-height:1.4}
+  .phase-tag{
+    margin-left:auto;font:700 9px/1.4 var(--mono);letter-spacing:.08em;color:var(--muted);
+    border:1px solid var(--line);border-radius:999px;padding:3px 8px;white-space:nowrap;
+  }
+  .phase-body{padding:14px 17px}
+  .phase-body .mats{margin-top:0}
+
+  .mini-flow{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:12px}
+  .mini-step{
+    display:inline-flex;align-items:center;gap:7px;padding:6px 10px;border-radius:7px;
+    border:1px solid var(--line);background:rgba(255,255,255,.022);font-size:11.5px;font-weight:600;
+  }
+  .mini-step b{font:800 9px/1 var(--mono);color:var(--accent)}
+  .mini-arrow{color:#4f5d70;font-family:var(--mono);font-size:12px}
+
+  .room-rail{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);border-radius:9px;overflow:hidden;margin-bottom:13px}
+  .room-node{padding:10px 8px;text-align:center;background:rgba(15,20,28,.7);border-right:1px solid var(--line)}
+  .room-node:last-child{border-right:0}
+  .room-node .rl{display:block;font:700 8.5px/1.4 var(--mono);letter-spacing:.1em;color:var(--accent);margin-bottom:2px}
+  .room-node b{display:block;font:800 13px/1.3 var(--mono);color:#fff}
+  .room-node small{display:block;font-size:9.5px;color:var(--muted);line-height:1.4}
+
+  .research-list{display:flex;flex-direction:column;gap:7px}
+  .research-row{
+    display:grid;grid-template-columns:46px 1fr auto;gap:9px;align-items:start;
+    padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:rgba(15,20,28,.6);
+  }
+  .research-req{font:600 9px/1.6 var(--mono);color:var(--muted);white-space:nowrap;padding-top:2px}
+  .research-row .mats{gap:4px}
+
+  .outpost-bars{display:flex;flex-direction:column;gap:7px}
+  .obar{display:grid;grid-template-columns:120px 1fr 42px;gap:10px;align-items:center;font-size:11.5px}
+  .obar .nm{color:#dfe6ef;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .obar .track{height:7px;border-radius:999px;background:#1b2432;overflow:hidden}
+  .obar .fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#f59e0b,#fbbf24)}
+  .obar b{font:800 11px/1 var(--mono);color:#fff;text-align:right}
+  .outpost-bars-note{font-size:10px;color:var(--muted);margin:9px 0 0;line-height:1.7}
+
+  .text-link{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--accent)}
+  .text-link:hover{color:#fbbf24;text-decoration:none}
+
+  /* ---------- farm map ---------- */
+  .farm-map{margin:18px 0 0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#0b121a}
+  .farm-map-frame{position:relative;line-height:0}
+  .farm-map-frame>img{display:block;width:100%;height:auto}
+  .farm-overlay{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+  .farm-dot{
+    position:absolute;z-index:2;width:26px;height:26px;display:grid;place-items:center;
+    border-radius:50%;background:rgba(10,13,18,.94);border:2px solid var(--accent);color:var(--accent);
+    font:800 11px/1 var(--mono);transform:translate(-50%,-50%);
+    box-shadow:0 0 0 4px rgba(245,165,36,.14),0 0 16px rgba(245,165,36,.45);
+  }
+  .farm-tag{
+    position:absolute;z-index:3;transform:translate(-50%,-50%);
+    padding:4px 8px;border-radius:5px;background:rgba(10,13,18,.9);
+    border:1px solid rgba(245,165,36,.45);color:#fff;font-size:11px;font-weight:700;
+    white-space:nowrap;line-height:1.5;letter-spacing:.02em;
+  }
+  .farm-map figcaption{padding:9px 14px;font-size:10.5px;color:var(--muted);border-top:1px solid var(--line);background:rgba(15,20,28,.84);line-height:1.6}
+  .farm-map figcaption b{color:#cfd8e4}
+  .farm-spots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}
+  .farm-spot{display:flex;gap:10px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:rgba(15,20,28,.7)}
+  .farm-spot-num{
+    flex:0 0 auto;width:24px;height:24px;display:grid;place-items:center;border-radius:50%;
+    border:1px solid rgba(245,165,36,.4);color:var(--accent);font:800 10px/1 var(--mono);margin-top:1px;
+  }
+  .farm-spot-body{min-width:0}
+  .farm-spot h4{margin:0 0 4px;font-size:13.5px}
+  .farm-spot p{margin:5px 0 0;font-size:10px;color:var(--muted);line-height:1.6}
+  .farm-spot .mats{gap:4px}
+  .farm-spot .mat{font-size:10px;padding:2px 6px;gap:4px}
+  .farm-spot .mat-icon{width:14px;height:14px}
+
+  /* ---------- skill tree ---------- */
+  .skill-stats{
+    display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;
+    margin:14px 0 16px;background:var(--line);border:1px solid var(--line);
+    border-radius:10px;overflow:hidden;
+  }
+  .skill-stats div{background:rgba(15,20,28,.86);padding:11px 10px;text-align:center}
+  .skill-stats strong{display:block;font:800 18px/1.2 var(--mono);color:#fff}
+  .skill-stats span{display:block;font-size:10px;color:var(--muted);margin-top:2px}
+  .skill-legend{
+    display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;
+    margin:0 0 14px;padding:11px 14px;border:1px solid var(--line);
+    border-radius:10px;background:rgba(15,20,28,.7);
+  }
+  .skill-legend .branch{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;color:#c3cddb}
+  .skill-legend .branch i{width:9px;height:9px;border-radius:50%;display:inline-block}
+  .branch-cond i{background:#34d399}
+  .branch-mob i{background:#fbbf24}
+  .branch-surv i{background:#f87171}
+  .skill-gates{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 16px}
+  .skill-gates div{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:rgba(15,20,28,.7)}
+  .skill-gates b{font:800 12px/1 var(--mono);color:var(--accent)}
+  .skill-gates span{font-size:10.5px;color:var(--muted)}
+  .skill-levels{display:flex;flex-direction:column;gap:9px}
+  .skill-level{display:grid;grid-template-columns:104px 1fr;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:rgba(15,20,28,.7)}
+  .skill-level-head{min-width:0}
+  .skill-lv{font:800 16px/1.2 var(--mono);color:#fff}
+  .skill-pt{display:inline-block;margin-top:4px;font:700 9px/1.4 var(--mono);letter-spacing:.06em;color:var(--accent);border:1px solid rgba(245,165,36,.35);border-radius:999px;padding:2px 7px}
+  .skill-level-body{min-width:0}
+  .skill-row{display:flex;flex-wrap:wrap;gap:5px}
+  .skill-chip{display:inline-flex;align-items:center;gap:5px;padding:3px 7px;border-radius:5px;border:1px solid;font-size:10.5px;font-weight:600;line-height:1.5}
+  .skill-icon{width:15px;height:15px;flex:0 0 auto;object-fit:contain;vertical-align:-3px;opacity:.95}
+  .skill-chip .skill-icon{width:15px;height:15px}
+  .start-node .skill-icon{width:18px;height:18px;vertical-align:-4px;margin-right:5px}
+  .skill-chip b{font:800 9.5px/1 var(--mono)}
+  .skill-chip b::before{content:"+";font-weight:600;opacity:.55;margin-right:1px}
+  .skill-chip.branch-cond{color:#a7f3d0;border-color:rgba(52,211,153,.28);background:rgba(52,211,153,.055)}
+  .skill-chip.branch-mob{color:#fde68a;border-color:rgba(251,191,36,.28);background:rgba(251,191,36,.055)}
+  .skill-chip.branch-surv{color:#fecaca;border-color:rgba(248,113,113,.28);background:rgba(248,113,113,.055)}
+  .skill-choice{font:800 8px/1.2 var(--mono);letter-spacing:.05em;color:#c4b5fd;border:1px solid rgba(167,139,250,.35);border-radius:3px;padding:1px 3px}
+  .skill-note{font-size:10px;color:var(--muted);margin:6px 0 0;line-height:1.6}
+  .skill-path{display:grid;grid-template-columns:82px minmax(0,1fr);gap:8px;align-items:center;padding:5px 0}
+  .skill-path + .skill-path{border-top:1px dashed rgba(255,255,255,.07)}
+  .skill-path-label{font-size:10px;font-weight:700;color:#c3cddb;white-space:nowrap}
+  .skill-builds{min-width:0}
+  .skill-builds td:first-child{font-weight:700;color:#fff;white-space:nowrap}
+  .skill-build-use{display:block;max-width:240px;margin-top:2px;font-size:10px;font-weight:400;line-height:1.5;color:var(--muted);white-space:normal}
+  .skill-builds td:nth-child(2),.skill-builds td:nth-child(3),.skill-builds td:nth-child(4){font:700 13px/1.6 var(--mono);text-align:center;white-space:nowrap}
+  .skill-builds td:nth-child(2){color:#6ee7b7}
+  .skill-builds td:nth-child(3){color:#fcd34d}
+  .skill-builds td:nth-child(4){color:#fca5a5}
+  .skill-builds th:nth-child(2),.skill-builds th:nth-child(3),.skill-builds th:nth-child(4){text-align:center}
+  .skill-purpose{display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin:0 0 6px;font-size:11px;font-weight:700;line-height:1.55;color:#dbe3ee}
+  .skill-purpose span{font:800 8.5px/1.2 var(--mono);letter-spacing:.06em;color:var(--accent);border:1px solid rgba(245,165,36,.3);border-radius:3px;padding:1px 4px}
+
+  /* ---------- returning-player summary ---------- */
+  .returner-box{
+    margin:16px 0 14px;padding:16px 18px;border:1px solid rgba(245,165,36,.32);
+    border-left:3px solid var(--accent);border-radius:12px;
+    background:linear-gradient(135deg,rgba(245,165,36,.09),rgba(15,20,28,.7) 55%);
+  }
+  .returner-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:10px}
+  .returner-tag{font:800 9px/1.4 var(--mono);letter-spacing:.08em;color:#0a0d12;background:var(--accent);border-radius:999px;padding:3px 8px}
+  .returner-head b{font-size:14.5px;color:#fff}
+  .returner-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+  .returner-grid>div{display:flex;gap:8px;align-items:flex-start;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:rgba(10,13,18,.35)}
+  .returner-grid span{flex:0 0 auto;font:800 10px/1.5 var(--mono);color:var(--accent)}
+  .returner-grid p{margin:0;font-size:11px;line-height:1.65;color:#c3cddb}
+  .returner-grid b{color:#fff}
+
+  /* ---------- first 12 points ---------- */
+  .start-route{display:flex;gap:8px;align-items:stretch;margin:12px 0 0}
+  .start-node{
+    flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:3px;
+    padding:10px 10px 11px;border:1px solid var(--line);border-top:3px solid #fbbf24;
+    border-radius:8px;background:rgba(15,20,28,.78);
+  }
+  .start-node.branch-cond{border-top-color:#34d399}
+  .start-node.branch-mob{border-top-color:#fbbf24}
+  .start-node.branch-surv{border-top-color:#f87171}
+  .start-num{font:800 8.5px/1.2 var(--mono);letter-spacing:.05em;color:var(--muted)}
+  .start-node b{font-size:11.5px;line-height:1.45;color:#fff}
+  .start-pt{align-self:flex-start;font:800 9px/1.3 var(--mono);color:var(--accent);border:1px solid rgba(245,165,36,.35);border-radius:999px;padding:1px 6px}
+  .start-node small{font-size:9.5px;line-height:1.5;color:var(--muted)}
+  .start-arrow{flex:0 0 auto;align-self:center;font:800 12px/1 var(--mono);color:#5c6778}
+  .tree-hint{
+    position:absolute;top:10px;left:10px;z-index:2;pointer-events:none;
+    padding:4px 8px;border-radius:5px;background:rgba(10,13,18,.86);
+    border:1px solid rgba(245,165,36,.35);color:#ffe6b0;
+    font-size:10px;font-weight:700;line-height:1.5;
+  }
+
+  /* ---------- sources ---------- */
+  .sources{list-style:none;margin:0;padding:0;counter-reset:src;display:flex;flex-direction:column;gap:10px}
+  .sources li{
+    counter-increment:src;position:relative;padding:14px 16px 14px 56px;
+    border:1px solid var(--line);border-radius:10px;background:rgba(15,20,28,.7);
+  }
+  .sources li::before{
+    content:"["counter(src)"]";position:absolute;left:15px;top:15px;
+    font:800 11px/1.5 var(--mono);color:var(--accent);letter-spacing:.02em;
+  }
+  .sources .src-title{font-size:13.5px;font-weight:700;color:#fff;line-height:1.6;margin-bottom:2px}
+  .sources .src-meta{font:600 10.5px/1.6 var(--mono);color:var(--muted);letter-spacing:.03em;margin-bottom:4px}
+  .sources a{font-size:11.5px;word-break:break-all;line-height:1.6}
+  .sources li{scroll-margin-top:80px}
+
+  /* ---------- footer ---------- */
+  .footer{padding:38px 0 54px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;line-height:1.9}
+  .footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .footer strong{color:#cfd8e4}
+  .footer .disclaimer{max-width:640px}
+
+  .to-top{
+    position:fixed;right:22px;bottom:22px;z-index:45;width:44px;height:44px;
+    display:grid;place-items:center;border-radius:50%;
+    border:1px solid var(--line);background:rgba(20,27,37,.95);color:var(--text);
+    cursor:pointer;opacity:0;pointer-events:none;transition:.2s;font-size:16px;
+    -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  }
+  .to-top.show{opacity:1;pointer-events:auto}
+  .to-top:hover{border-color:var(--accent);color:var(--accent)}
+
+  /* ---------- media ---------- */
+  .shot{
+    margin:18px 0 0;border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;background:#0d131b;
+  }
+  .shot img,.shot svg{display:block;width:100%;height:auto}
+  .shot img{aspect-ratio:16/9;object-fit:cover}
+  .shot figcaption{
+    padding:9px 14px;font-size:11px;color:var(--muted);line-height:1.65;
+    border-top:1px solid var(--line);background:rgba(15,20,28,.84);
+  }
+  .shot figcaption b{color:#cfd8e4;font-weight:600}
+  .shot-credit{display:block;margin-top:1px;font:600 9px/1.5 var(--mono);color:#566274;letter-spacing:.04em}
+  .shot-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0;align-items:start}
+  .shot-grid .shot{margin:0}
+  .shot-grid-4{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0;align-items:start}
+
+  .card-media{padding:0;overflow:hidden}
+  .card-media > img{display:block;width:100%;height:auto!important;aspect-ratio:16/9;object-fit:cover;border-bottom:1px solid var(--line)}
+  .card-media .card-body{padding:18px 20px}
+  .card-media .card-body p:last-child{margin-bottom:0}
+  .card-media .card-body .kv:last-child{border-bottom:0}
+  .card-media .enemy-head{margin-bottom:10px}
+
+  .route-key{
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 18px;
+    padding:14px 16px;border-top:1px solid var(--line);background:rgba(15,20,28,.86);
+  }
+  .route-key div{display:flex;gap:8px;align-items:flex-start;font-size:11.5px;color:#aab5c4;line-height:1.6}
+  .route-key b{
+    flex:0 0 auto;width:20px;height:20px;display:grid;place-items:center;border-radius:50%;
+    border:1px solid rgba(245,165,36,.4);color:var(--accent);font:800 9.5px/1 var(--mono);
+    margin-top:1px;
+  }
+  .route-key div.alert b{border-color:rgba(167,139,250,.45);color:#c4b5fd}
+
+  /* ---------- reveal ---------- */
+  html.js .reveal{opacity:0;transform:translateY(16px)}
+  html.js .reveal.is-visible{
+    opacity:1;transform:none;
+    transition:opacity .55s cubic-bezier(.2,.7,.3,1),transform .55s cubic-bezier(.2,.7,.3,1);
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1180px){
+    .wrap{padding:0 32px}
+    .hero-stat strong{font-size:23px}
+  }
+  @media (max-width:1023px){
+    .topbar{display:flex}
+    .sidebar{transform:translateX(-100%);transition:transform .26s cubic-bezier(.2,.7,.3,1);box-shadow:0 0 50px rgba(0,0,0,.5)}
+    .sidebar.open{transform:none}
+    .main{margin-left:0;padding-top:58px}
+    .hero{padding:54px 0 44px}
+    .hero::before{opacity:.22;background-position:center}
+    .hero::after{background:linear-gradient(180deg,rgba(10,13,18,.93) 0%,rgba(10,13,18,.74) 55%,rgba(10,13,18,.92) 100%)}
+    .hero-bg-text{font-size:46vw;right:-10%}
+    .section{padding:46px 0;scroll-margin-top:74px}
+  }
+  @media (max-width:900px){
+    .ステーション-grid,.total-grid,.shot-grid,.shot-grid-4{grid-template-columns:minmax(0,1fr)}
+    .grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .ability-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  }
+  @media (max-width:760px){
+    body{font-size:15px}
+    .wrap{padding:0 18px}
+    .hero-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid-2,.grid-3,.split,.loadout-grid,.timeline,.shot-grid,.shot-grid-4,.route-key{grid-template-columns:minmax(0,1fr)}
+    .outpost-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .ability-grid{grid-template-columns:minmax(0,1fr)}
+    .research-row{grid-template-columns:44px 1fr}
+    .research-req{grid-column:2;justify-self:start;padding-top:0}
+    .obar{grid-template-columns:92px 1fr 36px}
+    .wp-two{grid-template-columns:minmax(0,1fr)}
+    .farm-spots{grid-template-columns:minmax(0,1fr)}
+    .farm-tag{font-size:9.5px;padding:3px 6px;max-width:120px;white-space:normal;text-align:center}
+    .farm-dot{width:22px;height:22px;font-size:9px}
+    .skill-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .skill-level{grid-template-columns:1fr}
+    .skill-gates{grid-template-columns:1fr}
+    .skill-path{grid-template-columns:1fr;gap:4px}
+    .skill-builds td:first-child{width:44%}
+    .skill-build-use{max-width:none}
+    .returner-grid{grid-template-columns:1fr}
+    .start-route{flex-direction:column}
+    .start-node{flex:0 0 auto}
+    .start-arrow{transform:rotate(90deg);margin:0 auto}
+    .tree-hint{font-size:9px;top:6px;left:6px}
+    .tier-row{grid-template-columns:52px 1fr;gap:12px;padding:13px 14px}
+    .tier-badge{width:40px;height:40px;font-size:17px}
+    .ammo-bar{grid-template-columns:82px 1fr;gap:4px 10px}
+    .ammo-bar .cost{grid-column:2;justify-self:start;margin-top:-2px}
+    .check-summary{gap:12px}
+    .hero h1{font-size:clamp(30px,9vw,44px)}
+    .sec-head h2{font-size:26px}
+    .diff-table td:nth-child(2){min-width:130px}
+    .skill-builds td:nth-child(2){min-width:0}
+    .footer .wrap{flex-direction:column}
+  }
+  @media (max-width:480px){
+    .hero-stats{grid-template-columns:1fr 1fr}
+    .hero-stat{padding:13px}
+    .hero-stat strong{font-size:20px}
+    .hero-stat span{font-size:10.5px}
+    .check-item{grid-template-columns:22px 1fr;gap:11px;padding:15px}
+    .check-input{width:21px;height:21px}
+    .check-input:checked::after{left:6px;top:2px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{transition-duration:.001ms!important;animation-duration:.001ms!important}
+    html.js .reveal{opacity:1;transform:none}
+  }
+  @media print{
+    .sidebar,.topbar,.to-top,.scroll-progress,.overlay,.hero-actions{display:none!important}
+    .main{margin-left:0;padding-top:0}
+    body{background:#fff;color:#111}
+    .card,.table-wrap,.tier-list,.check-item{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<!-- ===== mobile topbar ===== -->
+<header class="topbar">
+  <a class="brand-sm" href="#top">ARC <span>RAIDERS</span></a>
+  <button class="menu-btn" id="menuBtn" aria-label="メニューを開く" aria-expanded="false" aria-controls="sidebar">
+    <i></i><i></i><i></i>
+  </button>
+</header>
+
+<!-- ===== sidebar ===== -->
+<aside class="sidebar" id="sidebar" aria-label="サイト内メニュー">
+  <a class="brand" href="#top">
+    <span class="brand-mark">ARC</span>
+    <span class="brand-text">
+      <strong>RAIDERS</strong>
+      <small>RETURNING GUIDE</small>
+    </span>
+  </a>
+
+  <nav class="nav">
+    <span class="nav-label">Contents</span>
+    <a class="nav-link" href="#checklist"><span class="nav-num">01</span>復帰チェックリスト</a>
+    <a class="nav-link" href="#changes"><span class="nav-num">02</span>2.0で変わったこと</a>
+    <a class="nav-link" href="#pendola"><span class="nav-num">03</span>ペンドラ・パス攻略</a>
+    <a class="nav-link" href="#systems"><span class="nav-num">04</span>新システム解説</a>
+    <a class="nav-link" href="#skills"><span class="nav-num">05</span>おすすめスキルツリー</a>
+    <a class="nav-link" href="#outpost"><span class="nav-num">06</span>前哨基地</a>
+    <a class="nav-link" href="#workshop"><span class="nav-num">07</span>ワークショップ素材</a>
+    <a class="nav-link" href="#weapons"><span class="nav-num">08</span>武器メタ・ティア表</a>
+    <a class="nav-link" href="#enemies"><span class="nav-num">09</span>新敵・フリゲート対策</a>
+    <a class="nav-link" href="#sources"><span class="nav-num">10</span>引用元一覧</a>
+  </nav>
+
+  <div class="sidebar-foot">
+    <p>Information as of</p>
+    <strong>2026.10.25</strong>
+    <p class="tiny">凍った道 2.2.0 時点<br>海外ソース準拠</p>
+    <div class="sidebar-note">
+      <b>注意</b>：本サイトは非公式のファンメイドガイドです。数値・仕様はパッチで変わる可能性があります。
+    </div>
+  </div>
+</aside>
+
+<div class="overlay" id="overlay"></div>
+
+<!-- ===== main ===== -->
+<main class="main">
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-bg-text" aria-hidden="true">ARC</div>
+    <div class="wrap">
+      <div class="kicker">Returning Player Guide / 凍った道 2.0</div>
+      <h1>復帰レイダーのための<br><span class="accent">ARC Raiders</span> 再入門</h1>
+      <p class="hero-lead">
+        凍った道 2.0で、マップもスキルも進行ルートも変わった。しばらく離れていた人向けに、
+        「最初の1時間でやること」から現在の武器メタまで、海外ソースの引用付きで整理した。
+      </p>
+      <div class="hero-meta">
+        <span class="tag tag-hot">復帰勢向け</span>
+        <span class="tag">情報基準 2026.10.25</span>
+        <span class="tag tag-cyan">海外サイト引用</span>
+        <span class="tag">凍った道 2.2.0</span>
+        <span class="tag">画像: Embark公式</span>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat"><strong>2.0<em>+</em></strong><span>大型アップデート</span></div>
+        <div class="hero-stat"><strong>+22</strong><span>新クエスト</span></div>
+        <div class="hero-stat"><strong>15</strong><span>増幅対応武器</span></div>
+        <div class="hero-stat"><strong>328</strong><span>スタッシュ最大スロット</span></div>
+      </div>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#checklist">復帰チェックリストへ <span class="arrow">→</span></a>
+        <a class="btn btn-ghost" href="#weapons">武器メタを見る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 CHECKLIST -->
+  <section class="section" id="checklist">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-kicker">01 / 最初の一歩</div>
+        <h2>復帰チェックリスト</h2>
+        <p class="sec-lead">
+          アカウントと装備は残っている。リセットされたのは知識のほうだ。
+          以下の5つをこの順番で進めれば、無駄死にを最小限にできる。
+        </p>
+      </div>
+
+      <div class="check-summary reveal">
+        <span class="label">チェック状況</span>
+        <span class="count" id="checkCount">0 / 5</span>
+        <div class="progress-track"><div class="progress-fill" id="checkFill"></div></div>
+      </div>
+
+      <div class="check-list reveal">
+        <label class="check-item">
+          <input class="check-input" type="checkbox">
+          <div class="check-body">
+            <h4><span class="step-num">01</span>スキルツリーを組み直す</h4>
+            <p>
+              スキルツリーは完全リワーク。分岐の中央は2択、終端は3択から2つを選ぶ仕様になった。
+              旧ビルドのまま出撃せず、まずリセットして自分の役割を決める。<a class="ref" href="#src-1">[1]</a><a class="ref" href="#src-5">[5]</a>
+            </p>
+          </div>
+        </label>
+
+        <label class="check-item">
+          <input class="check-input" type="checkbox">
+          <div class="check-body">
+            <h4><span class="step-num">02</span>ペンドラ・パスを解放する</h4>
+            <p>
+              新マップは25ラウンド完了で解放（失敗してもカウント）。解放済みのフレンドとスクワッドすれば即入場できる。
+              新クエストと新ルートの中心なので、まず足を踏み入れる。<a class="ref" href="#src-5">[5]</a><a class="ref" href="#src-2">[2]</a>
+            </p>
+          </div>
+        </label>
+
+        <label class="check-item">
+          <input class="check-input" type="checkbox">
+          <div class="check-body">
+            <h4><span class="step-num">03</span>前哨基地プロジェクトを開始する</h4>
+            <p>
+              カメラを持ち、ブルーゲートの荒廃した家屋周辺付近にある農家を撮影する。
+              「安全な隠れ家」を完了すると前哨基地と研究ステーションが解放される。<a class="ref" href="#src-1">[1]</a><a class="ref" href="#src-5">[5]</a>
+            </p>
+          </div>
+        </label>
+
+        <label class="check-item">
+          <input class="check-input" type="checkbox">
+          <div class="check-body">
+            <h4><span class="step-num">04</span>研究ステーションで装備を研究する</h4>
+            <p>
+              Grappling Hookは 研究ステーションLv1 + 2,000 研究ポイント + Rope 10。
+              スティレットとバンタムは Lv1 + 3,000 RP + Driver素材。新装備の入口はここ。<a class="ref" href="#src-5">[5]</a><a class="ref" href="#src-8">[8]</a>
+            </p>
+          </div>
+        </label>
+
+        <label class="check-item">
+          <input class="check-input" type="checkbox">
+          <div class="check-body">
+            <h4><span class="step-num">05</span>新敵を覚えてからPvPへ</h4>
+            <p>
+              ブリー・スカルカー・ハイドラは対処法がそれぞれ違う。装備を溶かす前に弱点と間合いを確認する。
+              特にハイドラは「背面」。正面から撃ち合わない。<a class="ref" href="#src-7">[7]</a><a class="ref" href="#src-2">[2]</a>
+            </p>
+          </div>
+        </label>
+      </div>
+
+      <h3 style="margin-top:34px">最初の1時間の使い方</h3>
+      <div class="timeline reveal">
+        <div class="timeline-item">
+          <div class="t">00 — 10 min</div>
+          <p>スキルをリセット。カメラをシャニで購入（1,920 Coins）するか、ワークベンチでクラフト。クエストを確認。</p>
+        </div>
+        <div class="timeline-item">
+          <div class="t">10 — 30 min</div>
+          <p>無料装備で1戦。射撃・移動・抽出の感覚を思い出す。いきなり高価な装備を持ち込まない。</p>
+        </div>
+        <div class="timeline-item">
+          <div class="t">30 — 60 min</div>
+          <p>前哨基地プロジェクトを開始。可能ならペンドラ・パスへ入り、新マップの地形と敵の挙動を確認。</p>
+        </div>
+      </div>
+
+      <div class="callout callout-info reveal">
+        <span class="callout-icon">情報</span>
+        <div>
+          <p><b>無料週末と割引は終了済み。</b>凍った道直後の10月8日〜12日は無料開放、10月15日までローンチ割引が実施された。現在の価格は各ストアで確認を。プレイヤー数はアップデート直後に一時的に大きく戻っており、マッチングは活発だ。<a class="ref" href="#src-3">[3]</a><a class="ref" href="#src-12">[12]</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 CHANGES -->
+  <section class="section" id="changes">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-kicker">02 / 変更点</div>
+        <h2>凍った道で変わったこと</h2>
+        <p class="sec-lead">
+          凍った道は「マップ追加」ではない。進行の背骨が入れ替わるアップデートだ。
+          旧知識のまま出撃すると、まず間違えるのがスキルと進行通貨。
+        </p>
+      </div>
+
+      <div class="table-wrap reveal">
+        <table class="diff-table">
+          <thead>
+            <tr><th>項目</th><th>2.0以前</th><th>2.0以降</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>スキルツリー</td><td>一直線にほぼ全部取れた</td><td><span class="arrow">→</span>中央は2択、終端は3択から2つ。ビルドが分岐</td></tr>
+            <tr><td>進行通貨</td><td>クレド</td><td><span class="arrow">→</span>報酬ポイント（クレドは廃止）</td></tr>
+            <tr><td>シーズン進行</td><td>レイダーデッキ</td><td><span class="arrow">→</span>報酬パス（凍った道 Pass 60Lv）。旧デッキはレガシーパスへ</td></tr>
+            <tr><td>クラフト</td><td>Workshop</td><td><span class="arrow">→</span>Workshop + 前哨基地の研究ステーション</td></tr>
+            <tr><td>武器の上限</td><td>4段階</td><td><span class="arrow">→</span>増幅武器（対応15武器の5段階目）</td></tr>
+            <tr><td>移動</td><td>Snap Hookが万能</td><td><span class="arrow">→</span>Grappling Hook追加。Snap Hookは18mに弱体化</td></tr>
+            <tr><td>スタッシュ</td><td>従来の上限</td><td><span class="arrow">→</span>最大328スロット（+2段階）</td></tr>
+            <tr><td>マッチング</td><td>Solo vs Squadsあり</td><td><span class="arrow">→</span>一時廃止（再評価中）</td></tr>
+            <tr><td>爆発物</td><td>一律のダメージ</td><td><span class="arrow">→</span>装甲に+50%以上、脆弱部位に約-30%</td></tr>
+            <tr><td>アカウント</td><td>—</td><td><span class="arrow">→</span>ワイプなし。ただしスキル再割り当ては必須</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-warn reveal">
+        <span class="callout-icon">注意</span>
+        <div>
+          <p><b>クレドはもう手に入らない。</b>報酬ポイントは「現在アクティブなパス」に自動加算される。凍った道 Passを進めるのか、レガシーパスを進めるのかを先に決めること。両方は同時に進められない。<a class="ref" href="#src-1">[1]</a></p>
+        </div>
+      </div>
+
+      <h3 style="margin-top:30px">細かいけど効く変更</h3>
+      <div class="grid grid-2 reveal">
+        <div class="card">
+          <div class="card-kicker">Quality of Life</div>
+          <ul class="list-clean">
+            <li><b>ダウン中にマップを開ける</b>ようになった。仲間の位置確認が早くなる。</li>
+            <li><b>クエスト完了でXP</b>が入る。レベル上げの速度が上がった。</li>
+            <li><b>Scrambling</b>追加。急斜面にスプリントで突っ込むと短時間登れる。</li>
+            <li><b>コンテナから直接地面にドロップ</b>できる。整理が速い。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-kicker">Combat &amp; Gear</div>
+          <ul class="list-clean">
+            <li><b>大型シールド</b>：移動ペナルティ15%→10%、耐久減衰0.20→0.15。</li>
+            <li><b>Snap Hook</b>：20m→18m、耐久消費2%→4%、パワー50→60。</li>
+            <li><b>アンヴィル</b>：Green→Blueにレア度上昇。Splitter modは廃止され、増幅 アンヴィルの強化に移行。</li>
+            <li><b>武器重量軽減</b>はロードアウトのみ有効。他のコンテナには適用されない。</li>
+          </ul>
+        </div>
+      </div>
+
+                  <div class="shot-grid reveal" style="margin-top:18px">
+        <figure class="shot">
+          <img src="assets/concept-01.jpg" alt="凍った道のコンセプトアート（屋内施設）" loading="lazy" decoding="async" width="1024" height="576">
+          <figcaption><b>凍った道 コンセプトアート</b><span class="shot-credit">画像: Embark Studios</span></figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/concept-02.jpg" alt="凍った道のコンセプトアート（雪原への降下）" loading="lazy" decoding="async" width="1024" height="576">
+          <figcaption><b>凍った道 コンセプトアート</b><span class="shot-credit">画像: Embark Studios</span></figcaption>
+        </figure>
+      </div>
+
+      <div class="callout callout-tip reveal">
+        <span class="callout-icon">ヒント</span>
+        <div>
+          <p><b>復帰勢が最初に見るべきは「進行通貨」と「スキル」。</b>マップや武器は後から覚えられるが、この2つを旧知識のまま進めると、ポイントの使い先を間違えて作り直しになる。<a class="ref" href="#src-1">[1]</a><a class="ref" href="#src-4">[4]</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 PENDOLA -->
+  <section class="section" id="pendola">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-kicker">03 / 新マップ</div>
+        <h2>ペンドラ・パス 攻略</h2>
+        <p class="sec-lead">
+          雪と寒気に閉ざされた旧イタリア人居留地。Rust Beltの山の向こうにある、Exodusの輸送拠点だ。
+          広さよりも「高低差」と「気候」で殺してくるマップ。
+        </p>
+      </div>
+
+      <div class="grid grid-2 reveal">
+        <div class="card">
+          <div class="card-kicker">Unlock</div>
+          <h3>解放条件</h3>
+          <div class="kv"><span>通常</span><b>25ラウンド完了</b></div>
+          <div class="kv"><span>失敗ラウンド</span><b>カウントされる</b></div>
+          <div class="kv"><span>最短ルート</span><b>解放済みプレイヤーとスクワッド</b></div>
+          <div class="kv"><span>導線クエスト</span><b>スペランザのセレステ</b></div>
+          <p class="small muted" style="margin-top:12px">「Exploring ペンドラ・パス」はセレステから受注。まず彼女のクエストを確認する。<a class="ref" href="#src-5">[5]</a></p>
+        </div>
+        <div class="card">
+          <div class="card-kicker">Hazards</div>
+          <h3>環境ギミック</h3>
+          <div class="kv"><span>寒波</span><b>突然の寒波。シェルター必須</b></div>
+          <div class="kv"><span>ダイナミックルートゾーン</span><b>エリア価値がレイドごとに変動</b></div>
+          <div class="kv"><span>地形</span><b>急斜面・屋根・高所が多い</b></div>
+          <div class="kv"><span>主力移動</span><b>Grappling Hook / Scrambling</b></div>
+          <p class="small muted" style="margin-top:12px">ダイナミックルートゾーンは「種類」ではなく「価値」が変わる。ResidentialはResidentialのまま。<a class="ref" href="#src-1">[1]</a><a class="ref" href="#src-3">[3]</a></p>
+        </div>
+      </div>
+
+<figure class="shot reveal" style="margin-top:18px">
+        <img src="assets/pendola-pass.jpg" alt="雪に閉ざされたペンドラ・パスの風景" loading="lazy" decoding="async" width="1024" height="576">
+        <figcaption><b>ペンドラ・パス</b>：Rust Beltの山の向こうに広がる雪の旧イタリア人居留地。<span class="shot-credit">画像: Embark Studios</span></figcaption>
+      </figure>
+
+      <h3 style="margin-top:32px">素材が集まりやすい場所</h3>
+      <p class="small muted" style="margin-bottom:12px">実マップ上の番号 → 下のリスト。位置は目安。</p>
+
+      <figure class="farm-map reveal" id="pendola-map">
+        <div class="farm-map-frame">
+          <img src="assets/maps/pendola-map.jpg" alt="ペンドラ・パスの実マップと素材スポット" loading="eager" decoding="async" width="1200" height="1200">
+          <svg class="farm-overlay" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <marker id="farmArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="#f5a524"/>
+              </marker>
+            </defs>
+            <g stroke="#f5a524" stroke-width="2" stroke-dasharray="6 5" opacity=".85" marker-end="url(#farmArrow)">
+              <line x1="660" y1="190" x2="780" y2="310"/>
+              <line x1="740" y1="740" x2="625" y2="615"/>
+              <line x1="380" y1="560" x2="495" y2="465"/>
+              <line x1="250" y1="260" x2="355" y2="365"/>
+              <line x1="460" y1="810" x2="585" y2="685"/>
+              <line x1="140" y1="360" x2="165" y2="465"/>
+              <line x1="140" y1="720" x2="225" y2="635"/>
+            </g>
+          </svg>
+          <span class="farm-dot" style="left:79%;top:32%">1</span>
+          <span class="farm-tag" style="left:66%;top:19%">1 天文台</span>
+          <span class="farm-dot" style="left:62%;top:61%">2</span>
+          <span class="farm-tag" style="left:74%;top:74%">2 鉄道車両基地</span>
+          <span class="farm-dot" style="left:50%;top:46%">3</span>
+          <span class="farm-tag" style="left:38%;top:56%">3 スーパーマーケット</span>
+          <span class="farm-dot" style="left:36%;top:37%">4</span>
+          <span class="farm-tag" style="left:25%;top:26%">4 アルマテラ駅</span>
+          <span class="farm-dot" style="left:59%;top:68%">5</span>
+          <span class="farm-tag" style="left:46%;top:81%">5 ストームハット</span>
+          <span class="farm-dot" style="left:17%;top:47%">6</span>
+          <span class="farm-tag" style="left:14%;top:36%">6 倒れたエンペラー</span>
+          <span class="farm-dot" style="left:23%;top:63%">7</span>
+          <span class="farm-tag" style="left:14%;top:72%">7 旧市街</span>
+        </div>
+        <figcaption><b>ペンドラ・パス素材マップ</b>：番号 → 下のリスト。マップ画像: ARC Raiders Wiki（ゲーム内マップ）。位置は目安。</figcaption>
+      </figure>
+
+      <div class="farm-spots reveal">
+        <div class="farm-spot">
+          <span class="farm-spot-num">1</span>
+          <div class="farm-spot-body">
+            <h4>天文台（Cielo Sereno）</h4>
+            <div class="mats">
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/steel-cables.png" alt="" loading="lazy">鋼ケーブル</span>
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/epoxy-buckets.png" alt="" loading="lazy">エポキシ樹脂バケツ</span>
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/hand-drills.png" alt="" loading="lazy">ハンドドリル</span>
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/laser-levels.png" alt="" loading="lazy">レーザーレベル</span>
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/insulation-rolls.png" alt="" loading="lazy">断熱ロール</span>
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/differential-microphone.png" alt="" loading="lazy">差動マイク</span>
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/thermal-shaker.png" alt="" loading="lazy">サーマルシェイカー</span>
+            </div>
+            <p>ペンドラ限定7種が最も集まる。最優先。</p>
+          </div>
+        </div>
+
+        <div class="farm-spot">
+          <span class="farm-spot-num">2</span>
+          <div class="farm-spot-body">
+            <h4>鉄道車両基地</h4>
+            <div class="mats">
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/steel-cables.png" alt="" loading="lazy">鋼ケーブル</span>
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/epoxy-buckets.png" alt="" loading="lazy">エポキシ樹脂バケツ</span>
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/hand-drills.png" alt="" loading="lazy">ハンドドリル</span>
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/laser-levels.png" alt="" loading="lazy">レーザーレベル</span>
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/insulation-rolls.png" alt="" loading="lazy">断熱ロール</span>
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/differential-microphone.png" alt="" loading="lazy">差動マイク</span>
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/thermal-shaker.png" alt="" loading="lazy">サーマルシェイカー</span>
+            </div>
+            <p>天文台より軽め。鍵部屋は工業・機械ルート。</p>
+          </div>
+        </div>
+
+        <div class="farm-spot">
+          <span class="farm-spot-num">3</span>
+          <div class="farm-spot-body">
+            <h4>スーパーマーケット</h4>
+            <div class="mats">
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/differential-microphone.png" alt="" loading="lazy">差動マイク</span>
+              <span class="mat mat-common"><img class="mat-icon" src="assets/materials/metal-parts.png" alt="" loading="lazy">金属部品</span>
+              <span class="mat mat-common"><img class="mat-icon" src="assets/materials/fabric.png" alt="" loading="lazy">生地</span>
+              <span class="mat mat-common"><img class="mat-icon" src="assets/materials/plastic-parts.png" alt="" loading="lazy">プラスチック部品</span>
+              <span class="mat mat-common"><img class="mat-icon" src="assets/materials/chemicals.png" alt="" loading="lazy">化学薬品</span>
+            </div>
+            <p>市街地の基本素材と医療系。</p>
+          </div>
+        </div>
+
+        <div class="farm-spot">
+          <span class="farm-spot-num">4</span>
+          <div class="farm-spot-body">
+            <h4>アルマテラ駅</h4>
+            <div class="mats">
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/epoxy-buckets.png" alt="" loading="lazy">エポキシ樹脂バケツ</span>
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/insulation-rolls.png" alt="" loading="lazy">断熱ロール</span>
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/thermal-shaker.png" alt="" loading="lazy">サーマルシェイカー</span>
+            </div>
+            <p>局所的にレア素材。駅周辺の建物を確認。</p>
+          </div>
+        </div>
+
+        <div class="farm-spot">
+          <span class="farm-spot-num">5</span>
+          <div class="farm-spot-body">
+            <h4>ストームハット</h4>
+            <div class="mats">
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/insulation-rolls.png" alt="" loading="lazy">断熱ロール</span>
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/thermal-shaker.png" alt="" loading="lazy">サーマルシェイカー</span>
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/radial-press.png" alt="" loading="lazy">ラジアルプレス</span>
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/hand-drills.png" alt="" loading="lazy">ハンドドリル</span>
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/steel-cables.png" alt="" loading="lazy">鋼ケーブル</span>
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/differential-microphone.png" alt="" loading="lazy">差動マイク</span>
+            </div>
+            <p>寒波（Flash Freeze）中に出現。最レア狙い。</p>
+          </div>
+        </div>
+
+        <div class="farm-spot">
+          <span class="farm-spot-num">6</span>
+          <div class="farm-spot-body">
+            <h4>倒れたエンペラー</h4>
+            <div class="mats">
+              <span class="mat mat-arc">増幅モジュール</span>
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/emperor-modulator.png" alt="" loading="lazy">エンペラーモジュレーター</span>
+              <span class="mat mat-rare">レア素材</span>
+            </div>
+            <p>Mk.II/IIIの増幅モジュール。高リスク。</p>
+          </div>
+        </div>
+
+        <div class="farm-spot">
+          <span class="farm-spot-num">7</span>
+          <div class="farm-spot-body">
+            <h4>旧市街</h4>
+            <div class="mats">
+              <span class="mat mat-common"><img class="mat-icon" src="assets/materials/metal-parts.png" alt="" loading="lazy">金属部品</span>
+              <span class="mat mat-common"><img class="mat-icon" src="assets/materials/fabric.png" alt="" loading="lazy">生地</span>
+              <span class="mat mat-rare">設計図</span>
+              <span class="mat mat-rare">旧市街の鍵</span>
+            </div>
+            <p>教会まわりの鍵部屋。基本素材も。</p>
+          </div>
+        </div>
+      </div>
+
+<div class="grid grid-2 reveal" style="margin-top:18px">
+        <div class="card">
+          <div class="card-kicker">寒波</div>
+          <h4>寒波が来たら屋外を捨てる</h4>
+          <p class="small">いつ発生するか分からない。屋外に長く留まらず、常に最寄りのシェルターを把握しておく。高所での戦闘中に来ると立て直しが難しい。</p>
+        </div>
+        <div class="card">
+          <div class="card-kicker">Verticality</div>
+          <h4>このマップは「登れるか」で決まる</h4>
+          <p class="small">屋根・崖・足場の上から一方的に撃てる位置が多い。Grappling Hookの研究を最優先にする理由がここにある。2.1.0でペンドラ・パスのフックの引っ掛かりも改善された。<a class="ref" href="#src-8">[8]</a></p>
+        </div>
+      </div>
+
+      <div class="callout callout-info reveal">
+        <span class="callout-icon">情報</span>
+        <div>
+          <p><b>フリゲートはペンドラ・パス専用ではない。</b>ARC フリゲートは6つの屋外マップ（Dam Battlegrounds、Buried City、Spaceport、The ブルーゲート、Riven Tides、ペンドラ・パス）を巡回するマップ条件。ペンドラ・パスで倒れたエンペラーが落ちていることがストーリーの起点になっているだけだ。<a class="ref" href="#src-10">[10]</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 SYSTEMS -->
+  <section class="section" id="systems">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-kicker">04 / 新システム</div>
+        <h2>新システム解説</h2>
+        <p class="sec-lead">
+          復帰勢が最も混乱するのがここ。前哨基地、研究ステーション、増幅、報酬パス。
+          4つの関係を一度でいいので頭に入れておくと、迷子にならない。
+        </p>
+      </div>
+
+      <div class="shot-grid-4 reveal" id="systems-gallery">
+        <figure class="shot">
+          <img src="assets/outpost.jpg" alt="前哨基地の外観" loading="lazy" decoding="async" width="1024" height="576">
+          <figcaption><b>前哨基地</b>：プロジェクト完了で解放。家具100種と研究ステーションの入口。<span class="shot-credit">画像: Embark Studios</span></figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/skill-tree.jpg" alt="刷新されたスキルツリー" loading="lazy" decoding="async" width="1024" height="576">
+          <figcaption><b>スキルツリー</b>：中央は2択、終端は3択から2つ。<span class="shot-credit">画像: Embark Studios</span></figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/amplified.jpg" alt="増幅武器の武器" loading="lazy" decoding="async" width="1024" height="576">
+          <figcaption><b>増幅武器</b>：対応15武器に5段階目を追加。<span class="shot-credit">画像: Embark Studios</span></figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/grappling.jpg" alt="Grappling Hook" loading="lazy" decoding="async" width="1024" height="576">
+          <figcaption><b>Grappling Hook</b>：ペンドラ・パスの垂直移動を変える新ガジェット。<span class="shot-credit">画像: Embark Studios</span></figcaption>
+        </figure>
+      </div>
+
+      <!-- 前哨基地 -->
+      <div class="split reveal">
+        <div class="card">
+          <div class="card-kicker">前哨基地</div>
+          <h3>拠点が追加された</h3>
+          <p class="small">プロジェクト完了で解放。部屋を増やし、研究ステーションで研究を進める。</p>
+          <p class="small" style="margin:10px 0 0"><a class="text-link" href="#outpost">→ できること・必要素材を見る</a></p>
+        </div>
+        <div class="card">
+          <div class="card-kicker">研究ステーション</div>
+          <h3>設計図を「研究」する</h3>
+          <p class="small">
+            研究ポイントと素材を払って設計図をアンロックする。新装備の実質的なゲート。
+            「クラフト台」ではなく「研究台」と覚える。
+          </p>
+          <div class="table-wrap" style="margin-top:12px;border-radius:8px">
+            <table>
+              <thead><tr><th>アンロック</th><th>必要</th></tr></thead>
+              <tbody>
+                <tr><td class="w-name">Grappling Hook</td><td class="small">Lv1 + 2,000 RP + Rope 10</td></tr>
+                <tr><td class="w-name">スティレット</td><td class="small">Lv1 + 3,000 RP + Driver素材</td></tr>
+                <tr><td class="w-name">バンタム</td><td class="small">Lv1 + 3,000 RP + Driver素材</td></tr>
+                <tr><td class="w-name">Tether Launcher</td><td class="small">Lv2 + 2,000 RP + Steel Cable 3 + Unusable Weapon 1</td></tr>
+                <tr><td class="w-name">Powered Descender</td><td class="small">Lv3 + 3,000 RP + Cooling Fan 2 + 高度な電気部品 1</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="small muted" style="margin-top:10px">フリゲートインダクターは研究ステーションLv4用のLegendary素材。<a class="ref" href="#src-5">[5]</a><a class="ref" href="#src-8">[8]</a><a class="ref" href="#src-10">[10]</a></p>
+        </div>
+      </div>
+
+      <div class="callout callout-warn reveal">
+        <span class="callout-icon">注意</span>
+        <div>
+          <p><b>「前哨基地＝クラフト拠点」ではない。</b>通常のクラフト・修理はWorkshopのまま。前哨基地の研究ステーションは設計図研究のための別システム。ここを混同すると、素材の使い先を間違える。<a class="ref" href="#src-5">[5]</a></p>
+        </div>
+      </div>
+
+      <!-- 増幅 -->
+      <h3 style="margin-top:34px">Weapon 増幅（武器増幅）</h3>
+      <div class="card reveal">
+        <p>
+          対応する15武器に「5段階目の品質レベル」を追加するエンドゲームシステム。
+          分岐パスで挙動そのものが変わる。公式が挙げている例は、<b>フルオートのバーレッタ</b>、<b>スコープ付きのレネゲイド</b>、
+          <b>焼夷弾＋64発マガジンのラトラー</b>。<a class="ref" href="#src-2">[2]</a>
+        </p>
+        <div class="grid grid-3" style="margin-top:14px">
+          <div class="loadout">
+            <div class="lt">必要条件</div>
+            <strong>前哨基地解放</strong>
+            <p>まず安全な隠れ家を完了させる。</p>
+          </div>
+          <div class="loadout">
+            <div class="lt">必要条件</div>
+            <strong>ガンスミスLv4 + 研究ステーションLv4</strong>
+            <p>両方のワークステーションを最大まで上げる。</p>
+          </div>
+          <div class="loadout">
+            <div class="lt">素材</div>
+            <strong>増幅モジュール</strong>
+            <p>フリゲートまたは倒れたエンペラーから入手。Mark I〜V。</p>
+          </div>
+        </div>
+        <p class="small muted" style="margin-top:14px">復帰勢にとっては「今回の目標」ではなく「長期目標」。まずは研究ステーションLv1と通常装備を整えるほうが早い。<a class="ref" href="#src-5">[5]</a><a class="ref" href="#src-10">[10]</a></p>
+      </div>
+
+      <!-- Skill tree -->
+      <h3 style="margin-top:34px">スキルツリー</h3>
+      <div class="split reveal">
+        <div class="card">
+          <h4>選び方が変わった</h4>
+          <ul class="list-clean">
+            <li><b>分岐の中央</b>：2つのスキルから1つを選ぶ二択。</li>
+            <li><b>分岐の終端</b>：3つから最大2つを選ぶ。</li>
+            <li><b>やり直し</b>：リセットすれば選び直せる。</li>
+            <li><b>狙い</b>：全部取るのではなく、ビルドを尖らせる。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4>数値の変更例</h4>
+          <div class="kv"><span>Fight or Flight</span><b>スタミナ +約25% / Lv</b></div>
+          <div class="kv"><span>Stubborn Mule</span><b>スタミナ回復 +約33%</b></div>
+          <div class="kv"><span>Back on Your Feet</span><b>回復量 30 → 40</b></div>
+          <p class="small muted" style="margin-top:12px">旧ビルドの感覚で取ると、思ったより効果が薄い／強いことがある。まずリセット。<a class="ref" href="#src-1">[1]</a></p>
+        </div>
+      </div>
+
+      <!-- Reward pass -->
+      <h3 style="margin-top:34px">報酬パス / レガシーパス</h3>
+      <div class="card reveal">
+        <p>
+          クレドは廃止され、報酬ポイントに一本化された。報酬ポイントは「現在アクティブなパス」に自動で加算される。
+          凍った道 Passは60レベル構成で、FreeトラックとPremiumトラックがある。
+          旧レイダーデッキはレガシーパスに移り、既に解除した報酬は保持される。<a class="ref" href="#src-1">[1]</a>
+        </p>
+        <div class="grid grid-3" style="margin-top:14px">
+          <div class="loadout">
+            <div class="lt">技能</div>
+            <strong>イージー / ミディアム / ハード</strong>
+            <p>15 / 25 / 50 報酬ポイント。ウィークリーマイルストーンも加算。</p>
+          </div>
+          <div class="loadout">
+            <div class="lt">週次</div>
+            <strong>250 RP × 3</strong>
+            <p>必要進行度は4 / 8 / 12。毎週リセット。</p>
+          </div>
+          <div class="loadout">
+            <div class="lt">優先</div>
+            <strong>まず凍った道 Pass</strong>
+            <p>新アイテムと新コスメが入っている。Legacyは後回しでよい。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gadgets -->
+      <h3 style="margin-top:34px">新ガジェット</h3>
+      <div class="table-wrap reveal">
+        <table>
+          <thead>
+            <tr><th>ガジェット</th><th>レア度</th><th>役割</th><th>ポイント</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="w-name">Grappling Hook</td><td>Uncommon</td><td>移動</td><td>20m。修理が安く毎レイド持ち込みやすい。ペンドラ・パスの主力</td></tr>
+            <tr><td class="w-name">Snap Hook</td><td>Legendary</td><td>バースト移動</td><td>18m、4%/回、60 power。PvPの押し込み・離脱向け</td></tr>
+            <tr><td class="w-name">Photoelectric Cloak</td><td>Epic</td><td>ARC回避</td><td>ARCから見えなくなる。レイダーには効かない</td></tr>
+            <tr><td class="w-name">Tether Launcher</td><td>Rare</td><td>拘束</td><td>2発、30m、10秒拘束。ARCにもレイダーにも有効</td></tr>
+            <tr><td class="w-name">Powered Descender</td><td>Epic</td><td>降下</td><td>落下を緩和。高所からの脱出に</td></tr>
+            <tr><td class="w-name">Mountaineer's Detector</td><td>Rare</td><td>探索</td><td>ペンドラ・パスの雪中埋蔵物を発見。Riven Tidesの砂地でも</td></tr>
+            <tr><td class="w-name">カメラ</td><td>Uncommon / Rare</td><td>クエスト</td><td>前哨基地最初のステップに必須。シャニで購入可</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-tip reveal">
+        <span class="callout-icon">ヒント</span>
+        <div>
+          <p><b>迷ったらGrappling Hook。</b>安くて20m、修理も「Rope 1 + Cable Stripper 1」で済む。PvPで瞬間的な速度が欲しいときだけSnap Hookに差し替える、という運用が現実的。<a class="ref" href="#src-8">[8]</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 SKILLS -->
+  <section class="section" id="skills">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-kicker">05 / スキルツリー</div>
+        <h2>おすすめスキルツリー</h2>
+        <p class="sec-lead">
+          2.0でスキルツリーは3系統・48スキルに再構築された。最大76ptをどこに寄せるかで、
+          「漁って帰る」か「撃ち合って勝つ」かが決まる。序盤はサバイバルで漁り、Lv13から移動性に寄せるのが基本。
+        </p>
+      </div>
+
+      <div class="returner-box reveal">
+        <div class="returner-head">
+          <span class="returner-tag">半年ぶり復帰</span>
+          <b>旧ビルドは使えない。でもポイントは返ってくる。</b>
+        </div>
+        <div class="returner-grid">
+          <div><span>01</span><p><b>ツリーは2.0で再構築。</b>全48スキル。振ったポイントは全返還される。</p></div>
+          <div><span>02</span><p><b>最初の12ptは固定。</b>漁り→静音→クイックロールの順でOK。</p></div>
+          <div><span>03</span><p><b>迷ったら物資集め。</b>調整28 / 移動性31 / サバイバル17。</p></div>
+        </div>
+      </div>
+
+      <div class="skill-stats reveal">
+        <div><strong>3</strong><span>系統</span></div>
+        <div><strong>48</strong><span>スキル</span></div>
+        <div><strong>76</strong><span>最大ポイント</span></div>
+        <div><strong>2,000</strong><span>コイン / pt（振り直し）</span></div>
+      </div>
+
+      <h3 style="margin-top:30px">最初の12pt</h3>
+      <p class="small muted" style="margin:0 0 10px">Lv1〜12はこの順番。左から振る。数字は投資pt。</p>
+
+      <div class="skill-legend reveal">
+        <span class="branch branch-cond"><i></i>調整</span>
+        <span class="branch branch-mob"><i></i>移動性</span>
+        <span class="branch branch-surv"><i></i>サバイバル</span>
+        <span class="small muted">数字 = 投資ポイント</span>
+        <span class="small muted"><span class="skill-choice">2択</span> 10pt分岐</span>
+        <span class="small muted"><span class="skill-choice">終点</span> 30/40pt</span>
+      </div>
+
+      <div class="start-route reveal">
+        <div class="start-node branch-mob">
+          <span class="start-num">01 / Lv1</span>
+          <b><img class="skill-icon" src="assets/skills/icons/youthful-lungs.png" alt="" loading="lazy">若い肺</b>
+          <span class="start-pt">1 pt</span>
+          <small>移動性の入口。最大スタミナを増やす</small>
+        </div>
+        <span class="start-arrow">→</span>
+        <div class="start-node branch-surv">
+          <span class="start-num">02 / Lv2</span>
+          <b><img class="skill-icon" src="assets/skills/icons/in-round-crafting.png" alt="" loading="lazy">ラウンド中制作</b>
+          <span class="start-pt">1 pt</span>
+          <small>現地で回復・弾を補充</small>
+        </div>
+        <span class="start-arrow">→</span>
+        <div class="start-node branch-surv">
+          <span class="start-num">03 / Lv3–7</span>
+          <b><img class="skill-icon" src="assets/skills/icons/looters-instincts.png" alt="" loading="lazy">略奪者の直感</b>
+          <span class="start-pt">5 pt</span>
+          <small>漁り速度の土台</small>
+        </div>
+        <span class="start-arrow">→</span>
+        <div class="start-node branch-surv">
+          <span class="start-num">04 / Lv8–11</span>
+          <b><img class="skill-icon" src="assets/skills/icons/silent-scavenger.png" alt="" loading="lazy">無音のスカベンジャー</b>
+          <span class="start-pt">4 pt</span>
+          <small>漁りの音を消す</small>
+        </div>
+        <span class="start-arrow">→</span>
+        <div class="start-node branch-surv">
+          <span class="start-num">05 / Lv12</span>
+          <b><img class="skill-icon" src="assets/skills/icons/quick-roll.png" alt="" loading="lazy">クイックロール <span class="skill-choice">2択</span></b>
+          <span class="start-pt">1 pt</span>
+          <small>逃げ撃ちに強い</small>
+        </div>
+      </div>
+
+      <p class="skill-note" style="margin:8px 0 0">10ptでクイックロールを選ぶ。サバイバル10ptの2択はクイックロールかマインスイーパー。漁り優先ならクイックロール。<a class="ref" href="#src-20">[20]</a>　アイコン: ARC Raiders Wiki<a class="ref" href="#src-22">[22]</a></p>
+
+      <figure class="shot reveal" style="margin:18px 0;position:relative">
+        <a href="assets/skills/skill-tree-overview.jpg" target="_blank" rel="noopener noreferrer" style="display:block;cursor:zoom-in">
+          <img src="assets/skills/skill-tree-overview.jpg" alt="ARC Raiders 2.0のスキルツリー全体（調整・移動性・サバイバル）" loading="lazy" decoding="async" width="1148" height="612" style="aspect-ratio:auto;object-fit:contain">
+        </a>
+        <span class="tree-hint">下の3つの円が各系統の起点</span>
+        <figcaption><b>ゲーム内スキルツリー全体（2.0）</b>：左＝調整（緑）、中央＝移動性（黄）、右＝サバイバル（赤）。画像内の数字は別ビルドの例。ノード名と振り順は下のカードへ。タップ／クリックで拡大。<a class="ref" href="#src-21">[21]</a><span class="shot-credit">画像: AOEah</span></figcaption>
+      </figure>
+
+      <div class="split reveal" style="margin:18px 0;align-items:center">
+        <figure class="shot" style="margin:0">
+          <img src="assets/skill-tree.jpg" alt="スキルツリーのノード拡大（0/5、2/5、4/5の表示）" loading="lazy" decoding="async" width="1024" height="576">
+          <figcaption><b>ノードの拡大</b>：数字は投資段階、鍵は前提未解放。<span class="shot-credit">画像: Embark Studios</span></figcaption>
+        </figure>
+        <div>
+          <h3 style="margin-top:0">ノードの見方</h3>
+          <ul class="list-clean">
+            <li><b>数字（0/5〜5/5）</b>：そのノードに振ったポイント。5段階のスキルは段階ごとに効果が伸びる。</li>
+            <li><b>菱形</b>：2択・3択の分岐。10 / 30 / 40ptのゲートで開く。</li>
+            <li><b>鍵</b>：前提ノードが未解放。先に手前へ1pt振る。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="skill-gates reveal">
+        <div><b>10pt</b><span>2択の分岐。片方しか取れない</span></div>
+        <div><b>30pt</b><span>終点3択から1つ</span></div>
+        <div><b>40pt</b><span>同じ3択から2つ目</span></div>
+      </div>
+
+      <p class="small muted" style="margin:0 0 12px">レベル帯は目安。最大76pt（遠征ボーナス持ちは+15pt）。数字は各スキルへの投資pt。<a class="ref" href="#src-20">[20]</a></p>
+
+      <div class="skill-levels reveal">
+        <div class="skill-level">
+          <div class="skill-level-head">
+            <div class="skill-lv">Lv 13–31</div>
+            <span class="skill-pt">+19 / 31 pt</span>
+          </div>
+          <div class="skill-level-body">
+            <p class="skill-purpose"><span>目的</span>ペンドラの高低差に対応する移動性の土台。</p>
+            <div class="skill-row">
+              <span class="skill-chip branch-mob"><img class="skill-icon" src="assets/skills/icons/sure-footed-scrambler.png" alt="" loading="lazy">足取り確かなスクランブラー <b>3</b></span>
+              <span class="skill-chip branch-mob"><img class="skill-icon" src="assets/skills/icons/nimble-climber.png" alt="" loading="lazy">素早い登攀者 <b>5</b></span>
+              <span class="skill-chip branch-mob"><img class="skill-icon" src="assets/skills/icons/fight-or-flight.png" alt="" loading="lazy">闘争・逃走反応 <b>5</b></span>
+              <span class="skill-chip branch-mob"><img class="skill-icon" src="assets/skills/icons/vaults-on-vaults-on-vaults.png" alt="" loading="lazy">跳躍跳躍跳躍 <b>1</b><span class="skill-choice">2択</span></span>
+              <span class="skill-chip branch-mob"><img class="skill-icon" src="assets/skills/icons/marathon-runner.png" alt="" loading="lazy">マラソンランナー <b>5</b></span>
+            </div>
+            <p class="skill-note">ペンドラ・パスの急斜面・屋根・高低差に対応。10ptで跳躍を選び、登攀と逃走のスタミナを伸ばす。</p>
+          </div>
+        </div>
+
+        <div class="skill-level">
+          <div class="skill-level-head">
+            <div class="skill-lv">Lv 32–48</div>
+            <span class="skill-pt">+17 / 48 pt</span>
+          </div>
+          <div class="skill-level-body">
+            <p class="skill-purpose"><span>目的</span>持ち帰り量を増やす調整の土台。</p>
+            <div class="skill-row">
+              <span class="skill-chip branch-cond"><img class="skill-icon" src="assets/skills/icons/used-to-the-weight.png" alt="" loading="lazy">重さへの慣れ <b>1</b></span>
+              <span class="skill-chip branch-cond"><img class="skill-icon" src="assets/skills/icons/stubborn-mule.png" alt="" loading="lazy">頑固なラバ <b>3</b></span>
+              <span class="skill-chip branch-cond"><img class="skill-icon" src="assets/skills/icons/three-deep-breaths.png" alt="" loading="lazy">三回深呼吸 <b>5</b></span>
+              <span class="skill-chip branch-cond"><img class="skill-icon" src="assets/skills/icons/vigorous-vaulter.png" alt="" loading="lazy">元気に跳躍 <b>1</b></span>
+              <span class="skill-chip branch-cond"><img class="skill-icon" src="assets/skills/icons/mules-gallop.png" alt="" loading="lazy">運び屋の駆け足 <b>1</b><span class="skill-choice">2択</span></span>
+              <span class="skill-chip branch-cond"><img class="skill-icon" src="assets/skills/icons/loaded-arms.png" alt="" loading="lazy">武器装填 <b>1</b></span>
+              <span class="skill-chip branch-cond"><img class="skill-icon" src="assets/skills/icons/broad-shoulders.png" alt="" loading="lazy">広い肩幅 <b>5</b></span>
+            </div>
+            <p class="skill-note">持ち帰り量を底上げ。10ptで運び屋の駆け足を選び、超過重量でも走れるようにする。</p>
+          </div>
+        </div>
+
+        <div class="skill-level">
+          <div class="skill-level-head">
+            <div class="skill-lv">Lv 49–59</div>
+            <span class="skill-pt">+11 / 59 pt</span>
+          </div>
+          <div class="skill-level-body">
+            <p class="skill-purpose"><span>目的</span>移動性30ptの終点を取る。</p>
+            <div class="skill-row">
+              <span class="skill-chip branch-mob"><img class="skill-icon" src="assets/skills/icons/effortless-roll.png" alt="" loading="lazy">イージーロール <b>4</b></span>
+              <span class="skill-chip branch-mob"><img class="skill-icon" src="assets/skills/icons/right-back-at-it.png" alt="" loading="lazy">さっそく再始動 <b>1</b></span>
+              <span class="skill-chip branch-mob"><img class="skill-icon" src="assets/skills/icons/swift-start.png" alt="" loading="lazy">素早いスタート <b>5</b></span>
+              <span class="skill-chip branch-mob"><img class="skill-icon" src="assets/skills/icons/sprinting-on-fumes.png" alt="" loading="lazy">死力のダッシュ <b>1</b><span class="skill-choice">終点</span></span>
+            </div>
+            <p class="skill-note">移動性30ptに到達。終点は死力のダッシュ。射撃を受けてもスタミナが尽きにくい。</p>
+          </div>
+        </div>
+
+        <div class="skill-level">
+          <div class="skill-level-head">
+            <div class="skill-lv">Lv 60–70</div>
+            <span class="skill-pt">+11 / 70 pt</span>
+          </div>
+          <div class="skill-level-body">
+            <p class="skill-purpose"><span>目的</span>解錠速度と漁りドロップを伸ばす。</p>
+            <div class="skill-row">
+              <span class="skill-chip branch-cond"><img class="skill-icon" src="assets/skills/icons/proficient-pryer.png" alt="" loading="lazy">こじ開けの達人 <b>5</b></span>
+              <span class="skill-chip branch-surv"><img class="skill-icon" src="assets/skills/icons/traveling-tinkerer.png" alt="" loading="lazy">旅する修理屋 <b>1</b></span>
+              <span class="skill-chip branch-surv"><img class="skill-icon" src="assets/skills/icons/looters-luck.png" alt="" loading="lazy">略奪者の幸運 <b>5</b></span>
+            </div>
+            <p class="skill-note">鍵・コンテナの開錠速度と、漁りの2倍ドロップを伸ばす。ここでサバイバル17pt。</p>
+          </div>
+        </div>
+
+        <div class="skill-level">
+          <div class="skill-level-head">
+            <div class="skill-lv">Lv 71–75</div>
+            <span class="skill-pt">+6 / 76 pt</span>
+          </div>
+          <div class="skill-level-body">
+            <p class="skill-purpose"><span>目的</span>残り6ptで好みの完成形へ。</p>
+            <div class="skill-path">
+              <span class="skill-path-label">物資集め</span>
+              <div class="skill-row">
+                <span class="skill-chip branch-cond"><img class="skill-icon" src="assets/skills/icons/stubborn-mule.png" alt="" loading="lazy">頑固なラバ <b>1</b></span>
+                <span class="skill-chip branch-cond"><img class="skill-icon" src="assets/skills/icons/speedy-mule.png" alt="" loading="lazy">高速の運び屋 <b>5</b></span>
+              </div>
+            </div>
+            <div class="skill-path">
+              <span class="skill-path-label">撃ち合い</span>
+              <div class="skill-row">
+                <span class="skill-chip branch-mob"><img class="skill-icon" src="assets/skills/icons/wall-run.png" alt="" loading="lazy">壁走り <span class="skill-choice">差替</span></span>
+                <span class="skill-chip branch-surv"><img class="skill-icon" src="assets/skills/icons/stylish-landing.png" alt="" loading="lazy">スタイリッシュ着地 <b>1</b></span>
+                <span class="skill-chip branch-surv"><img class="skill-icon" src="assets/skills/icons/turtle-crawl.png" alt="" loading="lazy">亀這い <b>5</b></span>
+              </div>
+            </div>
+            <div class="skill-path">
+              <span class="skill-path-label">デュオ</span>
+              <div class="skill-row">
+                <span class="skill-chip branch-cond"><img class="skill-icon" src="assets/skills/icons/downed-but-determined.png" alt="" loading="lazy">ダウンしても揺るがぬ覚悟 <b>5</b></span>
+                <span class="skill-chip branch-cond"><img class="skill-icon" src="assets/skills/icons/crawl-before-you-walk.png" alt="" loading="lazy">歩く前に這え <b>1</b></span>
+              </div>
+            </div>
+            <p class="skill-note">残り6ptの使い道。撃ち合いは終点を死力のダッシュ→壁走りに差し替える（同コスト）。</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="small muted" style="margin:10px 0 0">※ 前提ノードを飛ばせない箇所は、同系統の安いノードで橋渡しする。10 / 30 / 40ptのゲートは系統ごとに厳守。<a class="ref" href="#src-20">[20]</a></p>
+
+      <h3 style="margin-top:32px">完成形ビルド</h3>
+      <div class="table-wrap reveal" style="margin-top:12px">
+        <table class="diff-table skill-builds">
+          <thead>
+            <tr><th>ビルド</th><th>調整</th><th>移動性</th><th>サバイバル</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>物資集め<span class="skill-build-use">初動・金策</span></td><td>28</td><td>31</td><td>17</td></tr>
+            <tr><td>撃ち合い<span class="skill-build-use">PvP・前哨戦</span></td><td>22</td><td>31</td><td>23</td></tr>
+            <tr><td>デュオ<span class="skill-build-use">ダウン耐性</span></td><td>28</td><td>31</td><td>17</td></tr>
+            <tr><td>移動特化<span class="skill-build-use">遠征+15pt / 合計91</span></td><td>22</td><td>41</td><td>28</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-warn reveal">
+        <span class="callout-icon">注意</span>
+        <div>
+          <p><b>10 / 30 / 40ptのゲートは系統ごと。</b>別系統に振っても合計ptでは開かない。76ptなら1系統を31ptまで伸ばして終点を1つ取り、残りを別系統に回すのが丸い。40ptまで伸ばすと終点2つ目が取れるが、その分の小スキルを削ることになる。振り直しは2,000コイン/pt。<a class="ref" href="#src-20">[20]</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 前哨基地 -->
+  <section class="section" id="outpost">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-kicker">06 / 前哨基地</div>
+        <h2>前哨基地</h2>
+        <p class="sec-lead">レベル18で解放。部屋を増やし、研究を進め、増幅武器へ。</p>
+      </div>
+
+      <figure class="shot reveal">
+        <img src="assets/outpost.jpg" alt="前哨基地の外観" loading="lazy" decoding="async" width="1024" height="576">
+        <figcaption><b>前哨基地</b>：凍った道で追加された地上の拠点。<span class="shot-credit">画像: Embark Studios</span></figcaption>
+      </figure>
+
+      <div class="outpost-stats reveal">
+        <div><strong>18</strong><span>必要レベル</span></div>
+        <div><strong>4</strong><span>最大部屋数</span></div>
+        <div><strong>Lv4</strong><span>研究上限</span></div>
+        <div><strong>100</strong><span>家具デザイン</span></div>
+      </div>
+
+      <div class="ability-grid reveal">
+        <div class="ability-card">
+          <div class="ability-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.7 3h10.6a2 2 0 0 0 1.7-3l-5-9V3"/><path d="M7.5 15h9"/></svg>
+          </div>
+          <h4>研究ステーション</h4>
+          <p>設計図と増幅を研究</p>
+        </div>
+        <div class="ability-card">
+          <div class="ability-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="7"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+          </div>
+          <h4>ガンスミスLv4</h4>
+          <p>唯一のLv4作業台</p>
+        </div>
+        <div class="ability-card">
+          <div class="ability-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 8h16v11H4z"/><path d="M4 8l2-4h12l2 4M9 12h6"/></svg>
+          </div>
+          <h4>保管庫節約</h4>
+          <p>ラック4丁 / 棚24枠</p>
+        </div>
+        <div class="ability-card">
+          <div class="ability-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
+          </div>
+          <h4>部屋＋家具</h4>
+          <p>ベース＋3部屋 / 100種</p>
+        </div>
+      </div>
+
+      <h3 style="margin-top:34px">進行と必要素材</h3>
+      <p class="small muted" style="margin-bottom:12px">上から順に。素材は色分けチップのみ。<a class="ref" href="#src-15">[15]</a><a class="ref" href="#src-16">[16]</a></p>
+
+      <div class="grid" style="gap:14px">
+
+        <div class="phase-card reveal">
+          <div class="phase-head">
+            <span class="phase-num">01</span>
+            <div><h3>解放</h3><p>安全な隠れ家</p></div>
+            <span class="phase-tag">Lv18</span>
+          </div>
+          <div class="phase-body">
+            <div class="mini-flow">
+              <span class="mini-step"><b>01</b>写真</span>
+              <span class="mini-arrow">→</span>
+              <span class="mini-step"><b>02</b>素材</span>
+              <span class="mini-arrow">→</span>
+              <span class="mini-step"><b>03</b>戦闘</span>
+            </div>
+            <div class="mats">
+              <span class="mat mat-common"><img class="mat-icon" src="assets/materials/planks.png" alt="" loading="lazy">厚板<b>3</b></span>
+              <span class="mat mat-common"><img class="mat-icon" src="assets/materials/sheet-metal.png" alt="" loading="lazy">金属板<b>5</b></span>
+              <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/arc-alloy.png" alt="" loading="lazy">ARC合金<b>10</b></span>
+              <span class="mat mat-craft"><img class="mat-icon" src="assets/materials/advanced-electrical-components.png" alt="" loading="lazy">高度な電気部品<b>3</b></span>
+            </div>
+            <p class="small muted" style="margin:9px 0 0">写真はブルーゲートの荒廃した家屋周辺。戦闘は飛行ARC 800 / ブリー 300ダメージ。</p>
+          </div>
+        </div>
+
+        <div class="phase-card reveal">
+          <div class="phase-head">
+            <span class="phase-num">02</span>
+            <div><h3>部屋を増やす</h3><p>部屋2 → 4</p></div>
+            <span class="phase-tag">3部屋</span>
+          </div>
+          <div class="phase-body">
+            <div class="room-rail">
+              <div class="room-node"><span class="rl">ベース</span><b>42枠</b><small>+8 ステーション</small></div>
+              <div class="room-node"><span class="rl">部屋2</span><b>+22枠</b><small>研究Lv2</small></div>
+              <div class="room-node"><span class="rl">部屋3</span><b>+22枠</b><small>研究Lv3</small></div>
+              <div class="room-node"><span class="rl">部屋4</span><b>+22枠</b><small>研究Lv4</small></div>
+            </div>
+            <div class="research-list">
+              <div class="research-row">
+                <span class="lvl-badge">R2</span>
+                <div class="mats">
+                  <span class="mat mat-craft"><img class="mat-icon" src="assets/materials/cable-strippers.png" alt="" loading="lazy">ケーブル・ストリッパー<b>3</b></span>
+                  <span class="mat mat-common"><img class="mat-icon" src="assets/materials/sheet-metal.png" alt="" loading="lazy">金属板<b>20</b></span>
+                  <span class="mat mat-craft"><img class="mat-icon" src="assets/materials/steel-cables.png" alt="" loading="lazy">鋼ケーブル<b>3</b></span>
+                </div>
+                <span class="research-req">2部屋目</span>
+              </div>
+              <div class="research-row">
+                <span class="lvl-badge">R3</span>
+                <div class="mats">
+                  <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/epoxy-buckets.png" alt="" loading="lazy">エポキシ樹脂バケツ<b>3</b></span>
+                  <span class="mat mat-common"><img class="mat-icon" src="assets/materials/planks.png" alt="" loading="lazy">厚板<b>35</b></span>
+                  <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/hand-drills.png" alt="" loading="lazy">ハンドドリル<b>3</b></span>
+                </div>
+                <span class="research-req">3部屋目</span>
+              </div>
+              <div class="research-row">
+                <span class="lvl-badge">R4</span>
+                <div class="mats">
+                  <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/insulation-rolls.png" alt="" loading="lazy">断熱ロール<b>3</b></span>
+                  <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/laser-levels.png" alt="" loading="lazy">レーザーレベル<b>3</b></span>
+                  <span class="mat mat-common"><img class="mat-icon" src="assets/materials/sheet-metal.png" alt="" loading="lazy">金属板<b>40</b></span>
+                </div>
+                <span class="research-req">4部屋目</span>
+              </div>
+            </div>
+            <p class="small muted" style="margin:9px 0 0">部屋は作り直せない。部屋数＝研究Lv上限。</p>
+          </div>
+        </div>
+
+        <div class="phase-card reveal">
+          <div class="phase-head">
+            <span class="phase-num">03</span>
+            <div><h3>研究</h3><p>研究ステーション</p></div>
+            <span class="phase-tag">Lv1 → 4</span>
+          </div>
+          <div class="phase-body">
+            <div class="research-list">
+              <div class="research-row">
+                <span class="lvl-badge">Lv1</span>
+                <div class="mats">
+                  <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/mini-pump.png" alt="" loading="lazy">ミニポンプ<b>3</b></span>
+                  <span class="mat mat-common"><img class="mat-icon" src="assets/materials/planks.png" alt="" loading="lazy">厚板<b>35</b></span>
+                  <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/battered-paperback.png" alt="" loading="lazy">破れた本<b>5</b></span>
+                </div>
+                <span class="research-req">1部屋</span>
+              </div>
+              <div class="research-row">
+                <span class="lvl-badge">Lv2</span>
+                <div class="mats">
+                  <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/calculator.png" alt="" loading="lazy">電卓<b>3</b></span>
+                  <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/raider-logbook.png" alt="" loading="lazy">レイダー日誌<b>3</b></span>
+                  <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/skulker-targeter.png" alt="" loading="lazy">スカルカーのターゲッター<b>5</b></span>
+                </div>
+                <span class="research-req">2部屋</span>
+              </div>
+              <div class="research-row">
+                <span class="lvl-badge">Lv3</span>
+                <div class="mats">
+                  <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/differential-microphone.png" alt="" loading="lazy">差動マイク<b>3</b></span>
+                  <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/exodus-technical-handbook.png" alt="" loading="lazy">エクソダス技術ハンドブック<b>3</b></span>
+                  <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/bully-fragmenter.png" alt="" loading="lazy">ブリーのフラグメンター<b>6</b></span>
+                </div>
+                <span class="research-req">3部屋</span>
+              </div>
+              <div class="research-row">
+                <span class="lvl-badge">Lv4</span>
+                <div class="mats">
+                  <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/thermal-shaker.png" alt="" loading="lazy">サーマルシェイカー<b>3</b></span>
+                  <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/arc-data-module.png" alt="" loading="lazy">ARCデータモジュール<b>3</b></span>
+                  <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/frigate-inductor.png" alt="" loading="lazy">フリゲートインダクター<b>1</b></span>
+                </div>
+                <span class="research-req">4部屋</span>
+              </div>
+            </div>
+            <p class="small muted" style="margin:9px 0 0">Lv4で増幅研究が解禁。フリゲートインダクターはフリゲートから。</p>
+          </div>
+        </div>
+
+        <div class="phase-card reveal">
+          <div class="phase-head">
+            <span class="phase-num">04</span>
+            <div><h3>増幅へ</h3><p>ガンスミスLv4</p></div>
+            <span class="phase-tag">エンドゲーム</span>
+          </div>
+          <div class="phase-body">
+            <div class="mats">
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/radial-press.png" alt="" loading="lazy">ラジアルプレス<b>3</b></span>
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/magnetic-accelerator.png" alt="" loading="lazy">磁気加速器<b>3</b></span>
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/emperor-modulator.png" alt="" loading="lazy">エンペラーモジュレーター<b>1</b></span>
+              <span class="mat mat-arc">増幅モジュール<b>1+</b></span>
+            </div>
+            <p class="small muted" style="margin:9px 0 0">ガンスミスLv4＋研究Lv4＋モジュールで5段階目。研究は5,000 RP/項目。</p>
+          </div>
+        </div>
+
+      </div>
+
+      <h3 style="margin-top:34px">総必要素材（解放＋部屋＋研究）</h3>
+      <div class="phase-card reveal" style="margin-top:12px">
+        <div class="phase-body">
+          <div class="outpost-bars">
+            <div class="obar"><span class="nm">厚板</span><div class="track"><div class="fill" style="width:100%"></div></div><b>73</b></div>
+            <div class="obar"><span class="nm">金属板</span><div class="track"><div class="fill" style="width:89%"></div></div><b>65</b></div>
+            <div class="obar"><span class="nm">ARC合金</span><div class="track"><div class="fill" style="width:14%"></div></div><b>10</b></div>
+            <div class="obar"><span class="nm">ブリーのフラグメンター</span><div class="track"><div class="fill" style="width:8%"></div></div><b>6</b></div>
+            <div class="obar"><span class="nm">スカルカーのターゲッター</span><div class="track"><div class="fill" style="width:7%"></div></div><b>5</b></div>
+            <div class="obar"><span class="nm">破れた本</span><div class="track"><div class="fill" style="width:7%"></div></div><b>5</b></div>
+          </div>
+          <p class="outpost-bars-note">ガンスミスLv4（ラジアルプレス 3 / 磁気加速器 3 / エンペラーモジュレーター 1）は別枠。全素材の内訳は上のチップ参照。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 WORKSHOP -->
+  <section class="section" id="workshop">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-kicker">07 / ワークショップ</div>
+        <h2>ワークショップ強化素材</h2>
+        <p class="sec-lead">
+          各ステーションを最大まで上げるのに必要な素材を、レベル別にまとめた。
+          色は「基本素材 / 精製・クラフト素材 / ARC・敵ドロップ / 固有・レア素材」の4分類。
+          同じ素材でも拠点ごとに必要なので、合計は単純加算している。
+        </p>
+      </div>
+
+      <div class="mat-legend reveal">
+        <span class="legend-item"><i class="dot dot-common"></i>基本素材</span>
+        <span class="legend-item"><i class="dot dot-craft"></i>精製・クラフト素材</span>
+        <span class="legend-item"><i class="dot dot-arc"></i>ARC・敵ドロップ</span>
+        <span class="legend-item"><i class="dot dot-rare"></i>固有・レア素材</span>
+        <span class="legend-note">※ 数値は必要数</span>
+      </div>
+
+      <div class="callout callout-tip reveal">
+        <span class="callout-icon">無料</span>
+        <div>
+          <p><b>ワークベンチは無料。</b>最初からLv1で、1ラウンドプレイすれば使える。アップグレード不要。以下の7ステーションが素材の対象。<a class="ref" href="#src-13">[13]</a></p>
+        </div>
+      </div>
+
+      <div class="ステーション-grid reveal">
+
+        <!-- ガンスミス -->
+        <article class="ステーション-card">
+          <header class="ステーション-head">
+            <span class="ステーション-mark">G</span>
+            <div class="ステーション-title"><h3>ガンスミス</h3><p>武器・アタッチメント</p></div>
+            <span class="ステーション-max">最大Lv4</span>
+          </header>
+          <ol class="lvl-list">
+            <li class="lvl-row">
+              <span class="lvl-badge">Lv1</span>
+              <div class="lvl-body"><div class="mats">
+                <span class="mat mat-common"><img class="mat-icon" src="assets/materials/metal-parts.png" alt="" loading="lazy">金属部品<b>20</b></span>
+                <span class="mat mat-common"><img class="mat-icon" src="assets/materials/rubber-parts.png" alt="" loading="lazy">ゴム部品<b>30</b></span>
+              </div></div>
+            </li>
+            <li class="lvl-row">
+              <span class="lvl-badge">Lv2</span>
+              <div class="lvl-body"><div class="mats">
+                <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/rusted-tools.png" alt="" loading="lazy">錆びた道具<b>3</b></span>
+                <span class="mat mat-craft"><img class="mat-icon" src="assets/materials/mechanical-components.png" alt="" loading="lazy">機械部品<b>5</b></span>
+                <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/wasp-driver.png" alt="" loading="lazy">ワスプドライバー<b>8</b></span>
+              </div></div>
+            </li>
+            <li class="lvl-row">
+              <span class="lvl-badge">Lv3</span>
+              <div class="lvl-body"><div class="mats">
+                <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/rusted-gear.png" alt="" loading="lazy">錆びた装備<b>3</b></span>
+                <span class="mat mat-craft"><img class="mat-icon" src="assets/materials/advanced-mechanical-components.png" alt="" loading="lazy">高度な機械部品<b>5</b></span>
+                <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/sentinel-firing-core.png" alt="" loading="lazy">センチネル発火コア<b>4</b></span>
+              </div></div>
+            </li>
+            <li class="lvl-row">
+              <span class="lvl-badge outpost">Lv4</span>
+              <div class="lvl-body">
+                <div class="lvl-note"><span class="outpost-tag">前哨基地</span>解放が前提</div>
+                <div class="mats">
+                  <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/radial-press.png" alt="" loading="lazy">ラジアルプレス<b>3</b></span>
+                  <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/magnetic-accelerator.png" alt="" loading="lazy">磁気加速器<b>3</b></span>
+                  <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/emperor-modulator.png" alt="" loading="lazy">エンペラーモジュレーター<b>1</b></span>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </article>
+
+        <!-- 装備ベンチ -->
+        <article class="ステーション-card">
+          <header class="ステーション-head">
+            <span class="ステーション-mark">GB</span>
+            <div class="ステーション-title"><h3>装備ベンチ</h3><p>防具・シールド</p></div>
+            <span class="ステーション-max">最大Lv3</span>
+          </header>
+          <ol class="lvl-list">
+            <li class="lvl-row">
+              <span class="lvl-badge">Lv1</span>
+              <div class="lvl-body"><div class="mats">
+                <span class="mat mat-common"><img class="mat-icon" src="assets/materials/plastic-parts.png" alt="" loading="lazy">プラスチック部品<b>25</b></span>
+                <span class="mat mat-common"><img class="mat-icon" src="assets/materials/fabric.png" alt="" loading="lazy">生地<b>30</b></span>
+              </div></div>
+            </li>
+            <li class="lvl-row">
+              <span class="lvl-badge">Lv2</span>
+              <div class="lvl-body"><div class="mats">
+                <span class="mat mat-craft"><img class="mat-icon" src="assets/materials/power-cable.png" alt="" loading="lazy">電源ケーブル<b>3</b></span>
+                <span class="mat mat-craft"><img class="mat-icon" src="assets/materials/electrical-components.png" alt="" loading="lazy">電気部品<b>5</b></span>
+                <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/hornet-driver.png" alt="" loading="lazy">ホーネットドライバー<b>5</b></span>
+              </div></div>
+            </li>
+            <li class="lvl-row">
+              <span class="lvl-badge">Lv3</span>
+              <div class="lvl-body"><div class="mats">
+                <span class="mat mat-craft"><img class="mat-icon" src="assets/materials/industrial-battery.png" alt="" loading="lazy">産業用バッテリー<b>3</b></span>
+                <span class="mat mat-craft"><img class="mat-icon" src="assets/materials/advanced-electrical-components.png" alt="" loading="lazy">高度な電気部品<b>5</b></span>
+                <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/bastion-cell.png" alt="" loading="lazy">バスティオンセル<b>6</b></span>
+              </div></div>
+            </li>
+          </ol>
+        </article>
+
+        <!-- 医療ラボ -->
+        <article class="ステーション-card">
+          <header class="ステーション-head">
+            <span class="ステーション-mark">M</span>
+            <div class="ステーション-title"><h3>医療ラボ</h3><p>回復・医療</p></div>
+            <span class="ステーション-max">最大Lv3</span>
+          </header>
+          <ol class="lvl-list">
+            <li class="lvl-row">
+              <span class="lvl-badge">Lv1</span>
+              <div class="lvl-body"><div class="mats">
+                <span class="mat mat-common"><img class="mat-icon" src="assets/materials/fabric.png" alt="" loading="lazy">生地<b>50</b></span>
+                <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/arc-alloy.png" alt="" loading="lazy">ARC合金<b>6</b></span>
+              </div></div>
+            </li>
+            <li class="lvl-row">
+              <span class="lvl-badge">Lv2</span>
+              <div class="lvl-body"><div class="mats">
+                <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/cracked-bioscanner.png" alt="" loading="lazy">ひび割れたバイオスキャナー<b>2</b></span>
+                <span class="mat mat-craft"><img class="mat-icon" src="assets/materials/durable-cloth.png" alt="" loading="lazy">丈夫な布<b>5</b></span>
+                <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/tick-pod.png" alt="" loading="lazy">チックポッド<b>8</b></span>
+              </div></div>
+            </li>
+            <li class="lvl-row">
+              <span class="lvl-badge">Lv3</span>
+              <div class="lvl-body"><div class="mats">
+                <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/rusted-shut-medical-kit.png" alt="" loading="lazy">錆びて閉まった医療キット<b>3</b></span>
+                <span class="mat mat-craft"><img class="mat-icon" src="assets/materials/antiseptic.png" alt="" loading="lazy">消毒液<b>8</b></span>
+                <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/surveyor-vault.png" alt="" loading="lazy">探査機保管庫<b>5</b></span>
+              </div></div>
+            </li>
+          </ol>
+        </article>
+
+        <!-- 爆発物ステーション -->
+        <article class="ステーション-card">
+          <header class="ステーション-head">
+            <span class="ステーション-mark">E</span>
+            <div class="ステーション-title"><h3>爆発物ステーション</h3><p>グレネード・地雷</p></div>
+            <span class="ステーション-max">最大Lv3</span>
+          </header>
+          <ol class="lvl-list">
+            <li class="lvl-row">
+              <span class="lvl-badge">Lv1</span>
+              <div class="lvl-body"><div class="mats">
+                <span class="mat mat-common"><img class="mat-icon" src="assets/materials/chemicals.png" alt="" loading="lazy">化学薬品<b>50</b></span>
+                <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/arc-alloy.png" alt="" loading="lazy">ARC合金<b>6</b></span>
+              </div></div>
+            </li>
+            <li class="lvl-row">
+              <span class="lvl-badge">Lv2</span>
+              <div class="lvl-body"><div class="mats">
+                <span class="mat mat-craft"><img class="mat-icon" src="assets/materials/synthesized-fuel.png" alt="" loading="lazy">合成燃料<b>3</b></span>
+                <span class="mat mat-craft"><img class="mat-icon" src="assets/materials/crude-explosives.png" alt="" loading="lazy">粗製爆弾<b>5</b></span>
+                <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/pop-trigger.png" alt="" loading="lazy">ポップトリガー<b>5</b></span>
+              </div></div>
+            </li>
+            <li class="lvl-row">
+              <span class="lvl-badge">Lv3</span>
+              <div class="lvl-body"><div class="mats">
+                <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/laboratory-reagents.png" alt="" loading="lazy">実験用試薬<b>3</b></span>
+                <span class="mat mat-craft"><img class="mat-icon" src="assets/materials/explosive-compound.png" alt="" loading="lazy">爆発性化合物<b>5</b></span>
+                <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/rocketeer-driver.png" alt="" loading="lazy">ロケッティアドライバー<b>3</b></span>
+              </div></div>
+            </li>
+          </ol>
+        </article>
+
+        <!-- ユーティリティステーション -->
+        <article class="ステーション-card">
+          <header class="ステーション-head">
+            <span class="ステーション-mark">U</span>
+            <div class="ステーション-title"><h3>ユーティリティステーション</h3><p>ガジェット・ユーティリティ</p></div>
+            <span class="ステーション-max">最大Lv3</span>
+          </header>
+          <ol class="lvl-list">
+            <li class="lvl-row">
+              <span class="lvl-badge">Lv1</span>
+              <div class="lvl-body"><div class="mats">
+                <span class="mat mat-common"><img class="mat-icon" src="assets/materials/plastic-parts.png" alt="" loading="lazy">プラスチック部品<b>50</b></span>
+                <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/arc-alloy.png" alt="" loading="lazy">ARC合金<b>6</b></span>
+              </div></div>
+            </li>
+            <li class="lvl-row">
+              <span class="lvl-badge">Lv2</span>
+              <div class="lvl-body"><div class="mats">
+                <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/damaged-heat-sink.png" alt="" loading="lazy">破損したヒートシンク<b>2</b></span>
+                <span class="mat mat-craft"><img class="mat-icon" src="assets/materials/electrical-components.png" alt="" loading="lazy">電気部品<b>5</b></span>
+                <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/snitch-scanner.png" alt="" loading="lazy">スニッチスキャナー<b>6</b></span>
+              </div></div>
+            </li>
+            <li class="lvl-row">
+              <span class="lvl-badge">Lv3</span>
+              <div class="lvl-body"><div class="mats">
+                <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/fried-motherboard.png" alt="" loading="lazy">焼けたマザーボード<b>3</b></span>
+                <span class="mat mat-craft"><img class="mat-icon" src="assets/materials/advanced-electrical-components.png" alt="" loading="lazy">高度な電気部品<b>5</b></span>
+                <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/leaper-pulse-unit.png" alt="" loading="lazy">リーパーパルスユニット<b>4</b></span>
+              </div></div>
+            </li>
+          </ol>
+        </article>
+
+        <!-- 精錬機 -->
+        <article class="ステーション-card">
+          <header class="ステーション-head">
+            <span class="ステーション-mark">R</span>
+            <div class="ステーション-title"><h3>精錬機</h3><p>素材の精製</p></div>
+            <span class="ステーション-max">最大Lv3</span>
+          </header>
+          <ol class="lvl-list">
+            <li class="lvl-row">
+              <span class="lvl-badge">Lv1</span>
+              <div class="lvl-body"><div class="mats">
+                <span class="mat mat-common"><img class="mat-icon" src="assets/materials/metal-parts.png" alt="" loading="lazy">金属部品<b>60</b></span>
+                <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/arc-powercell.png" alt="" loading="lazy">ARC電池<b>5</b></span>
+              </div></div>
+            </li>
+            <li class="lvl-row">
+              <span class="lvl-badge">Lv2</span>
+              <div class="lvl-body"><div class="mats">
+                <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/toaster.png" alt="" loading="lazy">トースター<b>3</b></span>
+                <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/arc-motion-core.png" alt="" loading="lazy">ARC動作コア<b>5</b></span>
+                <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/fireball-burner.png" alt="" loading="lazy">ファイアボールバーナー<b>8</b></span>
+              </div></div>
+            </li>
+            <li class="lvl-row">
+              <span class="lvl-badge">Lv3</span>
+              <div class="lvl-body"><div class="mats">
+                <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/motor.png" alt="" loading="lazy">モーター<b>3</b></span>
+                <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/arc-circuitry.png" alt="" loading="lazy">ARC回路<b>10</b></span>
+                <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/bombardier-cell.png" alt="" loading="lazy">ボンバルディアセル<b>6</b></span>
+              </div></div>
+            </li>
+          </ol>
+        </article>
+
+        <!-- 研究ステーション -->
+        <article class="ステーション-card is-outpost">
+          <header class="ステーション-head">
+            <span class="ステーション-mark">RS</span>
+            <div class="ステーション-title"><h3>研究ステーション</h3><p>設計図研究・前哨基地必須</p></div>
+            <span class="ステーション-max">最大Lv4</span>
+          </header>
+          <ol class="lvl-list">
+            <li class="lvl-row">
+              <span class="lvl-badge outpost">Lv1</span>
+              <div class="lvl-body">
+                <div class="lvl-note"><span class="outpost-tag">前哨基地</span>レベルと連動</div>
+                <div class="mats">
+                  <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/mini-pump.png" alt="" loading="lazy">ミニポンプ<b>3</b></span>
+                  <span class="mat mat-common"><img class="mat-icon" src="assets/materials/planks.png" alt="" loading="lazy">厚板<b>35</b></span>
+                  <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/battered-paperback.png" alt="" loading="lazy">破れた本<b>5</b></span>
+                </div>
+              </div>
+            </li>
+            <li class="lvl-row">
+              <span class="lvl-badge outpost">Lv2</span>
+              <div class="lvl-body"><div class="mats">
+                <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/calculator.png" alt="" loading="lazy">電卓<b>3</b></span>
+                <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/raider-logbook.png" alt="" loading="lazy">レイダー日誌<b>3</b></span>
+                <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/skulker-targeter.png" alt="" loading="lazy">スカルカーのターゲッター<b>5</b></span>
+              </div></div>
+            </li>
+            <li class="lvl-row">
+              <span class="lvl-badge outpost">Lv3</span>
+              <div class="lvl-body"><div class="mats">
+                <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/differential-microphone.png" alt="" loading="lazy">差動マイク<b>3</b></span>
+                <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/exodus-technical-handbook.png" alt="" loading="lazy">エクソダス技術ハンドブック<b>3</b></span>
+                <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/bully-fragmenter.png" alt="" loading="lazy">ブリーのフラグメンター<b>6</b></span>
+              </div></div>
+            </li>
+            <li class="lvl-row">
+              <span class="lvl-badge outpost">Lv4</span>
+              <div class="lvl-body"><div class="mats">
+                <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/thermal-shaker.png" alt="" loading="lazy">サーマルシェイカー<b>3</b></span>
+                <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/arc-data-module.png" alt="" loading="lazy">ARCデータモジュール<b>3</b></span>
+                <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/frigate-inductor.png" alt="" loading="lazy">フリゲートインダクター<b>1</b></span>
+              </div></div>
+            </li>
+          </ol>
+        </article>
+
+      </div>
+
+      <h3 style="margin-top:38px">全ステーション最大までの総必要素材</h3>
+      <p class="small muted" style="margin-bottom:14px">
+        7ステーションを最大まで上げた場合の延べ数。同じ素材が複数拠点で必要なので合算している。
+      </p>
+
+      <figure class="shot reveal" id="material-chart" style="margin-bottom:16px">
+        <svg viewBox="0 0 720 430" role="img" aria-labelledby="matChartTitle">
+          <title id="matChartTitle">全ステーション最大までの総必要素材 TOP10</title>
+          <rect width="720" height="430" fill="#0b121a"/>
+          <g stroke="#1e2a39" stroke-width="1">
+            <line x1="175" y1="52" x2="175" y2="382"/>
+            <line x1="292.5" y1="52" x2="292.5" y2="382" stroke-dasharray="3 5"/>
+            <line x1="410" y1="52" x2="410" y2="382" stroke-dasharray="3 5"/>
+            <line x1="527.5" y1="52" x2="527.5" y2="382" stroke-dasharray="3 5"/>
+            <line x1="645" y1="52" x2="645" y2="382" stroke-dasharray="3 5"/>
+          </g>
+          <g font-family="Segoe UI, sans-serif" font-size="9.5" fill="#5b6a7d" text-anchor="middle">
+            <text x="175" y="44">0</text><text x="292.5" y="44">20</text><text x="410" y="44">40</text><text x="527.5" y="44">60</text><text x="645" y="44">80</text>
+          </g>
+
+          <g font-family="Segoe UI, sans-serif" font-size="10.5" fill="#c7d2e0">
+            <text x="160" y="66" text-anchor="end">Metal Parts</text>
+            <text x="160" y="100" text-anchor="end">Fabric</text>
+            <text x="160" y="134" text-anchor="end">Plastic Parts</text>
+            <text x="160" y="168" text-anchor="end">Chemicals</text>
+            <text x="160" y="202" text-anchor="end">Planks</text>
+            <text x="160" y="236" text-anchor="end">Rubber Parts</text>
+            <text x="160" y="270" text-anchor="end">ARC Alloy</text>
+            <text x="160" y="304" text-anchor="end">ARC Circuitry</text>
+            <text x="160" y="338" text-anchor="end">Electrical Components</text>
+            <text x="160" y="372" text-anchor="end" font-size="9.5">Adv. Electrical Components</text>
+          </g>
+
+          <g>
+            <rect x="175" y="54" width="470" height="16" rx="3" fill="#94a3b8" opacity=".82"/>
+            <rect x="175" y="88" width="470" height="16" rx="3" fill="#94a3b8" opacity=".82"/>
+            <rect x="175" y="122" width="441" height="16" rx="3" fill="#94a3b8" opacity=".82"/>
+            <rect x="175" y="156" width="294" height="16" rx="3" fill="#94a3b8" opacity=".82"/>
+            <rect x="175" y="190" width="206" height="16" rx="3" fill="#94a3b8" opacity=".82"/>
+            <rect x="175" y="224" width="176" height="16" rx="3" fill="#94a3b8" opacity=".82"/>
+            <rect x="175" y="258" width="106" height="16" rx="3" fill="#f59e0b" opacity=".85"/>
+            <rect x="175" y="292" width="59" height="16" rx="3" fill="#f59e0b" opacity=".85"/>
+            <rect x="175" y="326" width="59" height="16" rx="3" fill="#22d3ee" opacity=".85"/>
+            <rect x="175" y="360" width="59" height="16" rx="3" fill="#22d3ee" opacity=".85"/>
+          </g>
+
+          <g font-family="Cascadia Code, monospace" font-size="10" fill="#dfe6ef">
+            <text x="653" y="66">80</text>
+            <text x="653" y="100">80</text>
+            <text x="624" y="134">75</text>
+            <text x="477" y="168">50</text>
+            <text x="389" y="202">35</text>
+            <text x="359" y="236">30</text>
+            <text x="289" y="270">18</text>
+            <text x="242" y="304">10</text>
+            <text x="242" y="338">10</text>
+            <text x="242" y="372">10</text>
+          </g>
+
+          <g transform="translate(24 408)" font-family="Segoe UI, sans-serif" font-size="10" fill="#8b97a8">
+            <rect x="0" y="-8" width="9" height="9" rx="2" fill="#94a3b8"/><text x="15" y="0">基本素材</text>
+            <rect x="90" y="-8" width="9" height="9" rx="2" fill="#22d3ee"/><text x="105" y="0">精製・クラフト</text>
+            <rect x="205" y="-8" width="9" height="9" rx="2" fill="#f59e0b"/><text x="220" y="0">ARC・敵ドロップ</text>
+            <text x="365" y="0" fill="#566274">全7ステーション最大時の延べ数</text>
+          </g>
+        </svg>
+        <figcaption><b>総必要素材 TOP10</b>：バーの色は素材カテゴリ。まず基本素材、次にARC素材を集める。</figcaption>
+      </figure>
+
+      <div class="total-grid reveal">
+        <div class="total-card">
+          <div class="total-head"><i class="dot dot-common"></i>基本素材<em>6種</em></div>
+          <div class="total-chips">
+            <span class="mat mat-common"><img class="mat-icon" src="assets/materials/metal-parts.png" alt="" loading="lazy">金属部品<b>80</b></span>
+            <span class="mat mat-common"><img class="mat-icon" src="assets/materials/fabric.png" alt="" loading="lazy">生地<b>80</b></span>
+            <span class="mat mat-common"><img class="mat-icon" src="assets/materials/plastic-parts.png" alt="" loading="lazy">プラスチック部品<b>75</b></span>
+            <span class="mat mat-common"><img class="mat-icon" src="assets/materials/chemicals.png" alt="" loading="lazy">化学薬品<b>50</b></span>
+            <span class="mat mat-common"><img class="mat-icon" src="assets/materials/planks.png" alt="" loading="lazy">厚板<b>35</b></span>
+            <span class="mat mat-common"><img class="mat-icon" src="assets/materials/rubber-parts.png" alt="" loading="lazy">ゴム部品<b>30</b></span>
+          </div>
+        </div>
+        <div class="total-card">
+          <div class="total-head"><i class="dot dot-craft"></i>精製・クラフト素材<em>11種</em></div>
+          <div class="total-chips">
+            <span class="mat mat-craft"><img class="mat-icon" src="assets/materials/electrical-components.png" alt="" loading="lazy">電気部品<b>10</b></span>
+            <span class="mat mat-craft"><img class="mat-icon" src="assets/materials/advanced-electrical-components.png" alt="" loading="lazy">高度な電気部品<b>10</b></span>
+            <span class="mat mat-craft"><img class="mat-icon" src="assets/materials/antiseptic.png" alt="" loading="lazy">消毒液<b>8</b></span>
+            <span class="mat mat-craft"><img class="mat-icon" src="assets/materials/mechanical-components.png" alt="" loading="lazy">機械部品<b>5</b></span>
+            <span class="mat mat-craft"><img class="mat-icon" src="assets/materials/advanced-mechanical-components.png" alt="" loading="lazy">高度な機械部品<b>5</b></span>
+            <span class="mat mat-craft"><img class="mat-icon" src="assets/materials/durable-cloth.png" alt="" loading="lazy">丈夫な布<b>5</b></span>
+            <span class="mat mat-craft"><img class="mat-icon" src="assets/materials/crude-explosives.png" alt="" loading="lazy">粗製爆弾<b>5</b></span>
+            <span class="mat mat-craft"><img class="mat-icon" src="assets/materials/explosive-compound.png" alt="" loading="lazy">爆発性化合物<b>5</b></span>
+            <span class="mat mat-craft"><img class="mat-icon" src="assets/materials/power-cable.png" alt="" loading="lazy">電源ケーブル<b>3</b></span>
+            <span class="mat mat-craft"><img class="mat-icon" src="assets/materials/industrial-battery.png" alt="" loading="lazy">産業用バッテリー<b>3</b></span>
+            <span class="mat mat-craft"><img class="mat-icon" src="assets/materials/synthesized-fuel.png" alt="" loading="lazy">合成燃料<b>3</b></span>
+          </div>
+        </div>
+        <div class="total-card">
+          <div class="total-head"><i class="dot dot-arc"></i>ARC・敵ドロップ<em>15種</em></div>
+          <div class="total-chips">
+            <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/arc-alloy.png" alt="" loading="lazy">ARC合金<b>18</b></span>
+            <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/arc-circuitry.png" alt="" loading="lazy">ARC回路<b>10</b></span>
+            <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/wasp-driver.png" alt="" loading="lazy">ワスプドライバー<b>8</b></span>
+            <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/fireball-burner.png" alt="" loading="lazy">ファイアボールバーナー<b>8</b></span>
+            <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/tick-pod.png" alt="" loading="lazy">チックポッド<b>8</b></span>
+            <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/bastion-cell.png" alt="" loading="lazy">バスティオンセル<b>6</b></span>
+            <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/snitch-scanner.png" alt="" loading="lazy">スニッチスキャナー<b>6</b></span>
+            <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/bombardier-cell.png" alt="" loading="lazy">ボンバルディアセル<b>6</b></span>
+            <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/arc-powercell.png" alt="" loading="lazy">ARC電池<b>5</b></span>
+            <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/arc-motion-core.png" alt="" loading="lazy">ARC動作コア<b>5</b></span>
+            <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/hornet-driver.png" alt="" loading="lazy">ホーネットドライバー<b>5</b></span>
+            <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/sentinel-firing-core.png" alt="" loading="lazy">センチネル発火コア<b>4</b></span>
+            <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/leaper-pulse-unit.png" alt="" loading="lazy">リーパーパルスユニット<b>4</b></span>
+            <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/rocketeer-driver.png" alt="" loading="lazy">ロケッティアドライバー<b>3</b></span>
+            <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/arc-data-module.png" alt="" loading="lazy">ARCデータモジュール<b>3</b></span>
+          </div>
+        </div>
+        <div class="total-card">
+          <div class="total-head"><i class="dot dot-rare"></i>固有・レア素材<em>24種</em></div>
+          <div class="total-chips">
+            <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/bully-fragmenter.png" alt="" loading="lazy">ブリーのフラグメンター<b>6</b></span>
+            <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/skulker-targeter.png" alt="" loading="lazy">スカルカーのターゲッター<b>5</b></span>
+            <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/battered-paperback.png" alt="" loading="lazy">破れた本<b>5</b></span>
+            <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/surveyor-vault.png" alt="" loading="lazy">探査機保管庫<b>5</b></span>
+            <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/pop-trigger.png" alt="" loading="lazy">ポップトリガー<b>5</b></span>
+            <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/rusted-tools.png" alt="" loading="lazy">錆びた道具<b>3</b></span>
+            <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/rusted-gear.png" alt="" loading="lazy">錆びた装備<b>3</b></span>
+            <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/rusted-shut-medical-kit.png" alt="" loading="lazy">錆びて閉まった医療キット<b>3</b></span>
+            <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/laboratory-reagents.png" alt="" loading="lazy">実験用試薬<b>3</b></span>
+            <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/fried-motherboard.png" alt="" loading="lazy">焼けたマザーボード<b>3</b></span>
+            <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/toaster.png" alt="" loading="lazy">トースター<b>3</b></span>
+            <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/motor.png" alt="" loading="lazy">モーター<b>3</b></span>
+            <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/mini-pump.png" alt="" loading="lazy">ミニポンプ<b>3</b></span>
+            <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/calculator.png" alt="" loading="lazy">電卓<b>3</b></span>
+            <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/raider-logbook.png" alt="" loading="lazy">レイダー日誌<b>3</b></span>
+            <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/differential-microphone.png" alt="" loading="lazy">差動マイク<b>3</b></span>
+            <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/exodus-technical-handbook.png" alt="" loading="lazy">エクソダス技術ハンドブック<b>3</b></span>
+            <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/thermal-shaker.png" alt="" loading="lazy">サーマルシェイカー<b>3</b></span>
+            <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/radial-press.png" alt="" loading="lazy">ラジアルプレス<b>3</b></span>
+            <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/magnetic-accelerator.png" alt="" loading="lazy">磁気加速器<b>3</b></span>
+            <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/cracked-bioscanner.png" alt="" loading="lazy">ひび割れたバイオスキャナー<b>2</b></span>
+            <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/damaged-heat-sink.png" alt="" loading="lazy">破損したヒートシンク<b>2</b></span>
+            <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/emperor-modulator.png" alt="" loading="lazy">エンペラーモジュレーター<b>1</b></span>
+            <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/frigate-inductor.png" alt="" loading="lazy">フリゲートインダクター<b>1</b></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout callout-tip reveal">
+        <span class="callout-icon">優先</span>
+        <div>
+          <p><b>集める優先度。</b>まず基本素材の「金属部品 80 / 生地 80 / プラスチック部品 75 / 化学薬品 50 / 厚板 35」。次にARC素材の「ARC合金 18 / ARC回路 10」。固有・レア素材は各ステーションのLv2以降で一気に要求されるので、Lv1を上げた段階で必要分をメモしておくとよい。<a class="ref" href="#src-13">[13]</a></p>
+        </div>
+      </div>
+
+      <div class="callout callout-warn reveal">
+        <span class="callout-icon">メモ</span>
+        <div>
+          <p><b>Lv4はガンスミスと研究ステーションのみ。</b>ガンスミスLv4は武器増幅の前提なので、エンドゲームを目指すなら必須。研究ステーションは前哨基地レベルと連動するため、先に前哨基地を上げる必要がある。<a class="ref" href="#src-13">[13]</a><a class="ref" href="#src-1">[1]</a></p>
+        </div>
+      </div>
+
+      <p class="small muted reveal" style="margin-top:12px">
+        素材表はARC Raiders WikiのWorkshopページ（2026年10月10日更新）に準拠。パッチで変更される可能性があるため、ゲーム内の表示も確認してほしい。
+      </p>
+    </div>
+  </section>
+
+  <!-- 06 WEAPONS -->
+  <section class="section" id="weapons">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-kicker">08 / 武器</div>
+        <h2>武器メタ・ティア表</h2>
+        <p class="sec-lead">
+          武器は「DPS」より「弾薬代」で選ぶ。毎レイド持ち込めるかどうかが、復帰勢にとっては強さより大事だ。
+          まず弱点の見方、次にティア、最後に役割別の型。
+        </p>
+      </div>
+
+            <h3>まず覚える弱点の見方</h3>
+      <p class="small muted" style="margin-bottom:12px">黄色=弱点、白=通常、黒=装甲。実写画像に位置を重ねた。</p>
+
+      <div class="wp-gallery reveal" id="weakpoint-gallery">
+        <figure class="wp-figure" id="weakpoint">
+          <div class="wp-frame">
+            <img src="assets/weakpoints/bully-ingame.jpg" alt="ブリーの弱点位置（実写）" loading="eager" decoding="async" width="1024" height="512">
+            <span class="wp-dot" style="left:54%;top:20%"></span>
+            <span class="wp-label" style="left:54%;top:7%">頭：攻撃時に露出</span>
+            <span class="wp-dot" style="left:34%;top:52%"></span>
+            <span class="wp-dot" style="left:72%;top:55%"></span>
+            <span class="wp-label" style="left:24%;top:69%">脚の関節：弱点 ×4</span>
+          </div>
+          <figcaption><b>ブリー</b>：脚の関節と、攻撃時に開く頭が弱点。黒い装甲は爆発物が有効。画像: Timesaver.gg</figcaption>
+        </figure>
+
+        <div class="wp-two">
+          <figure class="wp-figure">
+            <div class="wp-frame">
+              <img src="assets/weakpoints/skulker-ingame.jpg" alt="スカルカーの弱点位置（実写）" loading="eager" decoding="async" width="1024" height="512">
+              <span class="wp-dot" style="left:40%;top:78%"></span>
+              <span class="wp-label" style="left:30%;top:90%">本体：軽装</span>
+              <span class="wp-dot" style="left:58%;top:24%"></span>
+              <span class="wp-label" style="left:73%;top:16%">尾の武器</span>
+              <span class="wp-label cyan" style="left:20%;top:18%">見失うと離脱</span>
+            </div>
+            <figcaption><b>スカルカー</b>：本体は軽装。尾の武器に注意し、見失わない。画像: Timesaver.gg</figcaption>
+          </figure>
+
+          <figure class="wp-figure">
+            <div class="wp-frame">
+              <img src="assets/weakpoints/hydra-ingame.jpg" alt="ハイドラの弱点位置（実写）" loading="eager" decoding="async" width="948" height="776">
+              <span class="wp-dot armor" style="left:50%;top:24%"></span>
+              <span class="wp-label armor" style="left:50%;top:9%">正面・側面：装甲</span>
+              <span class="wp-dot" style="left:72%;top:52%"></span>
+              <span class="wp-label" style="left:61%;top:70%">背面：無装甲</span>
+              <span class="wp-label cyan" style="left:27%;top:50%">3段独立</span>
+            </div>
+            <figcaption><b>ハイドラ</b>：正面・側面は装甲。背面は無装甲なので回り込む。画像: Boosting Factory</figcaption>
+          </figure>
+        </div>
+
+        <div class="wp-legend">
+          <span><i class="w"></i>黄：弱点 120–150%</span>
+          <span><i class="n"></i>白：通常 100%</span>
+          <span><i class="a"></i>黒：装甲 大幅軽減</span>
+          <span style="color:#7f8da0">2.0以降、爆発物は装甲に有効</span>
+        </div>
+      </div>
+
+      <p class="small muted reveal" style="margin-top:10px">色分けはコミュニティの一般則。<a class="ref" href="#src-11">[11]</a> 画像はTimesaver.gg / Boosting Factoryより。<a class="ref" href="#src-7">[7]</a><a class="ref" href="#src-10">[10]</a></p>
+
+
+      <h3 style="margin-top:36px">総合ティア表（凍った道対応）</h3>
+      <p class="small muted" style="margin-bottom:14px">
+        PlayerAuctionsの凍った道版（2026年10月9日）を主軸にした総合評価。
+        PvP/PvEの両方、コスト、増幅の伸びしろを含む。画像はFandom Wikiのインスペクト画像。<a class="ref" href="#src-17">[17]</a>
+      </p>
+      <div class="tier-list reveal" id="weapon-tier">
+        <div class="tier-row">
+          <div class="tier-badge tier-s">S</div>
+          <div class="weapon-grid">
+            <div class="weapon-card"><div class="weapon-thumb"><img src="assets/weapons/anvil.png" alt="アンヴィル" loading="lazy" decoding="async"></div><div class="weapon-meta"><strong>アンヴィル</strong><small>ハンドキャノン</small></div></div>
+            <div class="weapon-card"><div class="weapon-thumb"><img src="assets/weapons/renegade.png" alt="レネゲイド" loading="lazy" decoding="async"></div><div class="weapon-meta"><strong>レネゲイド</strong><small>バトルライフル</small></div></div>
+            <div class="weapon-card"><div class="weapon-thumb"><img src="assets/weapons/ferro.png" alt="フェロ" loading="lazy" decoding="async"></div><div class="weapon-meta"><strong>フェロ</strong><small>バトルライフル</small></div></div>
+            <div class="weapon-card"><div class="weapon-thumb"><img src="assets/weapons/dolabra.png" alt="ドラブラ" loading="lazy" decoding="async"></div><div class="weapon-meta"><strong>ドラブラ</strong><small>ショットガン</small></div></div>
+            <div class="weapon-card"><div class="weapon-thumb"><img src="assets/weapons/vulcano.png" alt="ヴルカノ" loading="lazy" decoding="async"></div><div class="weapon-meta"><strong>ヴルカノ</strong><small>ショットガン</small></div></div>
+          </div>
+        </div>
+        <div class="tier-row">
+          <div class="tier-badge tier-a">A</div>
+          <div class="weapon-grid">
+            <div class="weapon-card"><div class="weapon-thumb"><img src="assets/weapons/burletta.png" alt="バーレッタ" loading="lazy" decoding="async"></div><div class="weapon-meta"><strong>バーレッタ</strong><small>ピストル</small></div></div>
+            <div class="weapon-card"><div class="weapon-thumb"><img src="assets/weapons/rattler.png" alt="ラトラー" loading="lazy" decoding="async"></div><div class="weapon-meta"><strong>ラトラー</strong><small>アサルトライフル</small></div></div>
+            <div class="weapon-card"><div class="weapon-thumb"><img src="assets/weapons/bobcat.png" alt="ボブキャット" loading="lazy" decoding="async"></div><div class="weapon-meta"><strong>ボブキャット</strong><small>SMG</small></div></div>
+            <div class="weapon-card"><div class="weapon-thumb"><img src="assets/weapons/tempest.png" alt="テンペスト" loading="lazy" decoding="async"></div><div class="weapon-meta"><strong>テンペスト</strong><small>アサルトライフル</small></div></div>
+            <div class="weapon-card"><div class="weapon-thumb"><img src="assets/weapons/canto.png" alt="カント" loading="lazy" decoding="async"></div><div class="weapon-meta"><strong>カント</strong><small>SMG</small></div></div>
+            <div class="weapon-card"><div class="weapon-thumb"><img src="assets/weapons/venator.png" alt="ヴェネイター" loading="lazy" decoding="async"></div><div class="weapon-meta"><strong>ヴェネイター</strong><small>ピストル</small></div></div>
+            <div class="weapon-card"><div class="weapon-thumb"><img src="assets/weapons/bettina.png" alt="ベティーナ" loading="lazy" decoding="async"></div><div class="weapon-meta"><strong>ベティーナ</strong><small>アサルトライフル</small></div></div>
+          </div>
+        </div>
+        <div class="tier-row">
+          <div class="tier-badge tier-b">B</div>
+          <div class="weapon-grid">
+            <div class="weapon-card new"><div class="weapon-thumb"><img src="assets/weapons/stiletto.png" alt="スティレット" loading="lazy" decoding="async"></div><div class="weapon-meta"><strong>スティレット</strong><small>バトルライフル</small></div></div>
+            <div class="weapon-card"><div class="weapon-thumb"><img src="assets/weapons/stitcher.png" alt="スティッチャー" loading="lazy" decoding="async"></div><div class="weapon-meta"><strong>スティッチャー</strong><small>SMG</small></div></div>
+            <div class="weapon-card"><div class="weapon-thumb"><img src="assets/weapons/iltoro.png" alt="イル・トーロ" loading="lazy" decoding="async"></div><div class="weapon-meta"><strong>イル・トーロ</strong><small>ショットガン</small></div></div>
+            <div class="weapon-card"><div class="weapon-thumb"><img src="assets/weapons/osprey.png" alt="オスプレー" loading="lazy" decoding="async"></div><div class="weapon-meta"><strong>オスプレー</strong><small>スナイパーライフル</small></div></div>
+            <div class="weapon-card"><div class="weapon-thumb"><img src="assets/weapons/arpeggio.png" alt="アルペジオ" loading="lazy" decoding="async"></div><div class="weapon-meta"><strong>アルペジオ</strong><small>アサルトライフル</small></div></div>
+          </div>
+        </div>
+        <div class="tier-row">
+          <div class="tier-badge tier-c">C</div>
+          <div class="weapon-grid">
+            <div class="weapon-card new"><div class="weapon-thumb"><img src="assets/weapons/bantam.png" alt="バンタム" loading="lazy" decoding="async"></div><div class="weapon-meta"><strong>バンタム</strong><small>ハンドキャノン</small></div></div>
+            <div class="weapon-card"><div class="weapon-thumb"><img src="assets/weapons/torrente.png" alt="トレンテ" loading="lazy" decoding="async"></div><div class="weapon-meta"><strong>トレンテ</strong><small>LMG</small></div></div>
+            <div class="weapon-card"><div class="weapon-thumb"><img src="assets/weapons/kettle.png" alt="ケトル" loading="lazy" decoding="async"></div><div class="weapon-meta"><strong>ケトル</strong><small>アサルトライフル</small></div></div>
+            <div class="weapon-card"><div class="weapon-thumb"><img src="assets/weapons/hairpin.png" alt="ヘアピン" loading="lazy" decoding="async"></div><div class="weapon-meta"><strong>ヘアピン</strong><small>ピストル</small></div></div>
+          </div>
+        </div>
+        <div class="tier-row">
+          <div class="tier-badge tier-d">D</div>
+          <div class="weapon-grid">
+            <div class="weapon-card"><div class="weapon-thumb"><img src="assets/weapons/jupiter.png" alt="ジュピター" loading="lazy" decoding="async"></div><div class="weapon-meta"><strong>ジュピター</strong><small>スナイパーライフル</small></div></div>
+            <div class="weapon-card"><div class="weapon-thumb"><img src="assets/weapons/hullcracker.png" alt="ハルクラッカー" loading="lazy" decoding="async"></div><div class="weapon-meta"><strong>ハルクラッカー</strong><small>スペシャル</small></div></div>
+            <div class="weapon-card"><div class="weapon-thumb"><img src="assets/weapons/equalizer.png" alt="イコライザー" loading="lazy" decoding="async"></div><div class="weapon-meta"><strong>イコライザー</strong><small>スペシャル</small></div></div>
+            <div class="weapon-card"><div class="weapon-thumb"><img src="assets/weapons/aphelion.png" alt="アフェリオン" loading="lazy" decoding="async"></div><div class="weapon-meta"><strong>アフェリオン</strong><small>バトルライフル</small></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout callout-info reveal">
+        <span class="callout-icon">メモ</span>
+        <div>
+          <p><b>Dは「弱い」ではない。</b>ジュピター、ハルクラッカー、イコライザー、アフェリオンはPvE特化の専門工具。ARCやボス相手では主力になる。ティアは「汎用性とコスト」の評価であって、武器の絶対的な強さではない。<a class="ref" href="#src-9">[9]</a></p>
+          <p><b>ソースで評価が割れる。</b>Timesaverの8月29日版はオスプレーとベティーナをSに置いていたが、凍った道後のPlayerAuctions版はオスプレーをB、ベティーナをA、ハルクラッカーをDに置いている。評価基準（コスト・増幅込みか）の違い。<a class="ref" href="#src-6">[6]</a><a class="ref" href="#src-9">[9]</a></p>
+        </div>
+      </div>
+
+      <h3 style="margin-top:36px">武器ステータス一覧</h3>
+      <p class="small muted" style="margin-bottom:6px">
+        公式武器シート由来の数値。凍った道直前（2026年8月29日更新）のデータのため、バンタムとスティレットは含まれない。
+      </p>
+      <div class="filters" role="group" aria-label="武器カテゴリ絞り込み">
+        <button class="filter-btn active" data-filter="all">全て</button>
+        <button class="filter-btn" data-filter="ar">アサルト</button>
+        <button class="filter-btn" data-filter="br">バトル</button>
+        <button class="filter-btn" data-filter="smg">SMG</button>
+        <button class="filter-btn" data-filter="sg">ショットガン</button>
+        <button class="filter-btn" data-filter="sr">スナイパー</button>
+        <button class="filter-btn" data-filter="pistol">拳銃</button>
+        <button class="filter-btn" data-filter="special">特殊</button>
+      </div>
+      <div class="table-wrap reveal">
+        <table id="weaponTable">
+          <thead>
+            <tr>
+              <th>武器</th><th>クラス</th><th>弾薬</th>
+              <th class="num">ダメージ</th><th class="num">連射</th><th class="num">射程</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-cat="sg"><td class="w-name">ヴルカノ</td><td><span class="cat">ショットガン</span></td><td class="ammo">ショットガン</td><td class="num">49.5</td><td class="num">26.3</td><td class="num">26</td></tr>
+            <tr data-cat="sg"><td class="w-name">イル・トーロ</td><td><span class="cat">ショットガン</span></td><td class="ammo">ショットガン</td><td class="num">67.5</td><td class="num">14</td><td class="num">20</td></tr>
+            <tr data-cat="sg"><td class="w-name">ドラブラ</td><td><span class="cat">ショットガン</span></td><td class="ammo">エネルギークリップ</td><td class="num">50 / 40</td><td class="num">—</td><td class="num">—</td></tr>
+            <tr data-cat="br"><td class="w-name">レネゲイド</td><td><span class="cat">バトルライフル</span></td><td class="ammo">中型</td><td class="num">35</td><td class="num">21</td><td class="num">68.8</td></tr>
+            <tr data-cat="br"><td class="w-name">フェロ</td><td><span class="cat">バトルライフル</span></td><td class="ammo">大型</td><td class="num">40</td><td class="num">6.6</td><td class="num">53.1</td></tr>
+            <tr data-cat="br"><td class="w-name">アフェリオン</td><td><span class="cat">バトルライフル</span></td><td class="ammo">エネルギークリップ</td><td class="num">25</td><td class="num">9</td><td class="num">76</td></tr>
+            <tr data-cat="ar"><td class="w-name">ベティーナ</td><td><span class="cat">アサルトライフル</span></td><td class="ammo">大型</td><td class="num">16</td><td class="num">28.7</td><td class="num">52.3</td></tr>
+            <tr data-cat="ar"><td class="w-name">テンペスト</td><td><span class="cat">アサルトライフル</span></td><td class="ammo">中型</td><td class="num">10</td><td class="num">36.7</td><td class="num">55.9</td></tr>
+            <tr data-cat="ar"><td class="w-name">ラトラー</td><td><span class="cat">アサルトライフル</span></td><td class="ammo">中型</td><td class="num">9</td><td class="num">33.3</td><td class="num">56.2</td></tr>
+            <tr data-cat="ar"><td class="w-name">アルペジオ</td><td><span class="cat">アサルトライフル</span></td><td class="ammo">中型</td><td class="num">9.5</td><td class="num">18.3</td><td class="num">55.9</td></tr>
+            <tr data-cat="ar"><td class="w-name">ケトル</td><td><span class="cat">アサルトライフル</span></td><td class="ammo">小型</td><td class="num">8.5</td><td class="num">30</td><td class="num">42.8</td></tr>
+            <tr data-cat="smg"><td class="w-name">ボブキャット</td><td><span class="cat">SMG</span></td><td class="ammo">小型</td><td class="num">6</td><td class="num">66.7</td><td class="num">44</td></tr>
+            <tr data-cat="smg"><td class="w-name">カント</td><td><span class="cat">SMG</span></td><td class="ammo">中型</td><td class="num">6.5</td><td class="num">56.7</td><td class="num">51</td></tr>
+            <tr data-cat="smg"><td class="w-name">スティッチャー</td><td><span class="cat">SMG</span></td><td class="ammo">小型</td><td class="num">6.5</td><td class="num">45.3</td><td class="num">42.1</td></tr>
+            <tr data-cat="sr"><td class="w-name">オスプレー</td><td><span class="cat">スナイパーライフル</span></td><td class="ammo">中型</td><td class="num">45</td><td class="num">17.7</td><td class="num">80.3</td></tr>
+            <tr data-cat="sr"><td class="w-name">ジュピター</td><td><span class="cat">スナイパーライフル</span></td><td class="ammo">エネルギークリップ</td><td class="num">60</td><td class="num">7.7</td><td class="num">71.7</td></tr>
+            <tr data-cat="pistol"><td class="w-name">アンヴィル</td><td><span class="cat">ハンドキャノン</span></td><td class="ammo">大型</td><td class="num">40</td><td class="num">16.3</td><td class="num">50.2</td></tr>
+            <tr data-cat="pistol"><td class="w-name">ヴェネイター</td><td><span class="cat">ピストル</span></td><td class="ammo">中型</td><td class="num">16</td><td class="num">36.7</td><td class="num">48.4</td></tr>
+            <tr data-cat="pistol"><td class="w-name">ヘアピン</td><td><span class="cat">ピストル</span></td><td class="ammo">小型</td><td class="num">20</td><td class="num">9</td><td class="num">38.6</td></tr>
+            <tr data-cat="pistol"><td class="w-name">バーレッタ</td><td><span class="cat">ピストル</span></td><td class="ammo">小型</td><td class="num">10</td><td class="num">28</td><td class="num">41.7</td></tr>
+            <tr data-cat="special"><td class="w-name">トレンテ</td><td><span class="cat">LMG</span></td><td class="ammo">中型</td><td class="num">8</td><td class="num">58.3</td><td class="num">49.9</td></tr>
+            <tr data-cat="special"><td class="w-name">ハルクラッカー</td><td><span class="cat">スペシャル</span></td><td class="ammo">ランチャー</td><td class="num">100</td><td class="num">20.3</td><td class="num">38.9</td></tr>
+            <tr data-cat="special"><td class="w-name">ラスカル</td><td><span class="cat">スペシャル</span></td><td class="ammo">ランチャー</td><td class="num">75</td><td class="num">13.7</td><td class="num">28.3</td></tr>
+            <tr data-cat="special"><td class="w-name">イコライザー</td><td><span class="cat">スペシャル</span></td><td class="ammo">エネルギークリップ</td><td class="num">8</td><td class="num">33.3</td><td class="num">68.6</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small muted reveal" style="margin-top:8px">出典：Timesaver「Best Weapons Tier List」の武器ステータス表（公式武器データ由来）。<a class="ref" href="#src-6">[6]</a></p>
+
+      <h3 style="margin-top:36px">役割別おすすめ構成</h3>
+      <div class="loadout-grid reveal">
+        <div class="loadout">
+          <div class="lt">PvP / 中距離</div>
+          <strong>レネゲイド + ヴルカノ + ヴェネイター</strong>
+          <p>全距離をカバーし、ほぼ中型弾で済む。レネゲイドで中距離、ヴルカノで室内、ヴェネイターで止め。</p>
+        </div>
+        <div class="loadout">
+          <div class="lt">PvP / 近距離</div>
+          <strong>ヴルカノ or ボブキャット + ヴェネイター</strong>
+          <p>建物内や入り組んだ地形向け。ボブキャットは最速連射だが tracked 前提。</p>
+        </div>
+        <div class="loadout">
+          <div class="lt">PvE / 対ARC</div>
+          <strong>ベティーナ + アンヴィル + ハルクラッカー</strong>
+          <p>ベティーナで継続火力、アンヴィルで大ダメージ、ハルクラッカーは装甲に。重装甲相手の答え。</p>
+        </div>
+        <div class="loadout">
+          <div class="lt">ボス / クイーン＆マトリアーク</div>
+          <strong>ハルクラッカー + ベティーナ or フェロ + オスプレー</strong>
+          <p>ハルクラッカーでバースト、ベティーナ/フェロで削り、オスプレーで弱点を遠距離から。</p>
+        </div>
+        <div class="loadout">
+          <div class="lt">低予算 / 再建</div>
+          <strong>テンペスト + ヴルカノ + バーレッタ</strong>
+          <p>死んだ後の再建用。安い弾薬で最低限の火力を確保。まず黒字に戻す。</p>
+        </div>
+        <div class="loadout">
+          <div class="lt">フリゲート</div>
+          <strong>ベティーナ + ハルクラッカー or ジュピター + 大型シールド</strong>
+          <p>中距離PvPと装甲ARCの両対応。詳細は「新敵・フリゲート対策」へ。</p>
+        </div>
+      </div>
+
+      <h3 style="margin-top:36px">弾薬経済</h3>
+      <p class="small muted" style="margin-bottom:10px">上ほど「毎レイド持ち込みやすい」。復帰勢は上から2つで回すのが安全。</p>
+      <div class="ammo-bars reveal">
+        <div class="ammo-bar"><span class="nm">中型</span><div class="track"><div class="fill" style="width:94%"></div></div><span class="cost">安い・汎用</span></div>
+        <div class="ammo-bar"><span class="nm">小型</span><div class="track"><div class="fill" style="width:88%"></div></div><span class="cost">最安・SMG向け</span></div>
+        <div class="ammo-bar"><span class="nm">ショットガン</span><div class="track"><div class="fill" style="width:64%"></div></div><span class="cost">近距離の火力</span></div>
+        <div class="ammo-bar"><span class="nm">大型</span><div class="track"><div class="fill" style="width:38%"></div></div><span class="cost">強いが高い</span></div>
+        <div class="ammo-bar"><span class="nm">エネルギー / ランチャー</span><div class="track"><div class="fill" style="width:20%"></div></div><span class="cost">ここぞという時だけ</span></div>
+      </div>
+      <div class="callout callout-tip reveal">
+        <span class="callout-icon">原則</span>
+        <div>
+          <p><b>「中型主武器1本 + 状況用の重火器1本」</b>で黒字を維持する。大型とLauncherを毎回持ち込むと、勝っても財布が減る。<a class="ref" href="#src-6">[6]</a></p>
+        </div>
+      </div>
+
+      <h3 style="margin-top:34px">新武器メモ</h3>
+      <div class="split reveal">
+        <article class="card card-media">
+          <img src="assets/stiletto.jpg" alt="スティレット バトルライフル" loading="lazy" decoding="async" width="1024" height="576">
+          <div class="card-body">
+            <div class="card-kicker">New / スティレット</div>
+            <h4>軽弾のバトルライフル</h4>
+            <p class="small">レネゲイドの序盤代替。安く作れて扱いやすい。連射は速いが、ボタン連打で精度が落ちる。落ち着いて撃つ人向け。<a class="ref" href="#src-2">[2]</a></p>
+          </div>
+        </article>
+        <article class="card card-media">
+          <img src="assets/bantam.jpg" alt="バンタム リボルバー" loading="lazy" decoding="async" width="1024" height="576">
+          <div class="card-body">
+            <div class="card-kicker">New / バンタム</div>
+            <h4>重弾のスナブノーズリボルバー</h4>
+            <p class="small">ARCにもレイダーにも通る。独特のヒップファイアを持つ。2.0でアンヴィルがBlueに上がったため、Uncommonのハンドキャノン枠として追加された。<a class="ref" href="#src-2">[2]</a><a class="ref" href="#src-1">[1]</a></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 ENEMIES -->
+  <section class="section" id="enemies">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-kicker">09 / 脅威</div>
+        <h2>新敵・フリゲート対策</h2>
+        <p class="sec-lead">
+          新敵は「硬い・速い・動かない」の3種類。それぞれ答えが違う。
+          そしてフリゲートは敵ではなく「場所」だ。乗り込み、内部を攻略し、貨物を降ろす。
+        </p>
+      </div>
+
+      <div class="grid grid-3 reveal">
+        <article class="card card-media">
+          <img src="assets/bully.jpg" alt="ブリー（重装甲のARC）" loading="lazy" decoding="async" width="1024" height="576">
+          <div class="card-body">
+            <div class="enemy-head">
+              <h3 style="margin:0">ブリー</h3>
+              <span class="enemy-badge badge-heavy">重装甲</span>
+            </div>
+            <p class="small">ペンドラ・パスを徘徊する突進型。四足で一直線に迫り、攻撃を止めない。</p>
+            <div class="kv"><span>弱点</span><b>脚 / 攻撃時に開く頭</b></div>
+            <div class="kv"><span>対策</span><b>遮蔽物・狭所に引き込む</b></div>
+            <div class="kv"><span>報酬</span><b>+500 XP / ブリーのフラグメンター</b></div>
+            <p class="small muted" style="margin-top:10px">正面から撃ち合わない。突進をいなして回復硬直を撃つ。<a class="ref" href="#src-7">[7]</a></p>
+          </div>
+        </article>
+        <article class="card card-media">
+          <img src="assets/skulker.jpg" alt="スカルカー（軽装甲のARC）" loading="lazy" decoding="async" width="1024" height="576">
+          <div class="card-body">
+            <div class="enemy-head">
+              <h3 style="margin:0">スカルカー</h3>
+              <span class="enemy-badge badge-light">軽装甲</span>
+            </div>
+            <p class="small">視界の端から強襲し、気を逸らすと即離脱する待ち伏せ型。尾に武器を持つ。</p>
+            <div class="kv"><span>弱点</span><b>軽装（詳細未確定）</b></div>
+            <div class="kv"><span>対策</span><b>見失わない・視線を切らせない</b></div>
+            <div class="kv"><span>報酬</span><b>スカルカーのターゲッター（約1,000 Coins）</b></div>
+            <p class="small muted" style="margin-top:10px">吹雪・電磁嵐・砂嵐など低視界で出やすい。1体に集中しすぎると消える。<a class="ref" href="#src-7">[7]</a></p>
+          </div>
+        </article>
+        <article class="card card-media">
+          <img src="assets/hydra.jpg" alt="ハイドラ（固定砲台のARC）" loading="lazy" decoding="async" width="1024" height="576">
+          <div class="card-body">
+            <div class="enemy-head">
+              <h3 style="margin:0">ハイドラ</h3>
+              <span class="enemy-badge badge-static">固定砲台</span>
+            </div>
+            <p class="small">3段積みの固定砲台。フリゲート上と、ペンドラ・パスの倒れたエンペラーを守る。</p>
+            <div class="kv"><span>弱点</span><b>背面（無装甲）</b></div>
+            <div class="kv"><span>対策</span><b>囮・分断・遮蔽物</b></div>
+            <div class="kv"><span>報酬</span><b>固有ドロップなし</b></div>
+            <p class="small muted" style="margin-top:10px">正面と側面は重装甲。1人が注意を引き、もう1人が回り込む。ソロは射撃サイクルを待って背面へ。<a class="ref" href="#src-7">[7]</a></p>
+          </div>
+        </article>
+      </div>
+
+      <div class="callout callout-danger reveal">
+        <span class="callout-icon">不具合</span>
+        <div>
+          <p><b>ハイドラはカーゴエリアで壁越しに検知・射撃する既知の問題がある</b>（ダメージは通らない）。射撃が見えてもパニックにならず、遮蔽を維持する。カーゴ降下プラットフォームの端での即死は2.1.0で調整済みだが、端には立たない。<a class="ref" href="#src-1">[1]</a><a class="ref" href="#src-10">[10]</a></p>
+        </div>
+      </div>
+
+      <h3 style="margin-top:36px">フリゲート攻略</h3>
+      <p class="small muted" style="margin-bottom:14px">
+        マップ条件「ARC フリゲート」でのみ発生する、乗り込み型のPvPvEコンテンツ。
+        無料ロードアウト不可、Raider Hatches無効、通常ルートの物資も減少する。装備を整えてから行く。
+      </p>
+
+      <figure class="shot reveal">
+        <img src="assets/frigate.jpg" alt="フリゲートレイドの様子" loading="lazy" decoding="async" width="1024" height="576">
+        <figcaption><b>フリゲートレイド</b>：船内は狭く、PvPとARCの両方が絡む。装備を整えてから乗り込む。<span class="shot-credit">画像: Embark Studios</span></figcaption>
+      </figure>
+
+      <div class="table-wrap reveal">
+        <table>
+          <thead>
+            <tr><th>項目</th><th>内容</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="w-name">発生マップ</td><td>Dam Battlegrounds / Buried City / Spaceport / The ブルーゲート / Riven Tides / ペンドラ・パス</td></tr>
+            <tr><td class="w-name">乗り込み</td><td>リクレイマードローンに乗り、Disruptして船上へ</td></tr>
+            <tr><td class="w-name">主な敵</td><td>ハイドラ、Rocketeer、Vaporizer、その他ARC</td></tr>
+            <tr><td class="w-name">目標</td><td>パワーコア破壊 → カーゴプラットフォーム降下 → 物資回収 → 通常脱出</td></tr>
+            <tr><td class="w-name">主な報酬</td><td>増幅モジュール（Mark I〜V）、フリゲートインダクター、研究素材、カーゴ物資</td></tr>
+            <tr><td class="w-name">ソロ</td><td>乗り込み・序盤クエスト・ハッチ漁は可。中央リアクターとカーゴは複数人推奨</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="margin-top:30px">攻略手順</h3>
+      <ol class="step-flow reveal">
+        <li>
+          <h4>マップ条件を確認して出撃</h4>
+          <p>マップ選択画面で「ARC フリゲート」の発生を確認。6つの屋外マップを巡回する。地域サーバーで時間が異なる場合がある。</p>
+        </li>
+        <li>
+          <h4>リクレイマードローンに乗る</h4>
+          <p>船の下を降下してくる円形ドローンに近づき、乗って「Disrupt」。ドローンが船へ戻るので、船体に飛び移る。Grappling HookかSnap Hookがあると楽。</p>
+        </li>
+        <li>
+          <h4>翼部の通路から最初のパワーコアへ</h4>
+          <p>船内は左右がほぼ鏡像。まず「Move Up」リフトの先ではなく、近くの低いルートを進み、露出したパワーコアのオレンジ部分を撃つ。丸いハッチは研究素材（フリゲートインダクター含む）の宝庫。</p>
+        </li>
+        <li>
+          <h4>中央リアクターの3つの制御を同時起動</h4>
+          <p>中央アリーナのハイドラを排除または注意を逸らし、周囲の3つの制御を3人で同時に操作。露出したメインコアを破壊する。上層にも小さなコアが2つある。</p>
+        </li>
+        <li>
+          <h4>黄色ノードを撃って上層へ</h4>
+          <p>可動プラットフォームの横にある黄色ノードを撃つと足場が展開する。1人が制御を保持し、もう1人が次のスイッチへ、という分担が必要な箇所もある。</p>
+        </li>
+        <li>
+          <h4>上層のファイアールームを両方無効化</h4>
+          <p>船の左右にある危険室。警告灯が赤のときは炎と強風で入れない。安全な隙にパネルを破壊し、コアを撃つ。2.1.0以降、ハッチの開口部は燃焼ダメージを与える。</p>
+        </li>
+        <li>
+          <h4>前方の最終コア群を処理</h4>
+          <p>船首側にはハイドラと追加コアがある。左右両方のコアを確認。見落としやすいのが、赤いハッチの下の小部屋にある低層コア。ここを残すとカーゴが開かない。</p>
+        </li>
+        <li>
+          <h4>カーゴプラットフォームを降ろす</h4>
+          <p>プラットフォームの両側にある2つの制御を協力して操作。段階的に降りるので、解除動作を繰り返す。降下中は端に立たない。</p>
+        </li>
+        <li>
+          <h4>カーゴを漁って通常脱出へ</h4>
+          <p>カーゴは約24箇所のルートスポット。降下は脱出ではない。地面に着いたら通常の脱出 Pointへ向かう。早期離脱ならリクレイマードックへ戻る。</p>
+        </li>
+      </ol>
+
+      <figure class="shot reveal" id="frigate-route">
+        <svg viewBox="0 0 900 520" role="img" aria-labelledby="frigateRouteTitle">
+          <title id="frigateRouteTitle">Frigateの攻略ルート模式図</title>
+          <rect width="900" height="520" fill="#0b121a"/>
+          <g fill="#1b2a3a" opacity=".7">
+            <circle cx="60" cy="70" r="1.4"/><circle cx="180" cy="45" r="1.1"/><circle cx="820" cy="80" r="1.3"/>
+            <circle cx="760" cy="450" r="1.2"/><circle cx="90" cy="440" r="1.3"/><circle cx="450" cy="55" r="1.1"/>
+            <circle cx="700" cy="100" r="1.0"/><circle cx="140" cy="180" r="1.1"/>
+          </g>
+
+          <!-- ship -->
+          <polygon points="110,260 260,150 640,150 790,260 640,370 260,370" fill="#131c28" stroke="#3a4a5e" stroke-width="3"/>
+          <polygon points="300,150 520,150 560,100 340,100" fill="#182330" stroke="#3a4a5e" stroke-width="2"/>
+          <polygon points="300,370 520,370 560,420 340,420" fill="#182330" stroke="#3a4a5e" stroke-width="2"/>
+          <line x1="150" y1="260" x2="760" y2="260" stroke="#2a3a4e" stroke-width="2" stroke-dasharray="6 6"/>
+          <rect x="690" y="232" width="76" height="56" rx="8" fill="#1d2a3a" stroke="#4a5d74" stroke-width="2"/>
+          <text x="728" y="266" text-anchor="middle" font-size="10" fill="#8b97a8" font-family="Segoe UI, sans-serif">CARGO</text>
+          <rect x="96" y="244" width="14" height="32" rx="4" fill="#f5a524" opacity=".55"/>
+
+          <!-- main route -->
+          <path d="M150 260 L250 260 L310 205 L400 260 L480 195 L560 230 L650 260 L728 260" fill="none" stroke="#f5a524" stroke-width="2.4" stroke-dasharray="8 7" opacity=".85"/>
+          <path d="M728 260 L728 310 L800 340" fill="none" stroke="#f5a524" stroke-width="2" stroke-dasharray="4 6" opacity=".55"/>
+          <!-- low core detour -->
+          <path d="M650 260 L620 390" fill="none" stroke="#a78bfa" stroke-width="2" stroke-dasharray="5 6" opacity=".8"/>
+
+          <!-- markers -->
+          <g font-family="Segoe UI, sans-serif" font-weight="800" font-size="11" text-anchor="middle">
+            <circle cx="150" cy="260" r="14" fill="#0b121a" stroke="#f5a524" stroke-width="2"/><text x="150" y="264" fill="#f5a524">1</text>
+            <circle cx="310" cy="205" r="14" fill="#0b121a" stroke="#f5a524" stroke-width="2"/><text x="310" y="209" fill="#f5a524">2</text>
+            <circle cx="400" cy="260" r="14" fill="#0b121a" stroke="#f5a524" stroke-width="2"/><text x="400" y="264" fill="#f5a524">3</text>
+            <circle cx="480" cy="195" r="14" fill="#0b121a" stroke="#f5a524" stroke-width="2"/><text x="480" y="199" fill="#f5a524">4</text>
+            <circle cx="560" cy="230" r="14" fill="#0b121a" stroke="#f5a524" stroke-width="2"/><text x="560" y="234" fill="#f5a524">5</text>
+            <circle cx="650" cy="260" r="14" fill="#0b121a" stroke="#f5a524" stroke-width="2"/><text x="650" y="264" fill="#f5a524">6</text>
+            <circle cx="620" cy="390" r="14" fill="#0b121a" stroke="#a78bfa" stroke-width="2"/><text x="620" y="394" fill="#c4b5fd">7</text>
+            <circle cx="728" cy="260" r="14" fill="#0b121a" stroke="#f5a524" stroke-width="2"/><text x="728" y="264" fill="#f5a524">8</text>
+            <circle cx="800" cy="340" r="14" fill="#0b121a" stroke="#f5a524" stroke-width="2"/><text x="800" y="344" fill="#f5a524">9</text>
+          </g>
+
+          <!-- labels -->
+          <g font-family="Segoe UI, sans-serif" font-size="10.5" fill="#c7d2e0" text-anchor="middle">
+            <text x="150" y="300">乗り込み</text>
+            <text x="310" y="182">翼部コア</text>
+            <text x="400" y="300">中央リアクター</text>
+            <text x="480" y="172">上層</text>
+            <text x="560" y="207">Fire Room</text>
+            <text x="650" y="300">船首コア</text>
+            <text x="620" y="428" fill="#c4b5fd">低層コア</text>
+            <text x="728" y="218">Cargo</text>
+            <text x="816" y="372" fill="#fbbf24">Extract</text>
+          </g>
+
+          <text x="22" y="505" font-size="9.5" fill="#566274" font-family="Segoe UI, sans-serif">模式図。実際の船内配置・ルートとは異なります。</text>
+        </svg>
+        <div class="route-key">
+          <div><b>1</b>リクレイマーに乗り、Disruptして船上へ</div>
+          <div><b>2</b>翼部の通路を進み、最初のコアを破壊</div>
+          <div><b>3</b>中央リアクター：3つの制御を3人で同時起動</div>
+          <div><b>4</b>黄色ノードを撃って上層へ</div>
+          <div><b>5</b>左右のファイアールームを無効化</div>
+          <div><b>6</b>船首の最終コア群を処理</div>
+          <div class="alert"><b>7</b>赤いハッチ下の低層コア（見落とし注意）</div>
+          <div><b>8</b>カーゴプラットフォーム：両側の制御を2人で操作</div>
+          <div><b>9</b>カーゴを漁り、通常脱出へ</div>
+          <div class="alert"><b>!</b>中央リアクターは3人、カーゴは2人必要</div>
+        </div>
+        <figcaption><b>フリゲート攻略ルート（模式図）</b>：7はカーゴが開かない原因になりやすい必須コア。</figcaption>
+      </figure>
+
+      <h3 style="margin-top:32px">フリゲート推奨装備</h3>
+      <div class="table-wrap reveal">
+        <table>
+          <thead>
+            <tr><th>枠</th><th>推奨</th><th>理由</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="w-name">主武器</td><td>ベティーナ など中距離対応</td><td>レイダー、小型ARC、露出コアの両方に</td></tr>
+            <tr><td class="w-name">ARC火力</td><td>ハルクラッカー / ジュピター</td><td>重装甲の防御側と複数のコア処理に</td></tr>
+            <tr><td class="w-name">シールド</td><td>大型シールド</td><td>2.0で移動ペナルティ15%→10%、耐久減衰0.20→0.15</td></tr>
+            <tr><td class="w-name">移動</td><td>Grappling Hook / Snap Hook</td><td>リクレイマー、プラットフォーム、上層への移動</td></tr>
+            <tr><td class="w-name">降下</td><td>Powered Descender</td><td>制御された降下。ただしどんな高さでも安全ではない</td></tr>
+            <tr><td class="w-name">ユーティリティ</td><td>Barricade / Grenade / Defibrillator</td><td>射線を切り、ARCを削り、仲間を起こす</td></tr>
+            <tr><td class="w-name">回復</td><td>複数スタック</td><td>長丁場。足りなくなる前提で</td></tr>
+            <tr><td class="w-name">弾薬</td><td>両武器とも多め</td><td>中央リアクター、ファイアールーム、船首で尽きる</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-warn reveal">
+        <span class="callout-icon">注意</span>
+        <div>
+          <p><b>フリゲートはPvE限定ではない。</b>他のレイダーも同じ船を目指す。リアクターの制御は一時協力が必要だが、その前後で襲われる。弾薬・回復・帰路を必ず残す。<a class="ref" href="#src-10">[10]</a></p>
+          <p><b>Redirection</b>はフリゲートと同時に追加された新マップ条件。情報がまだ少ないため、遭遇時の挙動はコミュニティの検証待ち。<a class="ref" href="#src-1">[1]</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 SOURCES -->
+  <section class="section" id="sources">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-kicker">10 / 引用元</div>
+        <h2>引用元一覧</h2>
+        <p class="sec-lead">
+          本文中の [n] はこのリストに対応する。数値・仕様は海外の公式・メディア・ガイドサイトのみを参照している。
+          最新の公式パッチノートも合わせて確認してほしい。
+        </p>
+      </div>
+
+      <ol class="sources reveal">
+        <li id="src-1">
+          <div class="src-title">Frozen Trail - 2.0 Update（公式パッチノート）</div>
+          <div class="src-meta">Embark Studios / 2026-10-08</div>
+          <a href="https://arcraiders.com/news/frozen-trail-2-0-update" target="_blank" rel="noopener noreferrer">https://arcraiders.com/news/frozen-trail-2-0-update</a>
+        </li>
+        <li id="src-2">
+          <div class="src-title">Frozen Trail First Look: Content highlights from October 8（公式コンテンツプレビュー）</div>
+          <div class="src-meta">Embark Studios / 2026-09-23</div>
+          <a href="https://arcraiders.com/news/frozen-trail-content-preview" target="_blank" rel="noopener noreferrer">https://arcraiders.com/news/frozen-trail-content-preview</a>
+        </li>
+        <li id="src-3">
+          <div class="src-title">ARC Raiders just got a massive 2.0 update, as Steam player count starts to spike again with free weekend</div>
+          <div class="src-meta">PC Guide / 2026-10-08</div>
+          <a href="https://www.pcguide.com/news/arc-raiders-just-got-a-massive-2-0-update-as-steam-player-count-starts-to-spike-again-with-free-weekend/" target="_blank" rel="noopener noreferrer">https://www.pcguide.com/news/arc-raiders-just-got-a-massive-2-0-update-as-steam-player-count-starts-to-spike-again-with-free-weekend/</a>
+        </li>
+        <li id="src-4">
+          <div class="src-title">Arc Raiders' biggest update brings faster level-up, a new map, and more</div>
+          <div class="src-meta">Polygon / 2026-10-08</div>
+          <a href="https://www.polygon.com/arc-raiders-frozen-trail-update-patch-notes-free/" target="_blank" rel="noopener noreferrer">https://www.polygon.com/arc-raiders-frozen-trail-update-patch-notes-free/</a>
+        </li>
+        <li id="src-5">
+          <div class="src-title">ARC Raiders Frozen Trail: Returning Player Catch-Up Guide</div>
+          <div class="src-meta">Timesaver / 2026-10-11</div>
+          <a href="https://timesaver.gg/blog/arc-raiders-frozen-trail-free-weekend-returning-player-guide" target="_blank" rel="noopener noreferrer">https://timesaver.gg/blog/arc-raiders-frozen-trail-free-weekend-returning-player-guide</a>
+        </li>
+        <li id="src-6">
+          <div class="src-title">ARC Raiders Best Weapons Tier List — Every Gun Ranked for PvP &amp; PvE</div>
+          <div class="src-meta">Timesaver / 2026-08-29 更新</div>
+          <a href="https://timesaver.gg/blog/arc-raiders-best-weapons-tier-list" target="_blank" rel="noopener noreferrer">https://timesaver.gg/blog/arc-raiders-best-weapons-tier-list</a>
+        </li>
+        <li id="src-7">
+          <div class="src-title">ARC Raiders Bully, Skulker &amp; Hydra: Weak Points &amp; Kills</div>
+          <div class="src-meta">Timesaver / 2026-10-10</div>
+          <a href="https://timesaver.gg/blog/arc-raiders-bully-skulker-hydra-kill" target="_blank" rel="noopener noreferrer">https://timesaver.gg/blog/arc-raiders-bully-skulker-hydra-kill</a>
+        </li>
+        <li id="src-8">
+          <div class="src-title">ARC Raiders Gadgets Ranked: Snap Hook vs Grappling Hook</div>
+          <div class="src-meta">Timesaver / 2026-10-23</div>
+          <a href="https://timesaver.gg/blog/arc-raiders-gadgets-ranked" target="_blank" rel="noopener noreferrer">https://timesaver.gg/blog/arc-raiders-gadgets-ranked</a>
+        </li>
+        <li id="src-9">
+          <div class="src-title">ARC Raiders Weapons Tier List: Best PvP &amp; PvE Guns (Frozen Trail Update)</div>
+          <div class="src-meta">PlayerAuctions / 2026-10-09</div>
+          <a href="https://www.playerauctions.com/arc-raiders-guide/tips-guides/weapon-tier-list/" target="_blank" rel="noopener noreferrer">https://www.playerauctions.com/arc-raiders-guide/tips-guides/weapon-tier-list/</a>
+        </li>
+        <li id="src-10">
+          <div class="src-title">ARC Raiders Frigate Guide: Board, Sabotage &amp; Escape</div>
+          <div class="src-meta">Boosting Factory / 2026-10-15</div>
+          <a href="https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-frigate-guide" target="_blank" rel="noopener noreferrer">https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-frigate-guide</a>
+        </li>
+        <li id="src-11">
+          <div class="src-title">Free Trial Guide: A Beginner's guide to ARC Raiders in Oct 2026</div>
+          <div class="src-meta">Reddit r/ARC_Raiders</div>
+          <a href="https://www.reddit.com/r/ARC_Raiders/comments/1x0km1o/free_trial_guide_a_beginners_guide_to_arc_raiders/" target="_blank" rel="noopener noreferrer">https://www.reddit.com/r/ARC_Raiders/comments/1x0km1o/free_trial_guide_a_beginners_guide_to_arc_raiders/</a>
+        </li>
+        <li id="src-12">
+          <div class="src-title">ARC Raiders - Steam Charts</div>
+          <div class="src-meta">SteamDB</div>
+          <a href="https://steamdb.info/app/1808500/charts/" target="_blank" rel="noopener noreferrer">https://steamdb.info/app/1808500/charts/</a>
+        </li>
+        <li id="src-13">
+          <div class="src-title">Workshop（全ステーションの建設・アップグレード必要素材）</div>
+          <div class="src-meta">ARC Raiders Wiki / 2026-10-10 更新</div>
+          <a href="https://arcraiders.wiki/wiki/Workshop" target="_blank" rel="noopener noreferrer">https://arcraiders.wiki/wiki/Workshop</a>
+        </li>
+        <li id="src-14">
+          <div class="src-title">Scrappy &amp; Workshop Upgrade List（コミュニティ製の素材管理スプレッドシート）</div>
+          <div class="src-meta">Reddit r/ArcRaiders</div>
+          <a href="https://www.reddit.com/r/ArcRaiders/comments/1olct8i/scrappy_workshop_upgrade_list/" target="_blank" rel="noopener noreferrer">https://www.reddit.com/r/ArcRaiders/comments/1olct8i/scrappy_workshop_upgrade_list/</a>
+        </li>
+        <li id="src-15">
+          <div class="src-title">ARC Raiders Outpost Guide: Research, Modules &amp; Upgrades</div>
+          <div class="src-meta">Boosting Factory / 2026-10-15</div>
+          <a href="https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-outpost-guide" target="_blank" rel="noopener noreferrer">https://www.boostingfactory.com/arc-raiders/blog/arc-raiders-outpost-guide</a>
+        </li>
+        <li id="src-16">
+          <div class="src-title">ARC Raiders Outpost Location, Unlock, Storage, Rooms &amp; Upgrade Guide</div>
+          <div class="src-meta">AOEah / 2026-10-12</div>
+          <a href="https://www.aoeah.com/news/4878--arc-raiders-outpost-location-unlock-storage-rooms--upgrade-guide" target="_blank" rel="noopener noreferrer">https://www.aoeah.com/news/4878--arc-raiders-outpost-location-unlock-storage-rooms--upgrade-guide</a>
+        </li>
+        <li id="src-17">
+          <div class="src-title">ARC Raiders Wiki (Fandom) — Weapon &amp; material images</div>
+          <div class="src-meta">Fandom / 武器・素材画像</div>
+          <a href="https://arc-raiders.fandom.com/" target="_blank" rel="noopener noreferrer">https://arc-raiders.fandom.com/</a>
+        </li>
+        <li id="src-18">
+          <div class="src-title">Pendola Pass（ゲーム内マップ画像）</div>
+          <div class="src-meta">ARC Raiders Wiki / 2026-10-12 更新</div>
+          <a href="https://arcraiders.wiki/wiki/Pendola_Pass" target="_blank" rel="noopener noreferrer">https://arcraiders.wiki/wiki/Pendola_Pass</a>
+        </li>
+        <li id="src-19">
+          <div class="src-title">ARC Raiders Pendola Pass Map（素材・POI座標の参照）</div>
+          <div class="src-meta">MetaForge</div>
+          <a href="https://metaforge.app/arc-raiders/map/pendola-pass" target="_blank" rel="noopener noreferrer">https://metaforge.app/arc-raiders/map/pendola-pass</a>
+        </li>
+        <li id="src-20">
+          <div class="src-title">ARC Raiders Skill Tree: All 48 Skills &amp; Unlock Order</div>
+          <div class="src-meta">Timesaver / 2026-10-08</div>
+          <a href="https://timesaver.gg/blog/arc-raiders-skill-tree" target="_blank" rel="noopener noreferrer">https://timesaver.gg/blog/arc-raiders-skill-tree</a>
+        </li>
+        <li id="src-21">
+          <div class="src-title">ARC Raiders 2.0 Best Skill Tree Builds (Frozen Trail Update)（スキルツリー全体画像）</div>
+          <div class="src-meta">AOEah / 2026-10-12</div>
+          <a href="https://www.aoeah.com/news/4869--arc-raiders-20-best-skill-tree-builds-frozen-trail-update" target="_blank" rel="noopener noreferrer">https://www.aoeah.com/news/4869--arc-raiders-20-best-skill-tree-builds-frozen-trail-update</a>
+        </li>
+        <li id="src-22">
+          <div class="src-title">Skills（スキルアイコン）</div>
+          <div class="src-meta">ARC Raiders Wiki / 2026-10-12 更新</div>
+          <a href="https://arcraiders.wiki/wiki/Skills" target="_blank" rel="noopener noreferrer">https://arcraiders.wiki/wiki/Skills</a>
+        </li>
+      </ol>
+
+      <div class="callout callout-info reveal" style="margin-top:24px">
+        <span class="callout-icon">メモ</span>
+        <div>
+          <p><b>引用ポリシー。</b>本文の数値・仕様は、公式パッチノートと英語圏のガイドサイトを突き合わせて掲載している。ティア評価のようにソース間で差が出るものは、その旨を本文に明記した。ゲーム内の最終表示と異なる場合は、ゲーム内および公式パッチノートを優先してほしい。</p>
+          <p><b>画像について。</b>画像はEmbark Studios公式サイトのプロモーション素材、ARC Raiders Wiki（Fandom / ゲーム内マップ）の武器・素材・マップ画像、Timesaver.gg / Boosting Factoryの攻略画像を引用しています。本サイトは非公式のファンガイドであり、画像の権利は各権利者に帰属します。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div>
+        <strong>ARC Raiders 復帰勢攻略 / Frozen Trail 2.0</strong><br>
+        情報基準日：2026年10月25日（v2.2.0 時点）
+      </div>
+      <div class="disclaimer">
+        本サイトは非公式のファンメイドガイドです。Embark Studios / Nexon とは関係ありません。
+        ARC RAIDERS および関連する商標は各権利者に帰属します。
+        数値・仕様はアップデートで変更される可能性があります。
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<button class="to-top" id="toTop" aria-label="ページ上部へ戻る">↑</button>
+
+<script>
+(function(){
+  "use strict";
+  document.documentElement.classList.add("js");
+
+  /* ---------- mobile menu ---------- */
+  var sidebar = document.getElementById("sidebar");
+  var menuBtn = document.getElementById("menuBtn");
+  var overlay = document.getElementById("overlay");
+
+  function closeMenu(){
+    sidebar.classList.remove("open");
+    overlay.classList.remove("show");
+    menuBtn.setAttribute("aria-expanded","false");
+    document.body.style.overflow = "";
+  }
+  menuBtn.addEventListener("click", function(){
+    var open = sidebar.classList.toggle("open");
+    overlay.classList.toggle("show", open);
+    menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    document.body.style.overflow = open ? "hidden" : "";
+  });
+  overlay.addEventListener("click", closeMenu);
+  Array.prototype.forEach.call(document.querySelectorAll(".nav-link"), function(a){
+    a.addEventListener("click", closeMenu);
+  });
+
+  /* ---------- scroll progress + to top ---------- */
+  var progress = document.getElementById("scrollProgress");
+  var toTop = document.getElementById("toTop");
+
+  function onScroll(){
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - doc.clientHeight;
+    var p = max > 0 ? (doc.scrollTop / max) * 100 : 0;
+    progress.style.width = p + "%";
+    toTop.classList.toggle("show", doc.scrollTop > 700);
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  toTop.addEventListener("click", function(){
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  /* ---------- active nav ---------- */
+  var sections = Array.prototype.slice.call(document.querySelectorAll("main section[id]"));
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav-link"));
+
+  function updateActive(){
+    var current = sections.length ? sections[0].id : "";
+    for (var i = 0; i < sections.length; i++){
+      var r = sections[i].getBoundingClientRect();
+      if (r.top <= 150) current = sections[i].id;
+    }
+    navLinks.forEach(function(a){
+      a.classList.toggle("active", a.getAttribute("href") === "#" + current);
+    });
+  }
+  window.addEventListener("scroll", updateActive, { passive: true });
+  window.addEventListener("resize", updateActive);
+  updateActive();
+
+  /* ---------- checklist ---------- */
+  var boxes = Array.prototype.slice.call(document.querySelectorAll(".check-input"));
+  var countEl = document.getElementById("checkCount");
+  var fillEl = document.getElementById("checkFill");
+  var total = boxes.length;
+  var STORE = "arc-raiders-return-checklist-v1";
+
+  function loadState(){
+    var saved = null;
+    try { saved = JSON.parse(localStorage.getItem(STORE) || "null"); } catch(e){}
+    boxes.forEach(function(b, i){
+      if (saved && typeof saved[i] !== "undefined") b.checked = !!saved[i];
+    });
+  }
+  function saveState(){
+    var state = boxes.map(function(b){ return b.checked; });
+    try { localStorage.setItem(STORE, JSON.stringify(state)); } catch(e){}
+  }
+  function updateChecklist(){
+    var done = boxes.filter(function(b){ return b.checked; }).length;
+    if (countEl) countEl.textContent = done + " / " + total;
+    if (fillEl) fillEl.style.width = (total ? (done / total) * 100 : 0) + "%";
+    boxes.forEach(function(b){
+      var item = b.closest ? b.closest(".check-item") : null;
+      if (item) item.classList.toggle("done", b.checked);
+    });
+  }
+  loadState();
+  boxes.forEach(function(b){
+    b.addEventListener("change", function(){
+      updateChecklist();
+      saveState();
+    });
+  });
+  updateChecklist();
+
+  /* ---------- weapon table filter ---------- */
+  var filterBtns = Array.prototype.slice.call(document.querySelectorAll(".filter-btn"));
+  var rows = Array.prototype.slice.call(document.querySelectorAll("#weaponTable tbody tr"));
+  filterBtns.forEach(function(btn){
+    btn.addEventListener("click", function(){
+      filterBtns.forEach(function(b){ b.classList.remove("active"); });
+      btn.classList.add("active");
+      var f = btn.getAttribute("data-filter");
+      rows.forEach(function(r){
+        r.style.display = (f === "all" || r.getAttribute("data-cat") === f) ? "" : "none";
+      });
+    });
+  });
+
+  /* ---------- reveal on scroll ---------- */
+  var reveals = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
+  if ("IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){
+          entry.target.classList.add("is-visible");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: "0px 0px -40px 0px" });
+    reveals.forEach(function(el){ io.observe(el); });
+  } else {
+    reveals.forEach(function(el){ el.classList.add("is-visible"); });
+  }
+})();
+</script>
+</body>
+</html>
