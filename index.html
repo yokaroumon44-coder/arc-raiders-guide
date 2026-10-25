@@ -844,6 +844,14 @@
   .frigate-spot-grid .shot{margin:0}
   .frigate-spot-grid .wide{grid-column:span 2}
   .frigate-spot-grid .shot img{aspect-ratio:16/9;object-fit:cover}
+  .video-embed{margin:18px 0 0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#0b121a}
+  .video-frame{position:relative;aspect-ratio:16/9;background:#000}
+  .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .video-embed figcaption{padding:9px 14px;font-size:10.5px;color:var(--muted);border-top:1px solid var(--line);background:rgba(15,20,28,.84);line-height:1.6}
+  .video-embed figcaption b{color:#cfd8e4}
+  .video-notes{display:flex;flex-wrap:wrap;gap:6px 14px;margin:8px 0 0;padding:0 2px}
+  .video-notes span{font-size:10px;color:var(--muted)}
+  .video-notes b{color:var(--accent);font-family:var(--mono);font-weight:700}
 
   /* ---------- reveal ---------- */
   html.js .reveal{opacity:0;transform:translateY(16px)}
@@ -942,7 +950,7 @@
 <!-- ===== mobile topbar ===== -->
 <header class="topbar">
   <a class="brand-sm" href="#top">ARC <span>RAIDERS</span></a>
-  <button class="menu-btn" id="menuBtn" aria-label="メニューを開く" aria-expanded="false" aria-controls="sidebar">
+  <button type="button" class="menu-btn" id="menuBtn" aria-label="メニューを開く" aria-expanded="false" aria-controls="sidebar">
     <i></i><i></i><i></i>
   </button>
 </header>
@@ -1116,7 +1124,7 @@
             <tr><td>スキルツリー</td><td>一直線にほぼ全部取れた</td><td><span class="arrow">→</span>中央は2択、終端は3択から2つ。ビルドが分岐</td></tr>
             <tr><td>進行通貨</td><td>クレド</td><td><span class="arrow">→</span>報酬ポイント（クレドは廃止）</td></tr>
             <tr><td>シーズン進行</td><td>レイダーデッキ</td><td><span class="arrow">→</span>報酬パス（凍った道 Pass 60Lv）。旧デッキはレガシーパスへ</td></tr>
-            <tr><td>クラフト</td><td>Workshop</td><td><span class="arrow">→</span>Workshop + 前哨基地の研究ステーション</td></tr>
+            <tr><td>クラフト</td><td>ワークショップ</td><td><span class="arrow">→</span>ワークショップ + 前哨基地の研究ステーション</td></tr>
             <tr><td>武器の上限</td><td>4段階</td><td><span class="arrow">→</span>増幅武器（対応15武器の5段階目）</td></tr>
             <tr><td>移動</td><td>Snap Hookが万能</td><td><span class="arrow">→</span>Grappling Hook追加。Snap Hookは18mに弱体化</td></tr>
             <tr><td>スタッシュ</td><td>従来の上限</td><td><span class="arrow">→</span>最大328スロット（+2段階）</td></tr>
@@ -1339,7 +1347,7 @@
               <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/emperor-modulator.png" alt="" loading="lazy">エンペラーモジュレーター</span>
               <span class="mat mat-rare">レア素材</span>
             </div>
-            <p>Mk.II/IIIの増幅モジュール。高リスク。</p>
+            <p>増幅モジュール。高リスク。</p>
           </div>
         </div>
 
@@ -1439,7 +1447,7 @@
       <div class="callout callout-warn reveal">
         <span class="callout-icon">注意</span>
         <div>
-          <p><b>前哨基地はクラフト拠点ではない。</b>クラフト・修理はワークショップ。研究ステーションは別系統。<a class="ref" href="#src-5">[5]</a></p>
+          <p><b>前哨基地の中心は研究ステーション。</b>通常クラフト・修理はワークショップ。ガンスミスLv4は前哨基地。<a class="ref" href="#src-5">[5]</a></p>
         </div>
       </div>
 
@@ -1470,7 +1478,7 @@
       <details class="amp-sheet reveal">
         <summary>増幅チートシート（全15武器）</summary>
         <div class="amp-sheet-body">
-          <p class="small muted" style="margin:0 0 4px">MK1〜5の分岐と必要素材。素材名は英語名からの訳。<a class="ref" href="#src-26">[26]</a></p>
+          <p class="small muted" style="margin:0 0 4px">MK1〜5の分岐と必要素材。分岐名・素材名は英語版の訳。<a class="ref" href="#src-26">[26]</a></p>
 
           <div class="amp-mk-block">
             <div class="amp-mk-head"><span>MK1</span>増幅モジュール Mk.1</div>
@@ -1568,7 +1576,7 @@
                   <ul class="amp-list">
                     <li><b>エルゴノミックボルト</b> <span class="amp-cost">溝付きローターコア×3</span></li>
                     <li><b>追跡弾</b> <span class="amp-cost">マトリアーク・リアクター×2</span></li>
-                    <li><b>対弱点</b> <span class="amp-cost">アセッサー・マトリクス×2</span></li>
+                    <li><b>弱点特化</b> <span class="amp-cost">アセッサー・マトリクス×2</span></li>
                   </ul>
                 </div>
               </article>
@@ -1643,7 +1651,7 @@
                   <ul class="amp-list">
                     <li><b>マガジン拡張</b> <span class="amp-cost">圧力レギュレーター×3</span></li>
                     <li><b>連続ダメージ増加</b> <span class="amp-cost">クイーン・リアクター×3</span></li>
-                    <li><b>対弱点</b> <span class="amp-cost">アセッサー・マトリクス×2</span></li>
+                    <li><b>弱点特化</b> <span class="amp-cost">アセッサー・マトリクス×2</span></li>
                   </ul>
                 </div>
               </article>
@@ -1721,7 +1729,7 @@
             <tr><td class="w-name">Photoelectric Cloak</td><td>Epic</td><td>ARC回避</td><td>ARCから見えなくなる。レイダーには効かない</td></tr>
             <tr><td class="w-name">Tether Launcher</td><td>Rare</td><td>拘束</td><td>2発、30m、10秒拘束。ARCにもレイダーにも有効</td></tr>
             <tr><td class="w-name">Powered Descender</td><td>Epic</td><td>降下</td><td>落下を緩和。高所からの脱出に</td></tr>
-            <tr><td class="w-name">Mountaineer's Detector</td><td>Rare</td><td>探索</td><td>ペンドラ・パスの雪中埋蔵物を発見。Riven Tidesの砂地でも</td></tr>
+            <tr><td class="w-name">Mountaineer's Detector</td><td>Rare</td><td>探索</td><td>ペンドラ・パスの雪中埋蔵物を発見。リヴン・タイズの砂地でも</td></tr>
             <tr><td class="w-name">カメラ</td><td>Uncommon / Rare</td><td>クエスト</td><td>前哨基地最初のステップに必須。シャニで購入可</td></tr>
           </tbody>
         </table>
@@ -1844,7 +1852,7 @@
         <div><b>40pt</b><span>同じ3択から2つ目</span></div>
       </div>
 
-      <p class="small muted" style="margin:0 0 12px">Lv帯は目安。最大76pt（遠征+15pt）。数字は投資pt。<a class="ref" href="#src-20">[20]</a></p>
+      <p class="small muted" style="margin:0 0 12px">Lv帯は目安。最大76pt（遠征+15ptは現在休止中）。数字は投資pt。<a class="ref" href="#src-20">[20]</a></p>
 
       <div class="skill-levels reveal">
         <div class="skill-level">
@@ -1964,7 +1972,7 @@
             <tr><td>物資集め<span class="skill-build-use">初動・金策</span></td><td>28</td><td>31</td><td>17</td></tr>
             <tr><td>撃ち合い<span class="skill-build-use">PvP・前哨戦</span></td><td>22</td><td>31</td><td>23</td></tr>
             <tr><td>デュオ<span class="skill-build-use">ダウン耐性</span></td><td>28</td><td>31</td><td>17</td></tr>
-            <tr><td>移動特化<span class="skill-build-use">遠征+15pt / 合計91</span></td><td>22</td><td>41</td><td>28</td></tr>
+            <tr><td>移動特化<span class="skill-build-use">遠征+15pt（休止中） / 合計91</span></td><td>22</td><td>41</td><td>28</td></tr>
           </tbody>
         </table>
       </div>
@@ -2030,8 +2038,8 @@
           <p>レイダー系・住宅系・First Wave Cache・クエスト。</p>
         </li>
         <li>
-          <h4>スペランザで「学習して消費」</h4>
-          <p>レシピ解禁。設計図は消費。</p>
+          <h4>設計図を学習する</h4>
+          <p>スペランザで学習、または研究ステーションで研究。</p>
         </li>
         <li>
           <h4>ガンスミスを上げる</h4>
@@ -2055,10 +2063,10 @@
             <tr><th>ベンチ</th><th>目標</th><th>壁になる素材</th><th>おすすめ武器</th></tr>
           </thead>
           <tbody>
-            <tr><td class="w-name">ガンスミスLv1</td><td>フェロ</td><td>なし（金属部品5 / ゴム部品2）</td><td>フェロ</td></tr>
+            <tr><td class="w-name">ガンスミスLv1</td><td>フェロ</td><td>なし（初期）</td><td>フェロ</td></tr>
             <tr><td class="w-name">ガンスミスLv2</td><td>アンヴィル / ヴェネイター / オスプレー</td><td>ワスプドライバー8（ワスプ）</td><td>フェロ</td></tr>
             <tr><td class="w-name">ガンスミスLv3</td><td>レネゲイド / ベティーナ / テンペスト / ヴルカノ / ハルクラッカー</td><td>センチネル発火コア4（センチネル）</td><td>アンヴィル</td></tr>
-            <tr><td class="w-name">ガンスミスLv4</td><td>武器増幅</td><td>エンペラーモジュレーター1（エンペラー）＋前哨基地</td><td>ハルクラッカー / ジュピター</td></tr>
+            <tr><td class="w-name">ガンスミスLv4</td><td>武器増幅（＋研究Lv4）</td><td>エンペラーモジュレーター1（エンペラー）＋前哨基地</td><td>ハルクラッカー / ジュピター</td></tr>
             <tr><td class="w-name">装備ベンチ Lv2</td><td>中型シールド</td><td>ホーネットドライバー5（ホーネット）</td><td>任意</td></tr>
             <tr><td class="w-name">装備ベンチ Lv3</td><td>大型シールド</td><td>バスティオンセル6（バスティオン）</td><td>アンヴィル</td></tr>
             <tr><td class="w-name">医療ラボ Lv2</td><td>回復の幅</td><td>チックポッド8（チック）</td><td>任意</td></tr>
@@ -2086,7 +2094,7 @@
       <p class="small muted" style="margin:8px 0 0">ジュピター/アフェリオンはエンドゲーム。普段はレネゲイドで十分。<a class="ref" href="#src-25">[25]</a></p>
 
       <h3 style="margin-top:34px">設計図の探し方</h3>
-      <p class="small muted" style="margin-bottom:12px">設計図はスペランザで学習。不要な武器は設計図なし。<a class="ref" href="#src-24">[24]</a><a class="ref" href="#src-25">[25]</a></p>
+      <p class="small muted" style="margin-bottom:12px">設計図はスペランザで学習、または研究ステーションで研究。不要な武器は設計図なし。<a class="ref" href="#src-24">[24]</a><a class="ref" href="#src-25">[25]</a></p>
       <div class="table-wrap reveal">
         <table class="gear-blueprint">
           <thead>
@@ -2105,12 +2113,12 @@
         </table>
       </div>
 
-      <p class="small muted" style="margin:8px 0 0">※ 一部素材名は英語名からの訳。<a class="ref" href="#src-25">[25]</a></p>
+      <p class="small muted" style="margin:8px 0 0">※ 一部素材名は英語版の訳。<a class="ref" href="#src-25">[25]</a></p>
 
       <div class="callout callout-tip reveal">
         <span class="callout-icon">最短</span>
         <div>
-          <p><b>最短：</b>フェロ → ワスプ8 → ガンスミス2 → アンヴィル → センチネル4 → ガンスミス3 → レネゲイド。</p>
+          <p><b>最短：</b>フェロ → ワスプ8 → ガンスミス2 → アンヴィル → センチネル4 → ガンスミス3 → レネゲイド。設計図がなければフェロでセンチネル。</p>
         </div>
       </div>
     </div>
@@ -2909,17 +2917,17 @@
       </div>
 
       <details class="weapon-stats reveal">
-        <summary>武器ステータス一覧（全26武器）</summary>
+        <summary>武器ステータス一覧（24武器）</summary>
       <p class="small muted" style="margin-bottom:6px">公式武器シート（2026-08-29）。バンタム/スティレット未収録。</p>
       <div class="filters" role="group" aria-label="武器カテゴリ絞り込み">
-        <button class="filter-btn active" data-filter="all">全て</button>
-        <button class="filter-btn" data-filter="ar">アサルト</button>
-        <button class="filter-btn" data-filter="br">バトル</button>
-        <button class="filter-btn" data-filter="smg">SMG</button>
-        <button class="filter-btn" data-filter="sg">ショットガン</button>
-        <button class="filter-btn" data-filter="sr">スナイパー</button>
-        <button class="filter-btn" data-filter="pistol">拳銃</button>
-        <button class="filter-btn" data-filter="special">特殊</button>
+        <button type="button" class="filter-btn active" data-filter="all">全て</button>
+        <button type="button" class="filter-btn" data-filter="ar">アサルト</button>
+        <button type="button" class="filter-btn" data-filter="br">バトル</button>
+        <button type="button" class="filter-btn" data-filter="smg">SMG</button>
+        <button type="button" class="filter-btn" data-filter="sg">ショットガン</button>
+        <button type="button" class="filter-btn" data-filter="sr">スナイパー</button>
+        <button type="button" class="filter-btn" data-filter="pistol">拳銃</button>
+        <button type="button" class="filter-btn" data-filter="special">特殊</button>
       </div>
       <div class="table-wrap">
         <table id="weaponTable">
@@ -3094,7 +3102,7 @@
       </div>
 
       <h3 style="margin-top:36px">フリゲート攻略</h3>
-      <p class="small muted" style="margin-bottom:14px">「ARC フリゲート」専用。無料装備不可、Hatches無効、物資減。</p>
+      <p class="small muted" style="margin-bottom:14px">「ARC フリゲート」専用。無料装備不可、レイダーハッチ無効、物資減。</p>
 
       <figure class="shot reveal">
         <img src="assets/frigate.jpg" alt="フリゲートレイドの様子" loading="lazy" decoding="async" width="1024" height="576">
@@ -3107,9 +3115,9 @@
             <tr><th>項目</th><th>内容</th></tr>
           </thead>
           <tbody>
-            <tr><td class="w-name">発生マップ</td><td>Dam Battlegrounds / Buried City / Spaceport / The ブルーゲート / Riven Tides / ペンドラ・パス</td></tr>
+            <tr><td class="w-name">発生マップ</td><td>ダム・バトルグラウンズ / 埋もれた街 / スペースポート / ブルーゲート / リヴン・タイズ / ペンドラ・パス</td></tr>
             <tr><td class="w-name">乗り込み</td><td>リクレイマードローンに乗り、Disruptして船上へ</td></tr>
-            <tr><td class="w-name">主な敵</td><td>ハイドラ、Rocketeer、Vaporizer、その他ARC</td></tr>
+            <tr><td class="w-name">主な敵</td><td>ハイドラ、ロケッティア、ヴェイパライザー、その他ARC</td></tr>
             <tr><td class="w-name">目標</td><td>パワーコア破壊 → カーゴプラットフォーム降下 → 物資回収 → 通常脱出</td></tr>
             <tr><td class="w-name">主な報酬</td><td>増幅モジュール（Mark I〜V）、フリゲートインダクター、研究素材、カーゴ物資</td></tr>
             <tr><td class="w-name">ソロ</td><td>乗り込み・序盤クエスト・ハッチ漁は可。中央リアクターとカーゴは複数人推奨</td></tr>
@@ -3119,7 +3127,21 @@
 
       
 
-            <h3 style="margin-top:34px">実写ルート</h3>
+            <figure class="video-embed reveal">
+        <div class="video-frame">
+          <iframe src="https://www.youtube-nocookie.com/embed/LADojy9hafo?rel=0" title="ARC Raiders フリゲート攻略動画（7分）" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <figcaption><b>フリゲート攻略動画（7分）</b>：英語音声。日本語の要点は下の章メモへ。<a href="https://www.youtube.com/watch?v=LADojy9hafo" target="_blank" rel="noopener noreferrer">YouTubeで見る</a><a class="ref" href="#src-27">[27]</a><span class="shot-credit">動画: Incredilags</span></figcaption>
+      </figure>
+      <div class="video-notes reveal">
+        <span><b>0:00</b> 船の概要</span>
+        <span><b>0:52</b> 乗り込み</span>
+        <span><b>2:37</b> 中央コア</span>
+        <span><b>4:43</b> 上層パズル</span>
+        <span><b>5:41</b> 最終目標と報酬</span>
+      </div>
+
+      <h3 style="margin-top:34px">実写ルート</h3>
       <p class="small muted" style="margin:0 0 4px">実際の船内の順路。番号順に進む。画像をタップすると拡大。</p>
       <div class="frigate-route-grid reveal">
         <figure class="fr-card">
@@ -3411,6 +3433,11 @@
           <div class="src-meta">ARC Now / X / 2026-10-22（Via u/WoWAltoholic）</div>
           <a href="https://x.com/ArcRaidersNow/status/2113296828943011885" target="_blank" rel="noopener noreferrer">https://x.com/ArcRaidersNow/status/2113296828943011885</a>
         </li>
+        <li id="src-27">
+          <div class="src-title">Arc Raiders Frigate Cargo Guide: Frigate Puzzle, Power Core Locations, and Frigate Inductor Loot（攻略動画）</div>
+          <div class="src-meta">Incredilags / YouTube / 2026-10-08</div>
+          <a href="https://www.youtube.com/watch?v=LADojy9hafo" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=LADojy9hafo</a>
+        </li>
       </ol>
 
       <div class="callout callout-info reveal" style="margin-top:24px">
@@ -3439,7 +3466,7 @@
 
 </main>
 
-<button class="to-top" id="toTop" aria-label="ページ上部へ戻る">↑</button>
+<button type="button" class="to-top" id="toTop" aria-label="ページ上部へ戻る">↑</button>
 
 <script>
 (function(){
