@@ -295,6 +295,11 @@
   .num{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
   th.num{text-align:right}
   .w-name{font-weight:700;color:#fff;white-space:nowrap}
+  .w-name.weapon-with-icon{display:flex;align-items:center;gap:8px;white-space:nowrap}
+  .row-weapon-icon{width:42px;height:28px;object-fit:contain;flex:0 0 auto;padding:2px;border:1px solid var(--line-soft);border-radius:4px;background:rgba(255,255,255,.03)}
+  .weapon-inline{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+  .weapon-inline img{width:32px;height:22px;object-fit:contain;flex:0 0 auto;padding:1px;border:1px solid var(--line-soft);border-radius:4px;background:rgba(255,255,255,.03)}
+  .mat-source{display:block;font-size:10px;line-height:1.45;color:var(--muted);margin-top:2px}
   .cat{display:inline-block;padding:1px 7px;border-radius:5px;font-size:11px;font-weight:600;color:#c7d2e0;background:rgba(255,255,255,.055);white-space:nowrap}
   .ammo{font:600 11.5px/1.6 var(--mono);color:#9fb0c4;white-space:nowrap}
   .diff-table{min-width:640px}
@@ -492,7 +497,7 @@
   .mats{display:flex;flex-wrap:wrap;gap:5px}
   .mat{
     display:inline-flex;align-items:center;gap:6px;padding:3px 7px;border-radius:5px;
-    border:1px solid;font-size:11px;line-height:1.5;font-weight:600;
+    border:1px solid;font-size:11px;line-height:1.5;font-weight:600;white-space:nowrap;
   }
   .mat b{font:800 11.5px/1 var(--mono);letter-spacing:.02em}
   .mat b::before{content:"×";font-weight:600;opacity:.55;margin-right:1px}
@@ -680,16 +685,20 @@
   .amp-mk-block{margin:14px 0 0}
   .amp-mk-head{display:flex;align-items:center;gap:8px;margin:0 0 8px;font-size:12px;font-weight:700;color:#fff}
   .amp-mk-head span{font:800 9px/1 var(--mono);color:#0a0d12;background:var(--accent);border-radius:999px;padding:3px 7px}
+  .amp-mk-icon{width:20px;height:20px;object-fit:contain;flex:0 0 auto}
+  .inline-item-icon{display:inline-block;width:22px;height:22px;object-fit:contain;vertical-align:-5px;margin-right:5px}
   .amp-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
   .amp-card{border:1px solid var(--line);border-radius:9px;background:rgba(10,13,18,.45);overflow:hidden}
-  .amp-card img{display:block;width:100%;height:82px;object-fit:contain;padding:8px;background:rgba(255,255,255,.02);border-bottom:1px solid var(--line-soft)}
+  .amp-card > img{display:block;width:100%;height:82px;object-fit:contain;padding:8px;background:rgba(255,255,255,.02);border-bottom:1px solid var(--line-soft)}
   .amp-card-body{padding:9px 10px 10px}
   .amp-card h4{margin:0 0 5px;font-size:12px;color:#fff}
   .amp-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
   .amp-list li{font-size:9.8px;line-height:1.5;color:var(--muted)}
   .amp-list b{color:#dbe3ee;font-weight:700}
   .amp-list .amp-sub{display:block;margin-left:8px;color:#8b97a8}
-  .amp-cost{color:var(--accent);font-family:var(--mono);font-size:8.5px;white-space:nowrap}
+  .amp-cost{color:var(--accent);font-family:var(--mono);font-size:8.5px;line-height:1.5;white-space:normal;vertical-align:middle}
+  .amp-mat-icon{display:inline-block;width:14px;height:14px;object-fit:contain;vertical-align:-3px;margin-right:3px}
+  .amp-card .amp-mat-icon{display:inline-block;width:14px;height:14px;padding:0;border:0;border-bottom:0;background:none;object-fit:contain;vertical-align:-3px;margin-right:3px}
   .skill-purpose{display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin:0 0 6px;font-size:11px;font-weight:700;line-height:1.55;color:#dbe3ee}
   .skill-purpose span{font:800 8.5px/1.2 var(--mono);letter-spacing:.06em;color:var(--accent);border:1px solid rgba(245,165,36,.3);border-radius:3px;padding:1px 4px}
 
@@ -769,9 +778,9 @@
   .weapon-card.zoom-trigger:hover{border-color:rgba(245,165,36,.45);transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,.24)}
   .weapon-card.zoom-trigger img{transition:transform .16s}
   .weapon-card.zoom-trigger:hover img{transform:scale(1.06)}
-  .loadout-weapons img.zoom-trigger,.gf-mats img.zoom-trigger,.gf-craft img.zoom-trigger,.amp-card img.zoom-trigger{transition:transform .15s,filter .15s}
+  .loadout-weapons img.zoom-trigger,.gf-mats img.zoom-trigger,.gf-craft img.zoom-trigger,.amp-card > img.zoom-trigger{transition:transform .15s,filter .15s}
   .loadout-weapons img.zoom-trigger:hover{transform:scale(1.05);filter:brightness(1.12)}
-  .gf-mats img.zoom-trigger:hover,.gf-craft img.zoom-trigger:hover,.amp-card img.zoom-trigger:hover{filter:brightness(1.15)}
+  .gf-mats img.zoom-trigger:hover,.gf-craft img.zoom-trigger:hover,.amp-card > img.zoom-trigger:hover{filter:brightness(1.15)}
   .zoom-trigger:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
   body.lb-open{overflow:hidden}
 
@@ -936,6 +945,8 @@
     .grid-2,.grid-3,.split,.loadout-grid,.shot-grid,.shot-grid-4,.route-key{grid-template-columns:minmax(0,1fr)}
     .loadout-weapons img{width:48px;height:32px}
     .loadout strong{font-size:13.5px}
+    .row-weapon-icon{width:34px;height:22px}
+    .weapon-inline img{width:28px;height:19px}
     .gear-flow{flex-direction:column;gap:4px}
     .gf-step{display:grid;grid-template-columns:96px minmax(0,1fr);grid-template-rows:auto auto auto;align-items:center;column-gap:12px;text-align:left;padding:10px 13px 10px 10px}
     .gf-step:last-child{flex:0 0 auto}
@@ -1266,7 +1277,7 @@
           <div class="farm-spot-body">
             <h4>倒れたエンペラー</h4>
             <div class="mats">
-              <span class="mat mat-arc">増幅モジュール</span>
+              <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/amplification-module.png" alt="" loading="lazy" decoding="async">増幅モジュール</span>
               <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/emperor-modulator.png" alt="" loading="lazy">エンペラーモジュレーター</span>
               <span class="mat mat-rare">レア素材</span>
             </div>
@@ -1281,8 +1292,8 @@
             <div class="mats">
               <span class="mat mat-common"><img class="mat-icon" src="assets/materials/metal-parts.png" alt="" loading="lazy">金属部品</span>
               <span class="mat mat-common"><img class="mat-icon" src="assets/materials/fabric.png" alt="" loading="lazy">生地</span>
-              <span class="mat mat-rare">設計図</span>
-              <span class="mat mat-rare">旧市街の鍵</span>
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/blueprint.png" alt="" loading="lazy" decoding="async">設計図</span>
+              <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/old-town-key.png" alt="" loading="lazy" decoding="async">旧市街の鍵</span>
             </div>
             <p>教会まわりの鍵部屋。基本素材も。</p>
           </div>
@@ -1391,7 +1402,7 @@
           </div>
           <div class="loadout">
             <div class="lt">素材</div>
-            <strong>増幅モジュール</strong>
+            <strong><img class="inline-item-icon" src="assets/materials/amplification-module.png" alt="" loading="lazy" decoding="async">増幅モジュール</strong>
             <p>フリゲート/エンペラー。Mark I〜V。</p>
           </div>
         </div>
@@ -1404,16 +1415,16 @@
           <p class="small muted" style="margin:0 0 4px">MK1〜5の分岐と必要素材。分岐名・素材名は英語版の訳。<a class="ref" href="#src-26">[26]</a></p>
 
           <div class="amp-mk-block">
-            <div class="amp-mk-head"><span>MK1</span>増幅モジュール Mk.1</div>
+            <div class="amp-mk-head"><span>MK1</span><img class="amp-mk-icon" src="assets/materials/amplification-module.png" alt="" loading="lazy" decoding="async">増幅モジュール Mk.1</div>
             <div class="amp-grid">
               <article class="amp-card">
                 <img src="assets/weapons/hairpin.png" alt="ヘアピン" loading="lazy" decoding="async">
                 <div class="amp-card-body">
                   <h4>ヘアピン</h4>
                   <ul class="amp-list">
-                    <li><b>焼夷弾</b> <span class="amp-cost">石化した雷×3</span></li>
-                    <li><b>セミオート</b> <span class="amp-cost">空気圧アクチュエータ×3</span><span class="amp-sub">→ スプリント射撃 <span class="amp-cost">溝付きローターコア×3</span></span></li>
-                    <li><b>追跡弾</b> <span class="amp-cost">マトリアーク・リアクター×1</span></li>
+                    <li><b>焼夷弾</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/fossilized-lightning.png" alt="" loading="lazy" decoding="async">石化した雷×3</span></li>
+                    <li><b>セミオート</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/pneumatic-actuator.png" alt="" loading="lazy" decoding="async">空気圧アクチュエータ×3</span><span class="amp-sub">→ スプリント射撃 <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/fluted-rotor-core.png" alt="" loading="lazy" decoding="async">溝付きローターコア×3</span></span></li>
+                    <li><b>追跡弾</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/matriarch-reactor.png" alt="" loading="lazy" decoding="async">マトリアーク・リアクター×1</span></li>
                   </ul>
                 </div>
               </article>
@@ -1422,8 +1433,8 @@
                 <div class="amp-card-body">
                   <h4>ラトラー</h4>
                   <ul class="amp-list">
-                    <li><b>焼夷弾</b> <span class="amp-cost">石化した雷×3</span></li>
-                    <li><b>リロード強化</b> <span class="amp-cost">推進剤バルブアセンブリ×2</span><span class="amp-sub">→ ドラムマガジン <span class="amp-cost">圧力レギュレーター×4</span></span></li>
+                    <li><b>焼夷弾</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/fossilized-lightning.png" alt="" loading="lazy" decoding="async">石化した雷×3</span></li>
+                    <li><b>リロード強化</b> <span class="amp-cost">推進剤バルブアセンブリ×2</span><span class="amp-sub">→ ドラムマガジン <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/pressure-regulator.png" alt="" loading="lazy" decoding="async">圧力レギュレーター×4</span></span></li>
                   </ul>
                 </div>
               </article>
@@ -1432,9 +1443,9 @@
                 <div class="amp-card-body">
                   <h4>ケトル</h4>
                   <ul class="amp-list">
-                    <li><b>X弾</b> <span class="amp-cost">石化した雷×3</span></li>
-                    <li><b>対シールド</b> <span class="amp-cost">アセッサー・マトリクス×3</span></li>
-                    <li><b>フルオート</b> <span class="amp-cost">空気圧アクチュエータ×3</span></li>
+                    <li><b>X弾</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/fossilized-lightning.png" alt="" loading="lazy" decoding="async">石化した雷×3</span></li>
+                    <li><b>対シールド</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/assessor-matrix.png" alt="" loading="lazy" decoding="async">アセッサー・マトリクス×3</span></li>
+                    <li><b>フルオート</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/pneumatic-actuator.png" alt="" loading="lazy" decoding="async">空気圧アクチュエータ×3</span></li>
                   </ul>
                 </div>
               </article>
@@ -1442,16 +1453,16 @@
           </div>
 
           <div class="amp-mk-block">
-            <div class="amp-mk-head"><span>MK2</span>増幅モジュール Mk.2</div>
+            <div class="amp-mk-head"><span>MK2</span><img class="amp-mk-icon" src="assets/materials/amplification-module.png" alt="" loading="lazy" decoding="async">増幅モジュール Mk.2</div>
             <div class="amp-grid">
               <article class="amp-card">
                 <img src="assets/weapons/burletta.png" alt="バーレッタ" loading="lazy" decoding="async">
                 <div class="amp-card-body">
                   <h4>バーレッタ</h4>
                   <ul class="amp-list">
-                    <li><b>スプリント射撃</b> <span class="amp-cost">溝付きローターコア×3</span></li>
-                    <li><b>フルオート</b> <span class="amp-cost">空気圧アクチュエータ×3</span></li>
-                    <li><b>バースト射撃</b> <span class="amp-cost">クイーン・リアクター×2</span><span class="amp-sub">→ バースト強化 <span class="amp-cost">圧力レギュレーター×2</span></span></li>
+                    <li><b>スプリント射撃</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/fluted-rotor-core.png" alt="" loading="lazy" decoding="async">溝付きローターコア×3</span></li>
+                    <li><b>フルオート</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/pneumatic-actuator.png" alt="" loading="lazy" decoding="async">空気圧アクチュエータ×3</span></li>
+                    <li><b>バースト射撃</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/queen-reactor.png" alt="" loading="lazy" decoding="async">クイーン・リアクター×2</span><span class="amp-sub">→ バースト強化 <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/pressure-regulator.png" alt="" loading="lazy" decoding="async">圧力レギュレーター×2</span></span></li>
                   </ul>
                 </div>
               </article>
@@ -1461,7 +1472,7 @@
                   <h4>イル・トーロ</h4>
                   <ul class="amp-list">
                     <li><b>リロード強化</b> <span class="amp-cost">推進剤バルブアセンブリ×2</span></li>
-                    <li><b>スラッグ弾</b> <span class="amp-cost">タービンコンプレッサー×4</span></li>
+                    <li><b>スラッグ弾</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/turbine-compressor.png" alt="" loading="lazy" decoding="async">タービンコンプレッサー×4</span></li>
                   </ul>
                 </div>
               </article>
@@ -1469,15 +1480,15 @@
           </div>
 
           <div class="amp-mk-block">
-            <div class="amp-mk-head"><span>MK3</span>増幅モジュール Mk.3</div>
+            <div class="amp-mk-head"><span>MK3</span><img class="amp-mk-icon" src="assets/materials/amplification-module.png" alt="" loading="lazy" decoding="async">増幅モジュール Mk.3</div>
             <div class="amp-grid">
               <article class="amp-card">
                 <img src="assets/weapons/anvil.png" alt="アンヴィル" loading="lazy" decoding="async">
                 <div class="amp-card-body">
                   <h4>アンヴィル</h4>
                   <ul class="amp-list">
-                    <li><b>X弾</b> <span class="amp-cost">石化した雷×3</span></li>
-                    <li><b>アンヴィルスプリッター</b> <span class="amp-cost">タービンコンプレッサー×3</span></li>
+                    <li><b>X弾</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/fossilized-lightning.png" alt="" loading="lazy" decoding="async">石化した雷×3</span></li>
+                    <li><b>アンヴィルスプリッター</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/turbine-compressor.png" alt="" loading="lazy" decoding="async">タービンコンプレッサー×3</span></li>
                   </ul>
                 </div>
               </article>
@@ -1486,9 +1497,9 @@
                 <div class="amp-card-body">
                   <h4>カント</h4>
                   <ul class="amp-list">
-                    <li><b>焼夷弾</b> <span class="amp-cost">石化した雷×3</span></li>
+                    <li><b>焼夷弾</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/fossilized-lightning.png" alt="" loading="lazy" decoding="async">石化した雷×3</span></li>
                     <li><b>カービン化</b> <span class="amp-cost">推進剤バルブアセンブリ×3</span></li>
-                    <li><b>スプリント射撃</b> <span class="amp-cost">溝付きローターコア×3</span></li>
+                    <li><b>スプリント射撃</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/fluted-rotor-core.png" alt="" loading="lazy" decoding="async">溝付きローターコア×3</span></li>
                   </ul>
                 </div>
               </article>
@@ -1497,9 +1508,9 @@
                 <div class="amp-card-body">
                   <h4>オスプレー</h4>
                   <ul class="amp-list">
-                    <li><b>エルゴノミックボルト</b> <span class="amp-cost">溝付きローターコア×3</span></li>
-                    <li><b>追跡弾</b> <span class="amp-cost">マトリアーク・リアクター×2</span></li>
-                    <li><b>弱点特化</b> <span class="amp-cost">アセッサー・マトリクス×2</span></li>
+                    <li><b>エルゴノミックボルト</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/fluted-rotor-core.png" alt="" loading="lazy" decoding="async">溝付きローターコア×3</span></li>
+                    <li><b>追跡弾</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/matriarch-reactor.png" alt="" loading="lazy" decoding="async">マトリアーク・リアクター×2</span></li>
+                    <li><b>弱点特化</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/assessor-matrix.png" alt="" loading="lazy" decoding="async">アセッサー・マトリクス×2</span></li>
                   </ul>
                 </div>
               </article>
@@ -1508,9 +1519,9 @@
                 <div class="amp-card-body">
                   <h4>ラスカル</h4>
                   <ul class="amp-list">
-                    <li><b>高速弾</b> <span class="amp-cost">空気圧アクチュエータ×2</span></li>
-                    <li><b>スプリント射撃</b> <span class="amp-cost">溝付きローターコア×2</span></li>
-                    <li><b>焼夷グレネード</b> <span class="amp-cost">石化した雷×3</span></li>
+                    <li><b>高速弾</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/pneumatic-actuator.png" alt="" loading="lazy" decoding="async">空気圧アクチュエータ×2</span></li>
+                    <li><b>スプリント射撃</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/fluted-rotor-core.png" alt="" loading="lazy" decoding="async">溝付きローターコア×2</span></li>
+                    <li><b>焼夷グレネード</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/fossilized-lightning.png" alt="" loading="lazy" decoding="async">石化した雷×3</span></li>
                   </ul>
                 </div>
               </article>
@@ -1520,7 +1531,7 @@
                   <h4>レネゲイド</h4>
                   <ul class="amp-list">
                     <li><b>リロード強化</b> <span class="amp-cost">推進剤バルブアセンブリ×2</span></li>
-                    <li><b>スコープ</b> <span class="amp-cost">溝付きローターコア×4</span></li>
+                    <li><b>スコープ</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/fluted-rotor-core.png" alt="" loading="lazy" decoding="async">溝付きローターコア×4</span></li>
                   </ul>
                 </div>
               </article>
@@ -1528,15 +1539,15 @@
           </div>
 
           <div class="amp-mk-block">
-            <div class="amp-mk-head"><span>MK4</span>増幅モジュール Mk.4</div>
+            <div class="amp-mk-head"><span>MK4</span><img class="amp-mk-icon" src="assets/materials/amplification-module.png" alt="" loading="lazy" decoding="async">増幅モジュール Mk.4</div>
             <div class="amp-grid">
               <article class="amp-card">
                 <img src="assets/weapons/bettina.png" alt="ベティーナ" loading="lazy" decoding="async">
                 <div class="amp-card-body">
                   <h4>ベティーナ</h4>
                   <ul class="amp-list">
-                    <li><b>マガジン拡張</b> <span class="amp-cost">圧力レギュレーター×3</span></li>
-                    <li><b>セミオート</b> <span class="amp-cost">空気圧アクチュエータ×3</span><span class="amp-sub">→ X弾 <span class="amp-cost">石化した雷×3</span></span></li>
+                    <li><b>マガジン拡張</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/pressure-regulator.png" alt="" loading="lazy" decoding="async">圧力レギュレーター×3</span></li>
+                    <li><b>セミオート</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/pneumatic-actuator.png" alt="" loading="lazy" decoding="async">空気圧アクチュエータ×3</span><span class="amp-sub">→ X弾 <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/fossilized-lightning.png" alt="" loading="lazy" decoding="async">石化した雷×3</span></span></li>
                   </ul>
                 </div>
               </article>
@@ -1545,7 +1556,7 @@
                 <div class="amp-card-body">
                   <h4>ハルクラッカー</h4>
                   <ul class="amp-list">
-                    <li><b>焼夷グレネード</b> <span class="amp-cost">石化した雷×3</span></li>
+                    <li><b>焼夷グレネード</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/fossilized-lightning.png" alt="" loading="lazy" decoding="async">石化した雷×3</span></li>
                     <li><b>マグリロード</b> <span class="amp-cost">推進剤バルブアセンブリ×3</span></li>
                   </ul>
                 </div>
@@ -1554,16 +1565,16 @@
           </div>
 
           <div class="amp-mk-block">
-            <div class="amp-mk-head"><span>MK5</span>増幅モジュール Mk.5</div>
+            <div class="amp-mk-head"><span>MK5</span><img class="amp-mk-icon" src="assets/materials/amplification-module.png" alt="" loading="lazy" decoding="async">増幅モジュール Mk.5</div>
             <div class="amp-grid">
               <article class="amp-card">
                 <img src="assets/weapons/aphelion.png" alt="アフェリオン" loading="lazy" decoding="async">
                 <div class="amp-card-body">
                   <h4>アフェリオン</h4>
                   <ul class="amp-list">
-                    <li><b>マガジン拡張</b> <span class="amp-cost">圧力レギュレーター×3</span></li>
-                    <li><b>焼夷弾</b> <span class="amp-cost">石化した雷×3</span></li>
-                    <li><b>チャージバースト</b> <span class="amp-cost">クイーン・リアクター×2</span><span class="amp-sub">→ バースト強化 <span class="amp-cost">圧力レギュレーター×2</span></span></li>
+                    <li><b>マガジン拡張</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/pressure-regulator.png" alt="" loading="lazy" decoding="async">圧力レギュレーター×3</span></li>
+                    <li><b>焼夷弾</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/fossilized-lightning.png" alt="" loading="lazy" decoding="async">石化した雷×3</span></li>
+                    <li><b>チャージバースト</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/queen-reactor.png" alt="" loading="lazy" decoding="async">クイーン・リアクター×2</span><span class="amp-sub">→ バースト強化 <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/pressure-regulator.png" alt="" loading="lazy" decoding="async">圧力レギュレーター×2</span></span></li>
                   </ul>
                 </div>
               </article>
@@ -1572,9 +1583,9 @@
                 <div class="amp-card-body">
                   <h4>イコライザー</h4>
                   <ul class="amp-list">
-                    <li><b>マガジン拡張</b> <span class="amp-cost">圧力レギュレーター×3</span></li>
-                    <li><b>連続ダメージ増加</b> <span class="amp-cost">クイーン・リアクター×3</span></li>
-                    <li><b>弱点特化</b> <span class="amp-cost">アセッサー・マトリクス×2</span></li>
+                    <li><b>マガジン拡張</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/pressure-regulator.png" alt="" loading="lazy" decoding="async">圧力レギュレーター×3</span></li>
+                    <li><b>連続ダメージ増加</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/queen-reactor.png" alt="" loading="lazy" decoding="async">クイーン・リアクター×3</span></li>
+                    <li><b>弱点特化</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/assessor-matrix.png" alt="" loading="lazy" decoding="async">アセッサー・マトリクス×2</span></li>
                   </ul>
                 </div>
               </article>
@@ -1583,9 +1594,9 @@
                 <div class="amp-card-body">
                   <h4>ジュピター</h4>
                   <ul class="amp-list">
-                    <li><b>マガジン拡張</b> <span class="amp-cost">圧力レギュレーター×3</span></li>
-                    <li><b>スコープ</b> <span class="amp-cost">溝付きローターコア×3</span></li>
-                    <li><b>エルゴノミックボルト</b> <span class="amp-cost">溝付きローターコア×3</span></li>
+                    <li><b>マガジン拡張</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/pressure-regulator.png" alt="" loading="lazy" decoding="async">圧力レギュレーター×3</span></li>
+                    <li><b>スコープ</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/fluted-rotor-core.png" alt="" loading="lazy" decoding="async">溝付きローターコア×3</span></li>
+                    <li><b>エルゴノミックボルト</b> <span class="amp-cost"><img class="amp-mat-icon" src="assets/materials/fluted-rotor-core.png" alt="" loading="lazy" decoding="async">溝付きローターコア×3</span></li>
                   </ul>
                 </div>
               </article>
@@ -1935,21 +1946,48 @@
         <div class="loadout">
           <div class="lt">普段 / 黒字重視</div>
           <strong>レネゲイド + ヴェネイター</strong>
+          <div class="loadout-weapons">
+            <img src="assets/weapons/renegade.png" alt="レネゲイド" loading="lazy" decoding="async">
+            <span class="lo-or">+</span>
+            <img src="assets/weapons/venator.png" alt="ヴェネイター" loading="lazy" decoding="async">
+          </div>
+
           <p>中型弾中心。設計図不要。</p>
         </div>
         <div class="loadout">
           <div class="lt">最初の繋ぎ</div>
           <strong>フェロ + 拾ったSMG / ピストル</strong>
+          <div class="loadout-weapons">
+            <img src="assets/weapons/ferro.png" alt="フェロ" loading="lazy" decoding="async">
+            <span class="lo-or">+</span>
+            <img src="assets/weapons/stitcher.png" alt="スティッチャー" loading="lazy" decoding="async">
+            <span class="lo-or">or</span>
+            <img src="assets/weapons/hairpin.png" alt="ヘアピン" loading="lazy" decoding="async">
+          </div>
+
           <p>ガンスミス1。設計図不要。</p>
         </div>
         <div class="loadout">
           <div class="lt">大型ARC / 素材集め</div>
           <strong>アンヴィル + フェロ</strong>
+          <div class="loadout-weapons">
+            <img src="assets/weapons/anvil.png" alt="アンヴィル" loading="lazy" decoding="async">
+            <span class="lo-or">+</span>
+            <img src="assets/weapons/ferro.png" alt="フェロ" loading="lazy" decoding="async">
+          </div>
+
           <p>装甲コアを集中。遮蔽物必須。</p>
         </div>
         <div class="loadout">
           <div class="lt">フリゲート</div>
           <strong>ベティーナ + ハルクラッカー</strong>
+          <div class="loadout-weapons">
+            <img src="assets/weapons/bettina.png" alt="ベティーナ" loading="lazy" decoding="async">
+            <span class="lo-or">+</span>
+            <img src="assets/weapons/hullcracker.png" alt="ハルクラッカー" loading="lazy" decoding="async">
+            <span class="lo-shield"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-7 10-7 10S5 15.5 5 11V6l7-3z"/></svg>大型</span>
+          </div>
+
           <p>大型シールド＋Powered Descender。回復/弾薬多め。</p>
         </div>
       </div>
@@ -2017,13 +2055,13 @@
             <tr><th>ベンチ</th><th>目標</th><th>壁になる素材</th><th>おすすめ武器</th></tr>
           </thead>
           <tbody>
-            <tr><td class="w-name">ガンスミスLv1</td><td>フェロ</td><td>なし（初期）</td><td>フェロ</td></tr>
-            <tr><td class="w-name">ガンスミスLv2</td><td>アンヴィル / ヴェネイター / オスプレー</td><td>ワスプドライバー8（ワスプ）</td><td>フェロ</td></tr>
-            <tr><td class="w-name">ガンスミスLv3</td><td>レネゲイド / ベティーナ / テンペスト / ヴルカノ / ハルクラッカー</td><td>センチネル発火コア4（センチネル）</td><td>アンヴィル</td></tr>
-            <tr><td class="w-name">ガンスミスLv4</td><td>武器増幅（＋研究Lv4）</td><td>エンペラーモジュレーター1（エンペラー）＋前哨基地</td><td>ハルクラッカー / ジュピター</td></tr>
-            <tr><td class="w-name">装備ベンチ Lv2</td><td>中型シールド</td><td>ホーネットドライバー5（ホーネット）</td><td>任意</td></tr>
-            <tr><td class="w-name">装備ベンチ Lv3</td><td>大型シールド</td><td>バスティオンセル6（バスティオン）</td><td>アンヴィル</td></tr>
-            <tr><td class="w-name">医療ラボ Lv2</td><td>回復の幅</td><td>チックポッド8（チック）</td><td>任意</td></tr>
+            <tr><td class="w-name">ガンスミスLv1</td><td><span class="weapon-inline"><img src="assets/weapons/ferro.png" alt="" loading="lazy" decoding="async">フェロ</span></td><td>なし（初期）</td><td><span class="weapon-inline"><img src="assets/weapons/ferro.png" alt="" loading="lazy" decoding="async">フェロ</span></td></tr>
+            <tr><td class="w-name">ガンスミスLv2</td><td>アンヴィル / ヴェネイター / オスプレー</td><td><span class="mat mat-arc"><img class="mat-icon" src="assets/materials/wasp-driver.png" alt="" loading="lazy">ワスプドライバー<b>8</b></span><span class="mat-source">（ワスプ）</span></td><td>フェロ</td></tr>
+            <tr><td class="w-name">ガンスミスLv3</td><td>レネゲイド / ベティーナ / テンペスト / ヴルカノ / ハルクラッカー</td><td><span class="mat mat-arc"><img class="mat-icon" src="assets/materials/sentinel-firing-core.png" alt="" loading="lazy">センチネル発火コア<b>4</b></span><span class="mat-source">（センチネル）</span></td><td><span class="weapon-inline"><img src="assets/weapons/anvil.png" alt="" loading="lazy" decoding="async">アンヴィル</span></td></tr>
+            <tr><td class="w-name">ガンスミスLv4</td><td>武器増幅（＋研究Lv4）</td><td><span class="mat mat-rare"><img class="mat-icon" src="assets/materials/emperor-modulator.png" alt="" loading="lazy">エンペラーモジュレーター<b>1</b></span><span class="mat-source">（エンペラー）＋前哨基地</span></td><td><span class="weapon-inline"><img src="assets/weapons/hullcracker.png" alt="" loading="lazy" decoding="async">ハルクラッカー</span> / <span class="weapon-inline"><img src="assets/weapons/jupiter.png" alt="" loading="lazy" decoding="async">ジュピター</span></td></tr>
+            <tr><td class="w-name">装備ベンチ Lv2</td><td>中型シールド</td><td><span class="mat mat-arc"><img class="mat-icon" src="assets/materials/hornet-driver.png" alt="" loading="lazy">ホーネットドライバー<b>5</b></span><span class="mat-source">（ホーネット）</span></td><td>任意</td></tr>
+            <tr><td class="w-name">装備ベンチ Lv3</td><td>大型シールド</td><td><span class="mat mat-arc"><img class="mat-icon" src="assets/materials/bastion-cell.png" alt="" loading="lazy">バスティオンセル<b>6</b></span><span class="mat-source">（バスティオン）</span></td><td><span class="weapon-inline"><img src="assets/weapons/anvil.png" alt="" loading="lazy" decoding="async">アンヴィル</span></td></tr>
+            <tr><td class="w-name">医療ラボ Lv2</td><td>回復の幅</td><td><span class="mat mat-arc"><img class="mat-icon" src="assets/materials/tick-pod.png" alt="" loading="lazy">チックポッド<b>8</b></span><span class="mat-source">（チック）</span></td><td>任意</td></tr>
           </tbody>
         </table>
       </div>
@@ -2036,12 +2074,12 @@
             <tr><th>大型ARC</th><th>ドロップ素材</th><th>使うベンチ</th><th>おすすめ武器</th></tr>
           </thead>
           <tbody>
-            <tr><td class="w-name">センチネル</td><td><span class="mat mat-arc"><img class="mat-icon" src="assets/materials/sentinel-firing-core.png" alt="" loading="lazy">センチネル発火コア</span></td><td>ガンスミスLv3</td><td>アンヴィル</td></tr>
-            <tr><td class="w-name">バスティオン</td><td><span class="mat mat-arc"><img class="mat-icon" src="assets/materials/bastion-cell.png" alt="" loading="lazy">バスティオンセル</span></td><td>装備ベンチ Lv3</td><td>アンヴィル</td></tr>
-            <tr><td class="w-name">ロケッティア</td><td><span class="mat mat-arc"><img class="mat-icon" src="assets/materials/rocketeer-driver.png" alt="" loading="lazy">ロケッティアドライバー</span></td><td>爆発物 Lv3</td><td>アンヴィル</td></tr>
-            <tr><td class="w-name">リーパー</td><td><span class="mat mat-arc"><img class="mat-icon" src="assets/materials/leaper-pulse-unit.png" alt="" loading="lazy">リーパーパルスユニット</span></td><td>ユーティリティ Lv3</td><td>ハルクラッカー</td></tr>
-            <tr><td class="w-name">ボンバルディア</td><td><span class="mat mat-arc"><img class="mat-icon" src="assets/materials/bombardier-cell.png" alt="" loading="lazy">ボンバルディアセル</span></td><td>精錬機 Lv3</td><td>ハルクラッカー</td></tr>
-            <tr><td class="w-name">倒れたエンペラー</td><td><span class="mat mat-rare"><img class="mat-icon" src="assets/materials/emperor-modulator.png" alt="" loading="lazy">エンペラーモジュレーター</span></td><td>ガンスミスLv4</td><td>ハルクラッカー / ジュピター</td></tr>
+            <tr><td class="w-name">センチネル</td><td><span class="mat mat-arc"><img class="mat-icon" src="assets/materials/sentinel-firing-core.png" alt="" loading="lazy">センチネル発火コア</span></td><td>ガンスミスLv3</td><td><span class="weapon-inline"><img src="assets/weapons/anvil.png" alt="" loading="lazy" decoding="async">アンヴィル</span></td></tr>
+            <tr><td class="w-name">バスティオン</td><td><span class="mat mat-arc"><img class="mat-icon" src="assets/materials/bastion-cell.png" alt="" loading="lazy">バスティオンセル</span></td><td>装備ベンチ Lv3</td><td><span class="weapon-inline"><img src="assets/weapons/anvil.png" alt="" loading="lazy" decoding="async">アンヴィル</span></td></tr>
+            <tr><td class="w-name">ロケッティア</td><td><span class="mat mat-arc"><img class="mat-icon" src="assets/materials/rocketeer-driver.png" alt="" loading="lazy">ロケッティアドライバー</span></td><td>爆発物 Lv3</td><td><span class="weapon-inline"><img src="assets/weapons/anvil.png" alt="" loading="lazy" decoding="async">アンヴィル</span></td></tr>
+            <tr><td class="w-name">リーパー</td><td><span class="mat mat-arc"><img class="mat-icon" src="assets/materials/leaper-pulse-unit.png" alt="" loading="lazy">リーパーパルスユニット</span></td><td>ユーティリティ Lv3</td><td><span class="weapon-inline"><img src="assets/weapons/hullcracker.png" alt="" loading="lazy" decoding="async">ハルクラッカー</span></td></tr>
+            <tr><td class="w-name">ボンバルディア</td><td><span class="mat mat-arc"><img class="mat-icon" src="assets/materials/bombardier-cell.png" alt="" loading="lazy">ボンバルディアセル</span></td><td>精錬機 Lv3</td><td><span class="weapon-inline"><img src="assets/weapons/hullcracker.png" alt="" loading="lazy" decoding="async">ハルクラッカー</span></td></tr>
+            <tr><td class="w-name">倒れたエンペラー</td><td><span class="mat mat-rare"><img class="mat-icon" src="assets/materials/emperor-modulator.png" alt="" loading="lazy">エンペラーモジュレーター</span></td><td>ガンスミスLv4</td><td><span class="weapon-inline"><img src="assets/weapons/hullcracker.png" alt="" loading="lazy" decoding="async">ハルクラッカー</span> / <span class="weapon-inline"><img src="assets/weapons/jupiter.png" alt="" loading="lazy" decoding="async">ジュピター</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -2055,14 +2093,14 @@
             <tr><th>武器</th><th>ベンチ</th><th>設計図</th><th>入手先</th><th>主な素材</th></tr>
           </thead>
           <tbody>
-            <tr><td class="w-name">フェロ</td><td>ガンスミス1</td><td>不要</td><td>—</td><td><div class="mats"><span class="mat mat-common"><img class="mat-icon" src="assets/materials/metal-parts.png" alt="" loading="lazy">金属部品<b>5</b></span><span class="mat mat-common"><img class="mat-icon" src="assets/materials/rubber-parts.png" alt="" loading="lazy">ゴム部品<b>2</b></span></div></td></tr>
-            <tr><td class="w-name">アンヴィル</td><td>ガンスミス2</td><td>必要</td><td>全マップのレイダーコンテナ</td><td><div class="mats"><span class="mat mat-craft"><img class="mat-icon" src="assets/materials/advanced-mechanical-components.png" alt="" loading="lazy">高度な機械部品<b>2</b></span><span class="mat">大型銃部品<b>3</b></span><span class="mat mat-craft"><img class="mat-icon" src="assets/materials/hand-drills.png" alt="" loading="lazy">ハンドドリル<b>3</b></span></div></td></tr>
-            <tr><td class="w-name">ヴェネイター</td><td>ガンスミス2</td><td>必要</td><td>全マップのレイダーコンテナ</td><td><div class="mats"><span class="mat mat-craft"><img class="mat-icon" src="assets/materials/advanced-mechanical-components.png" alt="" loading="lazy">高度な機械部品<b>2</b></span><span class="mat">中型銃部品<b>3</b></span><span class="mat">磁石<b>5</b></span></div></td></tr>
-            <tr><td class="w-name">レネゲイド</td><td>ガンスミス3</td><td>不要</td><td>—</td><td><div class="mats"><span class="mat mat-craft"><img class="mat-icon" src="assets/materials/advanced-mechanical-components.png" alt="" loading="lazy">高度な機械部品<b>2</b></span><span class="mat">中型銃部品<b>3</b></span><span class="mat">オイル<b>5</b></span></div></td></tr>
-            <tr><td class="w-name">ベティーナ</td><td>ガンスミス3</td><td>必要</td><td>全マップのレイダーコンテナ</td><td><div class="mats"><span class="mat mat-craft"><img class="mat-icon" src="assets/materials/advanced-mechanical-components.png" alt="" loading="lazy">高度な機械部品<b>3</b></span><span class="mat">大型銃部品<b>3</b></span><span class="mat">キャニスター<b>3</b></span></div></td></tr>
-            <tr><td class="w-name">テンペスト</td><td>ガンスミス3</td><td>必要</td><td>夜襲 / ハリケーンの住宅コンテナ・First Wave Cache</td><td><div class="mats"><span class="mat mat-rare"><img class="mat-icon" src="assets/materials/magnetic-accelerator.png" alt="" loading="lazy">磁気加速器<b>1</b></span><span class="mat">中型銃部品<b>3</b></span><span class="mat">エクソダスモジュール<b>2</b></span></div></td></tr>
-            <tr><td class="w-name">ヴルカノ</td><td>ガンスミス3</td><td>必要</td><td>隠しバンカー / ハリケーンのFirst Wave Cache</td><td><div class="mats"><span class="mat mat-rare"><img class="mat-icon" src="assets/materials/magnetic-accelerator.png" alt="" loading="lazy">磁気加速器<b>1</b></span><span class="mat">大型銃部品<b>3</b></span><span class="mat">エクソダスモジュール<b>1</b></span></div></td></tr>
-            <tr><td class="w-name">ハルクラッカー</td><td>ガンスミス3</td><td>必要</td><td>クエスト「The Major's Footlocker」</td><td><div class="mats"><span class="mat mat-rare"><img class="mat-icon" src="assets/materials/magnetic-accelerator.png" alt="" loading="lazy">磁気加速器<b>1</b></span><span class="mat">大型銃部品<b>3</b></span><span class="mat">エクソダスモジュール<b>1</b></span></div></td></tr>
+            <tr><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/ferro.png" alt="" loading="lazy" decoding="async">フェロ</td><td>ガンスミス1</td><td>不要</td><td>—</td><td><div class="mats"><span class="mat mat-common"><img class="mat-icon" src="assets/materials/metal-parts.png" alt="" loading="lazy">金属部品<b>5</b></span><span class="mat mat-common"><img class="mat-icon" src="assets/materials/rubber-parts.png" alt="" loading="lazy">ゴム部品<b>2</b></span></div></td></tr>
+            <tr><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/anvil.png" alt="" loading="lazy" decoding="async">アンヴィル</td><td>ガンスミス2</td><td>必要</td><td>全マップのレイダーコンテナ</td><td><div class="mats"><span class="mat mat-craft"><img class="mat-icon" src="assets/materials/advanced-mechanical-components.png" alt="" loading="lazy">高度な機械部品<b>2</b></span><span class="mat"><img class="mat-icon" src="assets/materials/heavy-gun-parts.png" alt="" loading="lazy" decoding="async">大型銃部品<b>3</b></span><span class="mat mat-craft"><img class="mat-icon" src="assets/materials/hand-drills.png" alt="" loading="lazy">ハンドドリル<b>3</b></span></div></td></tr>
+            <tr><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/venator.png" alt="" loading="lazy" decoding="async">ヴェネイター</td><td>ガンスミス2</td><td>必要</td><td>全マップのレイダーコンテナ</td><td><div class="mats"><span class="mat mat-craft"><img class="mat-icon" src="assets/materials/advanced-mechanical-components.png" alt="" loading="lazy">高度な機械部品<b>2</b></span><span class="mat"><img class="mat-icon" src="assets/materials/medium-gun-parts.png" alt="" loading="lazy" decoding="async">中型銃部品<b>3</b></span><span class="mat"><img class="mat-icon" src="assets/materials/magnet.png" alt="" loading="lazy" decoding="async">磁石<b>5</b></span></div></td></tr>
+            <tr><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/renegade.png" alt="" loading="lazy" decoding="async">レネゲイド</td><td>ガンスミス3</td><td>不要</td><td>—</td><td><div class="mats"><span class="mat mat-craft"><img class="mat-icon" src="assets/materials/advanced-mechanical-components.png" alt="" loading="lazy">高度な機械部品<b>2</b></span><span class="mat"><img class="mat-icon" src="assets/materials/medium-gun-parts.png" alt="" loading="lazy" decoding="async">中型銃部品<b>3</b></span><span class="mat"><img class="mat-icon" src="assets/materials/oil.png" alt="" loading="lazy" decoding="async">オイル<b>5</b></span></div></td></tr>
+            <tr><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/bettina.png" alt="" loading="lazy" decoding="async">ベティーナ</td><td>ガンスミス3</td><td>必要</td><td>全マップのレイダーコンテナ</td><td><div class="mats"><span class="mat mat-craft"><img class="mat-icon" src="assets/materials/advanced-mechanical-components.png" alt="" loading="lazy">高度な機械部品<b>3</b></span><span class="mat"><img class="mat-icon" src="assets/materials/heavy-gun-parts.png" alt="" loading="lazy" decoding="async">大型銃部品<b>3</b></span><span class="mat"><img class="mat-icon" src="assets/materials/canister.png" alt="" loading="lazy" decoding="async">キャニスター<b>3</b></span></div></td></tr>
+            <tr><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/tempest.png" alt="" loading="lazy" decoding="async">テンペスト</td><td>ガンスミス3</td><td>必要</td><td>夜襲 / ハリケーンの住宅コンテナ・First Wave Cache</td><td><div class="mats"><span class="mat mat-rare"><img class="mat-icon" src="assets/materials/magnetic-accelerator.png" alt="" loading="lazy">磁気加速器<b>1</b></span><span class="mat"><img class="mat-icon" src="assets/materials/medium-gun-parts.png" alt="" loading="lazy" decoding="async">中型銃部品<b>3</b></span><span class="mat"><img class="mat-icon" src="assets/materials/exodus-modules.png" alt="" loading="lazy" decoding="async">エクソダスモジュール<b>2</b></span></div></td></tr>
+            <tr><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/vulcano.png" alt="" loading="lazy" decoding="async">ヴルカノ</td><td>ガンスミス3</td><td>必要</td><td>隠しバンカー / ハリケーンのFirst Wave Cache</td><td><div class="mats"><span class="mat mat-rare"><img class="mat-icon" src="assets/materials/magnetic-accelerator.png" alt="" loading="lazy">磁気加速器<b>1</b></span><span class="mat"><img class="mat-icon" src="assets/materials/heavy-gun-parts.png" alt="" loading="lazy" decoding="async">大型銃部品<b>3</b></span><span class="mat"><img class="mat-icon" src="assets/materials/exodus-modules.png" alt="" loading="lazy" decoding="async">エクソダスモジュール<b>1</b></span></div></td></tr>
+            <tr><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/hullcracker.png" alt="" loading="lazy" decoding="async">ハルクラッカー</td><td>ガンスミス3</td><td>必要</td><td>クエスト「The Major's Footlocker」</td><td><div class="mats"><span class="mat mat-rare"><img class="mat-icon" src="assets/materials/magnetic-accelerator.png" alt="" loading="lazy">磁気加速器<b>1</b></span><span class="mat"><img class="mat-icon" src="assets/materials/heavy-gun-parts.png" alt="" loading="lazy" decoding="async">大型銃部品<b>3</b></span><span class="mat"><img class="mat-icon" src="assets/materials/exodus-modules.png" alt="" loading="lazy" decoding="async">エクソダスモジュール<b>1</b></span></div></td></tr>
           </tbody>
         </table>
       </div>
@@ -2265,7 +2303,7 @@
               <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/radial-press.png" alt="" loading="lazy">ラジアルプレス<b>3</b></span>
               <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/magnetic-accelerator.png" alt="" loading="lazy">磁気加速器<b>3</b></span>
               <span class="mat mat-rare"><img class="mat-icon" src="assets/materials/emperor-modulator.png" alt="" loading="lazy">エンペラーモジュレーター<b>1</b></span>
-              <span class="mat mat-arc">増幅モジュール<b>1+</b></span>
+              <span class="mat mat-arc"><img class="mat-icon" src="assets/materials/amplification-module.png" alt="" loading="lazy" decoding="async">増幅モジュール<b>1+</b></span>
             </div>
             <p class="small muted" style="margin:9px 0 0">ガンスミスLv4＋研究Lv4＋モジュールで5段階目。研究5,000RP/項目。</p>
           </div>
@@ -2953,30 +2991,30 @@
             </tr>
           </thead>
           <tbody>
-            <tr data-cat="sg"><td class="w-name">ヴルカノ</td><td><span class="cat">ショットガン</span></td><td class="ammo">ショットガン</td><td class="num">49.5</td><td class="num">26.3</td><td class="num">26</td></tr>
-            <tr data-cat="sg"><td class="w-name">イル・トーロ</td><td><span class="cat">ショットガン</span></td><td class="ammo">ショットガン</td><td class="num">67.5</td><td class="num">14</td><td class="num">20</td></tr>
-            <tr data-cat="sg"><td class="w-name">ドラブラ</td><td><span class="cat">ショットガン</span></td><td class="ammo">エネルギークリップ</td><td class="num">50 / 40</td><td class="num">—</td><td class="num">—</td></tr>
-            <tr data-cat="br"><td class="w-name">レネゲイド</td><td><span class="cat">バトルライフル</span></td><td class="ammo">中型</td><td class="num">35</td><td class="num">21</td><td class="num">68.8</td></tr>
-            <tr data-cat="br"><td class="w-name">フェロ</td><td><span class="cat">バトルライフル</span></td><td class="ammo">大型</td><td class="num">40</td><td class="num">6.6</td><td class="num">53.1</td></tr>
-            <tr data-cat="br"><td class="w-name">アフェリオン</td><td><span class="cat">バトルライフル</span></td><td class="ammo">エネルギークリップ</td><td class="num">25</td><td class="num">9</td><td class="num">76</td></tr>
-            <tr data-cat="ar"><td class="w-name">ベティーナ</td><td><span class="cat">アサルトライフル</span></td><td class="ammo">大型</td><td class="num">16</td><td class="num">28.7</td><td class="num">52.3</td></tr>
-            <tr data-cat="ar"><td class="w-name">テンペスト</td><td><span class="cat">アサルトライフル</span></td><td class="ammo">中型</td><td class="num">10</td><td class="num">36.7</td><td class="num">55.9</td></tr>
-            <tr data-cat="ar"><td class="w-name">ラトラー</td><td><span class="cat">アサルトライフル</span></td><td class="ammo">中型</td><td class="num">9</td><td class="num">33.3</td><td class="num">56.2</td></tr>
-            <tr data-cat="ar"><td class="w-name">アルペジオ</td><td><span class="cat">アサルトライフル</span></td><td class="ammo">中型</td><td class="num">9.5</td><td class="num">18.3</td><td class="num">55.9</td></tr>
-            <tr data-cat="ar"><td class="w-name">ケトル</td><td><span class="cat">アサルトライフル</span></td><td class="ammo">小型</td><td class="num">8.5</td><td class="num">30</td><td class="num">42.8</td></tr>
-            <tr data-cat="smg"><td class="w-name">ボブキャット</td><td><span class="cat">SMG</span></td><td class="ammo">小型</td><td class="num">6</td><td class="num">66.7</td><td class="num">44</td></tr>
-            <tr data-cat="smg"><td class="w-name">カント</td><td><span class="cat">SMG</span></td><td class="ammo">中型</td><td class="num">6.5</td><td class="num">56.7</td><td class="num">51</td></tr>
-            <tr data-cat="smg"><td class="w-name">スティッチャー</td><td><span class="cat">SMG</span></td><td class="ammo">小型</td><td class="num">6.5</td><td class="num">45.3</td><td class="num">42.1</td></tr>
-            <tr data-cat="sr"><td class="w-name">オスプレー</td><td><span class="cat">スナイパーライフル</span></td><td class="ammo">中型</td><td class="num">45</td><td class="num">17.7</td><td class="num">80.3</td></tr>
-            <tr data-cat="sr"><td class="w-name">ジュピター</td><td><span class="cat">スナイパーライフル</span></td><td class="ammo">エネルギークリップ</td><td class="num">60</td><td class="num">7.7</td><td class="num">71.7</td></tr>
-            <tr data-cat="pistol"><td class="w-name">アンヴィル</td><td><span class="cat">ハンドキャノン</span></td><td class="ammo">大型</td><td class="num">40</td><td class="num">16.3</td><td class="num">50.2</td></tr>
-            <tr data-cat="pistol"><td class="w-name">ヴェネイター</td><td><span class="cat">ピストル</span></td><td class="ammo">中型</td><td class="num">16</td><td class="num">36.7</td><td class="num">48.4</td></tr>
-            <tr data-cat="pistol"><td class="w-name">ヘアピン</td><td><span class="cat">ピストル</span></td><td class="ammo">小型</td><td class="num">20</td><td class="num">9</td><td class="num">38.6</td></tr>
-            <tr data-cat="pistol"><td class="w-name">バーレッタ</td><td><span class="cat">ピストル</span></td><td class="ammo">小型</td><td class="num">10</td><td class="num">28</td><td class="num">41.7</td></tr>
-            <tr data-cat="special"><td class="w-name">トレンテ</td><td><span class="cat">LMG</span></td><td class="ammo">中型</td><td class="num">8</td><td class="num">58.3</td><td class="num">49.9</td></tr>
-            <tr data-cat="special"><td class="w-name">ハルクラッカー</td><td><span class="cat">スペシャル</span></td><td class="ammo">ランチャー</td><td class="num">100</td><td class="num">20.3</td><td class="num">38.9</td></tr>
-            <tr data-cat="special"><td class="w-name">ラスカル</td><td><span class="cat">スペシャル</span></td><td class="ammo">ランチャー</td><td class="num">75</td><td class="num">13.7</td><td class="num">28.3</td></tr>
-            <tr data-cat="special"><td class="w-name">イコライザー</td><td><span class="cat">スペシャル</span></td><td class="ammo">エネルギークリップ</td><td class="num">8</td><td class="num">33.3</td><td class="num">68.6</td></tr>
+            <tr data-cat="sg"><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/vulcano.png" alt="" loading="lazy" decoding="async">ヴルカノ</td><td><span class="cat">ショットガン</span></td><td class="ammo">ショットガン</td><td class="num">49.5</td><td class="num">26.3</td><td class="num">26</td></tr>
+            <tr data-cat="sg"><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/iltoro.png" alt="" loading="lazy" decoding="async">イル・トーロ</td><td><span class="cat">ショットガン</span></td><td class="ammo">ショットガン</td><td class="num">67.5</td><td class="num">14</td><td class="num">20</td></tr>
+            <tr data-cat="sg"><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/dolabra.png" alt="" loading="lazy" decoding="async">ドラブラ</td><td><span class="cat">ショットガン</span></td><td class="ammo">エネルギークリップ</td><td class="num">50 / 40</td><td class="num">—</td><td class="num">—</td></tr>
+            <tr data-cat="br"><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/renegade.png" alt="" loading="lazy" decoding="async">レネゲイド</td><td><span class="cat">バトルライフル</span></td><td class="ammo">中型</td><td class="num">35</td><td class="num">21</td><td class="num">68.8</td></tr>
+            <tr data-cat="br"><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/ferro.png" alt="" loading="lazy" decoding="async">フェロ</td><td><span class="cat">バトルライフル</span></td><td class="ammo">大型</td><td class="num">40</td><td class="num">6.6</td><td class="num">53.1</td></tr>
+            <tr data-cat="br"><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/aphelion.png" alt="" loading="lazy" decoding="async">アフェリオン</td><td><span class="cat">バトルライフル</span></td><td class="ammo">エネルギークリップ</td><td class="num">25</td><td class="num">9</td><td class="num">76</td></tr>
+            <tr data-cat="ar"><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/bettina.png" alt="" loading="lazy" decoding="async">ベティーナ</td><td><span class="cat">アサルトライフル</span></td><td class="ammo">大型</td><td class="num">16</td><td class="num">28.7</td><td class="num">52.3</td></tr>
+            <tr data-cat="ar"><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/tempest.png" alt="" loading="lazy" decoding="async">テンペスト</td><td><span class="cat">アサルトライフル</span></td><td class="ammo">中型</td><td class="num">10</td><td class="num">36.7</td><td class="num">55.9</td></tr>
+            <tr data-cat="ar"><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/rattler.png" alt="" loading="lazy" decoding="async">ラトラー</td><td><span class="cat">アサルトライフル</span></td><td class="ammo">中型</td><td class="num">9</td><td class="num">33.3</td><td class="num">56.2</td></tr>
+            <tr data-cat="ar"><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/arpeggio.png" alt="" loading="lazy" decoding="async">アルペジオ</td><td><span class="cat">アサルトライフル</span></td><td class="ammo">中型</td><td class="num">9.5</td><td class="num">18.3</td><td class="num">55.9</td></tr>
+            <tr data-cat="ar"><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/kettle.png" alt="" loading="lazy" decoding="async">ケトル</td><td><span class="cat">アサルトライフル</span></td><td class="ammo">小型</td><td class="num">8.5</td><td class="num">30</td><td class="num">42.8</td></tr>
+            <tr data-cat="smg"><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/bobcat.png" alt="" loading="lazy" decoding="async">ボブキャット</td><td><span class="cat">SMG</span></td><td class="ammo">小型</td><td class="num">6</td><td class="num">66.7</td><td class="num">44</td></tr>
+            <tr data-cat="smg"><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/canto.png" alt="" loading="lazy" decoding="async">カント</td><td><span class="cat">SMG</span></td><td class="ammo">中型</td><td class="num">6.5</td><td class="num">56.7</td><td class="num">51</td></tr>
+            <tr data-cat="smg"><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/stitcher.png" alt="" loading="lazy" decoding="async">スティッチャー</td><td><span class="cat">SMG</span></td><td class="ammo">小型</td><td class="num">6.5</td><td class="num">45.3</td><td class="num">42.1</td></tr>
+            <tr data-cat="sr"><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/osprey.png" alt="" loading="lazy" decoding="async">オスプレー</td><td><span class="cat">スナイパーライフル</span></td><td class="ammo">中型</td><td class="num">45</td><td class="num">17.7</td><td class="num">80.3</td></tr>
+            <tr data-cat="sr"><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/jupiter.png" alt="" loading="lazy" decoding="async">ジュピター</td><td><span class="cat">スナイパーライフル</span></td><td class="ammo">エネルギークリップ</td><td class="num">60</td><td class="num">7.7</td><td class="num">71.7</td></tr>
+            <tr data-cat="pistol"><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/anvil.png" alt="" loading="lazy" decoding="async">アンヴィル</td><td><span class="cat">ハンドキャノン</span></td><td class="ammo">大型</td><td class="num">40</td><td class="num">16.3</td><td class="num">50.2</td></tr>
+            <tr data-cat="pistol"><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/venator.png" alt="" loading="lazy" decoding="async">ヴェネイター</td><td><span class="cat">ピストル</span></td><td class="ammo">中型</td><td class="num">16</td><td class="num">36.7</td><td class="num">48.4</td></tr>
+            <tr data-cat="pistol"><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/hairpin.png" alt="" loading="lazy" decoding="async">ヘアピン</td><td><span class="cat">ピストル</span></td><td class="ammo">小型</td><td class="num">20</td><td class="num">9</td><td class="num">38.6</td></tr>
+            <tr data-cat="pistol"><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/burletta.png" alt="" loading="lazy" decoding="async">バーレッタ</td><td><span class="cat">ピストル</span></td><td class="ammo">小型</td><td class="num">10</td><td class="num">28</td><td class="num">41.7</td></tr>
+            <tr data-cat="special"><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/torrente.png" alt="" loading="lazy" decoding="async">トレンテ</td><td><span class="cat">LMG</span></td><td class="ammo">中型</td><td class="num">8</td><td class="num">58.3</td><td class="num">49.9</td></tr>
+            <tr data-cat="special"><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/hullcracker.png" alt="" loading="lazy" decoding="async">ハルクラッカー</td><td><span class="cat">スペシャル</span></td><td class="ammo">ランチャー</td><td class="num">100</td><td class="num">20.3</td><td class="num">38.9</td></tr>
+            <tr data-cat="special"><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/rascal.png" alt="" loading="lazy" decoding="async">ラスカル</td><td><span class="cat">スペシャル</span></td><td class="ammo">ランチャー</td><td class="num">75</td><td class="num">13.7</td><td class="num">28.3</td></tr>
+            <tr data-cat="special"><td class="w-name weapon-with-icon"><img class="row-weapon-icon" src="assets/weapons/equalizer.png" alt="" loading="lazy" decoding="async">イコライザー</td><td><span class="cat">スペシャル</span></td><td class="ammo">エネルギークリップ</td><td class="num">8</td><td class="num">33.3</td><td class="num">68.6</td></tr>
           </tbody>
         </table>
       </div>
@@ -3179,7 +3217,7 @@
             <tr><td class="w-name">乗り込み</td><td>リクレイマードローンに乗り、Disruptして船上へ</td></tr>
             <tr><td class="w-name">主な敵</td><td>ハイドラ、ロケッティア、ヴェイパライザー、その他ARC</td></tr>
             <tr><td class="w-name">目標</td><td>パワーコア破壊 → カーゴプラットフォーム降下 → 物資回収 → 通常脱出</td></tr>
-            <tr><td class="w-name">主な報酬</td><td>増幅モジュール（Mark I〜V）、フリゲートインダクター、研究素材、カーゴ物資</td></tr>
+            <tr><td class="w-name">主な報酬</td><td><span class="mat mat-arc"><img class="mat-icon" src="assets/materials/amplification-module.png" alt="" loading="lazy">増幅モジュール Mk.I〜V</span> <span class="mat mat-craft"><img class="mat-icon" src="assets/materials/frigate-inductor.png" alt="" loading="lazy">フリゲートインダクター</span> <span class="small muted">研究素材 / カーゴ物資</span></td></tr>
             <tr><td class="w-name">ソロ</td><td>乗り込み・序盤クエスト・ハッチ漁は可。中央リアクターとカーゴは複数人推奨</td></tr>
           </tbody>
         </table>
@@ -3584,6 +3622,31 @@
     "イコライザー": {b:3, bp:"ハーベスター（Harvester時）", mats:[["磁気加速器",3,"magnetic-accelerator"], ["複雑な銃部品",3], ["クイーン・リアクター",1]]},
   };
 
+  var craftMatIcons = {
+    "金属部品": "metal-parts",
+    "ゴム部品": "rubber-parts",
+    "機械部品": "mechanical-components",
+    "高度な機械部品": "advanced-mechanical-components",
+    "ハンドドリル": "hand-drills",
+    "磁気加速器": "magnetic-accelerator",
+    "プラスチック部品": "plastic-parts",
+    "大型銃部品": "heavy-gun-parts",
+    "中型銃部品": "medium-gun-parts",
+    "小型銃部品": "light-gun-parts",
+    "シンプルな銃部品": "simple-gun-parts",
+    "複雑な銃部品": "complex-gun-parts",
+    "磁石": "magnet",
+    "オイル": "oil",
+    "キャニスター": "canister",
+    "エクソダスモジュール": "exodus-modules",
+    "鋼鉄のバネ": "steel-spring",
+    "ワイヤー": "wires",
+    "マトリアーク・リアクター": "matriarch-reactor",
+    "クイーン・リアクター": "queen-reactor",
+    "シュレッダー・ジャイロ": "shredder-gyro",
+    "ヴェイパライザー・レギュレーター": "vaporizer-regulator"
+  };
+
   /* ---------- mobile menu ---------- */
   var sidebar = document.getElementById("sidebar");
   var menuBtn = document.getElementById("menuBtn");
@@ -3737,13 +3800,14 @@
     craft.mats.forEach(function(m){
       var chip = document.createElement("span");
       chip.className = "lc-mat";
-      if (m[2]){
+      var iconSlug = m[2] || craftMatIcons[m[0]];
+      if (iconSlug){
         var icon = document.createElement("img");
-        icon.src = "assets/materials/" + m[2] + ".png";
+        icon.src = "assets/materials/" + iconSlug + ".png";
         icon.alt = "";
         icon.width = 13;
         icon.height = 13;
-        icon.loading = "lazy";
+        icon.loading = "eager";
         icon.decoding = "async";
         chip.appendChild(icon);
       }
@@ -3824,7 +3888,7 @@
       }
     });
 
-    var zoomTargets = document.querySelectorAll(".mat, .weapon-card, .loadout-weapons img, .gf-mats img, .gf-craft img, .amp-card img, [data-craft]");
+    var zoomTargets = document.querySelectorAll(".mat, .weapon-card, .loadout-weapons img, .gf-mats img, .gf-craft img, .amp-card > img, [data-craft]");
     Array.prototype.forEach.call(zoomTargets, function(node){
       var img = node.tagName === "IMG" ? node : node.querySelector("img");
       if (!img || !img.getAttribute("src")) return;
