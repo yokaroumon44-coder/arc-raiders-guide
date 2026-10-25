@@ -798,6 +798,25 @@
   }
   .route-key div.alert b{border-color:rgba(167,139,250,.45);color:#c4b5fd}
 
+  /* ---------- frigate real images ---------- */
+  .frigate-route-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0 0}
+  .fr-card{margin:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:rgba(15,20,28,.7)}
+  .fr-card a{display:block;line-height:0}
+  .fr-thumb{position:relative;display:block;line-height:0}
+  .fr-card img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+  .fr-num{
+    position:absolute;top:6px;left:6px;z-index:2;width:24px;height:24px;display:grid;place-items:center;
+    border-radius:50%;background:rgba(10,13,18,.9);border:1px solid rgba(245,165,36,.65);
+    color:var(--accent);font:800 9.5px/1 var(--mono);
+    box-shadow:0 0 0 3px rgba(10,13,18,.35);
+  }
+  .fr-card figcaption{padding:8px 10px 9px;font-size:9.5px;line-height:1.55;color:var(--muted)}
+  .fr-card figcaption b{display:block;font-size:11px;line-height:1.4;color:#fff;margin-bottom:2px}
+  .frigate-spot-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:14px 0 0;align-items:start}
+  .frigate-spot-grid .shot{margin:0}
+  .frigate-spot-grid .wide{grid-column:span 2}
+  .frigate-spot-grid .shot img{aspect-ratio:16/9;object-fit:cover}
+
   /* ---------- reveal ---------- */
   html.js .reveal{opacity:0;transform:translateY(16px)}
   html.js .reveal.is-visible{
@@ -840,6 +859,9 @@
     .farm-spots{grid-template-columns:minmax(0,1fr)}
     .farm-tag{font-size:9.5px;padding:3px 6px;max-width:120px;white-space:normal;text-align:center}
     .farm-dot{width:22px;height:22px;font-size:9px}
+    .frigate-route-grid{grid-template-columns:1fr}
+    .frigate-spot-grid{grid-template-columns:1fr}
+    .frigate-spot-grid .wide{grid-column:auto}
     .skill-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
     .skill-level{grid-template-columns:1fr}
     .skill-gates{grid-template-columns:1fr}
@@ -2773,7 +2795,7 @@
 
       <figure class="shot reveal">
         <img src="assets/frigate.jpg" alt="フリゲートレイドの様子" loading="lazy" decoding="async" width="1024" height="576">
-        <figcaption><b>フリゲートレイド</b>：船内は狭く、PvPとARCの両方が絡む。装備を整えてから乗り込む。<span class="shot-credit">画像: Embark Studios</span></figcaption>
+        <figcaption><b>フリゲート全体</b>：上空に浮かぶARC艦船。船内は狭く、PvPとARCの両方が絡む。装備を整えてから乗り込む。<span class="shot-credit">画像: Embark Studios</span></figcaption>
       </figure>
 
       <div class="table-wrap reveal">
@@ -2832,75 +2854,130 @@
         </li>
       </ol>
 
-      <figure class="shot reveal" id="frigate-route">
-        <svg viewBox="0 0 900 520" role="img" aria-labelledby="frigateRouteTitle">
-          <title id="frigateRouteTitle">Frigateの攻略ルート模式図</title>
-          <rect width="900" height="520" fill="#0b121a"/>
-          <g fill="#1b2a3a" opacity=".7">
-            <circle cx="60" cy="70" r="1.4"/><circle cx="180" cy="45" r="1.1"/><circle cx="820" cy="80" r="1.3"/>
-            <circle cx="760" cy="450" r="1.2"/><circle cx="90" cy="440" r="1.3"/><circle cx="450" cy="55" r="1.1"/>
-            <circle cx="700" cy="100" r="1.0"/><circle cx="140" cy="180" r="1.1"/>
-          </g>
+            <h3 style="margin-top:34px">実写ルート</h3>
+      <p class="small muted" style="margin:0 0 4px">実際の船内の順路。番号順に進む。画像をタップすると拡大。</p>
+      <div class="frigate-route-grid reveal">
+        <figure class="fr-card">
+          <a href="assets/frigate/route-01-board.jpg" target="_blank" rel="noopener noreferrer">
+            <span class="fr-thumb">
+              <img src="assets/frigate/route-01-board.jpg" alt="フリゲートの乗り込みプラットフォーム" loading="lazy" decoding="async" width="900" height="506">
+              <span class="fr-num">01</span>
+            </span>
+          </a>
+          <figcaption><b>乗り込み</b>円形プラットフォームに乗り、中央をDisrupt。</figcaption>
+        </figure>
+        <figure class="fr-card">
+          <a href="assets/frigate/route-02-lift.jpg" target="_blank" rel="noopener noreferrer">
+            <span class="fr-thumb">
+              <img src="assets/frigate/route-02-lift.jpg" alt="フリゲートの3人同時リフト" loading="lazy" decoding="async" width="900" height="506">
+              <span class="fr-num">02</span>
+            </span>
+          </a>
+          <figcaption><b>最初のリフト</b>Move Upは3人同時。Snap Hookでも短縮可。</figcaption>
+        </figure>
+        <figure class="fr-card">
+          <a href="assets/frigate/route-03-wall.jpg" target="_blank" rel="noopener noreferrer">
+            <span class="fr-thumb">
+              <img src="assets/frigate/route-03-wall.jpg" alt="フリゲートの壁の黄色いターゲット" loading="lazy" decoding="async" width="900" height="506">
+              <span class="fr-num">03</span>
+            </span>
+          </a>
+          <figcaption><b>黄色ターゲット</b>壁の的を全部撃つと、足場が展開する。</figcaption>
+        </figure>
+        <figure class="fr-card">
+          <a href="assets/frigate/route-04-core.jpg" target="_blank" rel="noopener noreferrer">
+            <span class="fr-thumb">
+              <img src="assets/frigate/route-04-core.jpg" alt="フリゲート中央リングのMove Upパネル" loading="lazy" decoding="async" width="900" height="506">
+              <span class="fr-num">04</span>
+            </span>
+          </a>
+          <figcaption><b>中央コア</b>リング周囲の3つのMove Upを同時起動し、コアを露出。</figcaption>
+        </figure>
+        <figure class="fr-card">
+          <a href="assets/frigate/route-05-fire.jpg" target="_blank" rel="noopener noreferrer">
+            <span class="fr-thumb">
+              <img src="assets/frigate/route-05-fire.jpg" alt="フリゲート上層デッキの火炎" loading="lazy" decoding="async" width="900" height="506">
+              <span class="fr-num">05</span>
+            </span>
+          </a>
+          <figcaption><b>上層の火</b>Fire Roomのコアを撃って、火と強風を止める。</figcaption>
+        </figure>
+        <figure class="fr-card">
+          <a href="assets/frigate/route-06-main-core.jpg" target="_blank" rel="noopener noreferrer">
+            <span class="fr-thumb">
+              <img src="assets/frigate/route-06-main-core.jpg" alt="フリゲートのメインコア" loading="lazy" decoding="async" width="900" height="506">
+              <span class="fr-num">06</span>
+            </span>
+          </a>
+          <figcaption><b>メインコア</b>回転シールドの隙を撃つ。数人で集中砲火。</figcaption>
+        </figure>
+        <figure class="fr-card">
+          <a href="assets/frigate/route-07-hatch.jpg" target="_blank" rel="noopener noreferrer">
+            <span class="fr-thumb">
+              <img src="assets/frigate/route-07-hatch.jpg" alt="フリゲート船底の赤いハッチ" loading="lazy" decoding="async" width="900" height="506">
+              <span class="fr-num">07</span>
+            </span>
+          </a>
+          <figcaption><b>赤ハッチ</b>船底へ降り、低層コアを忘れず破壊。</figcaption>
+        </figure>
+        <figure class="fr-card">
+          <a href="assets/frigate/route-08-cargo.jpg" target="_blank" rel="noopener noreferrer">
+            <span class="fr-thumb">
+              <img src="assets/frigate/route-08-cargo.jpg" alt="フリゲートのカーゴ開放パネル" loading="lazy" decoding="async" width="900" height="506">
+              <span class="fr-num">08</span>
+            </span>
+          </a>
+          <figcaption><b>カーゴ開放</b>両側のパネルを2人で同時操作。数回繰り返す。</figcaption>
+        </figure>
+        <figure class="fr-card">
+          <a href="assets/frigate/route-09-landed.jpg" target="_blank" rel="noopener noreferrer">
+            <span class="fr-thumb">
+              <img src="assets/frigate/route-09-landed.jpg" alt="着地したフリゲートのカーゴ" loading="lazy" decoding="async" width="900" height="506">
+              <span class="fr-num">09</span>
+            </span>
+          </a>
+          <figcaption><b>カーゴ降下</b>カーゴに乗って降下。着地後にコンテナを漁る。</figcaption>
+        </figure>
+      </div>
+      <p class="small muted" style="margin:8px 0 0">画像: Arc Raiders Hub（一部 Shady）<a class="ref" href="#src-23">[23]</a></p>
 
-          <!-- ship -->
-          <polygon points="110,260 260,150 640,150 790,260 640,370 260,370" fill="#131c28" stroke="#3a4a5e" stroke-width="3"/>
-          <polygon points="300,150 520,150 560,100 340,100" fill="#182330" stroke="#3a4a5e" stroke-width="2"/>
-          <polygon points="300,370 520,370 560,420 340,420" fill="#182330" stroke="#3a4a5e" stroke-width="2"/>
-          <line x1="150" y1="260" x2="760" y2="260" stroke="#2a3a4e" stroke-width="2" stroke-dasharray="6 6"/>
-          <rect x="690" y="232" width="76" height="56" rx="8" fill="#1d2a3a" stroke="#4a5d74" stroke-width="2"/>
-          <text x="728" y="266" text-anchor="middle" font-size="10" fill="#8b97a8" font-family="Segoe UI, sans-serif">CARGO</text>
-          <rect x="96" y="244" width="14" height="32" rx="4" fill="#f5a524" opacity=".55"/>
+      <h3 style="margin-top:34px">物資スポット</h3>
+      <p class="small muted" style="margin:0 0 4px">増幅モジュールとカーゴの狙い場所。画像をタップすると拡大。</p>
+      <div class="frigate-spot-grid reveal">
+        <figure class="shot">
+          <a href="assets/frigate/spot-01-hull.jpg" target="_blank" rel="noopener noreferrer" style="display:block;line-height:0">
+            <img src="assets/frigate/spot-01-hull.jpg" alt="フリゲート船体下面のBreach and Searchポート" loading="lazy" decoding="async" width="900" height="506">
+          </a>
+          <figcaption><b>船体ポート</b>：船体下面のBreach &amp; Search。増幅モジュールの出現源。</figcaption>
+        </figure>
+        <figure class="shot">
+          <a href="assets/frigate/spot-02-module.jpg" target="_blank" rel="noopener noreferrer" style="display:block;line-height:0">
+            <img src="assets/frigate/spot-02-module.jpg" alt="増幅モジュールMk.Vのツールチップ" loading="lazy" decoding="async" width="900" height="506">
+          </a>
+          <figcaption><b>増幅モジュール Mk.V</b>：拾ったら即セーフポケットへ。</figcaption>
+        </figure>
+        <figure class="shot">
+          <a href="assets/frigate/spot-03-cargo-inside.jpg" target="_blank" rel="noopener noreferrer" style="display:block;line-height:0">
+            <img src="assets/frigate/spot-03-cargo-inside.jpg" alt="フリゲートのカーゴ内部の円形コンテナ" loading="lazy" decoding="async" width="900" height="506">
+          </a>
+          <figcaption><b>カーゴ内部</b>：円形コンテナが並ぶ。降下後にまとめて漁る。</figcaption>
+        </figure>
+        <figure class="shot">
+          <a href="assets/frigate/spot-04-cargo-loot.jpg" target="_blank" rel="noopener noreferrer" style="display:block;line-height:0">
+            <img src="assets/frigate/spot-04-cargo-loot.jpg" alt="着地後のカーゴでコンテナを漁る" loading="lazy" decoding="async" width="900" height="506">
+          </a>
+          <figcaption><b>カーゴ回収</b>：着地後もコンテナは無事。脱出前に全部開ける。</figcaption>
+        </figure>
+        <figure class="shot wide">
+          <a href="assets/frigate/spot-05-bottom-core.jpg" target="_blank" rel="noopener noreferrer" style="display:block;line-height:0">
+            <img src="assets/frigate/spot-05-bottom-core.jpg" alt="フリゲート最下部の小さなコア" loading="lazy" decoding="async" width="900" height="506">
+          </a>
+          <figcaption><b>低層コア</b>：赤ハッチ下の小部屋。ここを残すとカーゴが開かない。</figcaption>
+        </figure>
+      </div>
+      <p class="small muted" style="margin:8px 0 0">画像: Arc Raiders Hub（一部 Shady）<a class="ref" href="#src-23">[23]</a></p>
 
-          <!-- main route -->
-          <path d="M150 260 L250 260 L310 205 L400 260 L480 195 L560 230 L650 260 L728 260" fill="none" stroke="#f5a524" stroke-width="2.4" stroke-dasharray="8 7" opacity=".85"/>
-          <path d="M728 260 L728 310 L800 340" fill="none" stroke="#f5a524" stroke-width="2" stroke-dasharray="4 6" opacity=".55"/>
-          <!-- low core detour -->
-          <path d="M650 260 L620 390" fill="none" stroke="#a78bfa" stroke-width="2" stroke-dasharray="5 6" opacity=".8"/>
-
-          <!-- markers -->
-          <g font-family="Segoe UI, sans-serif" font-weight="800" font-size="11" text-anchor="middle">
-            <circle cx="150" cy="260" r="14" fill="#0b121a" stroke="#f5a524" stroke-width="2"/><text x="150" y="264" fill="#f5a524">1</text>
-            <circle cx="310" cy="205" r="14" fill="#0b121a" stroke="#f5a524" stroke-width="2"/><text x="310" y="209" fill="#f5a524">2</text>
-            <circle cx="400" cy="260" r="14" fill="#0b121a" stroke="#f5a524" stroke-width="2"/><text x="400" y="264" fill="#f5a524">3</text>
-            <circle cx="480" cy="195" r="14" fill="#0b121a" stroke="#f5a524" stroke-width="2"/><text x="480" y="199" fill="#f5a524">4</text>
-            <circle cx="560" cy="230" r="14" fill="#0b121a" stroke="#f5a524" stroke-width="2"/><text x="560" y="234" fill="#f5a524">5</text>
-            <circle cx="650" cy="260" r="14" fill="#0b121a" stroke="#f5a524" stroke-width="2"/><text x="650" y="264" fill="#f5a524">6</text>
-            <circle cx="620" cy="390" r="14" fill="#0b121a" stroke="#a78bfa" stroke-width="2"/><text x="620" y="394" fill="#c4b5fd">7</text>
-            <circle cx="728" cy="260" r="14" fill="#0b121a" stroke="#f5a524" stroke-width="2"/><text x="728" y="264" fill="#f5a524">8</text>
-            <circle cx="800" cy="340" r="14" fill="#0b121a" stroke="#f5a524" stroke-width="2"/><text x="800" y="344" fill="#f5a524">9</text>
-          </g>
-
-          <!-- labels -->
-          <g font-family="Segoe UI, sans-serif" font-size="10.5" fill="#c7d2e0" text-anchor="middle">
-            <text x="150" y="300">乗り込み</text>
-            <text x="310" y="182">翼部コア</text>
-            <text x="400" y="300">中央リアクター</text>
-            <text x="480" y="172">上層</text>
-            <text x="560" y="207">Fire Room</text>
-            <text x="650" y="300">船首コア</text>
-            <text x="620" y="428" fill="#c4b5fd">低層コア</text>
-            <text x="728" y="218">Cargo</text>
-            <text x="816" y="372" fill="#fbbf24">Extract</text>
-          </g>
-
-          <text x="22" y="505" font-size="9.5" fill="#566274" font-family="Segoe UI, sans-serif">模式図。実際の船内配置・ルートとは異なります。</text>
-        </svg>
-        <div class="route-key">
-          <div><b>1</b>リクレイマーに乗り、Disruptして船上へ</div>
-          <div><b>2</b>翼部の通路を進み、最初のコアを破壊</div>
-          <div><b>3</b>中央リアクター：3つの制御を3人で同時起動</div>
-          <div><b>4</b>黄色ノードを撃って上層へ</div>
-          <div><b>5</b>左右のファイアールームを無効化</div>
-          <div><b>6</b>船首の最終コア群を処理</div>
-          <div class="alert"><b>7</b>赤いハッチ下の低層コア（見落とし注意）</div>
-          <div><b>8</b>カーゴプラットフォーム：両側の制御を2人で操作</div>
-          <div><b>9</b>カーゴを漁り、通常脱出へ</div>
-          <div class="alert"><b>!</b>中央リアクターは3人、カーゴは2人必要</div>
-        </div>
-        <figcaption><b>フリゲート攻略ルート（模式図）</b>：7はカーゴが開かない原因になりやすい必須コア。</figcaption>
-      </figure>
-
-      <h3 style="margin-top:32px">フリゲート推奨装備</h3>
+<h3 style="margin-top:32px">フリゲート推奨装備</h3>
       <div class="table-wrap reveal">
         <table>
           <thead>
@@ -3051,6 +3128,11 @@
           <div class="src-title">Skills（スキルアイコン）</div>
           <div class="src-meta">ARC Raiders Wiki / 2026-10-12 更新</div>
           <a href="https://arcraiders.wiki/wiki/Skills" target="_blank" rel="noopener noreferrer">https://arcraiders.wiki/wiki/Skills</a>
+        </li>
+        <li id="src-23">
+          <div class="src-title">Arc Raiders Frigate Guide: Puzzle, Cargo Drop &amp; Loot（船内ルート・スポット画像）</div>
+          <div class="src-meta">Arc Raiders Hub / 2026-10-09</div>
+          <a href="https://arcraidershub.com/guides/frigate-guide" target="_blank" rel="noopener noreferrer">https://arcraidershub.com/guides/frigate-guide</a>
         </li>
       </ol>
 
