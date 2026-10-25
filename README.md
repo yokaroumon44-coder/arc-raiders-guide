@@ -8,7 +8,6 @@ https://yokaroumon44-coder.github.io/arc-raiders-guide/
 
 ## 内容
 
-- 2.0で変わったこと
 - ペンドラ・パス素材マップ
 - 新システム解説
 - おすすめスキルツリー（レベル別の振り方・公式アイコン付き）
