@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ARC Raiders 復帰勢攻略 | 凍った道 2.0 再入門ガイド</title>
-<meta name="description" content="ARC Raidersに復帰した人向けの攻略ガイド。凍った道 2.0で変わったスキルツリー、ペンドラ・パス、前哨基地、武器メタ、新敵を海外ソースの引用付きで整理。">
+<meta name="description" content="ARC Raidersに復帰した人向けの攻略ガイド。凍った道 2.0で変わったスキルツリー、ペンドラ・パス、前哨基地、装備の作り方、武器メタ、新敵を海外ソースの引用付きで整理。">
 <meta name="theme-color" content="#0a0d12">
 <link rel="canonical" href="https://yokaroumon44-coder.github.io/arc-raiders-guide/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ARC Raiders 復帰勢攻略">
 <meta property="og:title" content="ARC Raiders 復帰勢攻略 | 凍った道 2.0 再入門ガイド">
-<meta property="og:description" content="凍った道 2.0で変わったスキルツリー、ペンドラ・パス、前哨基地、武器メタ、新敵を海外ソースの引用付きで整理。半年ぶりの復帰勢向け。">
+<meta property="og:description" content="凍った道 2.0で変わったスキルツリー、ペンドラ・パス、前哨基地、装備の作り方、武器メタ、新敵を海外ソースの引用付きで整理。半年ぶりの復帰勢向け。">
 <meta property="og:url" content="https://yokaroumon44-coder.github.io/arc-raiders-guide/">
 <meta property="og:image" content="https://yokaroumon44-coder.github.io/arc-raiders-guide/assets/ogp.jpg">
 <meta property="og:image:width" content="1200">
@@ -19,7 +19,7 @@
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ARC Raiders 復帰勢攻略 | 凍った道 2.0 再入門ガイド">
-<meta name="twitter:description" content="凍った道 2.0で変わったスキルツリー、ペンドラ・パス、前哨基地、武器メタ、新敵を海外ソースの引用付きで整理。">
+<meta name="twitter:description" content="凍った道 2.0で変わったスキルツリー、ペンドラ・パス、前哨基地、装備の作り方、武器メタ、新敵を海外ソースの引用付きで整理。">
 <meta name="twitter:image" content="https://yokaroumon44-coder.github.io/arc-raiders-guide/assets/ogp.jpg">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230a0d12'/><text x='50' y='68' font-size='46' font-family='monospace' font-weight='bold' fill='%23f5a524' text-anchor='middle'>A</text></svg>">
 <link rel="preload" as="image" href="assets/maps/pendola-map.jpg">
@@ -691,6 +691,7 @@
   .skill-builds td:nth-child(3){color:#fcd34d}
   .skill-builds td:nth-child(4){color:#fca5a5}
   .skill-builds th:nth-child(2),.skill-builds th:nth-child(3),.skill-builds th:nth-child(4){text-align:center}
+  .gear-blueprint td:nth-child(2){white-space:nowrap}
   .skill-purpose{display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin:0 0 6px;font-size:11px;font-weight:700;line-height:1.55;color:#dbe3ee}
   .skill-purpose span{font:800 8.5px/1.2 var(--mono);letter-spacing:.06em;color:var(--accent);border:1px solid rgba(245,165,36,.3);border-radius:3px;padding:1px 4px}
 
@@ -935,11 +936,12 @@
     <a class="nav-link" href="#pendola"><span class="nav-num">03</span>ペンドラ・パス攻略</a>
     <a class="nav-link" href="#systems"><span class="nav-num">04</span>新システム解説</a>
     <a class="nav-link" href="#skills"><span class="nav-num">05</span>おすすめスキルツリー</a>
-    <a class="nav-link" href="#outpost"><span class="nav-num">06</span>前哨基地</a>
-    <a class="nav-link" href="#workshop"><span class="nav-num">07</span>ワークショップ素材</a>
-    <a class="nav-link" href="#weapons"><span class="nav-num">08</span>武器メタ・ティア表</a>
-    <a class="nav-link" href="#enemies"><span class="nav-num">09</span>新敵・フリゲート対策</a>
-    <a class="nav-link" href="#sources"><span class="nav-num">10</span>引用元一覧</a>
+    <a class="nav-link" href="#gear"><span class="nav-num">06</span>普段装備と作り方</a>
+    <a class="nav-link" href="#outpost"><span class="nav-num">07</span>前哨基地</a>
+    <a class="nav-link" href="#workshop"><span class="nav-num">08</span>ワークショップ素材</a>
+    <a class="nav-link" href="#weapons"><span class="nav-num">09</span>武器メタ・ティア表</a>
+    <a class="nav-link" href="#enemies"><span class="nav-num">10</span>新敵・フリゲート対策</a>
+    <a class="nav-link" href="#sources"><span class="nav-num">11</span>引用元一覧</a>
   </nav>
 
   <div class="sidebar-foot">
@@ -984,7 +986,7 @@
 
       <div class="hero-actions">
         <a class="btn btn-primary" href="#checklist">復帰チェックリストへ <span class="arrow">→</span></a>
-        <a class="btn btn-ghost" href="#weapons">武器メタを見る</a>
+        <a class="btn btn-ghost" href="#gear">装備の整え方を見る</a>
       </div>
     </div>
   </section>
@@ -1795,11 +1797,150 @@
     </div>
   </section>
 
-  <!-- 06 前哨基地 -->
+<!-- 06 GEAR -->
+  <section class="section" id="gear">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="sec-kicker">06 / 装備</div>
+        <h2>普段装備と作り方</h2>
+        <p class="sec-lead">
+          「何を持てばいいか」→「どう作るか」の順で整理。
+          最初はフェロ、Gunsmith 2でアンヴィル、Gunsmith 3でレネゲイドが現実的な普段装備。
+        </p>
+      </div>
+
+      <div class="returner-box reveal">
+        <div class="returner-head">
+          <span class="returner-tag">結論</span>
+          <b>普段はレネゲイド。繋ぎはフェロ。大型ARCはアンヴィル→ハルクラッカー。</b>
+        </div>
+        <div class="returner-grid">
+          <div><span>01</span><p><b>最初</b>フェロ（Gunsmith 1・設計図不要）</p></div>
+          <div><span>02</span><p><b>大型ARC前</b>アンヴィル（Gunsmith 2・設計図はレイダーコンテナ）</p></div>
+          <div><span>03</span><p><b>普段</b>レネゲイド（Gunsmith 3・設計図不要・中型弾）</p></div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:30px">普段の装備</h3>
+      <div class="loadout-grid reveal">
+        <div class="loadout">
+          <div class="lt">普段 / 黒字重視</div>
+          <strong>レネゲイド + ヴェネイター</strong>
+          <p>中型弾中心。レネゲイドはGunsmith 3で設計図不要。ヴェネイターは保険のピストル。</p>
+        </div>
+        <div class="loadout">
+          <div class="lt">最初の繋ぎ</div>
+          <strong>フェロ + 拾ったSMG / ピストル</strong>
+          <p>Gunsmith 1で作れる。設計図不要。まずはこれでワスプを狩ってGunsmith 2へ。</p>
+        </div>
+        <div class="loadout">
+          <div class="lt">大型ARC / 素材集め</div>
+          <strong>アンヴィル + フェロ</strong>
+          <p>センチネルやバスティオンのコアをアンヴィルで集中。フェロで追撃。遮蔽物必須。</p>
+        </div>
+        <div class="loadout">
+          <div class="lt">フリゲート</div>
+          <strong>ベティーナ + ハルクラッカー</strong>
+          <p>大型シールド＋Powered Descender。回復と弾薬は多めに。無料ロードアウト不可。</p>
+        </div>
+      </div>
+
+      <h3 style="margin-top:34px">装備ができるまでの流れ</h3>
+      <ol class="step-flow reveal">
+        <li>
+          <h4>設計図を拾う</h4>
+          <p>武器はレイダー系コンテナ、テンペストは住宅系、ヴルカノはFirst Wave Cache、ハルクラッカーはクエスト報酬。設計図が不要な武器もある。</p>
+        </li>
+        <li>
+          <h4>Speranzaで「Learn and Consume」</h4>
+          <p>拾った設計図を学習してレシピを解禁する。設計図は消費される。研究ステーションは増幅・研究の別系統。</p>
+        </li>
+        <li>
+          <h4>Gunsmithを上げる</h4>
+          <p>Lv1→2はワスプドライバー8、Lv2→3はセンチネル発火コア4。Lv4は前哨基地＋エンペラーモジュレーター1。</p>
+        </li>
+        <li>
+          <h4>素材を集める</h4>
+          <p>基本は金属部品・ゴム部品。中盤は高度な機械部品・銃部品・磁気加速器。大型ARC素材はLv3の壁。</p>
+        </li>
+        <li>
+          <h4>クラフト → 強化</h4>
+          <p>Gunsmithで作成し、同じ武器を素材にLv4まで強化。増幅はGunsmith 4＋研究Lv4＋増幅モジュールで長期目標。</p>
+        </li>
+      </ol>
+
+      <h3 style="margin-top:34px">ワークベンチの上げ順</h3>
+      <p class="small muted" style="margin-bottom:12px">普段装備を優先するなら、Gunsmith → 装備ベンチ → 医療ラボの順。大型ARC素材が必要になるのはLv3から。<a class="ref" href="#src-13">[13]</a></p>
+      <div class="table-wrap reveal">
+        <table>
+          <thead>
+            <tr><th>ベンチ</th><th>目標</th><th>壁になる素材</th><th>おすすめ武器</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="w-name">Gunsmith Lv1</td><td>フェロ</td><td>なし（金属部品5 / ゴム部品2）</td><td>フェロ</td></tr>
+            <tr><td class="w-name">Gunsmith Lv2</td><td>アンヴィル / ヴェネイター / オスプレー</td><td>ワスプドライバー8（ワスプ）</td><td>フェロ</td></tr>
+            <tr><td class="w-name">Gunsmith Lv3</td><td>レネゲイド / ベティーナ / テンペスト / ヴルカノ / ハルクラッカー</td><td>センチネル発火コア4（センチネル）</td><td>アンヴィル</td></tr>
+            <tr><td class="w-name">Gunsmith Lv4</td><td>武器増幅</td><td>エンペラーモジュレーター1（エンペラー）＋前哨基地</td><td>ハルクラッカー / ジュピター</td></tr>
+            <tr><td class="w-name">装備ベンチ Lv2</td><td>中型シールド</td><td>ホーネットドライバー5（ホーネット）</td><td>任意</td></tr>
+            <tr><td class="w-name">装備ベンチ Lv3</td><td>大型シールド</td><td>バスティオンセル6（バスティオン）</td><td>アンヴィル</td></tr>
+            <tr><td class="w-name">医療ラボ Lv2</td><td>回復の幅</td><td>チックポッド8（チック）</td><td>任意</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="margin-top:34px">大型ARCと必要素材</h3>
+      <p class="small muted" style="margin-bottom:12px">Lv3以降の壁。装甲コアやセルを狙い、アンヴィルで集中砲火。ハルクラッカーはGunsmith 3以降の対大型用。</p>
+      <div class="table-wrap reveal">
+        <table>
+          <thead>
+            <tr><th>大型ARC</th><th>ドロップ素材</th><th>使うベンチ</th><th>おすすめ武器</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="w-name">センチネル</td><td><span class="mat mat-arc"><img class="mat-icon" src="assets/materials/sentinel-firing-core.png" alt="" loading="lazy">センチネル発火コア</span></td><td>Gunsmith Lv3</td><td>アンヴィル</td></tr>
+            <tr><td class="w-name">バスティオン</td><td><span class="mat mat-arc"><img class="mat-icon" src="assets/materials/bastion-cell.png" alt="" loading="lazy">バスティオンセル</span></td><td>装備ベンチ Lv3</td><td>アンヴィル</td></tr>
+            <tr><td class="w-name">ロケッティア</td><td><span class="mat mat-arc"><img class="mat-icon" src="assets/materials/rocketeer-driver.png" alt="" loading="lazy">ロケッティアドライバー</span></td><td>爆発物 Lv3</td><td>アンヴィル</td></tr>
+            <tr><td class="w-name">リーパー</td><td><span class="mat mat-arc"><img class="mat-icon" src="assets/materials/leaper-pulse-unit.png" alt="" loading="lazy">リーパーパルスユニット</span></td><td>ユーティリティ Lv3</td><td>ハルクラッカー</td></tr>
+            <tr><td class="w-name">ボンバルディア</td><td><span class="mat mat-arc"><img class="mat-icon" src="assets/materials/bombardier-cell.png" alt="" loading="lazy">ボンバルディアセル</span></td><td>精錬機 Lv3</td><td>ハルクラッカー</td></tr>
+            <tr><td class="w-name">倒れたエンペラー</td><td><span class="mat mat-rare"><img class="mat-icon" src="assets/materials/emperor-modulator.png" alt="" loading="lazy">エンペラーモジュレーター</span></td><td>Gunsmith Lv4</td><td>ハルクラッカー / ジュピター</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small muted" style="margin:8px 0 0">ジュピター／アフェリオンはクイーン／マトリアークのリアクターとイベント設計図が必要なエンドゲーム。普段はレネゲイドで十分。<a class="ref" href="#src-25">[25]</a></p>
+
+      <h3 style="margin-top:34px">設計図の探し方</h3>
+      <p class="small muted" style="margin-bottom:12px">設計図は拾ってSperanzaで学習。不要な武器は設計図なしでクラフトできる。<a class="ref" href="#src-24">[24]</a><a class="ref" href="#src-25">[25]</a></p>
+      <div class="table-wrap reveal">
+        <table class="gear-blueprint">
+          <thead>
+            <tr><th>武器</th><th>ベンチ</th><th>設計図</th><th>入手先</th><th>主な素材</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="w-name">フェロ</td><td>Gunsmith 1</td><td>不要</td><td>—</td><td><div class="mats"><span class="mat mat-common"><img class="mat-icon" src="assets/materials/metal-parts.png" alt="" loading="lazy">金属部品<b>5</b></span><span class="mat mat-common"><img class="mat-icon" src="assets/materials/rubber-parts.png" alt="" loading="lazy">ゴム部品<b>2</b></span></div></td></tr>
+            <tr><td class="w-name">アンヴィル</td><td>Gunsmith 2</td><td>必要</td><td>全マップのレイダーコンテナ</td><td><div class="mats"><span class="mat mat-craft"><img class="mat-icon" src="assets/materials/advanced-mechanical-components.png" alt="" loading="lazy">高度な機械部品<b>2</b></span><span class="mat">大型銃部品<b>3</b></span><span class="mat mat-craft"><img class="mat-icon" src="assets/materials/hand-drills.png" alt="" loading="lazy">ハンドドリル<b>3</b></span></div></td></tr>
+            <tr><td class="w-name">ヴェネイター</td><td>Gunsmith 2</td><td>必要</td><td>全マップのレイダーコンテナ</td><td><div class="mats"><span class="mat mat-craft"><img class="mat-icon" src="assets/materials/advanced-mechanical-components.png" alt="" loading="lazy">高度な機械部品<b>2</b></span><span class="mat">中型銃部品<b>3</b></span><span class="mat">磁石<b>5</b></span></div></td></tr>
+            <tr><td class="w-name">レネゲイド</td><td>Gunsmith 3</td><td>不要</td><td>—</td><td><div class="mats"><span class="mat mat-craft"><img class="mat-icon" src="assets/materials/advanced-mechanical-components.png" alt="" loading="lazy">高度な機械部品<b>2</b></span><span class="mat">中型銃部品<b>3</b></span><span class="mat">オイル<b>5</b></span></div></td></tr>
+            <tr><td class="w-name">ベティーナ</td><td>Gunsmith 3</td><td>必要</td><td>全マップのレイダーコンテナ</td><td><div class="mats"><span class="mat mat-craft"><img class="mat-icon" src="assets/materials/advanced-mechanical-components.png" alt="" loading="lazy">高度な機械部品<b>3</b></span><span class="mat">大型銃部品<b>3</b></span><span class="mat">キャニスター<b>3</b></span></div></td></tr>
+            <tr><td class="w-name">テンペスト</td><td>Gunsmith 3</td><td>必要</td><td>夜襲 / ハリケーンの住宅コンテナ・First Wave Cache</td><td><div class="mats"><span class="mat mat-rare"><img class="mat-icon" src="assets/materials/magnetic-accelerator.png" alt="" loading="lazy">磁気加速器<b>1</b></span><span class="mat">中型銃部品<b>3</b></span><span class="mat">エクソダスモジュール<b>2</b></span></div></td></tr>
+            <tr><td class="w-name">ヴルカノ</td><td>Gunsmith 3</td><td>必要</td><td>隠しバンカー / ハリケーンのFirst Wave Cache</td><td><div class="mats"><span class="mat mat-rare"><img class="mat-icon" src="assets/materials/magnetic-accelerator.png" alt="" loading="lazy">磁気加速器<b>1</b></span><span class="mat">大型銃部品<b>3</b></span><span class="mat">エクソダスモジュール<b>1</b></span></div></td></tr>
+            <tr><td class="w-name">ハルクラッカー</td><td>Gunsmith 3</td><td>必要</td><td>クエスト「The Major's Footlocker」</td><td><div class="mats"><span class="mat mat-rare"><img class="mat-icon" src="assets/materials/magnetic-accelerator.png" alt="" loading="lazy">磁気加速器<b>1</b></span><span class="mat">大型銃部品<b>3</b></span><span class="mat">エクソダスモジュール<b>1</b></span></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-tip reveal">
+        <span class="callout-icon">最短</span>
+        <div>
+          <p><b>最短ルート：</b>フェロ → ワスプ8 → Gunsmith 2 → アンヴィル（設計図） → センチネル4 → Gunsmith 3 → レネゲイド。アンヴィルの設計図がなければ、フェロでセンチネルのコアを狙う。ハルクラッカーはGunsmith 3以降でOK。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 OUTPOST -->
   <section class="section" id="outpost">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div class="sec-kicker">06 / 前哨基地</div>
+        <div class="sec-kicker">07 / 前哨基地</div>
         <h2>前哨基地</h2>
         <p class="sec-lead">レベル18で解放。部屋を増やし、研究を進め、増幅武器へ。</p>
       </div>
@@ -2011,7 +2152,7 @@
   <section class="section" id="workshop">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div class="sec-kicker">07 / ワークショップ</div>
+        <div class="sec-kicker">08 / ワークショップ</div>
         <h2>ワークショップ強化素材</h2>
         <p class="sec-lead">
           各ステーションを最大まで上げるのに必要な素材を、レベル別にまとめた。
@@ -2472,7 +2613,7 @@
   <section class="section" id="weapons">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div class="sec-kicker">08 / 武器</div>
+        <div class="sec-kicker">09 / 武器</div>
         <h2>武器メタ・ティア表</h2>
         <p class="sec-lead">
           武器は「DPS」より「弾薬代」で選ぶ。毎レイド持ち込めるかどうかが、復帰勢にとっては強さより大事だ。
@@ -2727,7 +2868,7 @@
   <section class="section" id="enemies">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div class="sec-kicker">09 / 脅威</div>
+        <div class="sec-kicker">10 / 脅威</div>
         <h2>新敵・フリゲート対策</h2>
         <p class="sec-lead">
           新敵は「硬い・速い・動かない」の3種類。それぞれ答えが違う。
@@ -3010,7 +3151,7 @@
   <section class="section" id="sources">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div class="sec-kicker">10 / 引用元</div>
+        <div class="sec-kicker">11 / 引用元</div>
         <h2>引用元一覧</h2>
         <p class="sec-lead">
           本文中の [n] はこのリストに対応する。数値・仕様は海外の公式・メディア・ガイドサイトのみを参照している。
@@ -3133,6 +3274,16 @@
           <div class="src-title">Arc Raiders Frigate Guide: Puzzle, Cargo Drop &amp; Loot（船内ルート・スポット画像）</div>
           <div class="src-meta">Arc Raiders Hub / 2026-10-09</div>
           <a href="https://arcraidershub.com/guides/frigate-guide" target="_blank" rel="noopener noreferrer">https://arcraidershub.com/guides/frigate-guide</a>
+        </li>
+        <li id="src-24">
+          <div class="src-title">Blueprints（設計図の入手先・コンテナ種別）</div>
+          <div class="src-meta">ARC Raiders Wiki / 2026-10-12 更新</div>
+          <a href="https://arcraiders.wiki/wiki/Blueprints" target="_blank" rel="noopener noreferrer">https://arcraiders.wiki/wiki/Blueprints</a>
+        </li>
+        <li id="src-25">
+          <div class="src-title">Weapons（武器のクラフト必要素材・ベンチレベル）</div>
+          <div class="src-meta">ARC Raiders Wiki</div>
+          <a href="https://arcraiders.wiki/wiki/Weapons" target="_blank" rel="noopener noreferrer">https://arcraiders.wiki/wiki/Weapons</a>
         </li>
       </ol>
 
