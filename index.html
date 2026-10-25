@@ -758,13 +758,13 @@
   .zoom-trigger{cursor:zoom-in}
   .mat.zoom-trigger{transition:filter .15s,transform .15s,box-shadow .15s}
   .mat.zoom-trigger:hover{filter:brightness(1.14);transform:translateY(-1px);box-shadow:0 2px 8px rgba(0,0,0,.28)}
-  .weapon-thumb.zoom-trigger{border-radius:6px;transition:background .15s}
-  .weapon-thumb.zoom-trigger:hover{background:rgba(255,255,255,.05)}
-  .weapon-thumb.zoom-trigger img{transition:transform .16s}
-  .weapon-thumb.zoom-trigger:hover img{transform:scale(1.06)}
-  .loadout-weapons img.zoom-trigger,.gf-mats img.zoom-trigger,.gf-craft img.zoom-trigger{transition:transform .15s,filter .15s}
+  .weapon-card.zoom-trigger{transition:border-color .15s,transform .15s,box-shadow .15s}
+  .weapon-card.zoom-trigger:hover{border-color:rgba(245,165,36,.45);transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,.24)}
+  .weapon-card.zoom-trigger img{transition:transform .16s}
+  .weapon-card.zoom-trigger:hover img{transform:scale(1.06)}
+  .loadout-weapons img.zoom-trigger,.gf-mats img.zoom-trigger,.gf-craft img.zoom-trigger,.amp-card img.zoom-trigger{transition:transform .15s,filter .15s}
   .loadout-weapons img.zoom-trigger:hover{transform:scale(1.05);filter:brightness(1.12)}
-  .gf-mats img.zoom-trigger:hover,.gf-craft img.zoom-trigger:hover{filter:brightness(1.15)}
+  .gf-mats img.zoom-trigger:hover,.gf-craft img.zoom-trigger:hover,.amp-card img.zoom-trigger:hover{filter:brightness(1.15)}
   .zoom-trigger:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
   body.lb-open{overflow:hidden}
 
@@ -777,7 +777,10 @@
     border:1px solid rgba(255,255,255,.15);border-radius:16px;
     background:radial-gradient(circle at 50% 0,rgba(245,165,36,.09),transparent 55%),linear-gradient(180deg,#151d28,#0b1118);
     box-shadow:0 30px 90px rgba(0,0,0,.7);animation:lbIn .18s ease-out;
+    overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:rgba(245,165,36,.35) transparent;
   }
+  .lb-panel::-webkit-scrollbar{width:6px}
+  .lb-panel::-webkit-scrollbar-thumb{background:rgba(245,165,36,.3);border-radius:3px}
   @keyframes lbIn{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
   .lb-close{
     position:absolute;top:8px;right:8px;z-index:2;width:40px;height:40px;display:grid;place-items:center;
@@ -794,6 +797,39 @@
   .lb-name{display:block;font-size:18px;line-height:1.5;font-weight:800;color:#fff;word-break:break-word}
   .lb-hint{display:block;margin-top:3px;font:600 10px/1.5 var(--mono);letter-spacing:.03em;color:#6c7888}
   .lb-hint-touch{display:none}
+  .lb-craft{width:100%;margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
+  .lb-craft[hidden]{display:none}
+  .lb-craft-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:2px 10px;margin-bottom:8px;text-align:left}
+  .lb-craft-head b{font:800 10px/1 var(--mono);letter-spacing:.14em;color:var(--accent)}
+  .lb-craft-head span{font:600 9px/1.5 var(--mono);letter-spacing:.02em;color:var(--muted)}
+  .lb-craft-head a{color:var(--muted);border-bottom:1px dotted rgba(148,163,184,.4)}
+  .lb-craft-head a:hover{color:var(--accent);border-color:var(--accent)}
+  .lb-craft-flow{display:flex;gap:4px;align-items:stretch;text-align:center}
+  .lc-step{
+    position:relative;flex:1 1 0;min-width:0;padding:10px 8px;display:flex;flex-direction:column;align-items:center;gap:2px;
+    border:1px solid var(--line);border-radius:8px;background:rgba(15,20,28,.72);
+  }
+  .lc-step.is-mats{flex:1.55 1 0}
+  .lc-num{position:absolute;top:4px;left:5px;font:800 7.5px/1 var(--mono);color:var(--accent);opacity:.9}
+  .lc-icon{width:22px;height:22px;flex:0 0 auto;color:var(--accent);fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .lc-body{display:flex;flex-direction:column;align-items:center;gap:1px;width:100%}
+  .lc-title{font-size:11px;font-weight:800;color:#fff;line-height:1.4}
+  .lc-text{font-size:9.5px;line-height:1.55;color:var(--muted);overflow-wrap:anywhere}
+  .lc-sub{display:block;font-size:8.5px;line-height:1.45;color:#91a0b3;overflow-wrap:anywhere}
+  .lc-mats{display:flex;flex-wrap:wrap;justify-content:center;gap:2px;margin-top:2px}
+  .lc-mat{
+    display:inline-flex;align-items:center;gap:2px;padding:2px 5px;
+    border:1px solid var(--line-soft);border-radius:4px;background:rgba(255,255,255,.03);
+    font-size:8.5px;line-height:1.4;color:#cbd5e1;white-space:nowrap;
+  }
+  .lc-mat img{width:13px;height:13px;object-fit:contain}
+  .lc-mat b{font:800 8px/1 var(--mono);color:var(--accent)}
+  .lc-arrow{flex:0 0 auto;align-self:center;font:800 9px/1 var(--mono);color:#5c6778}
+  .lc-result-name{font-weight:700;color:#e7edf5}
+  .lb-craft-note{width:100%;margin:7px 0 0;font-size:9px;line-height:1.5;color:#7f8da0;text-align:left}
+  .lb-panel.has-craft{width:min(94vw,900px);max-width:min(94vw,900px)}
+  .lb-panel.has-craft .lb-stage{padding-top:42px}
+  .lb-panel.has-craft .lb-image{max-height:44vh}
 
   /* ---------- media ---------- */
   .shot{
@@ -913,6 +949,21 @@
     .lb-hint{font-size:9px}
     .lb-hint-desk{display:none}
     .lb-hint-touch{display:inline}
+    .lb-craft{margin-top:8px;padding-top:8px}
+    .lb-craft-head{margin-bottom:6px}
+    .lb-craft-flow{flex-direction:column;gap:3px}
+    .lc-step,.lc-step.is-mats{flex:0 0 auto;display:grid;grid-template-columns:14px 22px minmax(0,1fr);align-items:center;column-gap:7px;padding:7px 8px;text-align:left}
+    .lc-num{position:static;grid-column:1;text-align:center}
+    .lc-icon{grid-column:2}
+    .lc-body{grid-column:3;align-items:flex-start;gap:1px}
+    .lc-title{font-size:11.5px}
+    .lc-text{font-size:9.5px}
+    .lc-sub{font-size:9px}
+    .lc-mats{justify-content:flex-start;gap:3px}
+    .lc-arrow{transform:rotate(90deg);margin:0 auto}
+    .lb-craft-note{font-size:9px}
+    .lb-panel.has-craft{width:min(94vw,900px)}
+    .lb-panel.has-craft .lb-image{max-height:30vh}
     .outpost-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
     .ability-grid{grid-template-columns:minmax(0,1fr)}
     .research-row{grid-template-columns:44px 1fr}
@@ -2690,7 +2741,7 @@
       <div class="sec-head reveal">
         <div class="sec-kicker">07 / 武器</div>
         <h2>武器メタ・ティア表</h2>
-        <p class="sec-lead">武器は弾薬代で選ぶ。まず弱点、次にティア、最後に役割別。武器画像を押すと拡大。</p>
+        <p class="sec-lead">武器は弾薬代で選ぶ。まず弱点、次にティア、最後に役割別。武器画像を押すと作成方法も表示。</p>
       </div>
 
             <h3>まず覚える弱点の見方</h3>
@@ -2959,7 +3010,7 @@
       <h3 style="margin-top:34px">新武器メモ</h3>
       <div class="split reveal">
         <article class="card card-media">
-          <img src="assets/stiletto.jpg" alt="スティレット バトルライフル" loading="lazy" decoding="async" width="1024" height="576">
+          <img src="assets/stiletto.jpg" alt="スティレット バトルライフル" data-craft="スティレット" loading="lazy" decoding="async" width="1024" height="576">
           <div class="card-body">
             <div class="card-kicker">New / スティレット</div>
             <h4>軽弾のバトルライフル</h4>
@@ -2967,7 +3018,7 @@
           </div>
         </article>
         <article class="card card-media">
-          <img src="assets/bantam.jpg" alt="バンタム リボルバー" loading="lazy" decoding="async" width="1024" height="576">
+          <img src="assets/bantam.jpg" alt="バンタム リボルバー" data-craft="バンタム" loading="lazy" decoding="async" width="1024" height="576">
           <div class="card-body">
             <div class="card-kicker">New / バンタム</div>
             <h4>重弾のスナブノーズリボルバー</h4>
@@ -3416,6 +3467,14 @@
       <strong class="lb-name" id="lbName">アイテム</strong>
       <span class="lb-hint"><span class="lb-hint-desk">背景クリック / Esc で閉じる</span><span class="lb-hint-touch">背景タップで閉じる</span></span>
     </div>
+    <div class="lb-craft" id="lbCraft" hidden>
+      <div class="lb-craft-head">
+        <b>作成方法</b>
+        <span>出典: <a href="https://arcraiders.wiki/wiki/Weapons" target="_blank" rel="noopener noreferrer">Weapons</a> / <a href="https://arcraiders.wiki/wiki/Blueprints" target="_blank" rel="noopener noreferrer">Blueprints</a></span>
+      </div>
+      <div class="lb-craft-flow" id="lbCraftFlow"></div>
+      <p class="lb-craft-note">設計図はスペランザで学習、または研究ステーションで研究。対応武器はガンスミスで I → IV に強化。</p>
+    </div>
   </div>
 </div>
 
@@ -3423,6 +3482,36 @@
 (function(){
   "use strict";
   document.documentElement.classList.add("js");
+
+  /* ---------- weapon crafting data ---------- */
+  var weaponCraft = {
+    "ケトル": {b:1, bp:"", mats:[["金属部品",6,"metal-parts"], ["ゴム部品",8,"rubber-parts"]]},
+    "ラトラー": {b:1, bp:"", mats:[["金属部品",16,"metal-parts"], ["ゴム部品",12,"rubber-parts"]]},
+    "アルペジオ": {b:2, bp:"", mats:[["機械部品",6,"mechanical-components"], ["シンプルな銃部品",6]]},
+    "テンペスト": {b:3, bp:"夜襲 / ハリケーン時の住宅コンテナ・First Wave Cache", mats:[["磁気加速器",1,"magnetic-accelerator"], ["中型銃部品",3], ["エクソダスモジュール",2]]},
+    "ベティーナ": {b:3, bp:"全マップのレイダーコンテナ", mats:[["高度な機械部品",3,"advanced-mechanical-components"], ["大型銃部品",3], ["キャニスター",3]]},
+    "フェロ": {b:1, bp:"", mats:[["金属部品",5,"metal-parts"], ["ゴム部品",2,"rubber-parts"]]},
+    "スティレット": {b:1, bp:"スカベンジ / 研究ステーション", mats:[["機械部品",4,"mechanical-components"], ["シンプルな銃部品",4]]},
+    "レネゲイド": {b:3, bp:"", mats:[["高度な機械部品",2,"advanced-mechanical-components"], ["中型銃部品",3], ["オイル",5]]},
+    "アフェリオン": {b:3, bp:"ステラ・モンティス全域", mats:[["磁気加速器",3,"magnetic-accelerator"], ["複雑な銃部品",3], ["マトリアーク・リアクター",1]]},
+    "スティッチャー": {b:1, bp:"", mats:[["金属部品",8,"metal-parts"], ["ゴム部品",4,"rubber-parts"]]},
+    "カント": {b:3, bp:"ハリケーン時のFirst Wave Cache", mats:[["高度な機械部品",2,"advanced-mechanical-components"], ["磁石",5], ["中型銃部品",3]]},
+    "ボブキャット": {b:3, bp:"Locked Gate / ハリケーン時のFirst Wave Cache", mats:[["磁気加速器",1,"magnetic-accelerator"], ["小型銃部品",3], ["エクソダスモジュール",2]]},
+    "イル・トーロ": {b:1, bp:"全マップのレイダーコンテナ", mats:[["機械部品",5,"mechanical-components"], ["シンプルな銃部品",6]]},
+    "ヴルカノ": {b:3, bp:"隠しバンカー / ハリケーン時のFirst Wave Cache", mats:[["磁気加速器",1,"magnetic-accelerator"], ["大型銃部品",3], ["エクソダスモジュール",1]]},
+    "ドラブラ": {b:3, bp:"Close Scrutiny時のARCアセッサー", mats:[["シュレッダー・ジャイロ",3], ["磁気加速器",3,"magnetic-accelerator"], ["ヴェイパライザー・レギュレーター",2]]},
+    "ヘアピン": {b:1, bp:"", mats:[["金属部品",2,"metal-parts"], ["プラスチック部品",5,"plastic-parts"]]},
+    "バーレッタ": {b:1, bp:"クエスト「Industrial Espionage」", mats:[["機械部品",3,"mechanical-components"], ["シンプルな銃部品",3]]},
+    "ヴェネイター": {b:2, bp:"全マップのレイダーコンテナ", mats:[["高度な機械部品",2,"advanced-mechanical-components"], ["中型銃部品",3], ["磁石",5]]},
+    "バンタム": {b:1, bp:"スカベンジ / 研究ステーション", mats:[["シンプルな銃部品",4], ["機械部品",4,"mechanical-components"]]},
+    "アンヴィル": {b:2, bp:"全マップのレイダーコンテナ", mats:[["高度な機械部品",2,"advanced-mechanical-components"], ["大型銃部品",3], ["ハンドドリル",3,"hand-drills"]]},
+    "トレンテ": {b:2, bp:"全マップのレイダーコンテナ", mats:[["高度な機械部品",2,"advanced-mechanical-components"], ["中型銃部品",3], ["鋼鉄のバネ",6]]},
+    "オスプレー": {b:2, bp:"全マップのレイダーコンテナ", mats:[["高度な機械部品",2,"advanced-mechanical-components"], ["中型銃部品",3], ["ワイヤー",7]]},
+    "ジュピター": {b:3, bp:"ハーベスター（Harvester時）", mats:[["磁気加速器",3,"magnetic-accelerator"], ["複雑な銃部品",3], ["クイーン・リアクター",1]]},
+    "ラスカル": {b:2, bp:"全マップのレイダーコンテナ", mats:[["高度な機械部品",2,"advanced-mechanical-components"], ["大型銃部品",3], ["キャニスター",5]]},
+    "ハルクラッカー": {b:3, bp:"クエスト「The Major's Footlocker」", mats:[["磁気加速器",1,"magnetic-accelerator"], ["大型銃部品",3], ["エクソダスモジュール",1]]},
+    "イコライザー": {b:3, bp:"ハーベスター（Harvester時）", mats:[["磁気加速器",3,"magnetic-accelerator"], ["複雑な銃部品",3], ["クイーン・リアクター",1]]},
+  };
 
   /* ---------- mobile menu ---------- */
   var sidebar = document.getElementById("sidebar");
@@ -3503,15 +3592,124 @@
   var lbEyebrow = document.getElementById("lbEyebrow");
   var lbClose = document.getElementById("lbClose");
   var lbBackdrop = document.getElementById("lbBackdrop");
+  var lbPanel = lightbox.querySelector(".lb-panel");
+  var lbCraft = document.getElementById("lbCraft");
+  var lbCraftFlow = document.getElementById("lbCraftFlow");
   var lastFocus = null;
+
+  function craftIcon(kind){
+    var paths = {
+      doc: ["M6 3h8l4 4v14H6z", "M14 3v4h4M9 11h6M9 15h6"],
+      wrench: ["M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-2.5z"],
+      box: ["M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z", "M12 12l8-4.5M12 12v9M12 12L4 7.5"],
+      check: ["M20 6L9 17l-5-5"]
+    };
+    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("class", "lc-icon");
+    svg.setAttribute("viewBox", "0 0 24 24");
+    svg.setAttribute("aria-hidden", "true");
+    (paths[kind] || []).forEach(function(d){
+      var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("d", d);
+      svg.appendChild(path);
+    });
+    return svg;
+  }
+
+  function craftStep(num, title, icon, extraClass){
+    var step = document.createElement("div");
+    step.className = "lc-step" + (extraClass ? " " + extraClass : "");
+    var number = document.createElement("span");
+    number.className = "lc-num";
+    number.textContent = num;
+    var body = document.createElement("div");
+    body.className = "lc-body";
+    var name = document.createElement("span");
+    name.className = "lc-title";
+    name.textContent = title;
+    body.appendChild(name);
+    step.appendChild(number);
+    step.appendChild(craftIcon(icon));
+    step.appendChild(body);
+    return { el: step, body: body };
+  }
+
+  function craftText(body, text, className){
+    var span = document.createElement("span");
+    span.className = className || "lc-text";
+    span.textContent = text;
+    body.appendChild(span);
+    return span;
+  }
+
+  function renderCraft(craft, name){
+    lbCraftFlow.innerHTML = "";
+    lbCraft.hidden = !craft;
+    if (!craft) return;
+
+    var s1 = craftStep("01", "設計図", "doc");
+    if (craft.bp){
+      craftText(s1.body, "必要");
+      craftText(s1.body, craft.bp, "lc-sub");
+    } else {
+      craftText(s1.body, "不要");
+      craftText(s1.body, "設計図なしで可", "lc-sub");
+    }
+
+    var s2 = craftStep("02", "ガンスミス", "wrench");
+    craftText(s2.body, "Lv" + craft.b);
+    craftText(s2.body, "ワークベンチ", "lc-sub");
+
+    var s3 = craftStep("03", "素材", "box", "is-mats");
+    var mats = document.createElement("div");
+    mats.className = "lc-mats";
+    craft.mats.forEach(function(m){
+      var chip = document.createElement("span");
+      chip.className = "lc-mat";
+      if (m[2]){
+        var icon = document.createElement("img");
+        icon.src = "assets/materials/" + m[2] + ".png";
+        icon.alt = "";
+        icon.width = 13;
+        icon.height = 13;
+        icon.loading = "lazy";
+        icon.decoding = "async";
+        chip.appendChild(icon);
+      }
+      chip.appendChild(document.createTextNode(m[0]));
+      var qty = document.createElement("b");
+      qty.textContent = "×" + m[1];
+      chip.appendChild(qty);
+      mats.appendChild(chip);
+    });
+    s3.body.appendChild(mats);
+
+    var s4 = craftStep("04", "クラフト", "check");
+    craftText(s4.body, name, "lc-text lc-result-name");
+    craftText(s4.body, "完成", "lc-sub");
+
+    [s1, s2, s3, s4].forEach(function(item, index){
+      if (index){
+        var arrow = document.createElement("span");
+        arrow.className = "lc-arrow";
+        arrow.textContent = "→";
+        arrow.setAttribute("aria-hidden", "true");
+        lbCraftFlow.appendChild(arrow);
+      }
+      lbCraftFlow.appendChild(item.el);
+    });
+  }
 
   function openLightbox(img, name, kind, trigger){
     lastFocus = trigger || document.activeElement;
+    var craft = kind === "weapon" ? weaponCraft[name] : null;
     lbImage.className = "lb-image" + (kind === "material" ? " is-mat" : "");
     lbImage.src = img.currentSrc || img.src;
     lbImage.alt = name || "";
     lbName.textContent = name || "アイテム画像";
     lbEyebrow.textContent = kind === "material" ? "MATERIAL / 素材" : "WEAPON / 武器";
+    renderCraft(craft, name);
+    lbPanel.classList.toggle("has-craft", !!craft);
     lightbox.classList.add("is-open");
     lightbox.setAttribute("aria-hidden", "false");
     document.body.classList.add("lb-open");
@@ -3527,7 +3725,7 @@
     if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
   }
 
-  if (lightbox && lbImage && lbClose && lbBackdrop){
+  if (lightbox && lbImage && lbClose && lbBackdrop && lbPanel && lbCraft && lbCraftFlow){
     lbClose.addEventListener("click", closeLightbox);
     lbBackdrop.addEventListener("click", closeLightbox);
     document.addEventListener("keydown", function(e){
@@ -3536,31 +3734,46 @@
         e.preventDefault();
         closeLightbox();
       } else if (e.key === "Tab"){
-        e.preventDefault();
-        lbClose.focus();
+        var focusables = Array.prototype.slice.call(
+          lbPanel.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])')
+        ).filter(function(el){ return el.offsetParent !== null; });
+        if (!focusables.length) return;
+        var first = focusables[0];
+        var last = focusables[focusables.length - 1];
+        if (focusables.indexOf(document.activeElement) === -1){
+          e.preventDefault();
+          first.focus();
+        } else if (e.shiftKey && document.activeElement === first){
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last){
+          e.preventDefault();
+          first.focus();
+        }
       }
     });
 
-    var zoomTargets = document.querySelectorAll(".mat, .weapon-thumb, .loadout-weapons img, .gf-mats img, .gf-craft img");
+    var zoomTargets = document.querySelectorAll(".mat, .weapon-card, .loadout-weapons img, .gf-mats img, .gf-craft img, .amp-card img, [data-craft]");
     Array.prototype.forEach.call(zoomTargets, function(node){
       var img = node.tagName === "IMG" ? node : node.querySelector("img");
       if (!img || !img.getAttribute("src")) return;
 
       var src = img.getAttribute("src") || "";
       var kind = src.indexOf("assets/materials/") !== -1 ? "material" : "weapon";
-      var name = "";
-      if (node.classList.contains("mat")){
+      var name = (node.getAttribute("data-craft") || "").trim();
+      if (!name && node.classList.contains("mat")){
         var clone = node.cloneNode(true);
         Array.prototype.forEach.call(clone.querySelectorAll("b"), function(b){
           b.parentNode.removeChild(b);
         });
         name = (clone.textContent || "").replace(/\s+/g, " ").trim();
-      } else {
+      } else if (!name) {
         name = (img.getAttribute("alt") || "").trim();
       }
       if (!name) name = "アイテム画像";
 
-      var label = name + "を拡大";
+      var hasCraft = kind === "weapon" && !!weaponCraft[name];
+      var label = name + (hasCraft ? "の画像と作り方を表示" : "を拡大");
       node.classList.add("zoom-trigger");
       node.setAttribute("role", "button");
       node.setAttribute("tabindex", "0");
