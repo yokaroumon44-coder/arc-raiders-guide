@@ -398,29 +398,31 @@
   .badge-light{color:#34d399;background:rgba(52,211,153,.09);border:1px solid rgba(52,211,153,.32)}
   .badge-static{color:#38bdf8;background:rgba(56,189,248,.09);border:1px solid rgba(56,189,248,.32)}
 
-  .step-flow{list-style:none;margin:0;padding:0;counter-reset:flow}
-  .step-flow li{
-    position:relative;padding:0 0 20px 42px;counter-increment:flow;
-  }
-  .step-flow li::before{
-    content:counter(flow,decimal-leading-zero);position:absolute;left:0;top:2px;
-    width:27px;height:27px;display:grid;place-items:center;border-radius:7px;
-    font:800 10.5px/1 var(--mono);color:var(--accent);
-    border:1px solid rgba(245,165,36,.38);background:rgba(245,165,36,.07);
-  }
-  .step-flow li::after{
-    content:"";position:absolute;left:13px;top:33px;bottom:2px;width:1px;background:var(--line);
-  }
-  .step-flow li:last-child{padding-bottom:0}
-  .step-flow li:last-child::after{display:none}
-  .step-flow h4{margin:0 0 3px;font-size:14.5px}
-  .step-flow p{margin:0;font-size:13.5px;color:#aab5c4;line-height:1.8}
-
   .loadout-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
   .loadout{border:1px solid var(--line);border-radius:10px;padding:15px 16px;background:rgba(15,20,28,.72)}
   .loadout .lt{font:700 10px/1.4 var(--mono);letter-spacing:.14em;color:var(--accent);text-transform:uppercase;margin-bottom:8px}
   .loadout strong{display:block;font-size:14px;color:#fff;margin-bottom:6px}
   .loadout p{margin:0;font-size:12.5px;color:#a4b0c0;line-height:1.75}
+  .loadout-weapons{display:flex;align-items:center;gap:4px;flex-wrap:wrap;margin:7px 0 2px}
+  .loadout-weapons img{width:54px;height:36px;object-fit:contain;background:rgba(255,255,255,.03);border:1px solid var(--line-soft);border-radius:5px;padding:2px}
+  .lo-or{font:700 8px/1 var(--mono);color:var(--muted)}
+  .lo-shield{display:inline-flex;align-items:center;gap:2px;height:36px;padding:0 5px;border:1px solid var(--line-soft);border-radius:5px;color:#c3cddb;font-size:8px}
+  .lo-shield svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.6}
+  .gear-flow{display:flex;gap:6px;align-items:stretch;margin:14px 0 0}
+  .gf-step{position:relative;flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;text-align:center;padding:12px 8px 11px;border:1px solid var(--line);border-radius:10px;background:rgba(15,20,28,.75)}
+  .gf-step:last-child{flex:1.35 1 0}
+  .gf-visual{height:52px;display:flex;align-items:center;justify-content:center;gap:2px;margin-bottom:6px;width:100%}
+  .gf-visual img{max-width:100%;max-height:52px;object-fit:contain}
+  .gf-icon{width:38px;height:38px;color:var(--accent)}
+  .gf-num{position:absolute;top:6px;left:7px;font:800 8px/1 var(--mono);color:var(--accent)}
+  .gf-step h4{margin:0 0 2px;font-size:11px;color:#fff}
+  .gf-step p{margin:0;font-size:9px;line-height:1.5;color:var(--muted)}
+  .gf-arrow{flex:0 0 auto;align-self:center;color:#5c6778;font:800 12px/1 var(--mono)}
+  .gf-mats{display:flex;gap:3px}
+  .gf-mats img{width:26px;height:26px}
+  .gf-craft{display:flex;gap:2px;align-items:center;justify-content:center}
+  .gf-craft img{width:32px;height:36px}
+  .gf-mini-arrow{font:700 8px/1 var(--mono);color:var(--muted)}
 
   .ammo-bars{display:flex;flex-direction:column;gap:10px;margin-top:6px}
   .ammo-bar{display:grid;grid-template-columns:92px 1fr auto;gap:12px;align-items:center;font-size:12.5px}
@@ -848,6 +850,18 @@
     .wrap{padding:0 18px}
     .hero-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
     .grid-2,.grid-3,.split,.loadout-grid,.shot-grid,.shot-grid-4,.route-key{grid-template-columns:minmax(0,1fr)}
+    .loadout-weapons img{width:48px;height:32px}
+    .loadout strong{font-size:13.5px}
+    .gear-flow{flex-direction:column;gap:4px}
+    .gf-step{display:grid;grid-template-columns:96px minmax(0,1fr);grid-template-rows:auto auto;align-items:center;column-gap:12px;text-align:left;padding:10px 13px 10px 10px}
+    .gf-step:last-child{flex:0 0 auto}
+    .gf-num{top:5px;left:auto;right:8px}
+    .gf-visual{grid-column:1;grid-row:1 / span 2;width:96px;height:46px;margin:0;justify-content:flex-start;gap:1px}
+    .gf-visual img{max-height:46px}
+    .gf-craft img{width:25px;height:30px}
+    .gf-step h4{grid-column:2;grid-row:1;align-self:end;font-size:12px}
+    .gf-step p{grid-column:2;grid-row:2;align-self:start;font-size:10.5px}
+    .gf-arrow{transform:rotate(90deg);margin:0 auto;line-height:1}
     .outpost-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
     .ability-grid{grid-template-columns:minmax(0,1fr)}
     .research-row{grid-template-columns:44px 1fr}
@@ -887,6 +901,7 @@
     .hero-stat{padding:13px}
     .hero-stat strong{font-size:20px}
     .hero-stat span{font-size:10.5px}
+    .lo-alt{display:block}
   }
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
@@ -1828,28 +1843,59 @@
       </div>
 
       <h3 style="margin-top:34px">装備ができるまでの流れ</h3>
-      <ol class="step-flow reveal">
-        <li>
-          <h4>設計図を拾う</h4>
-          <p>レイダー系・住宅系・First Wave Cache・クエスト。</p>
-        </li>
-        <li>
-          <h4>設計図を学習する</h4>
-          <p>スペランザで学習、または研究ステーションで研究。</p>
-        </li>
-        <li>
-          <h4>ガンスミスを上げる</h4>
-          <p>Lv2: ワスプ8。Lv3: センチネル4。Lv4: 前哨基地＋エンペラー1。</p>
-        </li>
-        <li>
-          <h4>素材を集める</h4>
-          <p>基本素材 → 高度な機械部品・銃部品・磁気加速器。</p>
-        </li>
-        <li>
-          <h4>クラフト → 強化</h4>
-          <p>Lv4まで強化。増幅はガンスミス4＋研究Lv4。</p>
-        </li>
-      </ol>
+      <div class="gear-flow reveal">
+        <div class="gf-step">
+          <span class="gf-num">01</span>
+          <div class="gf-visual">
+            <svg class="gf-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 11h6M9 15h6"/></svg>
+          </div>
+          <h4>設計図</h4>
+          <p>レイダー系 / 住宅系 / クエスト</p>
+        </div>
+        <span class="gf-arrow">→</span>
+        <div class="gf-step">
+          <span class="gf-num">02</span>
+          <div class="gf-visual">
+            <svg class="gf-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M8 7h8M8 11h8"/></svg>
+          </div>
+          <h4>学習</h4>
+          <p>スペランザ / 研究ステーション</p>
+        </div>
+        <span class="gf-arrow">→</span>
+        <div class="gf-step">
+          <span class="gf-num">03</span>
+          <div class="gf-visual">
+            <svg class="gf-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-2.5z"/></svg>
+          </div>
+          <h4>ガンスミス</h4>
+          <p>Lv1 → Lv2 → Lv3</p>
+        </div>
+        <span class="gf-arrow">→</span>
+        <div class="gf-step">
+          <span class="gf-num">04</span>
+          <div class="gf-visual gf-mats">
+            <img src="assets/materials/wasp-driver.png" alt="" loading="lazy" decoding="async">
+            <img src="assets/materials/sentinel-firing-core.png" alt="" loading="lazy" decoding="async">
+            <img src="assets/materials/advanced-mechanical-components.png" alt="" loading="lazy" decoding="async">
+          </div>
+          <h4>素材</h4>
+          <p>ワスプ8 → センチネル4</p>
+        </div>
+        <span class="gf-arrow">→</span>
+        <div class="gf-step">
+          <span class="gf-num">05</span>
+          <div class="gf-visual gf-craft">
+            <img src="assets/weapons/ferro.png" alt="フェロ" loading="lazy" decoding="async">
+            <span class="gf-mini-arrow">→</span>
+            <img src="assets/weapons/anvil.png" alt="アンヴィル" loading="lazy" decoding="async">
+            <span class="gf-mini-arrow">→</span>
+            <img src="assets/weapons/renegade.png" alt="レネゲイド" loading="lazy" decoding="async">
+          </div>
+          <h4>クラフト</h4>
+          <p>フェロ → アンヴィル → レネゲイド</p>
+        </div>
+      </div>
+      <p class="small muted" style="margin:8px 0 0">武器画像: Fandom Wiki<a class="ref" href="#src-17">[17]</a></p>
 
       <h3 style="margin-top:34px">ワークベンチの上げ順</h3>
       <p class="small muted" style="margin-bottom:12px">優先：ガンスミス → 装備ベンチ → 医療ラボ。大型ARC素材はLv3から。<a class="ref" href="#src-13">[13]</a></p>
@@ -2769,31 +2815,76 @@
         <div class="loadout">
           <div class="lt">PvP / 中距離</div>
           <strong>レネゲイド + ヴルカノ + ヴェネイター</strong>
+          <div class="loadout-weapons">
+            <img src="assets/weapons/renegade.png" alt="レネゲイド" loading="lazy" decoding="async">
+            <span class="lo-or">+</span>
+            <img src="assets/weapons/vulcano.png" alt="ヴルカノ" loading="lazy" decoding="async">
+            <span class="lo-or">+</span>
+            <img src="assets/weapons/venator.png" alt="ヴェネイター" loading="lazy" decoding="async">
+          </div>
           <p>全距離。中型弾中心。</p>
         </div>
         <div class="loadout">
           <div class="lt">PvP / 近距離</div>
           <strong>ヴルカノ or ボブキャット + ヴェネイター</strong>
+          <div class="loadout-weapons">
+            <img src="assets/weapons/vulcano.png" alt="ヴルカノ" loading="lazy" decoding="async">
+            <span class="lo-or">or</span>
+            <img src="assets/weapons/bobcat.png" alt="ボブキャット" loading="lazy" decoding="async">
+            <span class="lo-or">+</span>
+            <img src="assets/weapons/venator.png" alt="ヴェネイター" loading="lazy" decoding="async">
+          </div>
           <p>建物内・近距離向け。</p>
         </div>
         <div class="loadout">
           <div class="lt">PvE / 対ARC</div>
           <strong>ベティーナ + アンヴィル + ハルクラッカー</strong>
+          <div class="loadout-weapons">
+            <img src="assets/weapons/bettina.png" alt="ベティーナ" loading="lazy" decoding="async">
+            <span class="lo-or">+</span>
+            <img src="assets/weapons/anvil.png" alt="アンヴィル" loading="lazy" decoding="async">
+            <span class="lo-or">+</span>
+            <img src="assets/weapons/hullcracker.png" alt="ハルクラッカー" loading="lazy" decoding="async">
+          </div>
           <p>ARC装甲にはハルクラッカー。</p>
         </div>
         <div class="loadout">
           <div class="lt">ボス / クイーン＆マトリアーク</div>
           <strong>ハルクラッカー + ベティーナ or フェロ + オスプレー</strong>
+          <div class="loadout-weapons">
+            <img src="assets/weapons/hullcracker.png" alt="ハルクラッカー" loading="lazy" decoding="async">
+            <span class="lo-or">+</span>
+            <img src="assets/weapons/bettina.png" alt="ベティーナ" loading="lazy" decoding="async">
+            <span class="lo-or">or</span>
+            <img src="assets/weapons/ferro.png" alt="フェロ" loading="lazy" decoding="async">
+            <span class="lo-or">+</span>
+            <img src="assets/weapons/osprey.png" alt="オスプレー" loading="lazy" decoding="async">
+          </div>
           <p>ボスはハルクラッカー＋遠距離。</p>
         </div>
         <div class="loadout">
           <div class="lt">低予算 / 再建</div>
           <strong>テンペスト + ヴルカノ + バーレッタ</strong>
+          <div class="loadout-weapons">
+            <img src="assets/weapons/tempest.png" alt="テンペスト" loading="lazy" decoding="async">
+            <span class="lo-or">+</span>
+            <img src="assets/weapons/vulcano.png" alt="ヴルカノ" loading="lazy" decoding="async">
+            <span class="lo-or">+</span>
+            <img src="assets/weapons/burletta.png" alt="バーレッタ" loading="lazy" decoding="async">
+          </div>
           <p>再建用。安い弾薬。</p>
         </div>
         <div class="loadout">
           <div class="lt">フリゲート</div>
-          <strong>ベティーナ + ハルクラッカー or ジュピター + 大型シールド</strong>
+          <strong>ベティーナ + ハルクラッカー or <span class="lo-alt">ジュピター + 大型シールド</span></strong>
+          <div class="loadout-weapons">
+            <img src="assets/weapons/bettina.png" alt="ベティーナ" loading="lazy" decoding="async">
+            <span class="lo-or">+</span>
+            <img src="assets/weapons/hullcracker.png" alt="ハルクラッカー" loading="lazy" decoding="async">
+            <span class="lo-or">or</span>
+            <img src="assets/weapons/jupiter.png" alt="ジュピター" loading="lazy" decoding="async">
+            <span class="lo-shield"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-7 10-7 10S5 15.5 5 11V6l7-3z"/></svg>大型</span>
+          </div>
           <p>中距離PvP＋装甲ARC。</p>
         </div>
       </div>
