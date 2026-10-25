@@ -698,6 +698,27 @@
   .weapon-stats summary::before{content:"＋";color:var(--accent);font-family:var(--mono);margin-right:8px}
   .weapon-stats[open] summary::before{content:"−"}
   .weapon-stats .filters{margin-top:0}
+
+  /* ---------- amplified weapons cheat sheet ---------- */
+  .amp-sheet{margin-top:18px;border:1px solid var(--line);border-radius:12px;background:rgba(15,20,28,.6);padding:0 16px}
+  .amp-sheet summary{cursor:pointer;padding:14px 0;font-weight:700;color:#fff;list-style:none}
+  .amp-sheet summary::-webkit-details-marker{display:none}
+  .amp-sheet summary::before{content:"＋";color:var(--accent);font-family:var(--mono);margin-right:8px}
+  .amp-sheet[open] summary::before{content:"−"}
+  .amp-sheet-body{padding:0 0 16px}
+  .amp-mk-block{margin:14px 0 0}
+  .amp-mk-head{display:flex;align-items:center;gap:8px;margin:0 0 8px;font-size:12px;font-weight:700;color:#fff}
+  .amp-mk-head span{font:800 9px/1 var(--mono);color:#0a0d12;background:var(--accent);border-radius:999px;padding:3px 7px}
+  .amp-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+  .amp-card{border:1px solid var(--line);border-radius:9px;background:rgba(10,13,18,.45);overflow:hidden}
+  .amp-card img{display:block;width:100%;height:82px;object-fit:contain;padding:8px;background:rgba(255,255,255,.02);border-bottom:1px solid var(--line-soft)}
+  .amp-card-body{padding:9px 10px 10px}
+  .amp-card h4{margin:0 0 5px;font-size:12px;color:#fff}
+  .amp-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
+  .amp-list li{font-size:9.8px;line-height:1.5;color:var(--muted)}
+  .amp-list b{color:#dbe3ee;font-weight:700}
+  .amp-list .amp-sub{display:block;margin-left:8px;color:#8b97a8}
+  .amp-cost{color:var(--accent);font-family:var(--mono);font-size:8.5px;white-space:nowrap}
   .skill-purpose{display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin:0 0 6px;font-size:11px;font-weight:700;line-height:1.55;color:#dbe3ee}
   .skill-purpose span{font:800 8.5px/1.2 var(--mono);letter-spacing:.06em;color:var(--accent);border:1px solid rgba(245,165,36,.3);border-radius:3px;padding:1px 4px}
 
@@ -869,6 +890,7 @@
     .frigate-route-grid{grid-template-columns:1fr}
     .frigate-spot-grid{grid-template-columns:1fr}
     .frigate-spot-grid .wide{grid-column:auto}
+    .amp-grid{grid-template-columns:1fr}
     .skill-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
     .skill-level{grid-template-columns:1fr}
     .skill-gates{grid-template-columns:1fr}
@@ -1445,7 +1467,204 @@
         <p class="small muted" style="margin-top:14px">長期目標。まず研究Lv1と通常装備。<a class="ref" href="#src-5">[5]</a><a class="ref" href="#src-10">[10]</a></p>
       </div>
 
+      <details class="amp-sheet reveal">
+        <summary>増幅チートシート（全15武器）</summary>
+        <div class="amp-sheet-body">
+          <p class="small muted" style="margin:0 0 4px">MK1〜5の分岐と必要素材。素材名は英語名からの訳。<a class="ref" href="#src-26">[26]</a></p>
+
+          <div class="amp-mk-block">
+            <div class="amp-mk-head"><span>MK1</span>増幅モジュール Mk.1</div>
+            <div class="amp-grid">
+              <article class="amp-card">
+                <img src="assets/weapons/hairpin.png" alt="ヘアピン" loading="lazy" decoding="async">
+                <div class="amp-card-body">
+                  <h4>ヘアピン</h4>
+                  <ul class="amp-list">
+                    <li><b>焼夷弾</b> <span class="amp-cost">石化した雷×3</span></li>
+                    <li><b>セミオート</b> <span class="amp-cost">空気圧アクチュエータ×3</span><span class="amp-sub">→ スプリント射撃 <span class="amp-cost">溝付きローターコア×3</span></span></li>
+                    <li><b>追跡弾</b> <span class="amp-cost">マトリアーク・リアクター×1</span></li>
+                  </ul>
+                </div>
+              </article>
+              <article class="amp-card">
+                <img src="assets/weapons/rattler.png" alt="ラトラー" loading="lazy" decoding="async">
+                <div class="amp-card-body">
+                  <h4>ラトラー</h4>
+                  <ul class="amp-list">
+                    <li><b>焼夷弾</b> <span class="amp-cost">石化した雷×3</span></li>
+                    <li><b>リロード強化</b> <span class="amp-cost">推進剤バルブアセンブリ×2</span><span class="amp-sub">→ ドラムマガジン <span class="amp-cost">圧力レギュレーター×4</span></span></li>
+                  </ul>
+                </div>
+              </article>
+              <article class="amp-card">
+                <img src="assets/weapons/kettle.png" alt="ケトル" loading="lazy" decoding="async">
+                <div class="amp-card-body">
+                  <h4>ケトル</h4>
+                  <ul class="amp-list">
+                    <li><b>X弾</b> <span class="amp-cost">石化した雷×3</span></li>
+                    <li><b>対シールド</b> <span class="amp-cost">アセッサー・マトリクス×3</span></li>
+                    <li><b>フルオート</b> <span class="amp-cost">空気圧アクチュエータ×3</span></li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="amp-mk-block">
+            <div class="amp-mk-head"><span>MK2</span>増幅モジュール Mk.2</div>
+            <div class="amp-grid">
+              <article class="amp-card">
+                <img src="assets/weapons/burletta.png" alt="バーレッタ" loading="lazy" decoding="async">
+                <div class="amp-card-body">
+                  <h4>バーレッタ</h4>
+                  <ul class="amp-list">
+                    <li><b>スプリント射撃</b> <span class="amp-cost">溝付きローターコア×3</span></li>
+                    <li><b>フルオート</b> <span class="amp-cost">空気圧アクチュエータ×3</span></li>
+                    <li><b>バースト射撃</b> <span class="amp-cost">クイーン・リアクター×2</span><span class="amp-sub">→ バースト強化 <span class="amp-cost">圧力レギュレーター×2</span></span></li>
+                  </ul>
+                </div>
+              </article>
+              <article class="amp-card">
+                <img src="assets/weapons/iltoro.png" alt="イル・トーロ" loading="lazy" decoding="async">
+                <div class="amp-card-body">
+                  <h4>イル・トーロ</h4>
+                  <ul class="amp-list">
+                    <li><b>リロード強化</b> <span class="amp-cost">推進剤バルブアセンブリ×2</span></li>
+                    <li><b>スラッグ弾</b> <span class="amp-cost">タービンコンプレッサー×4</span></li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="amp-mk-block">
+            <div class="amp-mk-head"><span>MK3</span>増幅モジュール Mk.3</div>
+            <div class="amp-grid">
+              <article class="amp-card">
+                <img src="assets/weapons/anvil.png" alt="アンヴィル" loading="lazy" decoding="async">
+                <div class="amp-card-body">
+                  <h4>アンヴィル</h4>
+                  <ul class="amp-list">
+                    <li><b>X弾</b> <span class="amp-cost">石化した雷×3</span></li>
+                    <li><b>アンヴィルスプリッター</b> <span class="amp-cost">タービンコンプレッサー×3</span></li>
+                  </ul>
+                </div>
+              </article>
+              <article class="amp-card">
+                <img src="assets/weapons/canto.png" alt="カント" loading="lazy" decoding="async">
+                <div class="amp-card-body">
+                  <h4>カント</h4>
+                  <ul class="amp-list">
+                    <li><b>焼夷弾</b> <span class="amp-cost">石化した雷×3</span></li>
+                    <li><b>カービン化</b> <span class="amp-cost">推進剤バルブアセンブリ×3</span></li>
+                    <li><b>スプリント射撃</b> <span class="amp-cost">溝付きローターコア×3</span></li>
+                  </ul>
+                </div>
+              </article>
+              <article class="amp-card">
+                <img src="assets/weapons/osprey.png" alt="オスプレー" loading="lazy" decoding="async">
+                <div class="amp-card-body">
+                  <h4>オスプレー</h4>
+                  <ul class="amp-list">
+                    <li><b>エルゴノミックボルト</b> <span class="amp-cost">溝付きローターコア×3</span></li>
+                    <li><b>追跡弾</b> <span class="amp-cost">マトリアーク・リアクター×2</span></li>
+                    <li><b>対弱点</b> <span class="amp-cost">アセッサー・マトリクス×2</span></li>
+                  </ul>
+                </div>
+              </article>
+              <article class="amp-card">
+                <img src="assets/weapons/rascal.png" alt="ラスカル" loading="lazy" decoding="async">
+                <div class="amp-card-body">
+                  <h4>ラスカル</h4>
+                  <ul class="amp-list">
+                    <li><b>高速弾</b> <span class="amp-cost">空気圧アクチュエータ×2</span></li>
+                    <li><b>スプリント射撃</b> <span class="amp-cost">溝付きローターコア×2</span></li>
+                    <li><b>焼夷グレネード</b> <span class="amp-cost">石化した雷×3</span></li>
+                  </ul>
+                </div>
+              </article>
+              <article class="amp-card">
+                <img src="assets/weapons/renegade.png" alt="レネゲイド" loading="lazy" decoding="async">
+                <div class="amp-card-body">
+                  <h4>レネゲイド</h4>
+                  <ul class="amp-list">
+                    <li><b>リロード強化</b> <span class="amp-cost">推進剤バルブアセンブリ×2</span></li>
+                    <li><b>スコープ</b> <span class="amp-cost">溝付きローターコア×4</span></li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="amp-mk-block">
+            <div class="amp-mk-head"><span>MK4</span>増幅モジュール Mk.4</div>
+            <div class="amp-grid">
+              <article class="amp-card">
+                <img src="assets/weapons/bettina.png" alt="ベティーナ" loading="lazy" decoding="async">
+                <div class="amp-card-body">
+                  <h4>ベティーナ</h4>
+                  <ul class="amp-list">
+                    <li><b>マガジン拡張</b> <span class="amp-cost">圧力レギュレーター×3</span></li>
+                    <li><b>セミオート</b> <span class="amp-cost">空気圧アクチュエータ×3</span><span class="amp-sub">→ X弾 <span class="amp-cost">石化した雷×3</span></span></li>
+                  </ul>
+                </div>
+              </article>
+              <article class="amp-card">
+                <img src="assets/weapons/hullcracker.png" alt="ハルクラッカー" loading="lazy" decoding="async">
+                <div class="amp-card-body">
+                  <h4>ハルクラッカー</h4>
+                  <ul class="amp-list">
+                    <li><b>焼夷グレネード</b> <span class="amp-cost">石化した雷×3</span></li>
+                    <li><b>マグリロード</b> <span class="amp-cost">推進剤バルブアセンブリ×3</span></li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="amp-mk-block">
+            <div class="amp-mk-head"><span>MK5</span>増幅モジュール Mk.5</div>
+            <div class="amp-grid">
+              <article class="amp-card">
+                <img src="assets/weapons/aphelion.png" alt="アフェリオン" loading="lazy" decoding="async">
+                <div class="amp-card-body">
+                  <h4>アフェリオン</h4>
+                  <ul class="amp-list">
+                    <li><b>マガジン拡張</b> <span class="amp-cost">圧力レギュレーター×3</span></li>
+                    <li><b>焼夷弾</b> <span class="amp-cost">石化した雷×3</span></li>
+                    <li><b>チャージバースト</b> <span class="amp-cost">クイーン・リアクター×2</span><span class="amp-sub">→ バースト強化 <span class="amp-cost">圧力レギュレーター×2</span></span></li>
+                  </ul>
+                </div>
+              </article>
+              <article class="amp-card">
+                <img src="assets/weapons/equalizer.png" alt="イコライザー" loading="lazy" decoding="async">
+                <div class="amp-card-body">
+                  <h4>イコライザー</h4>
+                  <ul class="amp-list">
+                    <li><b>マガジン拡張</b> <span class="amp-cost">圧力レギュレーター×3</span></li>
+                    <li><b>連続ダメージ増加</b> <span class="amp-cost">クイーン・リアクター×3</span></li>
+                    <li><b>対弱点</b> <span class="amp-cost">アセッサー・マトリクス×2</span></li>
+                  </ul>
+                </div>
+              </article>
+              <article class="amp-card">
+                <img src="assets/weapons/jupiter.png" alt="ジュピター" loading="lazy" decoding="async">
+                <div class="amp-card-body">
+                  <h4>ジュピター</h4>
+                  <ul class="amp-list">
+                    <li><b>マガジン拡張</b> <span class="amp-cost">圧力レギュレーター×3</span></li>
+                    <li><b>スコープ</b> <span class="amp-cost">溝付きローターコア×3</span></li>
+                    <li><b>エルゴノミックボルト</b> <span class="amp-cost">溝付きローターコア×3</span></li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </details>
+
       <!-- Skill tree -->
+
       <h3 style="margin-top:34px">スキルツリー</h3>
       <div class="split reveal">
         <div class="card">
@@ -3186,6 +3405,11 @@
           <div class="src-title">Weapons（武器のクラフト必要素材・ベンチレベル）</div>
           <div class="src-meta">ARC Raiders Wiki</div>
           <a href="https://arcraiders.wiki/wiki/Weapons" target="_blank" rel="noopener noreferrer">https://arcraiders.wiki/wiki/Weapons</a>
+        </li>
+        <li id="src-26">
+          <div class="src-title">ARC Raiders: Your Guide to Amplified Weapons（増幅チートシート）</div>
+          <div class="src-meta">ARC Now / X / 2026-10-22（Via u/WoWAltoholic）</div>
+          <a href="https://x.com/ArcRaidersNow/status/2113296828943011885" target="_blank" rel="noopener noreferrer">https://x.com/ArcRaidersNow/status/2113296828943011885</a>
         </li>
       </ol>
 
