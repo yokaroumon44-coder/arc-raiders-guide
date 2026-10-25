@@ -754,6 +754,47 @@
   .to-top.show{opacity:1;pointer-events:auto}
   .to-top:hover{border-color:var(--accent);color:var(--accent)}
 
+  /* ---------- item image lightbox ---------- */
+  .zoom-trigger{cursor:zoom-in}
+  .mat.zoom-trigger{transition:filter .15s,transform .15s,box-shadow .15s}
+  .mat.zoom-trigger:hover{filter:brightness(1.14);transform:translateY(-1px);box-shadow:0 2px 8px rgba(0,0,0,.28)}
+  .weapon-thumb.zoom-trigger{border-radius:6px;transition:background .15s}
+  .weapon-thumb.zoom-trigger:hover{background:rgba(255,255,255,.05)}
+  .weapon-thumb.zoom-trigger img{transition:transform .16s}
+  .weapon-thumb.zoom-trigger:hover img{transform:scale(1.06)}
+  .loadout-weapons img.zoom-trigger,.gf-mats img.zoom-trigger,.gf-craft img.zoom-trigger{transition:transform .15s,filter .15s}
+  .loadout-weapons img.zoom-trigger:hover{transform:scale(1.05);filter:brightness(1.12)}
+  .gf-mats img.zoom-trigger:hover,.gf-craft img.zoom-trigger:hover{filter:brightness(1.15)}
+  .zoom-trigger:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  body.lb-open{overflow:hidden}
+
+  .lightbox{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:20px}
+  .lightbox.is-open{display:flex}
+  .lb-backdrop{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:rgba(4,7,11,.86);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);cursor:zoom-out}
+  .lb-panel{
+    position:relative;z-index:1;max-width:min(92vw,820px);max-height:92vh;padding:26px 20px 16px;
+    display:flex;flex-direction:column;align-items:center;
+    border:1px solid rgba(255,255,255,.15);border-radius:16px;
+    background:radial-gradient(circle at 50% 0,rgba(245,165,36,.09),transparent 55%),linear-gradient(180deg,#151d28,#0b1118);
+    box-shadow:0 30px 90px rgba(0,0,0,.7);animation:lbIn .18s ease-out;
+  }
+  @keyframes lbIn{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
+  .lb-close{
+    position:absolute;top:8px;right:8px;z-index:2;width:40px;height:40px;display:grid;place-items:center;
+    border:1px solid rgba(255,255,255,.14);border-radius:50%;background:rgba(255,255,255,.06);
+    color:#cdd7e4;font:300 24px/1 system-ui,sans-serif;cursor:pointer;
+  }
+  .lb-close:hover{background:rgba(255,255,255,.13);color:#fff}
+  .lb-close:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .lb-stage{display:flex;align-items:center;justify-content:center;width:100%;min-height:100px;padding:46px 24px 4px;overflow:hidden}
+  .lb-image{display:block;width:auto;height:auto;max-width:min(84vw,680px);max-height:62vh;object-fit:contain;filter:drop-shadow(0 10px 24px rgba(0,0,0,.45))}
+  .lb-image.is-mat{width:min(44vw,220px);height:min(44vw,220px);max-width:none;max-height:none;padding:12px}
+  .lb-caption{max-width:100%;padding:8px 8px 0;text-align:center}
+  .lb-eyebrow{display:block;margin-bottom:2px;font:800 9px/1.4 var(--mono);letter-spacing:.18em;color:var(--accent)}
+  .lb-name{display:block;font-size:18px;line-height:1.5;font-weight:800;color:#fff;word-break:break-word}
+  .lb-hint{display:block;margin-top:3px;font:600 10px/1.5 var(--mono);letter-spacing:.03em;color:#6c7888}
+  .lb-hint-touch{display:none}
+
   /* ---------- media ---------- */
   .shot{
     margin:18px 0 0;border:1px solid var(--line);border-radius:var(--radius);
@@ -862,6 +903,16 @@
     .gf-step h4{grid-column:2;grid-row:1;align-self:end;font-size:12px}
     .gf-step p{grid-column:2;grid-row:2;align-self:start;font-size:10.5px}
     .gf-arrow{transform:rotate(90deg);margin:0 auto;line-height:1}
+    .lightbox{padding:12px}
+    .lb-panel{max-width:94vw;padding:22px 12px 12px;border-radius:12px}
+    .lb-stage{padding:46px 6px 2px}
+    .lb-image{max-width:88vw;max-height:56vh}
+    .lb-image.is-mat{width:min(58vw,190px);height:min(58vw,190px)}
+    .lb-close{top:4px;right:4px;width:44px;height:44px}
+    .lb-name{font-size:16px}
+    .lb-hint{font-size:9px}
+    .lb-hint-desk{display:none}
+    .lb-hint-touch{display:inline}
     .outpost-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
     .ability-grid{grid-template-columns:minmax(0,1fr)}
     .research-row{grid-template-columns:44px 1fr}
@@ -1031,7 +1082,7 @@
       </figure>
 
       <h3 style="margin-top:32px">素材が集まりやすい場所</h3>
-      <p class="small muted" style="margin-bottom:12px">実マップ上の番号 → 下のリスト。位置は目安。</p>
+      <p class="small muted" style="margin-bottom:12px">実マップ上の番号 → 下のリスト。位置は目安。素材を押すと拡大。</p>
 
       <figure class="farm-map reveal" id="pendola-map">
         <div class="farm-map-frame">
@@ -1874,9 +1925,9 @@
         <div class="gf-step">
           <span class="gf-num">04</span>
           <div class="gf-visual gf-mats">
-            <img src="assets/materials/wasp-driver.png" alt="" loading="lazy" decoding="async">
-            <img src="assets/materials/sentinel-firing-core.png" alt="" loading="lazy" decoding="async">
-            <img src="assets/materials/advanced-mechanical-components.png" alt="" loading="lazy" decoding="async">
+            <img src="assets/materials/wasp-driver.png" alt="ワスプドライバー" loading="lazy" decoding="async">
+            <img src="assets/materials/sentinel-firing-core.png" alt="センチネル発火コア" loading="lazy" decoding="async">
+            <img src="assets/materials/advanced-mechanical-components.png" alt="高度な機械部品" loading="lazy" decoding="async">
           </div>
           <h4>素材</h4>
           <p>ワスプ8 → センチネル4</p>
@@ -2639,7 +2690,7 @@
       <div class="sec-head reveal">
         <div class="sec-kicker">07 / 武器</div>
         <h2>武器メタ・ティア表</h2>
-        <p class="sec-lead">武器は弾薬代で選ぶ。まず弱点、次にティア、最後に役割別。</p>
+        <p class="sec-lead">武器は弾薬代で選ぶ。まず弱点、次にティア、最後に役割別。武器画像を押すと拡大。</p>
       </div>
 
             <h3>まず覚える弱点の見方</h3>
@@ -3355,6 +3406,19 @@
 
 <button type="button" class="to-top" id="toTop" aria-label="ページ上部へ戻る">↑</button>
 
+<div class="lightbox" id="itemLightbox" aria-hidden="true">
+  <button type="button" class="lb-backdrop" id="lbBackdrop" tabindex="-1" aria-label="拡大画像を閉じる"></button>
+  <div class="lb-panel" role="dialog" aria-modal="true" aria-labelledby="lbName">
+    <button type="button" class="lb-close" id="lbClose" aria-label="閉じる">×</button>
+    <div class="lb-stage"><img class="lb-image" id="lbImage" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt=""></div>
+    <div class="lb-caption">
+      <span class="lb-eyebrow" id="lbEyebrow">MATERIAL / 素材</span>
+      <strong class="lb-name" id="lbName">アイテム</strong>
+      <span class="lb-hint"><span class="lb-hint-desk">背景クリック / Esc で閉じる</span><span class="lb-hint-touch">背景タップで閉じる</span></span>
+    </div>
+  </div>
+</div>
+
 <script>
 (function(){
   "use strict";
@@ -3431,6 +3495,89 @@
       });
     });
   });
+
+  /* ---------- item image lightbox ---------- */
+  var lightbox = document.getElementById("itemLightbox");
+  var lbImage = document.getElementById("lbImage");
+  var lbName = document.getElementById("lbName");
+  var lbEyebrow = document.getElementById("lbEyebrow");
+  var lbClose = document.getElementById("lbClose");
+  var lbBackdrop = document.getElementById("lbBackdrop");
+  var lastFocus = null;
+
+  function openLightbox(img, name, kind, trigger){
+    lastFocus = trigger || document.activeElement;
+    lbImage.className = "lb-image" + (kind === "material" ? " is-mat" : "");
+    lbImage.src = img.currentSrc || img.src;
+    lbImage.alt = name || "";
+    lbName.textContent = name || "アイテム画像";
+    lbEyebrow.textContent = kind === "material" ? "MATERIAL / 素材" : "WEAPON / 武器";
+    lightbox.classList.add("is-open");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.classList.add("lb-open");
+    lbClose.focus();
+  }
+
+  function closeLightbox(){
+    if (!lightbox.classList.contains("is-open")) return;
+    lightbox.classList.remove("is-open");
+    lightbox.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("lb-open");
+    lbImage.alt = "";
+    if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
+  }
+
+  if (lightbox && lbImage && lbClose && lbBackdrop){
+    lbClose.addEventListener("click", closeLightbox);
+    lbBackdrop.addEventListener("click", closeLightbox);
+    document.addEventListener("keydown", function(e){
+      if (!lightbox.classList.contains("is-open")) return;
+      if (e.key === "Escape" || e.key === "Esc"){
+        e.preventDefault();
+        closeLightbox();
+      } else if (e.key === "Tab"){
+        e.preventDefault();
+        lbClose.focus();
+      }
+    });
+
+    var zoomTargets = document.querySelectorAll(".mat, .weapon-thumb, .loadout-weapons img, .gf-mats img, .gf-craft img");
+    Array.prototype.forEach.call(zoomTargets, function(node){
+      var img = node.tagName === "IMG" ? node : node.querySelector("img");
+      if (!img || !img.getAttribute("src")) return;
+
+      var src = img.getAttribute("src") || "";
+      var kind = src.indexOf("assets/materials/") !== -1 ? "material" : "weapon";
+      var name = "";
+      if (node.classList.contains("mat")){
+        var clone = node.cloneNode(true);
+        Array.prototype.forEach.call(clone.querySelectorAll("b"), function(b){
+          b.parentNode.removeChild(b);
+        });
+        name = (clone.textContent || "").replace(/\s+/g, " ").trim();
+      } else {
+        name = (img.getAttribute("alt") || "").trim();
+      }
+      if (!name) name = "アイテム画像";
+
+      var label = name + "を拡大";
+      node.classList.add("zoom-trigger");
+      node.setAttribute("role", "button");
+      node.setAttribute("tabindex", "0");
+      node.setAttribute("aria-label", label);
+      node.setAttribute("aria-haspopup", "dialog");
+      node.setAttribute("aria-controls", "itemLightbox");
+      if (!node.getAttribute("title")) node.setAttribute("title", label);
+
+      function activate(e){
+        if (e.type === "keydown" && e.key !== "Enter" && e.key !== " " && e.key !== "Spacebar") return;
+        e.preventDefault();
+        openLightbox(img, name, kind, node);
+      }
+      node.addEventListener("click", activate);
+      node.addEventListener("keydown", activate);
+    });
+  }
 
   /* ---------- reveal on scroll ---------- */
   var reveals = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
